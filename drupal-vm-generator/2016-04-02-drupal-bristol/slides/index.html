@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Drupal Bristol - Drupal VM Generator</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Drupal VM Generator</h1>
+					<p>Drupal Bristol - April 2016</p>
+					<small>Oliver Davies - <a href="https://twitter.com/opdavies">@opdavies</a></small>
+				</section>
+
+				<section>
+				  <section data-markdown>
+				  ## What is Drupal VM?
+
+				* Configurable Vagrant box for Drupal development
+				* Provisioned with Ansible
+				* Configured using YAML
+				* Built and maintained by Jeff Geerling
+					</section>
+
+					<section data-markdown>
+						## How do I use it?
+
+						* Download it from GitHub
+						* Copy and rename example.config.yml and example.drupal.make.yml
+						* Change contents as needed
+						* Start the VM
+					</section>
+
+					<section data-markdown>
+						## Down-sides
+
+						* Time consuming
+						* Redundant code
+				</section>
+			</section>
+
+			<section>
+				<section data-markdown>
+					## The Drupal VM Generator
+
+					* https://www.oliverdavies.uk/blog/announcing-the-drupal-vm-generator
+					* CLI application
+					* Generates files needed for Drupal VM based on interaction
+					* Very fast
+					* Only generates when you need
+				</section>
+
+				<section>
+					<img src="images/drupalvm-generate-example-2.gif" alt="" />
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>How do I get it?</h2>
+
+					<pre><code class="hljs" data-trim>
+# Download the archive.
+$ curl -s https://www.drupalvmgenerator.com/download -L -o drupalvm.phar
+
+# Make it executable.
+$ chmod +x drupalvm.phar
+
+# Move it somewhere accessible.
+$ mv drupalvm.phar /usr/local/bin/drupalvm
+					</code></pre>
+				</section>
+
+				<section>
+					<img src="images/drupalvm-install.gif" alt="" />
+				</section>
+			</section>
+
+				<section>
+					<h2>Commands</h2>
+
+					Generate config.yml:
+
+					<pre><code>
+$ drupalvm config:generate
+					</code></pre>
+
+					Generate drupal.make.yml:
+
+					<pre><code>
+$ drupalvm make:generate
+					</code></pre>
+				</section>
+
+				<section data-markdown>
+					## Demo
+				</section>
+
+				<section data-markdown>
+					## Roadmap
+
+					* Keep up to date with Drupal VM stable releases
+					* New commands - downloading Drupal VM, updating existing files, adding vhosts
+					* User defaults and settings
+				</section>
+
+				<section data-markdown>
+					## Resources
+
+					* https://www.oliverdavies.uk/blog/announcing-the-drupal-vm-generator/
+					* https://github.com/opdavies/drupal-vm-generator
+					* https://www.drupalvmgenerator.com
+				</section>
+
+				<section data-markdown>
+					## Questions?
+				</section>
+
+				<section>
+					<h2>Thanks</h2>
+
+					<p>
+						<small><a href="https://twitter.com/opdavies">@opdavies</a></small>
+					</p>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				transition: 'none',
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
