@@ -1,6 +1,5 @@
-autoscale: true
 build-lists: true
-hide-footer: true
+theme: poster, 8
 
 # [fit] Deploying PHP<br>applications<br>*(and anything else)<br>*with Fabric
 
