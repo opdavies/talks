@@ -386,7 +386,7 @@ local('composer install')
 
 ---
 
-![fit](deploy-all-the-things.jpg)
+![fit](images/deploy-all-the-things.jpg)
 
 ---
 
