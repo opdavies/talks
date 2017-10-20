@@ -1,8 +1,11 @@
 autoscale: true
 build-lists: true
-theme: poster, 7
+theme: next, 9
 
-# [fit] *Deploying* PHP<br>applications<br>*with* Fabric
+# [fit] Deploying Drupal <br>with Fabric
+
+### Oliver Davies
+### bit.ly/deploying-drupal-fabric
 
 ---
 
@@ -16,26 +19,30 @@ theme: poster, 7
 
 [.build-lists: false]
 
+![right](../../me-phpnw.png)
+
 - Senior Developer at Microserve
-- Part-time freelance Developer & Sysadmin
+- Part-time freelance Developer & System Administrator
+- Drupal, Symfony, Silex, Laravel, Sculpin
 - Drupal Bristol, PHPSW, DrupalCamp Bristol
+- Sticker collector, herder of elePHPants
 - @opdavies
 - oliverdavies.uk
 
-![right](../../me-microserve.jpg)
 
-^ Drupal (7 & 8), Symfony, Silex, Laravel, Sculpin
-Not a Python Developer
+^ Not a Python Developer
 
 ---
 
-## *What is* Fabric*?*
+![](images/fry.jpeg)
+
+## [fit] What is <br>Fabric?
 
 ---
 
 ## What is Fabric?
 
-*Fabric is a* Python (2.5-2.7) library and command-line tool for streamlining the use of SSH *for application deployment or systems administration tasks.*
+Fabric is a Python (2.5-2.7) library and command-line tool for streamlining the use of SSH for application deployment or systems administration tasks.
 
 ---
 
@@ -63,7 +70,7 @@ It provides a basic suite of operations for executing local or remote shell comm
 
 - Powerful
 - Flexible
-- Easier to write than bash
+- Easier to read and write than bash
 
 ^ - Can be used for different languages, frameworks
 - Can be used for small, simple deployments or large, complicated ones
@@ -86,7 +93,7 @@ $ apt-get install python-fabric
 
 ---
 
-## Writing your <br>first *fabfile*
+## [fit] Writing your <br>first fabfile
 
 ---
 
@@ -159,10 +166,10 @@ from fabric.contrib.files import *
 
 ```python
 
-def build():
-    with cd('/var/www/html'):
-        run('git pull')
-        run('composer install')
+def main():
+  with cd('/var/www/html'):
+    run('git pull')
+    run('composer install')
 ```
 
 ---
@@ -170,12 +177,12 @@ def build():
 ## Task arguments
 
 ```python, [.highlight: 1, 4-6]
-def build(run_composer=True):
-    with cd('/var/www/html'):
-        run('git pull')
+def main(run_composer=True):
+  with cd('/var/www/html'):
+    run('git pull')
 
-        if run_composer:
-            run('composer install')
+    if run_composer:
+      run('composer install')
 ```
 
 ---
@@ -183,22 +190,22 @@ def build(run_composer=True):
 ## Task arguments
 
 ```python, [.highlight: 1, 4-15]
-def build(run_composer=True, env='prod', build_type):
-    with cd('/var/www/html'):
-        run('git pull')
+def main(run_composer=True, env='prod', build_type):
+  with cd('/var/www/html'):
+    run('git pull')
 
-        if run_composer:
-            if env == 'prod':
-                run('composer install --no-dev')
-            else:
-                run('composer install')
+    if run_composer:
+      if env == 'prod':
+        run('composer install --no-dev')
+      else:
+        run('composer install')
 
-        if build_type == 'drupal':
-            ...
-        elif build_type == 'symfony':
-            ...
-        elif build_type == 'sculpin':
-            ...
+      if build_type == 'drupal':
+        ...
+      elif build_type == 'symfony':
+        ...
+      elif build_type == 'sculpin':
+        ...
 ```
 
 ---
@@ -207,20 +214,20 @@ def build(run_composer=True, env='prod', build_type):
 
 ```python, [.highlight: 4-15]
 @task
-def build():
-    with cd('/var/www/html'):
-        build()
-        post_install()
+def main():
+  with cd('/var/www/html'):
+    build()
+    post_install()
 
 def build():
-    run('git pull')
-    run('composer install')
+  run('git pull')
+  run('composer install')
 
 def post_install():
-    with prefix('drush'):
-        run('updatedb -y')
-        run('entity-updates -y')
-        run('cache-rebuild')
+  with prefix('drush'):
+    run('updatedb -y')
+    run('entity-updates -y')
+    run('cache-rebuild')
 ```
 
 ^ Better organised code
@@ -269,7 +276,7 @@ Disconnecting from production... done.
 
 [.build-lists: false]
 
-## *Not* Building on Prod
+## Not Building on Prod
 
 1. Build locally and deploy.
 
@@ -303,14 +310,14 @@ local('composer install')
 from fabric.api import cd
 
 with cd('themes/custom/drupalbristol'):
-    ...
+  ...
 
 # Runs locally.
 
 from fabric.api import lcd
 
 with lcd('themes/custom/drupalbristol'):
-    ...
+  ...
 ```
 
 ---
@@ -323,12 +330,12 @@ from fabric.contrib.project import rsync_project
 ...
 
 def deploy():
-    rsync_project(
-        local_dir='./',
-        remote_dir='/var/www/html'
-        default_opts='-vzcrSLh',
-        exclude=('.git', 'node_modules/', '.sass-cache/')
-    )
+  rsync_project(
+    local_dir='./',
+    remote_dir='/var/www/html'
+    default_opts='-vzcrSLh',
+    exclude=('.git', 'node_modules/', '.sass-cache/')
+  )
 ```
 
 ---
@@ -353,7 +360,7 @@ Done.
 
 [.build-lists: false]
 
-## *Not* Building on Prod
+## Not Building on Prod
 
 1. ~~Build locally and deploy.~~
 1. Build in a separate directory and switch after build.
@@ -362,25 +369,25 @@ Done.
 
 ---
 
-## Deploying into a *different directory*
+## Deploying into a different directory
 
 ```python
 from fabric.api import *
 from time import time
 
 project_dir = '/var/www/html'
-next_release = "%(time).0f" % { 'time': time() } # timestamp
+next_release = "%(time).0f" % { 'time': time() } # Current timestamp
 
 def init():
-    if not exists(project_dir):
-        run('mkdir -p %s/backups' % project_dir)
-        run('mkdir -p %s/shared' % project_dir)
-        run('mkdir -p %s/releases' % project_dir)
+  if not exists(project_dir):
+    run('mkdir -p %s/backups' % project_dir)
+    run('mkdir -p %s/shared' % project_dir)
+    run('mkdir -p %s/releases' % project_dir)
 ```
 
 ---
 
-## Deploying into a *different directory*
+## Deploying into a different directory
 
 ```python
 current_release = '%s/%s' % (releases_dir, next_release)
@@ -388,10 +395,10 @@ current_release = '%s/%s' % (releases_dir, next_release)
 run('git clone %s %s' % (git_repo, current_release))
 
 def build():
-    with cd(current_release):
-        pre_tasks()
-        build()
-        post_tasks()
+  with cd(current_release):
+    pre_tasks()
+    build()
+    post_tasks()
 ```
 
 ^ - Clone the repository into a different directory
@@ -399,25 +406,25 @@ def build():
 
 ---
 
-## Deploying into a *different directory*
+## Deploying into a different directory
 
 ```python
 def pre_build(build_number):
-    with cd('current'):
-        print '==> Dumping the DB (just in case)...'
-        backup_database()
+  with cd('current'):
+    print '==> Dumping the DB (just in case)...'
+    backup_database()
 
 def backup_database():
-    cd('drush sql-dump --gzip > ../backups/%s.sql.gz' % build_number)
+  cd('drush sql-dump --gzip > ../backups/%s.sql.gz' % build_number)
 ```
 
 ---
 
-## Deploying into a *different directory*
+## Deploying into a different directory
 
 ```python
 def update_symlinks():
-    run('ln -nfs %s/releases/%s %s/current'
+  run('ln -nfs %s/releases/%s %s/current'
     % (project_dir, next_release, project_dir))
 
 # /var/www/html/current
@@ -429,9 +436,9 @@ def update_symlinks():
 [production] Executing task 'main'
 [production] run: git clone https://github.com/opdavies/oliverdavies.uk.git
   /var/www/html/releases/1505865600
-===> Installing Composer dependencies...
+Installing Composer dependencies...
 [production] run: composer install --no-dev
-===> Update the symlink to the new release...
+Update the symlink to the new release...
 [production] run: ln -nfs /var/www/html/releases/1505865600
   /var/www/html/current
 
@@ -443,7 +450,7 @@ Done.
 ```bash
 # /var/www/html
 
-shared
+shared # settings.local.php, sites.php, files etc.
 releases/1502323200
 releases/1505692800
 releases/1505696400
@@ -469,7 +476,7 @@ current -> releases/1505865600 # symlink
 def main(builds_to_keep=3):
   with cd('%s/releases' % project_dir):
     run("ls -1tr | head -n -%d | xargs -d '\\n' rm -fr"
-    % builds_to_keep)
+      % builds_to_keep)
 ```
 
 ^ - Find directory names
@@ -479,7 +486,91 @@ def main(builds_to_keep=3):
 
 ---
 
-## Is the site still running?
+## [fit] Does the code still <br>merge cleanly?
+
+^ Pre-task
+
+---
+
+```python
+def check_for_merge_conflicts(target_branch):
+  with settings(warn_only=True):
+    print('Ensuring that this can be merged into the main branch.')
+
+    if local('git fetch && git merge --no-ff origin/%s'
+      % target_branch).failed:
+      abort('Cannot merge into target branch.')
+```
+
+^ Define target branch in Jenkins/when Fabric is run.
+
+---
+
+![](images/grumpy.jpg)
+
+## [fit] Do our tests <br>still pass?
+
+[.footer: http://nashvillephp.org/images/testing-workshop-banner-1600x800.jpg]
+
+---
+
+```python
+with settings(warn_only=True):
+  with lcd('%s/docroot/core' % project_dir):
+    if local('../../vendor/bin/phpunit ../modules/custom').failed:
+      abort('Tests failed!')
+```
+
+---
+
+```
+[localhost] run: ../../vendor/bin/phpunit ../modules/custom
+[localhost] out: PHPUnit 4.8.35 by Sebastian Bergmann and contributors.
+[localhost] out:
+[localhost] out: .......
+[localhost] out:
+[localhost] out: Time: 1.59 minutes, Memory: 6.00MB
+[localhost] out:
+[localhost] out: OK (7 tests, 42 assertions)
+[localhost] out:
+
+
+Done.
+```
+
+---
+
+```
+[localhost] run: ../../vendor/bin/phpunit ../modules/custom
+[localhost] out: PHPUnit 4.8.35 by Sebastian Bergmann and contributors.
+[localhost] out:
+[localhost] out: E
+[localhost] out:
+[localhost] out: Time: 18.67 seconds, Memory: 6.00MB
+[localhost] out:
+[localhost] out: There was 1 error:
+[localhost] out:
+[localhost] out: 1) Drupal\Tests\broadbean\Functional\AddJobTest::testNodesAreCreated
+[localhost] out: Behat\Mink\Exception\ExpectationException: Current response status code is 200, but 201 expected.
+[localhost] out:
+[localhost] out: /var/www/html/vendor/behat/mink/src/WebAssert.php:770
+[localhost] out: /var/www/html/vendor/behat/mink/src/WebAssert.php:130
+[localhost] out: /var/www/html/docroot/modules/custom/broadbean/tests/src/Functional/AddJobTest.php:66
+[localhost] out:
+[localhost] out: FAILURES!
+[localhost] out: Tests: 1, Assertions: 6, Errors: 1.
+[localhost] out:
+
+Warning: run() received nonzero return code 2 while executing '../../vendor/bin/phpunit ../modules/custom/broadbean'!
+
+Fatal error: Tests failed!
+
+Aborting.
+```
+
+---
+
+## [fit] Is the site <br>still running?
 
 ---
 
@@ -487,13 +578,13 @@ def main(builds_to_keep=3):
 
 ```python
 run(command).failed:
-    # Fail
-
-run(command).return_code == 0:
-    # Pass
+  # Fail
 
 run(command).return_code == 1:
-    # Fail
+  # Fail
+
+run(command).return_code == 0:
+  # Pass
 ```
 
 ^ Works for local and remote.
@@ -501,11 +592,12 @@ run(command).return_code == 1:
 ---
 
 ```python
-def post_tasks():
-    print '===> Checking the site is alive.'
-    if run('drush status | egrep "Connected|Successful"').failed:
-        # Revert back to previous build.
+print 'Checking the site is alive...'
+if run('drush status | egrep "Connected|Successful"').failed:
+  # Revert back to previous build.
 ```
+
+^ egrep is an acronym for "Extended Global Regular Expressions Print". It is a program which scans a specified file line by line, returning lines that contain a pattern matching a given regular expression.
 
 ---
 
@@ -527,30 +619,31 @@ PHP configuration               :  /etc/php5/cli/php.ini
 ...
 ```
 
-^ "Database" to "PHP configuration" missing if cannot connect.
+^ Successful
 
 ---
 
-## Does the code still merge cleanly?
+```bash, [.highlight 3]
+$ drush status
 
-^ Pre-task
-
----
-
-```python
-def check_for_merge_conflicts(target_branch):
-    with settings(warn_only=True):
-        print('===> Ensuring that this can be merged into the main branch.')
-
-        if local('git fetch && git merge --no-ff origin/%s' % target_branch).failed:
-            abort('Cannot merge into target branch.')
+Drupal version                  :  8.3.7
+Site URI                        :  http://default
+Database driver                 :  mysql
+Database hostname               :  db
+Database username               :  user
+Database name                   :  default
+PHP configuration               :  /etc/php5/cli/php.ini
+...
 ```
+
+^ Failed.
+"Database" to "PHP configuration" missing if cannot connect or DB is empty.
 
 ---
 
 ![](images/homer-smart.png)
 
-## Making fabric smarter
+## [fit] Making Fabric <br>Smarter
 
 ---
 
@@ -560,9 +653,9 @@ def check_for_merge_conflicts(target_branch):
 drupal_version = None
 
 if exists('composer.json') and exists('core'):
-    drupal_version = 8
+  drupal_version = 8
 else:
-    drupal_version = 7
+  drupal_version = 7
 ```
 
 ---
@@ -571,16 +664,16 @@ else:
 
 ```python
 if exists('composer.json'):
-    run('composer install')
+  run('composer install')
 
 with cd('themes/custom/example'):
-    if exists('package.json') and not exists('node_modules'):
-        run('yarn --pure-lockfile')
+  if exists('package.json') and not exists('node_modules'):
+    run('yarn --pure-lockfile')
 
-    if exists('gulpfile.js'):
-        run('node_modules/.bin/gulp --production')
-    elif exists('gruntfile.js'):
-        run('node_modules/.bin/grunt build')
+  if exists('gulpfile.js'):
+    run('node_modules/.bin/gulp --production')
+  elif exists('gruntfile.js'):
+    run('node_modules/.bin/grunt build')
 ```
 
 ---
@@ -591,21 +684,24 @@ with cd('themes/custom/example'):
 # app.yml
 
 drupal:
-    version: 8
-    root: web
-    config:
-        import: yes
-        name: sync
-        cmi_tools: no
-    theme:
-        path: 'themes/custom/drupalbristol'
-        build:
-            npm: no
-            type: gulp
-            yarn: yes
+  version: 8
+  root: web
+  config:
+    import: yes
+    name: sync
+    cmi_tools: no
+  tests:
+    simpletest: false
+    phpunit: true
+  theme:
+    path: 'themes/custom/drupalbristol'
+    build:
+      type: gulp
+      npm: no
+      yarn: yes
 
 composer:
-    install: true
+  install: true
 ```
 
 ---
@@ -618,7 +714,10 @@ composer:
 from fabric.api import *
 import yaml
 
-with open('app.yml', 'r') as file:
+config = []
+
+if exists('app.yml'):
+  with open('app.yml', 'r') as file:
     config = yaml.load(file.read())
 ```
 
@@ -630,7 +729,7 @@ with open('app.yml', 'r') as file:
 # fabfile.py
 
 if config['composer']['install'] == True:
-    local('composer install')
+  local('composer install')
 ```
 
 ---
@@ -641,18 +740,61 @@ if config['composer']['install'] == True:
 # fabfile.py
 
 if build_type == 'drupal':
-    drupal = config['drupal']
+  drupal = config['drupal']
+```
 
-    with cd(drupal['root']):
-        if drupal['version'] == 8:
-            if drupal['config']['import'] == True:
-                if drupal['config']['cmi_tools']:
-                    run('drush cim -y %s' % drupal['config']['import']['name'])
-                else:
-                    run('drush cimy -y %s' % drupal['config']['import']['name'])
+---
 
-        if drupal['version'] == 7:
-            ...
+## Project settings file
+
+```python, [.highlight: 6-9]
+# fabfile.py
+
+if build_type == 'drupal':
+  drupal = config['drupal']
+
+  with cd(drupal['root']):
+    if drupal['version'] == 8:
+
+    if drupal['version'] == 7:
+```
+
+---
+
+## Project settings file
+
+```python, [.highlight: 8-10]
+# fabfile.py
+
+if build_type == 'drupal':
+  drupal = config['drupal']
+
+  with cd(drupal['root']):
+    if drupal['version'] == 8:
+      if drupal['config']['import'] == True:
+        # Import the staged configuration.
+        run('drush cim -y %s' % drupal['config']['name'])
+```
+
+---
+
+## Project settings file
+
+```python, [.highlight: 9-15]
+# fabfile.py
+
+if build_type == 'drupal':
+  drupal = config['drupal']
+
+  with cd(drupal['root']):
+    if drupal['version'] == 8:
+      if drupal['config']['import'] == True:
+        if drupal['config']['cmi_tools'] == True:
+          # Use Drush CMI Tools.
+          run('drush cimy -y %s' % drupal['config']['name'])
+        else:
+          # Use core.
+          run('drush cim -y %s' % drupal['config']['name'])
 ```
 
 ^ - Less hard-coded values
@@ -665,14 +807,16 @@ if build_type == 'drupal':
 ## Project settings file
 
 ```python
+# fabfile.py
+
 theme = config['theme']
 
 with cd(theme['path']):
-    if theme['build']['gulp'] == True:
-        if env == 'prod':
-            run('node_modules/.bin/gulp --production')
-        else:
-            run('node_modules/.bin/gulp')
+  if theme['build']['gulp'] == True:
+    if env == 'prod':
+      run('node_modules/.bin/gulp --production')
+    else:
+      run('node_modules/.bin/gulp')
 ```
 
 ---
@@ -683,14 +827,14 @@ with cd(theme['path']):
 # app.yml
 
 commands:
-    build: |
-        cd web/themes/custom/drupalbristol
-        yarn --pure-lockfile
-        node_modules/.bin/gulp --production
+  build: |
+    cd web/themes/custom/drupalbristol
+    yarn --pure-lockfile
+    node_modules/.bin/gulp --production
 
-    deploy: |
-        cd web
-        drush cache-rebuild -y
+  deploy: |
+    cd web
+    drush cache-rebuild -y
 ```
 
 ---
@@ -701,19 +845,20 @@ commands:
 # fabfile.py
 
 for hook in config['commands'].get('build', '').split("\n"):
-    run(hook)
+  run(hook)
 
 ...
 
 for hook in config['commands'].get('deploy', '').split("\n"):
-    run(hook)
+  run(hook)
 ```
 
 ---
 
 ## Other things
 
-- Run Drush/console/artisan commands
+- Run Drush commands
+- Run automated tests
 - Verify file permissions
 - Restart services
 - Anything you can do on the command line...
@@ -732,17 +877,17 @@ for hook in config['commands'].get('deploy', '').split("\n"):
 
 [.build-lists: false]
 
-- https://www.oliverdavies.uk/talks/deploying-php-fabric
+- https://www.oliverdavies.uk/talks/deploying-drupal-fabric
 - http://fabfile.org
-- https://github.com/opdavies/fabric-example-sculpin
 - https://github.com/opdavies/fabric-example-drupal
+- https://github.com/opdavies/fabric-example-sculpin
 - https://deploy.serversforhackers.com (~~$129~~ $79)
 
 ---
 
-## *joind.in/talk/*4e35d
+## Thanks!
 
----
+# Questions?
 
-## @opdavies
-## *oliverdavies.uk*
+### @opdavies
+### oliverdavies.uk
