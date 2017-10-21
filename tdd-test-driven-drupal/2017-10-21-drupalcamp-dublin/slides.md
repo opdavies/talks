@@ -773,7 +773,7 @@ Ordered alphabetically by title.
 ---
 
 ```yml
-# dublintest.yml
+# tdd_dublin.info.yml
 
 name: DrupalCamp Dublin test
 core: 8.x
@@ -787,7 +787,7 @@ type: module
 
 class ListingPageTest extends BrowserTestBase {
 
-  protected static $modules = ['dublintest'];
+  protected static $modules = ['tdd_dublin'];
 
   public function testListingPageExists() {
     $this->drupalGet('pages');
@@ -800,10 +800,10 @@ class ListingPageTest extends BrowserTestBase {
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/dublintest/tests
+docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/dublintest/tests/
+Testing ../modules/tdd_dublin/tests/
 E
 
 Time: 25.94 seconds, Memory: 6.00MB
@@ -816,7 +816,7 @@ but 200 expected.
 
 /var/www/vendor/behat/mink/src/WebAssert.php:770
 /var/www/vendor/behat/mink/src/WebAssert.php:130
-/var/www/modules/dublintest/tests/src/PageListTest.php:11
+/var/www/modules/tdd_dublin/tests/src/PageListTest.php:11
 ```
 
 ---
@@ -827,10 +827,10 @@ but 200 expected.
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/dublintest/tests
+docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/dublintest/tests/
+Testing ../modules/tdd_dublin/tests/
 E
 
 Time: 19.07 seconds, Memory: 6.00MB
@@ -839,7 +839,7 @@ There was 1 error:
 
 1) PageListTest::testListingPage
 Drupal\Core\Config\UnmetDependenciesException:
-Configuration objects provided by <em class="placeholder">dublintest</em>
+Configuration objects provided by <em class="placeholder">tdd_dublin</em>
 have unmet dependencies:
 <em class="placeholder">node.type.page (node),
 views.view.pages (node, views)</em>
@@ -860,10 +860,10 @@ dependencies:
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/dublintest/tests
+docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/dublintest/tests/
+Testing ../modules/tdd_dublin/tests/
 .
 
 Time: 29.58 seconds, Memory: 6.00MB
@@ -935,11 +935,11 @@ public function testOnlyPublishedPagesAreShown() {
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/dublintest/tests
+docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
 --filter=testOnlyPublishedPagesAreShown
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/dublintest/tests
+Testing ../modules/tdd_dublin/tests
 F
 
 Time: 26.4 seconds, Memory: 6.00MB
@@ -962,7 +962,7 @@ Failed asserting that two arrays are equal.
  )
 
 /var/www/core/tests/Drupal/Tests/BrowserTestBase.php:1240
-/var/www/modules/dublintest/tests/src/PageListTest.php:25
+/var/www/modules/tdd_dublin/tests/src/PageListTest.php:25
 
 FAILURES!
 Tests: 1, Assertions: 3, Failures: 1.
@@ -979,11 +979,11 @@ Tests: 1, Assertions: 3, Failures: 1.
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/dublintest/tests
+docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
 --filter=testOnlyPublishedPagesAreShown
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/dublintest/tests
+Testing ../modules/tdd_dublin/tests
 .
 
 Time: 26.53 seconds, Memory: 6.00MB
@@ -1023,11 +1023,11 @@ public function testPagesAreOrderedAlphabetically() {
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/dublintest/tests 
+docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests 
 -filter=testPagesAreOrderedAlphabetically
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/dublintest/tests
+Testing ../modules/tdd_dublin/tests
 F
 
 Time: 28.03 seconds, Memory: 6.00MB
@@ -1055,7 +1055,7 @@ Failed asserting that two arrays are equal.
  )
 
 /var/www/core/tests/Drupal/Tests/BrowserTestBase.php:1240
-/var/www/modules/dublintest/tests/src/PageListTest.php:36
+/var/www/modules/tdd_dublin/tests/src/PageListTest.php:36
 ```
 
 ---
@@ -1068,11 +1068,11 @@ Failed asserting that two arrays are equal.
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/dublintest/tests
+docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
 --filter=testPagesAreOrderedAlphabetically
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/dublintest/tests
+Testing ../modules/tdd_dublin/tests
 .
 
 Time: 27.67 seconds, Memory: 6.00MB
@@ -1083,10 +1083,10 @@ OK (1 test, 2 assertions)
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/dublintest/tests
+docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/dublintest/tests
+Testing ../modules/tdd_dublin/tests
 ...
 
 Time: 1.17 minutes, Memory: 6.00MB
