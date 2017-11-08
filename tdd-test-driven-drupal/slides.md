@@ -8,6 +8,8 @@ theme: next, 9
 
 ---
 
+[.build-lists: false]
+
 - PHP code
 - Mixture of D7 and D8
 - SimpleTest (D7)
@@ -24,7 +26,12 @@ theme: next, 9
 - @opdavies
 - oliverdavies.uk
 
-![right](../../me-phpnw.png)
+![right](../me-phpnw.png)
+
+---
+
+## I write and release contrib modules for the community.<br><br>
+## I write custom modules for client projects.
 
 ---
 
@@ -51,15 +58,6 @@ Tests crucial to preventing regressions when adding new features or fixing bugs.
 ^ Dave Liddament talk - better and cheaper to catch bugs earlier (e.g. whilst developing rather than after it's been released)
 Refer to tests when writing implementation code
 ONO merge conflict
-
----
-
-## Why Not Test?
-
-- Don't know how
-- No time/budget to write tests
-
-^ "I'd love to write tests, but I don't have the time to learn."
 
 ---
 
@@ -335,6 +333,15 @@ $this->drupalLogout();
 - `assertField`
 - `assertFieldById`
 - `assertTitle`
+
+---
+
+## Assertions
+
+- `assertText`
+  `assertSession()->pageTextContains()`
+- `assertNoText`
+  `assertSession()->pageTextNotContains()`
 
 ---
 
@@ -908,9 +915,25 @@ public function testOnlyPublishedPagesAreShown() {
 public function testOnlyPublishedPagesAreShown() {
   ...
 
+  $this->drupalGet('pages');
+
+  $this->assertSession()
+    ->pageTextContains($nodeA->label());
+
+  $this->assertSession()
+    ->pageTextNotContains($nodeB->label());
+}
+```
+
+---
+
+```php
+public function testOnlyPublishedPagesAreShown() {
+  ...
+
   $results = views_get_view_result('pages');
 
-  $nids = collect($results)->pluck('nid')->all();
+  $nids = array_column($results, 'nid');
   // [1, 3]
 
   // I should only see the published pages.
@@ -925,7 +948,7 @@ public function testOnlyPublishedPagesAreShown() {
 
   $results = views_get_view_result('pages');
 
-  $nids = collect($results)->pluck('nid')->all();
+  $nids = array_column($results, 'nid');
   // [1, 3]
 
   $this->assertEquals([1], $nids);
@@ -1014,7 +1037,7 @@ public function testPagesAreOrderedAlphabetically() {
 
   $results = views_get_view_result('pages');
 
-  $nids = collect($results)->pluck('nid')->all();
+  $nids = array_column($results, 'nid');
 
   $this->assertEquals([1, 3, 4, 2], $nids);
 }
@@ -1111,6 +1134,13 @@ Spending time writing tests pays dividends later on
 Start by introducing tests for new features or regression tests when fixing bugs
 If you know things pass, then you can refactor code knowing if something is broken
 Manual testing is still important
+
+---
+
+## Resources
+
+- https://github.com/opdavies/tdd_dublin
+- https://oliverdavies.uk/blog/tdd-test-driven-drupal
 
 ---
 
