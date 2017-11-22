@@ -1,10 +1,10 @@
 autoscale: true
 build-lists: true
-theme: next, 9
+theme: simple, 1
 
 ![](images/title.png)
 
-# [fit] TDD - Test <br>Driven Drupal
+# __TDD - Test Driven Drupal__
 
 ---
 
@@ -45,7 +45,7 @@ Tests crucial to preventing regressions when adding new features or fixing bugs.
 
 ---
 
-## Why Test?
+## __Why Test?__
 
 - Catch bugs earlier
 - Piece of mind
@@ -61,7 +61,7 @@ ONO merge conflict
 
 ---
 
-## Core Testing Gate
+## __Core Testing Gate__
 
 New features should be accompanied by automated tests.
 
@@ -73,7 +73,7 @@ Bug fixes should be accompanied by changes to a test (either modifying an existi
 
 ---
 
-## Testing in Drupal - SimpleTest
+## __Testing in Drupal - SimpleTest__
 
 - Based on <http://www.SimpleTest.org>
 - In D7 core
@@ -82,7 +82,7 @@ Bug fixes should be accompanied by changes to a test (either modifying an existi
 
 ---
 
-## Testing in Drupal - PHPUnit
+## __Testing in Drupal - PHPUnit__
 
 - Used in other PHP projects (e.g. Symfony, Laravel)
 - In D8 core, but not default
@@ -91,7 +91,7 @@ Bug fixes should be accompanied by changes to a test (either modifying an existi
 
 ---
 
-## The PHPUnit Initiative
+## __The PHPUnit Initiative__
 
 - <https://www.drupal.org/node/2807237>
 - D8 core tests to change to PHPUnit
@@ -100,7 +100,7 @@ Bug fixes should be accompanied by changes to a test (either modifying an existi
 
 ---
 
-## The PHPUnit Initiative
+## __The PHPUnit Initiative__
 
 As part of the PHPUnit initiative __a considerable part of Simpletests will be converted to PHPUnit based browser tests on February 21st 2017__. A backwards compatibility layer has been implemented so that many Simpletests can be converted by just using the new BrowserTestBase base class and moving the test file. There is also a script to automatically convert test files in the conversion issue.
 
@@ -112,8 +112,11 @@ The timeline for the deprecation of Simpletest's WebTestBase is under discussion
 
 ---
 
-## Types of Tests
-### Unit Tests
+## __Types of Tests__
+
+---
+
+## __Unit Tests__
 
 - `UnitTestCase`
 - Tests PHP logic
@@ -122,10 +125,9 @@ The timeline for the deprecation of Simpletest's WebTestBase is under discussion
 
 ---
 
-## Types of Tests
-### Unit Tests
+## __Unit Tests__
 
-Pros:
+__Pros:__
 
 - Verify individual parts
 - Quickly find problems in code
@@ -134,10 +136,9 @@ Pros:
 
 ---
 
-## Types of Tests
-### Unit Tests
+## __Unit Tests__
 
-Cons:
+__Cons:__
 
 - Rewrite on every refactoring
 - Complicated mocking
@@ -145,8 +146,7 @@ Cons:
 
 ---
 
-## Types of Tests
-### Kernel Tests
+## __Kernel Tests__
 
 - Kernel tests are integration tests that test on components. You can install modules.
 - `KernelTestBase`
@@ -155,20 +155,18 @@ Cons:
 
 ---
 
-## Types of Tests
-### Kernel Tests
+## __Kernel Tests__
 
-Pros:
+__Pros:__
 
 - Verify that components actually work together
 - Somewhat easy to locate bugs
 
 ---
 
-## Types of Tests
-### Kernel Tests
+## __Kernel Tests__
 
-Cons:
+__Cons:__
 
 - Slower execution
 - System setup required
@@ -176,10 +174,9 @@ Cons:
 
 ---
 
+## __UI Tests__
 
-## Types of Tests
-### Web/Functional/FunctionalJavascript Tests
-
+- Web/Functional/FunctionalJavascript
 - `DrupalWebTestCase` (D7)
 - `WebTestBase`, `BrowserTestBase`, `JavascriptTestBase` (D8)
 - Tests functionality
@@ -191,7 +188,7 @@ Cons:
 
 ---
 
-## Test Driven Development (TDD)
+## __Test Driven Development (TDD)__
 
 - Write a test, see it fail
 - Write code until test passes
@@ -209,7 +206,7 @@ Write code first, comment out/reset branch, then TDD
 
 ---
 
-## Porting Modules to Drupal 8
+## __Porting Modules to Drupal 8__
 
 - Make a new branch 
   `git checkout --orphan 8.x-1.x`
@@ -220,11 +217,11 @@ Write code first, comment out/reset branch, then TDD
 
 ---
 
-## Writing Tests (SimpleTest)
+## __Writing Tests (SimpleTest)__
 
 ---
 
-[.hide-footer]
+
 
 ```ini
 # example.info
@@ -236,7 +233,7 @@ files[] = example.test
 
 ---
 
-[.hide-footer]
+
 
 ```php
 // example.test
@@ -256,9 +253,7 @@ class ExampleTestCase extends DrupalWebTestCase {
 
 ---
 
-[.hide-footer]
-
-```php
+```php, [.highlight: 5-7]
 class ExampleTestCase extends DrupalWebTestCase {
 
   ...
@@ -272,7 +267,7 @@ class ExampleTestCase extends DrupalWebTestCase {
 
 ---
 
-## Writing Tests (PHPUnit)
+## __Writing Tests (PHPUnit)__
 
 - No need to load test classes expicitly.
 - Add classes into `tests/src` directory.
@@ -283,9 +278,9 @@ class ExampleTestCase extends DrupalWebTestCase {
 
 ---
 
-[.hide-footer]
 
-## Creating the World
+
+## __Creating the World__
 
 ```php
 public function setUp() {
@@ -298,9 +293,9 @@ public function setUp() {
 
 ---
 
-[.hide-footer]
 
-## Creating the World
+
+## __Creating the World__
 
 ```php
 $this->drupalCreateUser();
@@ -314,7 +309,7 @@ $this->drupalLogout();
 
 ---
 
-## Assertions
+## __Assertions__
 
 - `assertTrue`
 - `assertFalse`
@@ -325,7 +320,7 @@ $this->drupalLogout();
 
 ---
 
-## Assertions
+## __Assertions__
 
 - `assertRaw`
 - `assertResponse`
@@ -336,7 +331,7 @@ $this->drupalLogout();
 
 ---
 
-## Assertions
+## __Assertions__
 
 - `assertText`
   `assertSession()->pageTextContains()`
@@ -345,11 +340,11 @@ $this->drupalLogout();
 
 ---
 
-## [fit] Running Tests
+# __Running Tests__
 
 ---
 
-## SimpleTest UI
+## __SimpleTest UI__
 
 ---
 
@@ -369,9 +364,9 @@ $this->drupalLogout();
 
 ---
 
-## Running SimpleTest From The Command Line
+## __Running SimpleTest (CLI)__
 
-[.hide-footer]
+
 
 ```bash
 # Drupal 7
@@ -383,9 +378,7 @@ $ php core/scripts/run-tests.sh
 
 ---
 
-[.hide-footer]
-
-## Running SimpleTest From The Command Line
+## __Running SimpleTest (CLI)__
 
 ```bash
 --color
@@ -403,36 +396,41 @@ $ php core/scripts/run-tests.sh
 
 ---
 
-[.hide-footer]
-
-## Running PHPUnit From The Command Line
+## __Running PHPUnit__
 
 ```bash
+# Assumes you have a configured phpunit.xml file.
+
 $ vendor/bin/phpunit
 
 $ vendor/bin/phpunit [directory]
 
 $ vendor/bin/phpunit --filter [method]
+
+$ vendor/bin/phpunit --verbose --debug
 ```
 
----
-
-## Example: Collection Class
+^ Either need to be inside "core" directory or use "-c core"
 
 ---
 
-## Collection Class
+## __Example: Collection Class__
+
+---
+
+## __Collection Class__
 
 - <http://dgo.to/collection_class>
 - Adds a `Collection` class, based on Laravel’s
 - Provides helper methods for array methods
 - Drupal 7, uses xautoload
+- All unit tests
 
 ^ xautoload gives PSR-4 namespaces and autoloading similar to Drupal 8.
 
 ---
 
-[.hide-footer]
+
 
 ```php
 $collection = collect([1, 2, 3, 4, 5]);
@@ -449,7 +447,7 @@ $collection->keys();
 
 ---
 
-[.hide-footer]
+
 
 ```php
 namespace Drupal\collection_class;
@@ -471,7 +469,7 @@ class Collection implements \Countable, \IteratorAggregate {
 
 ---
 
-[.hide-footer]
+
 
 ```php
 public function all() {
@@ -494,9 +492,7 @@ public function first() {
 
 ---
 
-[.hide-footer]
-
-## Testing
+## __Testing__
 
 ```php
 public function setUp() {
@@ -514,9 +510,7 @@ public function setUp() {
 
 ---
 
-[.hide-footer]
-
-## Testing
+## __Testing__
 
 ```php
 public function testCollectFunction() {
@@ -529,9 +523,7 @@ public function testCollectFunction() {
 
 ---
 
-[.hide-footer]
-
-## Testing
+## __Testing__
 
 ```php
 public function testAll() {
@@ -544,9 +536,7 @@ public function testAll() {
 
 ---
 
-[.hide-footer]
-
-## Testing
+## __Testing__
 
 ```php
 public function testCount() {
@@ -559,9 +549,7 @@ public function testCount() {
 
 ---
 
-[.hide-footer]
-
-## Testing
+## __Testing__
 
 ```php
 public function testMerge() {
@@ -585,13 +573,11 @@ public function testMerge() {
 
 ---
 
-[.hide-footer]
-
-## Example: Toggle Optional Fields
+## __Example: Toggle Optional Fields__
 
 ---
 
-## Toggle Optional Fields
+## __Toggle Optional Fields__
 
 - <http://dgo.to/toggle_optional_fields>
 - Adds a button to toggle optional fields on node forms using form alters
@@ -601,10 +587,6 @@ public function testMerge() {
 ![right 85%](images/toggle-optional-fields-button.png)
 
 ---
-
-[.hide-footer]
-
-## Example
 
 ```php
 // Looping through available form elements...
@@ -628,16 +610,14 @@ if (isset($element[LANGUAGE_NONE][0]['#required'])) {
 
 ---
 
-## What to Test?
+## __What to Test?__
 
 - **Functional:** Are the correct fields shown and hidden?
 - **Unit:** Is the field name check returning correct results?
 
 ---
 
-## Unit Tests
-
-[.hide-footer]
+## __Unit Tests__
 
 ```php
 // Returns TRUE or FALSE to indicate if this is a field.
@@ -653,22 +633,51 @@ function toggle_optional_fields_element_is_field($name) {
 
 ---
 
-[.hide-footer]
-
-## Unit Tests
+## __Unit Tests__
 
 ```php
-$this->assertTrue(
-  toggle_optional_fields_element_is_field('field_tags')
-);
+public function testElementNameIsField() {
+  ...
 
-$this->assertTrue(
-  toggle_optional_fields_element_is_field('body')
-);
+  $this->assertTrue(
+    toggle_optional_fields_element_is_field('field_tags')
+  );
 
-$this->assertFalse(
-  toggle_optional_fields_element_is_field('title')
-);
+  $this->assertTrue(
+    toggle_optional_fields_element_is_field('body')
+  );
+
+  $this->assertFalse(
+    toggle_optional_fields_element_is_field('title')
+  );
+}
+```
+
+---
+
+## __Unit Tests__
+
+```php
+public function testElementNameIsField() {
+  ...
+
+  foreach ($this->elementNameDataProvider() as $data) {
+    list($element_name, $expected_result) = $data;
+
+    $this->assertEquals(
+      $expected_result,
+      toggle_optional_fields_element_is_field($element_name)
+    );
+  }
+}
+
+private function elementNameDataProvider() {
+  return array(
+    array('body', TRUE),
+    array('field_tags', TRUE),
+    array('title', FALSE),
+  );
+}
 ```
 
 ---
@@ -677,9 +686,7 @@ $this->assertFalse(
 
 ---
 
-[.hide-footer]
-
-## Web Tests
+## __Web Tests__
 
 ```php
 public function setUp() {
@@ -701,9 +708,7 @@ public function setUp() {
 
 ---
 
-[.hide-footer]
-
-## Custom Assertions
+## __Custom Assertions__
 
 ```php
 private function assertTagsFieldNotHidden() {
@@ -717,9 +722,7 @@ private function assertTagsFieldNotHidden() {
 
 ---
 
-## Testing Hidden Fields
-
-[.hide-footer]
+## __Testing Hidden Fields__
 
 ```php
 public function testFieldsHiddenByDefault() {
@@ -738,9 +741,7 @@ public function testFieldsHiddenByDefault() {
 
 ---
 
-[.hide-footer]
-
-## Testing Hidden Fields
+## __Testing Hidden Fields__
 
 ```php
   ...
@@ -767,7 +768,7 @@ public function testFieldsHiddenByDefault() {
 
 ---
 
-## [fit] Building a new <br>D8 module <br>with TDD
+# __Building a new Drupal <br>8 Module with TDD__
 
 ---
 
@@ -807,10 +808,10 @@ class ListingPageTest extends BrowserTestBase {
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
+docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/tdd_dublin/tests/
+Testing modules/tdd_dublin/tests/
 E
 
 Time: 25.94 seconds, Memory: 6.00MB
@@ -829,15 +830,15 @@ but 200 expected.
 ---
 
 - Add the view.
-- Copy the config into `config/install`.
+- Copy the config into the module’s `config/install`.
 
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
+docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/tdd_dublin/tests/
+Testing modules/tdd_dublin/tests/
 E
 
 Time: 19.07 seconds, Memory: 6.00MB
@@ -867,10 +868,10 @@ dependencies:
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
+docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/tdd_dublin/tests/
+Testing modules/tdd_dublin/tests/
 .
 
 Time: 29.58 seconds, Memory: 6.00MB
@@ -897,11 +898,9 @@ public function testOnlyPublishedPagesAreShown() {
 public function testOnlyPublishedPagesAreShown() {
   $this->drupalCreateContentType(['type' => 'article']);
 
-  $this->drupalCreateNode(['type' => 'page', 'status' => TRUE]);
-
-  $this->drupalCreateNode(['type' => 'article']);
-
-  $this->drupalCreateNode(['type' => 'page', 'status' => FALSE]);
+  $nodeA = $this->drupalCreateNode(['type' => 'page', 'status' => TRUE]);
+  $nodeB = $this->drupalCreateNode(['type' => 'article']);
+  $nodeC = $this->drupalCreateNode(['type' => 'page', 'status' => FALSE]);
 
   // When I view the pages list.
 
@@ -915,13 +914,14 @@ public function testOnlyPublishedPagesAreShown() {
 public function testOnlyPublishedPagesAreShown() {
   ...
 
-  $this->drupalGet('pages');
+  $this->drupalGet('/pages');
 
-  $this->assertSession()
-    ->pageTextContains($nodeA->label());
+  $this->assertSession()->statusCodeEquals(200);
 
-  $this->assertSession()
-    ->pageTextNotContains($nodeB->label());
+  $this->assertSession()->pageTextContains($nodeA->label());
+
+  $this->assertSession()->pageTextNotContains($nodeB->label());
+  $this->assertSession()->pageTextNotContains($nodeC->label());
 }
 ```
 
@@ -929,12 +929,15 @@ public function testOnlyPublishedPagesAreShown() {
 
 ```php
 public function testOnlyPublishedPagesAreShown() {
-  ...
+  $this->drupalCreateContentType(['type' => 'article']);
+
+  $this->drupalCreateNode(['type' => 'page', 'status' => TRUE]);
+  $this->drupalCreateNode(['type' => 'article']);
+  $this->drupalCreateNode(['type' => 'page', 'status' => FALSE]);
 
   $results = views_get_view_result('pages');
 
-  $nids = array_column($results, 'nid');
-  // [1, 3]
+  $nids = array_column($results, 'nid'); // [1, 3]
 
   // I should only see the published pages.
 }
@@ -944,12 +947,15 @@ public function testOnlyPublishedPagesAreShown() {
 
 ```php
 public function testOnlyPublishedPagesAreShown() {
-  ...
+  $this->drupalCreateContentType(['type' => 'article']);
+
+  $this->drupalCreateNode(['type' => 'page', 'status' => TRUE]);
+  $this->drupalCreateNode(['type' => 'article']);
+  $this->drupalCreateNode(['type' => 'page', 'status' => FALSE]);
 
   $results = views_get_view_result('pages');
 
-  $nids = array_column($results, 'nid');
-  // [1, 3]
+  $nids = array_column($results, 'nid'); // [1, 3]
 
   $this->assertEquals([1], $nids);
 }
@@ -958,11 +964,11 @@ public function testOnlyPublishedPagesAreShown() {
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
+docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
 --filter=testOnlyPublishedPagesAreShown
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/tdd_dublin/tests
+Testing modules/tdd_dublin/tests
 F
 
 Time: 26.4 seconds, Memory: 6.00MB
@@ -984,7 +990,7 @@ Failed asserting that two arrays are equal.
 +    1 => '3'
  )
 
-/var/www/core/tests/Drupal/Tests/BrowserTestBase.php:1240
+/var/www/tests/Drupal/Tests/BrowserTestBase.php:1240
 /var/www/modules/tdd_dublin/tests/src/PageListTest.php:25
 
 FAILURES!
@@ -1002,11 +1008,11 @@ Tests: 1, Assertions: 3, Failures: 1.
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
+docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
 --filter=testOnlyPublishedPagesAreShown
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/tdd_dublin/tests
+Testing modules/tdd_dublin/tests
 .
 
 Time: 26.53 seconds, Memory: 6.00MB
@@ -1046,11 +1052,11 @@ public function testPagesAreOrderedAlphabetically() {
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests 
+docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests 
 -filter=testPagesAreOrderedAlphabetically
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/tdd_dublin/tests
+Testing modules/tdd_dublin/tests
 F
 
 Time: 28.03 seconds, Memory: 6.00MB
@@ -1077,7 +1083,7 @@ Failed asserting that two arrays are equal.
 +    3 => '4'
  )
 
-/var/www/core/tests/Drupal/Tests/BrowserTestBase.php:1240
+/var/www/tests/Drupal/Tests/BrowserTestBase.php:1240
 /var/www/modules/tdd_dublin/tests/src/PageListTest.php:36
 ```
 
@@ -1091,11 +1097,11 @@ Failed asserting that two arrays are equal.
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
+docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
 --filter=testPagesAreOrderedAlphabetically
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/tdd_dublin/tests
+Testing modules/tdd_dublin/tests
 .
 
 Time: 27.67 seconds, Memory: 6.00MB
@@ -1106,10 +1112,10 @@ OK (1 test, 2 assertions)
 ---
 
 ```
-docker@cli:/var/www/core$ ../vendor/bin/phpunit ../modules/tdd_dublin/tests
+docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
 PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing ../modules/tdd_dublin/tests
+Testing modules/tdd_dublin/tests
 ...
 
 Time: 1.17 minutes, Memory: 6.00MB
@@ -1119,10 +1125,108 @@ OK (3 tests, 6 assertions)
 
 ---
 
-## Takeaways
+## __Downgrading to Kernel Tests__
+
+---
+
+```php
+// tests/src/Kernel/PageListTest.php
+
+namespace Drupal\Tests\tdd_dublin\Kernel;
+
+use Drupal\KernelTests\KernelTestBase;
+
+class PageListTest extends KernelTestBase {
+}
+```
+
+---
+
+```php
+public function testOnlyPublishedPagesAreShown() {
+  $nids = array_column(views_get_view_result('pages'), 'nid');
+
+  $this->assertEquals([1], $nids);
+}
+```
+
+^ Started with assertions and worked backwards
+"Outside in"
+
+---
+
+```php
+protected static $modules = [
+  'node',
+  'system',
+  'tdd_dublin',
+  'user',
+  'views'
+];
+
+protected function setUp() {
+  parent::setUp();
+
+  $this->installConfig(['tdd_dublin']);
+
+  $this->installEntitySchema('node');
+  $this->installEntitySchema('user');
+}
+```
+
+---
+
+```php
+use Drupal\node\Entity\Node;
+use Drupal\node\Entity\NodeType;
+
+public function testOnlyPublishedPagesAreShown() {
+  NodeType::create(['type' => 'article', 'name' => t('Article')]);
+
+  Node::create($this->getValidParams(['status' => TRUE]))->save();
+  Node::create($this->getValidParams(['type' => 'article']))->save();
+  Node::create($this->getValidParams(['status' => FALSE]))->save();
+
+  $nids = array_column(views_get_view_result('pages'), 'nid');
+
+  $this->assertEquals([1], $nids);
+}
+
+private function getValidParams(array $overrides = []) {
+  return array_merge([
+    'status' => TRUE,
+    'title' => $this->randomString(),
+    'type' => 'page',
+  ], $overrides);
+}
+```
+
+---
+
+```
+Testing modules/custom/tdd_dublin/tests/src/Kernel
+.
+
+Time: 8.9 seconds, Memory: 6.00MB
+
+OK (1 test, 4 assertions)
+```
+
+^ Previously 26 seconds
+
+---
+
+![inline fit](images/kernel-tests.png)
+
+---
+
+## __Demo__
+
+---
 
 - Testing has made me a better developer
 - Testing can produce better quality code
+- Use the right type of test for the right situation
 - Writing tests is an investment
 - OK to start small, introduce tests gradually
 - Easier to refactor
@@ -1137,14 +1241,16 @@ Manual testing is still important
 
 ---
 
-## Resources
-
 - https://github.com/opdavies/tdd_dublin
-- https://oliverdavies.uk/blog/tdd-test-driven-drupal
+- https://www.oliverdavies.uk/blog/2017/11/07/writing-drupal-module-test-driven-development-tdd
+- https://www.oliverdavies.uk/blog/tdd-drupal-part-2-kernel-tests
+- https://knpuniversity.com/screencast/phpunit
+- https://adamwathan.me/test-driven-laravel
+- https://laracasts.com
+- https://drupalize.me/series/testing-drupal-7-simpletest
+- https://www.lullabot.com/articles/an-overview-of-testing-in-drupal-8
+- https://www.youtube.com/watch?v=jcdEp3YGa94
 
 ---
 
-## Thanks!
-# Questions?
-### @opdavies
-### oliverdavies.uk
+## __Questions?__
