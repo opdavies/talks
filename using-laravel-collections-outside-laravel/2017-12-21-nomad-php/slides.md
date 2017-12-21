@@ -15,7 +15,7 @@ theme: simple, 1
 - @opdavies
 - oliverdavies.uk
 
-![right](../me-phpnw.png)
+![right](../../me-phpnw.png)
 
 ---
 
