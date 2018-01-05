@@ -1,0 +1,3 @@
+# Talk Ideas
+
+- Webpack Encore
