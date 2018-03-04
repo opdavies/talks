@@ -16,7 +16,7 @@ He regularly blogs and gives talks about web development and systems administrat
 - DrupalCamp Brighton 2015
 - DrupalCamp Bristol 2016
 - DrupalCamp Dublin 2017
-- DrupalCamp London (2014, 2015, 2016, 2017, 2018)
+- DrupalCamp London (2014, 2015, 2016, 2017)
 - DrupalCamp North 2015
 - Nomad PHP
 - PHP North West 2017 (10 year anniversary)
