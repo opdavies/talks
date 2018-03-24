@@ -27,7 +27,7 @@
 - date: 08-04-2015
   event: PHPSW
   location: Bristol, UK
-  talk: Drupal 8
+  talk: Drupal 8 (lightning talk)
 
 - date: 25-07-2015
   event: DrupalCamp North
@@ -52,7 +52,7 @@
 - date: 08-03-2016
   event: NWDUG
   location: Manchester, UK
-  talk: Drupal VM Generator
+  talk: Drupal VM Generator (lightning talk)
 
 - date: 02-04-2016
   event: Drupal Bristol
@@ -72,7 +72,7 @@
 - date: 09-11-2016
   event: PHPSW
   location: Bristol, UK
-  talk: Modern Drupal Development with Composer
+  talk: Modern Drupal Development with Composer (lightining talk)
 
 - date: 17-11-2016
   event: Drupal Bristol
@@ -87,7 +87,7 @@
 - date: 08-02-2017
   event: PHPSW
   location: Bristol, UK
-  talk: It All Started With A Patch
+  talk: It All Started With A Patch 
 
 - date: 04-03-2017
   event: DrupalCamp London
@@ -102,7 +102,7 @@
 - date: 20-04-2017
   event: Nomad PHP
   location: Online
-  talk: Deploying PHP Applications with Fabric
+  talk: Deploying PHP Applications with Fabric (lightning talk)
 
 - date: 13-09-2017
   event: PHPSW
@@ -137,7 +137,7 @@
 - date: 21-12-2017
   event: Nomad PHP
   location: Online
-  talk: Using Laravel Collections, Outside Laravel
+  talk: Using Laravel Collections, Outside Laravel (lightning talk)
 
 - date: 17-01-2018
   event: Drupal Bristol
