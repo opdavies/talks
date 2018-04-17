@@ -148,3 +148,8 @@
   event: PHP UK conference
   location: London, UK
   talk: Goodbye Drush Make. Hello Composer!
+
+- date: 18-04-2018
+  event: Drupal Bristol
+  location: Bristol, UK
+  talk: Having Fun with Drupal 8, PHP libraries and the Drupal.org API
