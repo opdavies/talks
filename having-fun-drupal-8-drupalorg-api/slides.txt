@@ -1,0 +1,149 @@
+autoscale: true
+build-lists: true
+footer-style: alignment(left)
+footer: @opdavies | oliverdavi.es
+header-emphasis: #53B0EB
+header: alignment(left)
+text: alignment(left)
+text-emphasis: #53B0EB
+theme: poster, 8
+
+[.header: alignment(center)]
+
+## Having fun with
+## _Drupal 8_, _PHP libraries_
+## and the _Drupal.org API_
+
+---
+
+[.background-color: #FFFFFF]
+[.build-lists: false]
+[.header: #111111]
+[.text: #111111, alignment(left)]
+
+![right 700%](../../me-phpnw.png)
+
+- Full stack Web Developer & System Administrator
+- Senior Developer at Microserve
+- Part-time freelancer
+- Acquia certified Drupal 8 Grand Master
+- Drupal 7 & 8 core contributor
+- Open source project maintainer
+- Drupal Bristol and PHPSW co-organiser
+- opdavies (Drupal.org, GitHub, Twitter)
+- www.oliverdavi.es
+
+^ Work at Microserve.
+Maintain Drupal modules, PHP CLI tools and libraries
+Talking about some open source project that I've written or in the process of writing.
+
+---
+
+[.header: alignment(center)]
+
+## _Drupal 8 crash course_
+
+### PHP libraries, Unit testing,
+### Composer, Routing, Services,
+### Dependency injection, caching
+
+^ Please feel free to ask questions as we go along!
+
+---
+
+[.header: alignment(center)]
+
+## _Live Demo_ alert!
+
+---
+
+### _Did you know that_
+## Drupal.org has an API?
+
+^ We're all familiar with Drupal.org (it's where everyone registered for this event), but did you know D.o has a public API?
+
+---
+
+### _A PHP library for the_
+## Drupal.org API
+
+^ The first thing I built was...
+It's what the Drupal examples are built on top of.
+Does everyone understand what I mean by a PHP library?
+
+---
+
+- Retrieve _node_ and _user_ data
+- Filter by properties
+- Provides own entity classes
+- Methods for retrieving common properties
+- Reusable
+- Unit tested
+
+^ Re-usable by Drupal 7, Drupal 8, Symfony, Laravel etc
+Testing already covered.
+Demo
+
+---
+
+```bash
+$ composer require opdavies/drupalorg-api-php
+```
+
+---
+
+### _Displaying Drupal.org_
+## project statistics
+
+---
+
+[.text: alignment(left)]
+
+- Inspired by _spatie.be/en/opensource_
+- Displays _downloads_ and _stars_
+- Drupal 8 module
+    + Configuration form to enter project IDs
+    + Queries the API
+    + Displays project information
+    + Retrieved data cached locally
+
+^ Demo
+
+---
+
+### _When is your_
+## Drupalversary?
+
+---
+
+[.text: alignment(left)]
+
+- When did you register on Drupal.org?
+- Drupal 8 module
+    + Enter a username
+    + Queries the API
+    + Displays information - next Drupalversary _date_ and _number of days_ until, _number of years_ on Drupal.org
+    + Retrieved data cached locally
+
+^ Stored in cache tables, but could use a custom entity?
+Demo
+
+---
+
+- oliverdavi.es/_talks_
+- oliverdavi.es/_youtube_
+- oliverdavi.es/_github_
+- oliverdavi.es/_packagist_
+
+---
+
+[.header: alignment(center)]
+
+## Questions?
+
+---
+
+[.header: alignment(center)]
+
+# Thanks
+### joind.in/_24044_
