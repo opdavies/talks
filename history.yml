@@ -153,3 +153,8 @@
   event: Drupal Bristol
   location: Bristol, UK
   talk: Having Fun with Drupal 8, PHP libraries and the Drupal.org API
+
+- date: 14-06-2018
+  event: Drupal Somerset
+  location: Glastonbury, UK
+  talk: TDD - Test Driven Drupal
