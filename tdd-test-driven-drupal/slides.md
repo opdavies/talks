@@ -1,58 +1,102 @@
 autoscale: true
 build-lists: true
-theme: simple, 1
+footer-style: alignment(left)
+footer: @opdavies | oliverdavies.uk
+header-emphasis: #53B0EB
+header: alignment(left)
+text: alignment(left)
+text-emphasis: #53B0EB
+theme: poster, 8
+
+[.header: alignment(center)]
 
 ![](images/title.png)
 
-# __TDD - Test Driven Drupal__
+# _TDD:_ Test <br>Driven Drupal
 
 ---
 
+[.background-color: #FFFFFF]
 [.build-lists: false]
+[.header: #111111]
+[.text: #111111, alignment(left)]
 
-- PHP code
-- Mixture of D7 and D8
-- SimpleTest (D7)
-- PHPUnit (D8)
+![right 1000%](../me-phpnw.png)
 
----
-
-[.build-lists: false]
-
+- Full stack Web Developer & System Administrator
 - Senior Developer at Microserve
-- Contrib module maintainer
-- Occasional core contributor
-- Sticker collector and elePHPant herder
-- @opdavies
-- oliverdavies.uk
+- Part-time freelancer
+- Acquia certified Drupal 8 Grand Master
+- Drupal 7 & 8 core contributor
+- opdavies (Drupal.org, GitHub, Twitter)
+- www.oliverdavies.uk
 
-![right](../me-phpnw.png)
-
----
-
-## I write and release contrib modules for the community.<br><br>
-## I write custom modules for client projects.
+^ Work at Microserve.
+Maintain Drupal modules, PHP CLI tools and libraries
+Blog on my website
 
 ---
 
-![inline fit](images/timmillwood-ono.png)
+[.header: alignment(center)]
 
-
-^ First experience of testing with a real module.
-Used on 11,046 sites (84 D5, 7,094 D6, 3,868 D7).
-Currently used on 28,398 (10 D5, 2,207 D6, 23,206 D7, 2,975 D8).
-Tests crucial to preventing regressions when adding new features or fixing bugs.
+## test_driven_drupal_.com_
 
 ---
 
-## __Why Test?__
+[.header: alignment(center)]
+
+## Why?
+## _What?_
+## How?
+
+---
+
+[.header: alignment(center)]
+
+## I write _contrib modules_ for the community
+
+---
+
+[.header: alignment(center)]
+
+## I write _custom modules_ for client projects
+
+---
+
+[.background-color: #FFFFFF]
+
+![inline 150%](images/timmillwood-ono.png)
+
+---
+
+## _Override Node Options_
+
+- Become maintainer in 2012
+- Had some existing tests
+- First experience of testing with a real module
+- Used on _11,046 sites_ in October 2012 (_84_ D5, _7,094_ D6, _3,868_ D7)
+- Used on _29,023 sites_ in June 2018 (_9_ D5, _1,853_ D6, _23,602_ D7, _3,559_ D8)
+- Crucial to preventing regressions when adding new features or fixing bugs
+- Ensured consistency when porting to Drupal 8
+
+^ Preventing regressions in my additions but also user submitted patches
+
+---
+
+[.header: alignment(center)]
+
+## _Why_ write tests?
+
+---
+
+## _Why write tests?_
 
 - Catch bugs earlier
 - Piece of mind
 - Prevent regressions
 - Write less code
 - Documentation
-- Drupal core requirement - <https://www.drupal.org/core/gates#testing>
+- Drupal core requirement - _<https://www.drupal.org/core/gates#testing>_
 - More important with regular D8 releases
 
 ^ Dave Liddament talk - better and cheaper to catch bugs earlier (e.g. whilst developing rather than after it's been released)
@@ -61,7 +105,7 @@ ONO merge conflict
 
 ---
 
-## __Core Testing Gate__
+## _Core Testing Gate_
 
 New features should be accompanied by automated tests.
 
@@ -73,278 +117,522 @@ Bug fixes should be accompanied by changes to a test (either modifying an existi
 
 ---
 
-## __Testing in Drupal - SimpleTest__
+[.header: alignment(center)]
 
-- Based on <http://www.SimpleTest.org>
-- In D7 core
-- `*.test` files
-- All test classes in one file
+## _Testing may add time now,_ but save more <br>time in the future
 
 ---
 
-## __Testing in Drupal - PHPUnit__
+[.header: alignment(center)]
 
-- Used in other PHP projects (e.g. Symfony, Laravel)
-- In D8 core, but not default
-- `*.php` files
-- One test class per file
+## [fit] _How do you get quicker at writing tests?_
+# [fit] By writing more tests
 
 ---
 
-## __The PHPUnit Initiative__
+## _Testing in Drupal_
 
-- <https://www.drupal.org/node/2807237>
-- D8 core tests to change to PHPUnit
-- Deprecate SimpleTest, remove in D9
-- "A big chunk of old tests" converted on Feb 21st
-
----
-
-## __The PHPUnit Initiative__
-
-As part of the PHPUnit initiative __a considerable part of Simpletests will be converted to PHPUnit based browser tests on February 21st 2017__. A backwards compatibility layer has been implemented so that many Simpletests can be converted by just using the new BrowserTestBase base class and moving the test file. There is also a script to automatically convert test files in the conversion issue.
-
-__Developers are encouraged to use BrowserTestBase instead of Simpletest as of Drupal 8.3.0__, but both test systems are fully supported during the Drupal 8 release cycle.
-
-The timeline for the deprecation of Simpletest's WebTestBase is under discussion.
-
-[.footer: https://groups.drupal.org/node/516229]
+- _Drupal 7_ - Simpletest (testing) module provided as part of core
+- _Drupal 8_ - PHPUnit added as a core dependency
+- _PHPUnit Initiative_ - Simpletest to be deprecated and removed in Drupal 9
 
 ---
 
-## __Types of Tests__
+## _Setting up your environment_
+
+- Drupal includes `core/phpunit.xml.dist`
+- Copy to `core/phpunit.xml`
+- Amend values as needed
+  + Add base URL, database credentials
+- Docksal - `fin addon install phpunit`
 
 ---
 
-## __Unit Tests__
+## _Writing Tests (Drupal 8)_
 
-- `UnitTestCase`
+- PHP class with `.php` extension
+- `tests/src` directory within each module
+- Within the `Drupal\Tests\module_name` namespace
+- Class name must match the filename
+- Namespace must match the directory structure
+- One test class per feature
+- Each method must start with `test`
+
+^ Different to D7
+
+---
+
+[.header: alignment(center)]
+
+## _1._ Arrange
+## _2._ Act
+## _3._ Assert
+
+---
+
+[.hide-footer]
+
+```php
+<?php
+
+// modules/example/tests/src/Functional/ExampleTest.php
+
+namespace Drupal\Tests\example\Functional;
+
+use Drupal\Tests\BrowserTestBase;
+
+class ExampleTest extends BrowserTestBase {
+
+  public function testSomething() {
+    // Arrange
+
+    // Act
+
+    // Assert
+  }
+
+}
+```
+
+---
+
+## _What to test?_
+
+- What is the core piece of functionality?
+- What provides the most value to the client?
+- What would you not like to be fixing on a Friday afternoon or after hours?
+
+---
+
+[.background-color: #FFFFFF]
+
+![inline 120%](images/matt-stauffer-tweet.png)
+
+---
+
+## _Types of tests_
+
+- Functional / FunctionalJavascript (web, browser)
+- Kernel (integration)
+- Unit
+
+---
+
+## _Functional Tests_
+
+- Tests functionality
+- Interacts with database
+- Full Drupal installation
+- Slower to run
+- With/without JavaScript
+
+^ testing profile
+
+---
+
+[.hide-footer]
+
+```php
+<?php
+
+// modules/phpunit_example/tests/src/Functional/PHPUnitExampleMenuTest.php
+
+namespace Drupal\Tests\phpunit_example\Functional;
+
+use Drupal\Tests\BrowserTestBase;
+
+class PHPUnitExampleMenuTest extends BrowserTestBase {
+
+  public static $modules = ['phpunit_example'];
+
+  public function testPhpUnitExampleMenu() {
+    $this->drupalGet('/examples/phpunit-example');
+
+    $this->assertSession()->statusCodeEquals(200);
+  }
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 5]
+<?php
+
+// modules/phpunit_example/tests/src/Functional/PHPUnitExampleMenuTest.php
+
+namespace Drupal\Tests\phpunit_example\Functional;
+
+use Drupal\Tests\BrowserTestBase;
+
+class PHPUnitExampleMenuTest extends BrowserTestBase {
+
+  public static $modules = ['phpunit_example'];
+
+  public function testPhpUnitExampleMenu() {
+    $this->drupalGet('/examples/phpunit-example');
+
+    $this->assertSession()->statusCodeEquals(200);
+  }
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 7-9]
+<?php
+
+// modules/phpunit_example/tests/src/Functional/PHPUnitExampleMenuTest.php
+
+namespace Drupal\Tests\phpunit_example\Functional;
+
+use Drupal\Tests\BrowserTestBase;
+
+class PHPUnitExampleMenuTest extends BrowserTestBase {
+
+  public static $modules = ['phpunit_example'];
+
+  public function testPhpUnitExampleMenu() {
+    $this->drupalGet('/examples/phpunit-example');
+
+    $this->assertSession()->statusCodeEquals(200);
+  }
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 11]
+<?php
+
+// modules/phpunit_example/tests/src/Functional/PHPUnitExampleMenuTest.php
+
+namespace Drupal\Tests\phpunit_example\Functional;
+
+use Drupal\Tests\BrowserTestBase;
+
+class PHPUnitExampleMenuTest extends BrowserTestBase {
+
+  public static $modules = ['phpunit_example'];
+
+  public function testPhpUnitExampleMenu() {
+    $this->drupalGet('/examples/phpunit-example');
+
+    $this->assertSession()->statusCodeEquals(200);
+  }
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 13-17]
+<?php
+
+// modules/phpunit_example/tests/src/Functional/PHPUnitExampleMenuTest.php
+
+namespace Drupal\Tests\phpunit_example\Functional;
+
+use Drupal\Tests\BrowserTestBase;
+
+class PHPUnitExampleMenuTest extends BrowserTestBase {
+
+  public static $modules = ['phpunit_example'];
+
+  public function testPhpUnitExampleMenu() {
+    $this->drupalGet('/examples/phpunit-example');
+
+    $this->assertSession()->statusCodeEquals(200);
+  }
+}
+```
+
+---
+
+
+## _Kernel Tests_
+
+- Integration tests
+- Can install modules, interact with services, container, database
+- Minimal Drupal bootstrap
+- Faster than functional tests
+- More setup required
+
+---
+
+## _Unit Tests_
+
 - Tests PHP logic
 - No database interaction
 - Fast to run
-
----
-
-## __Unit Tests__
-
-__Pros:__
-
-- Verify individual parts
-- Quickly find problems in code
-- Fast execution
-- No system setup for the test run
-
----
-
-## __Unit Tests__
-
-__Cons:__
-
-- Rewrite on every refactoring
+- Tightly coupled
 - Complicated mocking
-- No guarantee that the whole system actually works
 
 ---
 
-## __Kernel Tests__
-
-- Kernel tests are integration tests that test on components. You can install modules.
-- `KernelTestBase`
-
-[.footer: https://www.drupal.org/docs/8/testing/types-of-tests-in-drupal-8]
-
----
-
-## __Kernel Tests__
-
-__Pros:__
-
-- Verify that components actually work together
-- Somewhat easy to locate bugs
-
----
-
-## __Kernel Tests__
-
-__Cons:__
-
-- Slower execution
-- System setup required
-- No guarantee that end user features actually work
-
----
-
-## __UI Tests__
-
-- Web/Functional/FunctionalJavascript
-- `DrupalWebTestCase` (D7)
-- `WebTestBase`, `BrowserTestBase`, `JavascriptTestBase` (D8)
-- Tests functionality
-- Interacts with database
-- Slower to run
-- With/without JavaScript (D8)
-
-^ - Use JavascriptTestBase when you need to test how the system works for a user with Javascript enabled.
-
----
-
-## __Test Driven Development (TDD)__
-
-- Write a test, see it fail
-- Write code until test passes
-- Repeat
-- Refactor when tests are green
-
-![right 100%](images/tdd-circle-of-life.png)
-
-[.footer: http://www.agilenutshell.com/assets/test-driven-development/tdd-circle-of-life.png]
-
-^ "Grab for green."
-Not the only way
-Write code beforehand and test afterwards
-Write code first, comment out/reset branch, then TDD
-
----
-
-## __Porting Modules to Drupal 8__
-
-- Make a new branch 
-  `git checkout --orphan 8.x-1.x`
-- Add/update the tests
-- Write code to make the tests pass
-- Refactor
-- Repeat
-
----
-
-## __Writing Tests (SimpleTest)__
-
----
-
-
-
-```ini
-# example.info
-
-name = Example
-core = 7.x
-files[] = example.test
-```
-
----
-
-
+[.hide-footer]
 
 ```php
-// example.test
+namespace Drupal\collection_class;
 
-class ExampleTestCase extends DrupalWebTestCase {
+class Collection implements \Countable, \IteratorAggregate {
+  private $items;
 
-  public static function getInfo() {
-    return array(
-      'name' => 'Example tests',
-      'description' => 'Web tests for the example module.',
-      'group' => 'Example',
-    );
+  public function __construct($items = array()) {
+    $this->items = is_array($items) ? $items
+      : $this->getArrayableItems($items);
   }
 
-}
-```
-
----
-
-```php, [.highlight: 5-7]
-class ExampleTestCase extends DrupalWebTestCase {
-
-  ...
-
-  public function testSomething {
-    $this->assertTrue(TRUE);
+  public function __toString() {
+    return $this->toJson();
   }
 
+  public function all() {
+    return $this->items;
+  }
+
+  public function count() {
+    return count($this->items);
+  }
+
+
+  public function isEmpty() {
+    return empty($this->items);
+  }
+
+  public function first() {
+    return array_shift($this->items);
+  }
 }
 ```
 
 ---
 
-## __Writing Tests (PHPUnit)__
+[.hide-footer]
 
-- No need to load test classes expicitly.
-- Add classes into `tests/src` directory.
-- Extend `BrowserTestBase`.
-- No `getInfo` method.
+```php
+$collection = new Collection([1, 2, 3, 4, 5]);
 
-^ Classes get autoloaded PSR-4
+// Returns all items.
+$collection->all();
+
+// Counts the number of items.
+$collection->count();
+
+// Returns the array keys.
+$collection->keys();
+```
 
 ---
 
-
-
-## __Creating the World__
+[.hide-footer]
 
 ```php
-public function setUp() {
-  // Enable any other required modules.
-  parent::setUp(['foo', 'bar']);
+public function testAll() {
+  $items = ['foo', 'bar', 'baz'];
 
-  // Anything else we need to do.
+  $collection = new Collection($items);
+
+  $this->assertEqual($items, $collection->all());
 }
 ```
 
 ---
 
+[.header: #FFFFFF, alignment(left)]
 
+### _How do I know_
+## Which type of test to use?
 
-## __Creating the World__
+---
 
-```php
-$this->drupalCreateUser();
+### _Need a browser?_
+## Use a functional test
 
-$this->drupalLogin();
+---
 
-$this->drupalCreateNode();
+### _Interact with other services?_
+## Use a kernel test
 
-$this->drupalLogout();
+---
+
+### _Isolated PHP code?_
+## Use a unit test
+
+---
+
+## _Setup (functional)_
+
+[.hide-footer]
+
+```
+drupalCreateUser()
+drupalCreateRole()
+
+drupalLogin()
+drupalLogout()
+
+drupalGet()
+drupalPost()
+drupalPostForm()
 ```
 
 ---
 
-## __Assertions__
+## _Setup (kernel)_
 
-- `assertTrue`
-- `assertFalse`
-- `assertNull`
-- `assertNotNull`
-- `assertEqual`
-  `assertEquals`
+```php
+# UserCreationTrait
+createUser()
+createAdminRole()
+createRole()
+checkPermissions()
 
----
+# CommentTestTrait
+addDefaultCommentField()
 
-## __Assertions__
-
-- `assertRaw`
-- `assertResponse`
-  `assertSession()->statusCodeEquals()`
-- `assertField`
-- `assertFieldById`
-- `assertTitle`
+# AssertMailTrait
+getMails()
+assertMail()
+```
 
 ---
 
-## __Assertions__
+## _Assertions_
 
-- `assertText`
-  `assertSession()->pageTextContains()`
-- `assertNoText`
-  `assertSession()->pageTextNotContains()`
+[.hide-footer]
+
+```php
+assertTrue()
+assertFalse()
+
+assertEquals()
+
+assertNull()
+assertNotNull()
+
+assertCount()
+assertEmpty()
+
+assertArraySubset()
+```
 
 ---
 
-# __Running Tests__
+## _Assertions (functional)_
+
+[.hide-footer]
+
+```php
+pageTextContains()
+pageTextNotContains()
+
+linkByHrefExists()
+linkByHrefNotExists()
+
+statusCodeEquals()
+statusCodeNotEquals()
+```
 
 ---
 
-## __SimpleTest UI__
+[.header: alignment(center)]
+
+# _Real life_ example
+
+---
+
+[.background-color: #FFFFFF]
+[.footer-style: #2F2F2F]
+
+![inline 150%](images/broadbean.png)
+
+---
+
+## _Specification_
+
+- Job adverts created on third-party system, needs to create nodes in Drupal, links users to separate application system
+- Adverts need to be linked to offices
+- Advert length specified in number of days
+- Path is specified as a field in the API
+- Application URL constructed from domain, includes role ID as a GET parameter and optionally UTM parameters
+
+---
+
+[.hide-footer]
+
+```php
+$data = [
+  'command' => 'add',
+  'username' => 'bobsmith',
+  'password' => 'p455w0rd',
+  'active_for' => '365',
+  'application_email' => 'bob.12345.123@smith.aplitrak.com',
+  'branch_address' => '123 Fake St, Bristol, BS1 2AB',
+  'branch_name' => 'Test',
+  'contract' => 'Temporary',
+  'details' => 'This is the detailed description.',
+  'job_id' => 'abc123_1234567',
+  'job_title' => 'Healthcare Assistant (HCA)',
+  'job_type' => 'Care at Home',
+  'keywords' => 'flexible, Bristol, part-time',
+  'locations' => 'Bath, Devizes',
+  'role_id' => 'A/52/86',
+  'salary' => '32,000.00 per annum',
+  'salary_prefix' => 'Basic Salary',
+  'status' => 'Part time',
+  'summary' => 'This is the short description.',
+  'url_alias' => 'healthcare-assistant-aldershot-june17',
+];
+```
+
+---
+
+## _Implementation_
+
+- Added route to accept data from API as XML
+- Added user with API role to authenticate
+- `active_for` converted from number of days to UNIX timestamp
+- `branch_name` and `locations` converted from plain text to entity reference (job node to office node)
+- `url_alias` property mapped to `path`
+
+---
+
+## _Goals_
+
+- Ensure job nodes are _successfully created_
+- Ensure that fields are _mapped correctly_
+- Ensure that _calculations are correct_
+- Ensure that entity references are _linked correctly_
+
+---
+
+## _Types of tests_
+
+- _Unit:_ ensure number of days are converted to timestamps correctly
+- _Kernel:_ job nodes can be added and deleted, expired job nodes are deleted, application URL is generated correctly
+- _Functional:_ job nodes are created with the correct URL and the correct response code is returned
+- _FunctionalJavaScript:_ application URL is updated with JavaScript based on UTM parameters (hosting)
+
+---
+
+## _Results_
+
+- _0 bugs!_
+- Reduced debugging time
+- Easier to identify where issues occurred and responsibilities
+
+---
+
+[.header: alignment(center)]
+
+## Running Tests
 
 ---
 
@@ -364,873 +652,1150 @@ $this->drupalLogout();
 
 ---
 
-## __Running SimpleTest (CLI)__
-
-
-
-```bash
-# Drupal 7
-$ php scripts/run-tests.sh
-
-# Drupal 8
+```
 $ php core/scripts/run-tests.sh
+
+$ php core/scripts/run-tests.sh --module example
+
+$ php core/scripts/run-tests.sh --class ExampleTest
 ```
 
 ---
 
-## __Running SimpleTest (CLI)__
+```
+vendor/bin/phpunit -c core path/to/module
 
-```bash
---color
+vendor/bin/phpunit -c core path/to/module --filter testSomething
 
---verbose
-
---all
-
---module
-
---class
-
---file
+vendor/bin/phpunit -c core path/to/module --verbose
 ```
 
 ---
 
-## __Running PHPUnit__
+[.header: alignment(center)]
 
-```bash
-# Assumes you have a configured phpunit.xml file.
-
-$ vendor/bin/phpunit
-
-$ vendor/bin/phpunit [directory]
-
-$ vendor/bin/phpunit --filter [method]
-
-$ vendor/bin/phpunit --verbose --debug
-```
-
-^ Either need to be inside "core" directory or use "-c core"
+## _Test Driven_<br> Development
 
 ---
 
-## __Example: Collection Class__
+## _Test Driven Development_
+
+- Write a test
+- See it fail
+- Write code until test passes
+- Refactor when tests are green
+- Repeat
 
 ---
 
-## __Collection Class__
+[.background-color: #FFFFFF]
+[.footer: https://github.com/foundersandcoders/testing-tdd-intro]
+[.footer-style: #2F2F2F]
 
-- <http://dgo.to/collection_class>
-- Adds a `Collection` class, based on Laravel’s
-- Provides helper methods for array methods
-- Drupal 7, uses xautoload
-- All unit tests
-
-^ xautoload gives PSR-4 namespaces and autoloading similar to Drupal 8.
+![100%](images/tdd-loop.png)
 
 ---
 
+[.header: alignment(center)]
 
-
-```php
-$collection = collect([1, 2, 3, 4, 5]);
-
-// Returns all items.
-$collection->all();
-
-// Counts the number of items.
-$collection->count();
-
-// Returns the array keys.
-$collection->keys();
-```
+## Red, Green, Refactor
 
 ---
 
+## _Porting Modules to Drupal 8_
 
-
-```php
-namespace Drupal\collection_class;
-
-class Collection implements \Countable, \IteratorAggregate {
-  private $items;
-
-  public function __construct($items = array()) {
-    $this->items = is_array($items) ? $items
-      : $this->getArrayableItems($items);
-  }
-
-  public function __toString() {
-    return $this->toJson();
-  }
-
-  ...
-```
+- Make a new branch
+- Add/update the tests
+- Write code to make the tests pass
+- Refactor
+- Repeat
 
 ---
 
+## _How I Write Tests - "Outside In"_
 
-
-```php
-public function all() {
-  return $this->items;
-}
-
-public function count() {
-  return count($this->items);
-}
-
-
-public function isEmpty() {
-  return empty($this->items);
-}
-
-public function first() {
-  return array_shift($this->items);
-}
-```
+- Start with functional tests
+- Drop down to integration or unit tests where needed
+- Programming by wishful thinking
+- Write comments first, then fill in the code
+- Write assertions first, sometimes
 
 ---
 
-## __Testing__
+[.header: alignment(center)]
 
-```php
-public function setUp() {
-  $this->firstCollection = collect(['foo', 'bar', 'baz']);
-
-  $this->secondCollection = collect([
-      array('title' => 'Foo', 'status' => 1),
-      array('title' => 'Bar', 'status' => 0),
-      array('title' => 'Baz', 'status' => 1)
-  ]);
-
-  parent::setUp();
-}
-```
+## Building a new _Drupal 8 Module_ with _TDD_
 
 ---
 
-## __Testing__
+## _Acceptance criteria_
 
-```php
-public function testCollectFunction() {
-  $this->assertEqual(
-    get_class($this->firstCollection),
-    'Drupal\collection_class\Collection'
-  );
-}
-```
+- As a site visitor
+- I want to see a list of published articles at /blog
+- Ordered by post date
 
 ---
 
-## __Testing__
+## _Tasks_
 
-```php
-public function testAll() {
-  $this->assertEqual(
-    array('foo', 'bar', 'baz'),
-    $this->firstCollection->all()
-  );
-}
-```
+- Ensure the blog page exists
+- Ensure only published articles are shown
+- Ensure the articles are shown in the correct order
 
 ---
 
-## __Testing__
+## _Implementation_
 
-```php
-public function testCount() {
-  $this->assertEqual(
-    3,
-    $this->firstCollection->count()
-  );
-}
-```
+- Use views module
+- Do the mininum amount at each step, make no assumptions, let the tests guide us
+- Start with functional test
 
 ---
 
-## __Testing__
-
-```php
-public function testMerge() {
-  $first = collect(array('a', 'b', 'c'));
-  $second = collect(array('d', 'e', 'f'));
-
-  $this->assertEqual(
-    array('a', 'b', 'c', 'd', 'e', 'f'),
-    $first->merge($second)->all()
-  );
-}
-```
-
----
-
-![fit](images/collection-class-1.png)
-
----
-
-![fit](images/collection-class-2.png)
-
----
-
-## __Example: Toggle Optional Fields__
-
----
-
-## __Toggle Optional Fields__
-
-- <http://dgo.to/toggle_optional_fields>
-- Adds a button to toggle optional fields on node forms using form alters
-- Possible to override using an custom alter hook
-- Uses unit and web tests
-
-![right 85%](images/toggle-optional-fields-button.png)
-
----
-
-```php
-// Looping through available form elements...
-
-// Only affect fields.
-if (!toggle_optional_fields_element_is_field($element_name)) {
-  return;
-}
-
-$element = &$form[$element_name];
-
-if (isset($overridden_fields[$element_name])) {
-  return $element['#access'] = $overridden_fields[$element_name];
-}
-
-// If the field is not required, disallow access to hide it.
-if (isset($element[LANGUAGE_NONE][0]['#required'])) {
-  return $element['#access'] = !empty($element[LANGUAGE_NONE][0]['#required']);
-}
-```
-
----
-
-## __What to Test?__
-
-- **Functional:** Are the correct fields shown and hidden?
-- **Unit:** Is the field name check returning correct results?
-
----
-
-## __Unit Tests__
-
-```php
-// Returns TRUE or FALSE to indicate if this is a field.
-
-function toggle_optional_fields_element_is_field($name) {
-  if (in_array($name, array('body', 'language'))) {
-    return TRUE;
-  }
-
-  return substr($name, 0, 6) == 'field_';
-}
-```
-
----
-
-## __Unit Tests__
-
-```php
-public function testElementNameIsField() {
-  ...
-
-  $this->assertTrue(
-    toggle_optional_fields_element_is_field('field_tags')
-  );
-
-  $this->assertTrue(
-    toggle_optional_fields_element_is_field('body')
-  );
-
-  $this->assertFalse(
-    toggle_optional_fields_element_is_field('title')
-  );
-}
-```
-
----
-
-## __Unit Tests__
-
-```php
-public function testElementNameIsField() {
-  ...
-
-  foreach ($this->elementNameDataProvider() as $data) {
-    list($element_name, $expected_result) = $data;
-
-    $this->assertEquals(
-      $expected_result,
-      toggle_optional_fields_element_is_field($element_name)
-    );
-  }
-}
-
-private function elementNameDataProvider() {
-  return array(
-    array('body', TRUE),
-    array('field_tags', TRUE),
-    array('title', FALSE),
-  );
-}
-```
-
----
-
-![fit](images/toggle-optional-fields-1.png)
-
----
-
-## __Web Tests__
-
-```php
-public function setUp() {
-  parent::setUp();
-
-  $this->drupalLogin(
-    $this->drupalCreateUser(array(
-      'create article content',
-      'create page content'
-    ));
-  );
-
-  // Enable toggling on article node forms.
-  variable_set('toggle_optional_fields_node_types', array('article'));
-
-  $this->refreshVariables();
-}
-```
-
----
-
-## __Custom Assertions__
-
-```php
-private function assertTagsFieldNotHidden() {
-  $this->assertFieldByName(
-    'field_tags[und]',
-    NULL,
-    t('Tags field visible.')
-  );
-}
-```
-
----
-
-## __Testing Hidden Fields__
-
-```php
-public function testFieldsHiddenByDefault() {
-  variable_set('toggle_optional_fields_hide_by_default', TRUE);
-
-  $this->refreshVariables();
-
-  $this->drupalGet('node/add/article');
-
-  $this->assertShowOptionalFieldsButtonFound();
-  $this->assertHideOptionalFieldsButtonNotFound();
-  $this->assertTagsFieldHidden();
-
-  ...
-```
-
----
-
-## __Testing Hidden Fields__
-
-```php
-  ...
-
-  $this->drupalPost(
-    'node/add/article',
-    array(),
-    t('Show optional fields')
-  );
-
-  $this->assertHideOptionalFieldsButtonFound();
-  $this->assertShowOptionalFieldsButtonNotFound();
-  $this->assertTagsFieldNotHidden();
-}
-```
-
----
-
-![fit](images/toggle-optional-fields-2.png)
-
----
-
-![fit](images/toggle-optional-fields-3.png)
-
----
-
-# __Building a new Drupal <br>8 Module with TDD__
-
----
-
-As a site visitor
-
-I want to see a list of all published pages at `/pages`
-
-Ordered alphabetically by title.
-
----
+[.hide-footer]
 
 ```yml
-# tdd_dublin.info.yml
+# tdd_blog.info.yml
 
-name: DrupalCamp Dublin test
-core: 8.x
-type: module
+name: 'TDD Example'
+core: '8.x'
+type: 'module'
 ```
 
 ---
 
+### _Task 1:_
+## Ensure the blog page exists
+
+---
+
+[.hide-footer]
+
 ```php
-// tests/src/Functional/ListingPageTest.php
+<?php
 
-class ListingPageTest extends BrowserTestBase {
+// tests/src/Functional/BlogPageTest.php
 
-  protected static $modules = ['tdd_dublin'];
+namespace Drupal\Tests\tdd_blog\Functional;
 
-  public function testListingPageExists() {
-    $this->drupalGet('pages');
+use Drupal\Tests\BrowserTestBase;
+
+class BlogPageTest extends BrowserTestBase {
+
+  protected static $modules = ['tdd_blog'];
+
+  public function testBlogPageExists() {
+    $this->drupalGet('/blog');
 
     $this->assertSession()->statusCodeEquals(200);
   }
+
 }
 ```
 
 ---
 
+[.hide-footer]
+
+```php, [.highlight: 5]
+<?php
+
+// tests/src/Functional/BlogPageTest.php
+
+namespace Drupal\Tests\tdd_blog\Functional;
+
+use Drupal\Tests\BrowserTestBase;
+
+class BlogPageTest extends BrowserTestBase {
+
+  protected static $modules = ['tdd_blog'];
+
+  public function testBlogPageExists() {
+    $this->drupalGet('/blog');
+
+    $this->assertSession()->statusCodeEquals(200);
+  }
+
+}
 ```
-docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
-PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing modules/tdd_dublin/tests/
-E
+---
 
-Time: 25.94 seconds, Memory: 6.00MB
+[.hide-footer]
+
+```php, [.highlight: 7-9]
+<?php
+
+// tests/src/Functional/BlogPageTest.php
+
+namespace Drupal\Tests\tdd_blog\Functional;
+
+use Drupal\Tests\BrowserTestBase;
+
+class BlogPageTest extends BrowserTestBase {
+
+  protected static $modules = ['tdd_blog'];
+
+  public function testBlogPageExists() {
+    $this->drupalGet('/blog');
+
+    $this->assertSession()->statusCodeEquals(200);
+  }
+
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 11]
+<?php
+
+// tests/src/Functional/BlogPageTest.php
+
+namespace Drupal\Tests\tdd_blog\Functional;
+
+use Drupal\Tests\BrowserTestBase;
+
+class BlogPageTest extends BrowserTestBase {
+
+  protected static $modules = ['tdd_blog'];
+
+  public function testBlogPageExists() {
+    $this->drupalGet('/blog');
+
+    $this->assertSession()->statusCodeEquals(200);
+  }
+
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 13-17]
+<?php
+
+// tests/src/Functional/BlogPageTest.php
+
+namespace Drupal\Tests\tdd_blog\Functional;
+
+use Drupal\Tests\BrowserTestBase;
+
+class BlogPageTest extends BrowserTestBase {
+
+  protected static $modules = ['tdd_blog'];
+
+  public function testBlogPageExists() {
+    $this->drupalGet('/blog');
+
+    $this->assertSession()->statusCodeEquals(200);
+  }
+
+}
+```
+
+---
+
+[.hide-footer]
+
+```bash, [.highlight: 1]
+docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
+
+Testing modules/custom/tdd_blog
+E                                                                   1 / 1 (100%)
+
+Time: 19.31 seconds, Memory: 6.00MB
 
 There was 1 error:
 
-1) PageListTest::testListingPage
-Behat\Mink\Exception\ExpectationException: Current response status code is 404,
-but 200 expected.
+1) Drupal\Tests\tdd_blog\Functional\BlogPageTest::testBlogPageExists
+Behat\Mink\Exception\ExpectationException: Current response status code is 404, but 200 expected.
 
-/var/www/vendor/behat/mink/src/WebAssert.php:770
+/var/www/vendor/behat/mink/src/WebAssert.php:768
 /var/www/vendor/behat/mink/src/WebAssert.php:130
-/var/www/modules/tdd_dublin/tests/src/PageListTest.php:11
+/var/www/web/modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php:13
+
+ERRORS!
+Tests: 1, Assertions: 3, Errors: 1.
 ```
 
 ---
 
-- Add the view.
-- Copy the config into the module’s `config/install`.
+[.hide-footer]
 
----
+```bash, [.highlight: 4]
+docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
 
-```
-docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
-PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+Testing modules/custom/tdd_blog
+E                                                                   1 / 1 (100%)
 
-Testing modules/tdd_dublin/tests/
-E
-
-Time: 19.07 seconds, Memory: 6.00MB
+Time: 19.31 seconds, Memory: 6.00MB
 
 There was 1 error:
 
-1) PageListTest::testListingPage
-Drupal\Core\Config\UnmetDependenciesException:
-Configuration objects provided by <em class="placeholder">tdd_dublin</em>
-have unmet dependencies:
-<em class="placeholder">node.type.page (node),
-views.view.pages (node, views)</em>
+1) Drupal\Tests\tdd_blog\Functional\BlogPageTest::testBlogPageExists
+Behat\Mink\Exception\ExpectationException: Current response status code is 404, but 200 expected.
+
+/var/www/vendor/behat/mink/src/WebAssert.php:768
+/var/www/vendor/behat/mink/src/WebAssert.php:130
+/var/www/web/modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php:13
+
+ERRORS!
+Tests: 1, Assertions: 3, Errors: 1.
 ```
 
 ---
 
-```yml
-name: DrupalCamp Dublin tests
+[.hide-footer]
+
+```bash, [.highlight: 5-13]
+docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
+
+Testing modules/custom/tdd_blog
+E                                                                   1 / 1 (100%)
+
+Time: 19.31 seconds, Memory: 6.00MB
+
+There was 1 error:
+
+1) Drupal\Tests\tdd_blog\Functional\BlogPageTest::testBlogPageExists
+Behat\Mink\Exception\ExpectationException: Current response status code is 404, but 200 expected.
+
+/var/www/vendor/behat/mink/src/WebAssert.php:768
+/var/www/vendor/behat/mink/src/WebAssert.php:130
+/var/www/web/modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php:13
+
+ERRORS!
+Tests: 1, Assertions: 3, Errors: 1.
+```
+
+---
+
+[.hide-footer]
+
+```bash, [.highlight: 14-16]
+docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
+
+Testing modules/custom/tdd_blog
+E                                                                   1 / 1 (100%)
+
+Time: 19.31 seconds, Memory: 6.00MB
+
+There was 1 error:
+
+1) Drupal\Tests\tdd_blog\Functional\BlogPageTest::testBlogPageExists
+Behat\Mink\Exception\ExpectationException: Current response status code is 404, but 200 expected.
+
+/var/www/vendor/behat/mink/src/WebAssert.php:768
+/var/www/vendor/behat/mink/src/WebAssert.php:130
+/var/www/web/modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php:13
+
+ERRORS!
+Tests: 1, Assertions: 3, Errors: 1.
+```
+
+---
+
+[.hide-footer]
+
+```bash, [.highlight: 18-19]
+docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
+
+Testing modules/custom/tdd_blog
+E                                                                   1 / 1 (100%)
+
+Time: 19.31 seconds, Memory: 6.00MB
+
+There was 1 error:
+
+1) Drupal\Tests\tdd_blog\Functional\BlogPageTest::testBlogPageExists
+Behat\Mink\Exception\ExpectationException: Current response status code is 404, but 200 expected.
+
+/var/www/vendor/behat/mink/src/WebAssert.php:768
+/var/www/vendor/behat/mink/src/WebAssert.php:130
+/var/www/web/modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php:13
+
+ERRORS!
+Tests: 1, Assertions: 3, Errors: 1.
+```
+
+---
+
+- _The view has not been created_
+- Create a new view
+- Set the path
+- Export the config
+- Copy it into the module's `config/install` directory
+
+---
+
+[.hide-footer]
+
+```[.highlight: 11-13]
+docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
+
+Testing modules/custom/tdd_blog
+E                                                                   1 / 1 (100%)
+
+Time: 16.02 seconds, Memory: 6.00MB
+
+There was 1 error:
+
+1) Drupal\Tests\tdd_blog\Functional\BlogPageTest::testBlogPageExists
+Drupal\Core\Config\UnmetDependenciesException: Configuration objects provided by <em class="placeholder">tdd_blog</em>
+have unmet dependencies: <em class="placeholder">views.view.blog (node.type.article, node, views)</em>
+
+/var/www/web/core/lib/Drupal/Core/Config/UnmetDependenciesException.php:98
+/var/www/web/core/lib/Drupal/Core/Config/ConfigInstaller.php:469
+/var/www/web/core/lib/Drupal/Core/ProxyClass/Config/ConfigInstaller.php:132
+/var/www/web/core/lib/Drupal/Core/Extension/ModuleInstaller.php:145
+/var/www/web/core/lib/Drupal/Core/ProxyClass/Extension/ModuleInstaller.php:83
+/var/www/web/core/lib/Drupal/Core/Test/FunctionalTestSetupTrait.php:437
+/var/www/web/core/tests/Drupal/Tests/BrowserTestBase.php:1055
+/var/www/web/core/tests/Drupal/Tests/BrowserTestBase.php:490
+
+ERRORS!
+Tests: 1, Assertions: 0, Errors: 1.
+```
+
+---
+
+[.hide-footer]
+
+```yml,[.highlight: 1, 7-10]
+# tdd_blog.info.yml
+
+name: 'TDD Dublin'
+description: 'A demo module to show test driven module development.'
 core: 8.x
 type: module
 
 dependencies:
-  - drupal:node
-  - drupal:views
+  - 'drupal:node'
+  - 'drupal:views'
 ```
 
 ---
 
-```
-docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
-PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+[.hide-footer]
 
-Testing modules/tdd_dublin/tests/
-.
+```[.highlight: 10-13]
+docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
 
-Time: 29.58 seconds, Memory: 6.00MB
+Testing modules/custom/tdd_blog
+E                                                                   1 / 1 (100%)
 
-OK (1 test, 1 assertion)
-```
+Time: 20 seconds, Memory: 6.00MB
 
----
+There was 1 error:
 
-```php
-public function testOnlyPublishedPagesAreShown() {
-  // Given I have a mixture of published and unpublished pages,
-  // as well as other types of content.
+1) Drupal\Tests\tdd_blog\Functional\BlogPageTest::testBlogPageExists
+Drupal\Core\Config\UnmetDependenciesException: Configuration objects provided by <em class="placeholder">tdd_blog</em>
+have unmet dependencies: <em class="placeholder">views.view.blog (node.type.article)</em>
 
-  // When I view the pages list.
+/var/www/web/core/lib/Drupal/Core/Config/UnmetDependenciesException.php:98
+/var/www/web/core/lib/Drupal/Core/Config/ConfigInstaller.php:469
+/var/www/web/core/lib/Drupal/Core/ProxyClass/Config/ConfigInstaller.php:132
+/var/www/web/core/lib/Drupal/Core/Extension/ModuleInstaller.php:145
+/var/www/web/core/lib/Drupal/Core/ProxyClass/Extension/ModuleInstaller.php:83
+/var/www/web/core/lib/Drupal/Core/Test/FunctionalTestSetupTrait.php:437
+/var/www/web/core/tests/Drupal/Tests/BrowserTestBase.php:1055
+/var/www/web/core/tests/Drupal/Tests/BrowserTestBase.php:490
 
-  // I should only see the published pages.
-}
-```
-
----
-
-```php
-public function testOnlyPublishedPagesAreShown() {
-  $this->drupalCreateContentType(['type' => 'article']);
-
-  $nodeA = $this->drupalCreateNode(['type' => 'page', 'status' => TRUE]);
-  $nodeB = $this->drupalCreateNode(['type' => 'article']);
-  $nodeC = $this->drupalCreateNode(['type' => 'page', 'status' => FALSE]);
-
-  // When I view the pages list.
-
-  // I should only see the published pages.
-}
+ERRORS!
+Tests: 1, Assertions: 0, Errors: 1.
 ```
 
 ---
 
-```php
-public function testOnlyPublishedPagesAreShown() {
-  ...
-
-  $this->drupalGet('/pages');
-
-  $this->assertSession()->statusCodeEquals(200);
-
-  $this->assertSession()->pageTextContains($nodeA->label());
-
-  $this->assertSession()->pageTextNotContains($nodeB->label());
-  $this->assertSession()->pageTextNotContains($nodeC->label());
-}
-```
+- Add the article content type
 
 ---
 
-```php
-public function testOnlyPublishedPagesAreShown() {
-  $this->drupalCreateContentType(['type' => 'article']);
+[.hide-footer]
 
-  $this->drupalCreateNode(['type' => 'page', 'status' => TRUE]);
-  $this->drupalCreateNode(['type' => 'article']);
-  $this->drupalCreateNode(['type' => 'page', 'status' => FALSE]);
+```[.highlight: 5, 9]
+docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
 
-  $results = views_get_view_result('pages');
+Testing modules/custom/tdd_blog
+.                                                                   1 / 1 (100%)
 
-  $nids = array_column($results, 'nid'); // [1, 3]
-
-  // I should only see the published pages.
-}
-```
-
----
-
-```php
-public function testOnlyPublishedPagesAreShown() {
-  $this->drupalCreateContentType(['type' => 'article']);
-
-  $this->drupalCreateNode(['type' => 'page', 'status' => TRUE]);
-  $this->drupalCreateNode(['type' => 'article']);
-  $this->drupalCreateNode(['type' => 'page', 'status' => FALSE]);
-
-  $results = views_get_view_result('pages');
-
-  $nids = array_column($results, 'nid'); // [1, 3]
-
-  $this->assertEquals([1], $nids);
-}
-```
-
----
-
-```
-docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
---filter=testOnlyPublishedPagesAreShown
-PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
-
-Testing modules/tdd_dublin/tests
-F
-
-Time: 26.4 seconds, Memory: 6.00MB
-
-There was 1 failure:
-```
-
----
-
-```
-1) PageListTest::testOnlyPublishedPagesAreShown
-Failed asserting that two arrays are equal.
---- Expected
-+++ Actual
-@@ @@
- Array (
--    0 => 1
-+    0 => '1'
-+    1 => '3'
- )
-
-/var/www/tests/Drupal/Tests/BrowserTestBase.php:1240
-/var/www/modules/tdd_dublin/tests/src/PageListTest.php:25
-
-FAILURES!
-Tests: 1, Assertions: 3, Failures: 1.
-```
-
----
-
-[.build-lists: false]
-
-- Edit the view
-- Add the status filter
-- Update the module config
-
----
-
-```
-docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
---filter=testOnlyPublishedPagesAreShown
-PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
-
-Testing modules/tdd_dublin/tests
-.
-
-Time: 26.53 seconds, Memory: 6.00MB
+Time: 23.36 seconds, Memory: 6.00MB
 
 OK (1 test, 3 assertions)
 ```
 
 ---
 
+## _Tasks_
+
+- ~~Ensure the blog page exists~~
+- Ensure only published articles are shown
+- Ensure the articles are shown in the correct order
+
+---
+
+### _Task 2:_
+## Ensure only published articles are shown
+
+---
+
+[.hide-footer]
+
 ```php
-public function testPagesAreOrderedAlphabetically() {
-  // Given I have multiple pages with different titles.
+public function testOnlyPublishedArticlesAreShown() {
+  // Given I have a mixture of published and unpublished articles,
+  // as well as other types of content.
 
-  // When I view the pages list.
+  // When I view the blog page.
 
-  // I see the pages in the correct order.
+  // I should only see the published articles.
 }
 ```
 
 ---
 
-```php
-public function testPagesAreOrderedAlphabetically() {
-  $this->drupalCreateNode(['title' => 'Page A']);
-  $this->drupalCreateNode(['title' => 'Page D']);
-  $this->drupalCreateNode(['title' => 'Page B']);
-  $this->drupalCreateNode(['title' => 'Page C']);
+[.header: alignment(center)]
 
-  $results = views_get_view_result('pages');
+### _Option 1:_ Functional tests
 
-  $nids = array_column($results, 'nid');
+---
 
-  $this->assertEquals([1, 3, 4, 2], $nids);
+[.hide-footer]
+
+```php,[.highlight: 1, 4-8]
+// modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php
+
+public function testOnlyPublishedArticlesAreShown() {
+  // Given I have a mixture of published and unpublished articles,
+  // as well as other types of content.
+  $node1 = $this->drupalCreateNode(['type' => 'page', 'status' => 1]);
+  $node2 = $this->drupalCreateNode(['type' => 'article', 'status' => 1]);
+  $node3 = $this->drupalCreateNode(['type' => 'article', 'status' => 0]);
+
+  // When I view the blog page.
+  $this->drupalGet('/blog');
+
+  // I should only see the published articles.
+  $assert = $this->assertSession();
+  $assert->pageTextContains($node2->label());
+  $assert->pageTextNotContains($node1->label());
+  $assert->pageTextNotContains($node3->label());
+}
+```
+
+^ Different ways to achieve this. This is taking the functional test approach.
+
+---
+
+[.hide-footer]
+
+```php,[.highlight: 10-12]
+// modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php
+
+public function testOnlyPublishedArticlesAreShown() {
+  // Given I have a mixture of published and unpublished articles,
+  // as well as other types of content.
+  $node1 = $this->drupalCreateNode(['type' => 'page', 'status' => 1]);
+  $node2 = $this->drupalCreateNode(['type' => 'article', 'status' => 1]);
+  $node3 = $this->drupalCreateNode(['type' => 'article', 'status' => 0]);
+
+  // When I view the blog page.
+  $this->drupalGet('/blog');
+
+  // I should only see the published articles.
+  $assert = $this->assertSession();
+  $assert->pageTextContains($node2->label());
+  $assert->pageTextNotContains($node1->label());
+  $assert->pageTextNotContains($node3->label());
 }
 ```
 
 ---
 
+[.hide-footer]
+
+```php, [.highlight: 13-17]
+// modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php
+
+public function testOnlyPublishedArticlesAreShown() {
+  // Given I have a mixture of published and unpublished articles,
+  // as well as other types of content.
+  $node1 = $this->drupalCreateNode(['type' => 'page', 'status' => 1]);
+  $node2 = $this->drupalCreateNode(['type' => 'article', 'status' => 1]);
+  $node3 = $this->drupalCreateNode(['type' => 'article', 'status' => 0]);
+
+  // When I view the blog page.
+  $this->drupalGet('/blog');
+
+  // I should only see the published articles.
+  $assert = $this->assertSession();
+  $assert->pageTextContains($node2->label());
+  $assert->pageTextNotContains($node1->label());
+  $assert->pageTextNotContains($node3->label());
+}
 ```
-docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests 
--filter=testPagesAreOrderedAlphabetically
-PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
 
-Testing modules/tdd_dublin/tests
-F
+---
 
-Time: 28.03 seconds, Memory: 6.00MB
+[.header: alignment(center)]
+
+### _Option 2:_ Kernel tests
+
+---
+
+[.hide-footer]
+
+```php
+<?php
+
+namespace Drupal\Tests\tdd_blog\Kernel;
+
+use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
+use Drupal\Tests\node\Traits\NodeCreationTrait;
+
+class BlogPageTest extends EntityKernelTestBase {
+
+  use NodeCreationTrait;
+
+  public static $modules = ['node'];
+
+  public function testOnlyPublishedArticlesAreShown() {
+    $this->createNode(['type' => 'page', 'status' => 1]);
+    $this->createNode(['type' => 'article', 'status' => 1]);
+    $this->createNode(['type' => 'article', 'status' => 0]);
+  }
+
+}
+```
+
+^ Kernel test approach
+Dropping down a level
+No need for the brower, not asserting against HTML
+Faster to run
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 3-8]
+<?php
+
+namespace Drupal\Tests\tdd_blog\Kernel;
+
+use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
+use Drupal\Tests\node\Traits\NodeCreationTrait;
+
+class BlogPageTest extends EntityKernelTestBase {
+
+  use NodeCreationTrait;
+
+  public static $modules = ['node'];
+
+  public function testOnlyPublishedArticlesAreShown() {
+    $this->createNode(['type' => 'page', 'status' => 1]);
+    $this->createNode(['type' => 'article', 'status' => 1]);
+    $this->createNode(['type' => 'article', 'status' => 0]);
+  }
+
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 10]
+<?php
+
+namespace Drupal\Tests\tdd_blog\Kernel;
+
+use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
+use Drupal\Tests\node\Traits\NodeCreationTrait;
+
+class BlogPageTest extends EntityKernelTestBase {
+
+  use NodeCreationTrait;
+
+  public static $modules = ['node'];
+
+  public function testOnlyPublishedArticlesAreShown() {
+    $this->createNode(['type' => 'page', 'status' => 1]);
+    $this->createNode(['type' => 'article', 'status' => 1]);
+    $this->createNode(['type' => 'article', 'status' => 0]);
+  }
+
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 14-18]
+<?php
+
+namespace Drupal\Tests\tdd_blog\Kernel;
+
+use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
+use Drupal\Tests\node\Traits\NodeCreationTrait;
+
+class BlogPageTest extends EntityKernelTestBase {
+
+  use NodeCreationTrait;
+
+  public static $modules = ['node'];
+
+  public function testOnlyPublishedArticlesAreShown() {
+    $this->createNode(['type' => 'page', 'status' => 1]);
+    $this->createNode(['type' => 'article', 'status' => 1]);
+    $this->createNode(['type' => 'article', 'status' => 0]);
+  }
+
+}
+```
+
+---
+
+[.hide-footer]
+
+```[.highlight: 9-16]
+docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog/tests/src/Kernel/
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
+
+Testing modules/custom/tdd_blog/tests/src/Kernel/
+E                                                                   1 / 1 (100%)
+
+Time: 6.22 seconds, Memory: 6.00MB
+
+There was 1 error:
+
+1) Drupal\Tests\tdd_blog\Kernel\BlogPageTest::testOnlyPublishedArticlesAreShown
+Error: Call to a member function id() on boolean
+
+/var/www/web/core/modules/filter/filter.module:212
+/var/www/web/core/modules/node/tests/src/Traits/NodeCreationTrait.php:73
+/var/www/web/modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php:13
+
+ERRORS!
+Tests: 1, Assertions: 2, Errors: 1.
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 2]
+public function testOnlyPublishedArticlesAreShown() {
+  $this->installConfig(['filter']);
+
+  $this->createNode(['type' => 'page', 'status' => 1]);
+  $this->createNode(['type' => 'article', 'status' => 1]);
+  $this->createNode(['type' => 'article', 'status' => 0]);
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 8]
+public function testOnlyPublishedArticlesAreShown() {
+  $this->installConfig(['filter']);
+
+  $this->createNode(['type' => 'page', 'status' => 1]);
+  $this->createNode(['type' => 'article', 'status' => 1]);
+  $this->createNode(['type' => 'article', 'status' => 0]);
+
+  $results = views_get_view_result('blog');
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 3]
+...
+
+public static $modules = ['node', 'tdd_blog', 'views'];
+
+public function testOnlyPublishedArticlesAreShown() {
+  $this->installConfig(['filter', 'tdd_blog']);
+
+  $this->createNode(['type' => 'page', 'status' => 1]);
+  $this->createNode(['type' => 'article', 'status' => 1]);
+  $this->createNode(['type' => 'article', 'status' => 0]);
+
+  $results = views_get_view_result('blog');
+
+  $this->assertCount(1, $results);
+  $this->assertEquals(2, $results[0]->_entity->id());
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 6]
+...
+
+public static $modules = ['node', 'tdd_blog', 'views'];
+
+public function testOnlyPublishedArticlesAreShown() {
+  $this->installConfig(['filter', 'tdd_blog']);
+
+  $this->createNode(['type' => 'page', 'status' => 1]);
+  $this->createNode(['type' => 'article', 'status' => 1]);
+  $this->createNode(['type' => 'article', 'status' => 0]);
+
+  $results = views_get_view_result('blog');
+
+  $this->assertCount(1, $results);
+  $this->assertEquals(2, $results[0]->_entity->id());
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 8-15]
+...
+
+public static $modules = ['node', 'tdd_blog', 'views'];
+
+public function testOnlyPublishedArticlesAreShown() {
+  $this->installConfig(['filter', 'tdd_blog']);
+
+  $this->createNode(['type' => 'page', 'status' => 1]);
+  $this->createNode(['type' => 'article', 'status' => 1]);
+  $this->createNode(['type' => 'article', 'status' => 0]);
+
+  $results = views_get_view_result('blog');
+
+  $this->assertCount(1, $results);
+  $this->assertEquals(2, $results[0]->_entity->id());
+}
+```
+
+^ Assert
+Should only be one result, should be node 2
+Node IDs are reset on each test method
+
+---
+
+[.hide-footer]
+
+```
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
+
+Testing web/modules/custom/tdd_blog/tests/src/Kernel
+F                                                                   1 / 1 (100%)
+
+Time: 2.16 seconds, Memory: 6.00MB
 
 There was 1 failure:
+
+1) Drupal\Tests\tdd_blog\Kernel\BlogPageTest::testOnlyPublishedArticlesAreShown
+Failed asserting that actual size 3 matches expected size 1.
+
+/Users/opdavies/Code/drupal-testing-workshop/web/modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php:23
+
+FAILURES!
+Tests: 1, Assertions: 4, Failures: 1.
 ```
 
 ---
 
+[.hide-footer]
+
+```[.highlight: 8-13]
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
+
+Testing web/modules/custom/tdd_blog/tests/src/Kernel
+F                                                                   1 / 1 (100%)
+
+Time: 2.16 seconds, Memory: 6.00MB
+
+There was 1 failure:
+
+1) Drupal\Tests\tdd_blog\Kernel\BlogPageTest::testOnlyPublishedArticlesAreShown
+Failed asserting that actual size 3 matches expected size 1.
+
+/Users/opdavies/Code/drupal-testing-workshop/web/modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php:23
+
+FAILURES!
+Tests: 1, Assertions: 4, Failures: 1.
 ```
-1) PageListTest::testPagesAreOrderedAlphabetically
+
+---
+
+>- _There are no filters on the view_
+- Add the filters
+- Export and save the view
+
+---
+
+```[.highlight: 3-8]
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
+
+Testing web/modules/custom/tdd_blog/tests/src/Kernel
+.                                                                   1 / 1 (100%)
+
+Time: 2.02 seconds, Memory: 6.00MB
+
+OK (1 test, 6 assertions)
+```
+
+---
+
+## _Tasks_
+
+- ~~Ensure the blog page exists~~
+- ~~Ensure only published articles are shown~~
+- Ensure the articles are shown in the correct order
+
+---
+
+### _Task 3:_
+## Ensure the articles are shown in the correct order
+
+---
+
+[.hide-footer]
+
+```php
+// modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
+
+public function testArticlesAreOrderedByDate() {
+  // Given that I have numerous articles with different post dates.
+
+  // When I go to the blog page.
+
+  // The articles are ordered by post date.
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 4-9]
+// modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
+
+public function testArticlesAreOrderedByDate() {
+  // Given that I have numerous articles with different post dates.
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 day')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 month')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+3 days')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 hour')->getTimestamp()]);
+
+  // When I go to the blog page.
+
+  // The articles are ordered by post date.
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 10-11]
+// modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
+
+public function testArticlesAreOrderedByDate() {
+  // Given that I have numerous articles with different post dates.
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 day')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 month')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+3 days')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 hour')->getTimestamp()]);
+
+  // When I go to the blog page.
+  $results = views_get_view_result('blog');
+
+  // The articles are ordered by post date.
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight:10-15]
+// modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
+
+public function testArticlesAreOrderedByDate() {
+  // Given that I have numerous articles with different post dates.
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 day')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 month')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+3 days')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 hour')->getTimestamp()]);
+
+  // When I go to the blog page.
+  $results = views_get_view_result('blog');
+
+  $nids = array_map(function(ResultRow $result) {
+    return $result->_entity->id();
+  }, $results);
+
+  // The articles are ordered by post date.
+}
+```
+
+---
+
+[.hide-footer]
+
+```php, [.highlight: 5-9, 17-18]
+// modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
+
+public function testArticlesAreOrderedByDate() {
+  // Given that I have numerous articles with different post dates.
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 day')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 month')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+3 days')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 hour')->getTimestamp()]);
+
+  // When I go to the blog page.
+  $results = views_get_view_result('blog');
+
+  $nids = array_map(function(ResultRow $result) {
+    return $result->_entity->id();
+  }, $results);
+
+  // The articles are ordered by post date.
+  $this->assertEquals([4, 1, 3, 2], $nids);
+}
+```
+
+---
+
+[.hide-footer]
+
+```
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
+
+Testing web/modules/custom/tdd_blog/tests/src/Kernel
+F                                                                   1 / 1 (100%)
+
+Time: 1.42 seconds, Memory: 6.00MB
+
+There was 1 failure:
+
+1) Drupal\Tests\tdd_blog\Kernel\BlogPageTest::testArticlesAreOrderedByDate
 Failed asserting that two arrays are equal.
 --- Expected
 +++ Actual
 @@ @@
  Array (
--    0 => 1
--    1 => 3
--    2 => 4
+-    0 => 4
+-    1 => 1
+-    2 => 3
 -    3 => 2
-+    0 => '1'
++    0 => '3'
 +    1 => '2'
-+    2 => '3'
-+    3 => '4'
- )
++    2 => '4'
++    3 => '1'
 
-/var/www/tests/Drupal/Tests/BrowserTestBase.php:1240
-/var/www/modules/tdd_dublin/tests/src/PageListTest.php:36
+/Users/opdavies/Code/drupal-testing-workshop/web/core/tests/Drupal/KernelTests/KernelTestBase.php:1114
+/Users/opdavies/Code/drupal-testing-workshop/web/modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php:43
+
+FAILURES!
+Tests: 1, Assertions: 4, Failures: 1.
 ```
 
 ---
 
-- Edit the view
-- Remove the default sort criteria (created on)
-- Add new sort criteria
-- Update the module config
+[.hide-footer]
 
----
+```[.highlight: 8-26]
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
 
-```
-docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
---filter=testPagesAreOrderedAlphabetically
-PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
+Testing web/modules/custom/tdd_blog/tests/src/Kernel
+F                                                                   1 / 1 (100%)
 
-Testing modules/tdd_dublin/tests
-.
+Time: 1.42 seconds, Memory: 6.00MB
 
-Time: 27.67 seconds, Memory: 6.00MB
+There was 1 failure:
 
-OK (1 test, 2 assertions)
-```
+1) Drupal\Tests\tdd_blog\Kernel\BlogPageTest::testArticlesAreOrderedByDate
+Failed asserting that two arrays are equal.
+--- Expected
++++ Actual
+@@ @@
+ Array (
+-    0 => 4
+-    1 => 1
+-    2 => 3
+-    3 => 2
++    0 => '3'
++    1 => '2'
++    2 => '4'
++    3 => '1'
 
----
+/Users/opdavies/Code/drupal-testing-workshop/web/core/tests/Drupal/KernelTests/KernelTestBase.php:1114
+/Users/opdavies/Code/drupal-testing-workshop/web/modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php:43
 
-```
-docker@cli:/var/www$ vendor/bin/phpunit -c core modules/tdd_dublin/tests
-PHPUnit 4.8.36 by Sebastian Bergmann and contributors.
-
-Testing modules/tdd_dublin/tests
-...
-
-Time: 1.17 minutes, Memory: 6.00MB
-
-OK (3 tests, 6 assertions)
-```
-
----
-
-## __Downgrading to Kernel Tests__
-
----
-
-```php
-// tests/src/Kernel/PageListTest.php
-
-namespace Drupal\Tests\tdd_dublin\Kernel;
-
-use Drupal\KernelTests\KernelTestBase;
-
-class PageListTest extends KernelTestBase {
-}
+FAILURES!
+Tests: 1, Assertions: 4, Failures: 1.
 ```
 
 ---
 
-```php
-public function testOnlyPublishedPagesAreShown() {
-  $nids = array_column(views_get_view_result('pages'), 'nid');
-
-  $this->assertEquals([1], $nids);
-}
-```
-
-^ Started with assertions and worked backwards
-"Outside in"
+- _There is no sort order defined on the view_
+- Add the sort order
+- Re-export the view
 
 ---
 
-```php
-protected static $modules = [
-  'node',
-  'system',
-  'tdd_dublin',
-  'user',
-  'views'
-];
+```[.highlight:3-8]
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
 
-protected function setUp() {
-  parent::setUp();
+Testing web/modules/custom/tdd_blog/tests/src/Kernel
+.                                                                   1 / 1 (100%)
 
-  $this->installConfig(['tdd_dublin']);
+Time: 1.74 seconds, Memory: 6.00MB
 
-  $this->installEntitySchema('node');
-  $this->installEntitySchema('user');
-}
+OK (1 test, 5 assertions)
 ```
 
 ---
 
-```php
-use Drupal\node\Entity\Node;
-use Drupal\node\Entity\NodeType;
+## _Tasks_
 
-public function testOnlyPublishedPagesAreShown() {
-  NodeType::create(['type' => 'article', 'name' => t('Article')]);
-
-  Node::create($this->getValidParams(['status' => TRUE]))->save();
-  Node::create($this->getValidParams(['type' => 'article']))->save();
-  Node::create($this->getValidParams(['status' => FALSE]))->save();
-
-  $nids = array_column(views_get_view_result('pages'), 'nid');
-
-  $this->assertEquals([1], $nids);
-}
-
-private function getValidParams(array $overrides = []) {
-  return array_merge([
-    'status' => TRUE,
-    'title' => $this->randomString(),
-    'type' => 'page',
-  ], $overrides);
-}
-```
+- ~~Ensure the blog page exists~~
+- ~~Ensure only published articles are shown~~
+- ~~Ensure the articles are shown in the correct order~~
 
 ---
 
-```
-Testing modules/custom/tdd_dublin/tests/src/Kernel
-.
+[.header: alignment(center)]
 
-Time: 8.9 seconds, Memory: 6.00MB
-
-OK (1 test, 4 assertions)
-```
-
-^ Previously 26 seconds
+## Take Aways
 
 ---
 
-![inline fit](images/kernel-tests.png)
-
----
-
-## __Demo__
-
----
-
-- Testing has made me a better developer
-- Testing can produce better quality code
-- Use the right type of test for the right situation
-- Writing tests is an investment
-- OK to start small, introduce tests gradually
-- Easier to refactor
-- Tests can pass, but things can still be broken. Tests only report on what they cover.
+- Testing has made me a _better developer_
+- Testing can produce _better quality code_
+- Use the _right type of test_ for the right situation
+- Use the _right base class_, use available _traits_
+- Writing tests is an _investment_
+- OK to _start small_, introduce tests gradually
+- Easier to _refactor_
+- Tests can pass, but things can _still be broken_. Tests only report on what they cover.
 
 ^ Made me think about how I'm going to do something more starting to do it
 Less cruft, only write code that serves a purpose
@@ -1241,16 +1806,40 @@ Manual testing is still important
 
 ---
 
-- https://github.com/opdavies/tdd_dublin
-- https://www.oliverdavies.uk/blog/2017/11/07/writing-drupal-module-test-driven-development-tdd
-- https://www.oliverdavies.uk/blog/tdd-drupal-part-2-kernel-tests
-- https://knpuniversity.com/screencast/phpunit
-- https://adamwathan.me/test-driven-laravel
-- https://laracasts.com
-- https://drupalize.me/series/testing-drupal-7-simpletest
-- https://www.lullabot.com/articles/an-overview-of-testing-in-drupal-8
-- https://www.youtube.com/watch?v=jcdEp3YGa94
+[.hide-footer]
+[.text: alignment(center)]
+
+> ![inline 150%](images/when-you-do-things-right.jpg)
 
 ---
 
-## __Questions?__
+## _Resources_
+
+- github.com/opdavies/drupal-module-tdd-dublin
+- drupalize.me/series/testing-drupal-7-simpletest
+- lullabot.com/articles/an-overview-of-testing-in-drupal-8
+- mediacurrent.com/blog/writing-simple-simpletest-tests-your-d7-module
+- mediacurrent.com/blog/writing-simple-phpunit-tests-your-d8-module
+- knpuniversity.com/screencast/phpunit
+- adamwathan.me/test-driven-laravel
+- laracasts.com
+
+---
+
+- oliverdavies.uk/_talks_
+- oliverdavies.uk/_twitter_
+- oliverdavies.uk/_drupal_
+- oliverdavies.uk/_github_
+- oliverdavies.uk/_youtube_
+
+---
+
+[.header: alignment(center)]
+
+## Questions?
+
+---
+
+[.header: alignment(center)]
+
+# Thanks

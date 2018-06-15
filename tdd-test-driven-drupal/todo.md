@@ -1,3 +1,2 @@
 - Show composer.json setup
-- Remove D7 code samples, focus on D8
 - Show `fin phpunit`
