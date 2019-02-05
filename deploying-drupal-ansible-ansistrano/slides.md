@@ -496,16 +496,6 @@ vars:
 ---
 
 ```yaml
-# ansible/deploy/after-symlink-shared.yml
-
----
-- name: Run database updates
-  command: '{{ release_drush_path }} --root {{ release_web_path }} updatedb'
-```
-
----
-
-```yaml
 # ansible/deploy/after-update-code.yml
 
 ---
@@ -513,6 +503,16 @@ vars:
   composer:
     command: install
     working_dir: '{{ ansistrano_release_path.stdout }}'
+```
+
+---
+
+```yaml
+# ansible/deploy/after-symlink-shared.yml
+
+---
+- name: Run database updates
+  command: '{{ release_drush_path }} --root {{ release_web_path }} updatedb'
 ```
 
 ---
