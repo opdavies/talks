@@ -51,8 +51,6 @@ Blog on my website
 
 ---
 
-[.header: #FFFFFF, line-height(0.7), League Gothic]
-
 ### _Things we'll be_
 # Looking at
 
