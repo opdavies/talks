@@ -1,2 +1,3 @@
 - Show composer.json setup
-- Show `fin phpunit`
+- Add "things you can test" and "things you shouldn't test"
+

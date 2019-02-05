@@ -1,25 +1,25 @@
+theme: poster, 8
 autoscale: true
 build-lists: true
-theme: simple, 1
+header-emphasis: #53B0EB
+header: alignment(left)
+text: alignment(left)
+text-emphasis: #53B0EB
+code: Operator Mono, line-height(1.5)
 
-# __Using Laravel Collections... <br>Outside Laravel__
+[.background-color: #FFFFFF]
+[.hide-footer]
+[.header: #111111, alignment(center)]
+
+## Using Laravel Collections... <br>Outside Laravel
 
 ![250%](images/laravel.png)
 
 ---
 
-[.build-lists: false]
+[.header: alignment(center)]
 
-- Web Developer
-- Drupal, Symfony, Silex, Laravel, Sculpin
-- @opdavies
-- oliverdavies.uk
-
-![right](../../me-phpnw.png)
-
----
-
-## Collections++
+## Collections :thumbsup:
 
 ^ Became a fan of Collections whilst learning Laravel
 Powerful object orientated way to interact with arrays
@@ -92,6 +92,8 @@ $collection->filter(function ($person) {
 
 ---
 
+[.background-color: #FFFFFF]
+
 ![100%](images/druplicon.png)
 
 ^ This is great, but how can I do that in my Drupal code?
@@ -99,13 +101,15 @@ How can I do that?
 
 ---
 
-> There’s a module for that!
-> -- Drupalers
+## There’s a module for that!
+### _- Drupalers_
 
 ---
 
-> There's not a module for that. :(
--- Me
+[.text: alignment(center)]
+
+## [fit] There's not a module for that. :disappointed:
+### _- Me_
 
 ---
 
@@ -116,7 +120,8 @@ How can I do that?
 ---
 
 
-## 1.0: Write my own Collection class
+### _Version 1.0_
+## Write my own Collection class
 
 ^ Wrote my own Collection class
 Wrote my own tests
@@ -125,7 +130,7 @@ Wrote my own tests
 
 ![](images/drupal-issue-1.png)
 
-^ Maybe 70% of what Laravels' could do.
+^ Maybe 70% of what Laravel's could do.
 
 ---
 
@@ -136,15 +141,17 @@ Wrote my own tests
 ---
 
 
-> Collect - Illuminate Collections as a separate package.
-> -- https://packagist.org/packages/tightenco/collect
+### Collect - Illuminate Collections as a separate package.
+#### _https://packagist.org/packages/tightenco/collect_
 
 ---
 
-> Import Laravel's Collections into non-Laravel packages easily, without needing to require the entire Illuminate\Support package.
-> -- https://packagist.org/packages/tightenco/collect
+### Import Laravel's Collections into non-Laravel packages easily, without needing to require the entire Illuminate\Support package.
+#### _https://packagist.org/packages/tightenco/collect_
 
 ---
+
+[.background-color: #FFFFFF]
 
 ![600%](images/composer.png)
 
@@ -152,7 +159,7 @@ Wrote my own tests
 
 ---
 
-## `composer require tightenco/collect`
+## _composer require_<br>tightenco/collect
 
 ---
 ![](images/drupal-issue-2.png)
@@ -163,12 +170,14 @@ Wrote my own tests
 
 ---
 
-## ~~1.0: Write my own Collection class~~
-## 2.0: Use someone else’s Collection class
+### _Version 2.0_
+## Use someone else’s Collection class
 
 ^ More fully featured, less code to maintain
 
 ---
+
+[.background-color: #FFFFFF]
 
 ![120%](images/yay-open-source.jpg)
 
@@ -212,12 +221,16 @@ Start using Collections!
 
 ---
 
+[.background-color: #FFFFFF]
+
 ![150%](images/all-the-things.jpg)
 
 ^ Drupal 8, Sculpin site, PHP libraries
 
 ---
 
-## __Thanks!__
+[.header: alignment(center)]
 
-## @opdavies
+# Thanks!
+### _@opdavies_
+### _oliverdavies.uk_

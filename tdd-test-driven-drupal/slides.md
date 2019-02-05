@@ -1,12 +1,11 @@
+theme: poster, 8
 autoscale: true
 build-lists: true
-footer-style: alignment(left)
-footer: @opdavies | oliverdavies.uk
 header-emphasis: #53B0EB
 header: alignment(left)
 text: alignment(left)
 text-emphasis: #53B0EB
-theme: poster, 8
+code: Monaco, #6699FF, #999999, #6666FF, #66FF66, #66FF66, line-height(1.3)
 
 [.header: alignment(center)]
 
@@ -16,24 +15,106 @@ theme: poster, 8
 
 ---
 
+[.header: alignment(center)]
+
+## [fit] opdavi.es/_tdd-test-driven-drupal_
+
+^ View on the website or click through to Speakerdeck
+
+---
+
+[.background-color: #FFFFFF]
+[.header: #111111, alignment(left)]
+
+## Diamond sponsor
+
+![inline 100%](images/ddd-2.jpeg)
+
+---
+
+[.background-color: #FFFFFF]
+[.header: #111111, alignment(left)]
+
+## Platinum sponsors
+
+![inline 100%](images/ddd-3.jpeg)
+
+---
+
+[.background-color: #FFFFFF]
+[.header: #111111, alignment(left)]
+
+## Gold sponsors
+
+![inline 100%](images/ddd-4.jpeg)
+
+---
+
+![fit](images/ddd-5.jpg)
+
+---
+
+[.build-lists: false]
+
+- Module and theme developers
+- Want to know more about automated testing
+- Looking to start writing your first tests
+- Drupal 8
+- PHPUnit
+
+---
+
+- Why write tests, and what to test
+- Types of tests
+- How to run tests
+- Real life example
+- Building a new module with TDD
+
+---
+
 [.background-color: #FFFFFF]
 [.build-lists: false]
 [.header: #111111]
 [.text: #111111, alignment(left)]
 
-![right 1000%](../me-phpnw.png)
+![right 800%](../images/me-phpnw.png)
 
-- Full stack Web Developer & System Administrator
+- Full Stack Web Developer & System Administrator
 - Senior Developer at Microserve
 - Part-time freelancer
 - Acquia certified Drupal 8 Grand Master
 - Drupal 7 & 8 core contributor
-- opdavies (Drupal.org, GitHub, Twitter)
+- Symfony, Laravel, ~~Silex,~~ Sculpin
+- @opdavies
 - www.oliverdavies.uk
 
 ^ Work at Microserve.
 Maintain Drupal modules, PHP CLI tools and libraries
 Blog on my website
+
+---
+
+[.build-lists: false]
+
+- oliverdavies.uk/_talks_
+- oliverdavies.uk/_twitter_
+- oliverdavies.uk/_drupal_
+- oliverdavies.uk/_github_
+
+^ Example code on GitHub
+
+---
+
+[.background-color: #FFFFFF]
+[.text: #111111, alignment(left)]
+
+![right 100%](../images/microserve-light.png)
+
+- https://microserve.io
+- https://www.drupal.org/microserve
+- https://github.com/microserve-io
+- https://twitter.com/microserveltd
+- https://www.linkedin.com/company/microserve-ltd
 
 ---
 
@@ -45,21 +126,19 @@ Blog on my website
 
 [.header: alignment(center)]
 
-## Why?
-## _What?_
-## How?
+## Write custom modules and themes _for clients_
 
 ---
 
 [.header: alignment(center)]
 
-## I write _contrib modules_ for the community
+## Occassionally <br>contribute _to core_
 
 ---
 
 [.header: alignment(center)]
 
-## I write _custom modules_ for client projects
+## Maintain and contribute to _contrib projects_
 
 ---
 
@@ -73,13 +152,13 @@ Blog on my website
 
 - Become maintainer in 2012
 - Had some existing tests
-- First experience of testing with a real module
 - Used on _11,046 sites_ in October 2012 (_84_ D5, _7,094_ D6, _3,868_ D7)
 - Used on _29,023 sites_ in June 2018 (_9_ D5, _1,853_ D6, _23,602_ D7, _3,559_ D8)
+- _#236_ most used module on Drupal.org
 - Crucial to preventing regressions when adding new features or fixing bugs
-- Ensured consistency when porting to Drupal 8
 
 ^ Preventing regressions in my additions but also user submitted patches
+First module I ported to Drupal 8, aided by tests
 
 ---
 
@@ -92,7 +171,7 @@ Blog on my website
 ## _Why write tests?_
 
 - Catch bugs earlier
-- Piece of mind
+- Peace of mind
 - Prevent regressions
 - Write less code
 - Documentation
@@ -107,56 +186,33 @@ ONO merge conflict
 
 ## _Core Testing Gate_
 
-New features should be accompanied by automated tests.
-
-If the feature does not have an implementation, provide a test implementation.
-
-Bug fixes should be accompanied by changes to a test (either modifying an existing test case or adding a new one) that demonstrate the bug.
+- New features should be accompanied by automated tests.
+- If the feature does not have an implementation, provide a test implementation.
+- Bug fixes should be accompanied by changes to a test (either modifying an existing test case or adding a new one) that demonstrate the bug.
 
 [.footer: https://www.drupal.org/core/gates#testing]
 
 ---
 
-[.header: alignment(center)]
-
-## _Testing may add time now,_ but save more <br>time in the future
-
----
-
-[.header: alignment(center)]
-
-## [fit] _How do you get quicker at writing tests?_
-# [fit] By writing more tests
-
----
-
 ## _Testing in Drupal_
 
-- _Drupal 7_ - Simpletest (testing) module provided as part of core
+- _Drupal 7_ - SimpleTest (testing) module provided as part of core
 - _Drupal 8_ - PHPUnit added as a core dependency
-- _PHPUnit Initiative_ - Simpletest to be deprecated and removed in Drupal 9
+- _PHPUnit Initiative_ - SimpleTest to be deprecated and removed in Drupal 9
 
 ---
 
-## _Setting up your environment_
+[.header: #53B0EB]
 
-- Drupal includes `core/phpunit.xml.dist`
-- Copy to `core/phpunit.xml`
-- Amend values as needed
-  + Add base URL, database credentials
-- Docksal - `fin addon install phpunit`
+## Writing Tests (Drupal 8)
 
----
-
-## _Writing Tests (Drupal 8)_
-
-- PHP class with `.php` extension
-- `tests/src` directory within each module
-- Within the `Drupal\Tests\module_name` namespace
+- PHP class with _.php_ extension
+- _tests/src_ directory within each module
+- Within the *Drupal\Tests\module_name* namespace
 - Class name must match the filename
 - Namespace must match the directory structure
 - One test class per feature
-- Each method must start with `test`
+- Each method must start with _test_
 
 ^ Different to D7
 
@@ -170,11 +226,8 @@ Bug fixes should be accompanied by changes to a test (either modifying an existi
 
 ---
 
-[.hide-footer]
 
 ```php
-<?php
-
 // modules/example/tests/src/Functional/ExampleTest.php
 
 namespace Drupal\Tests\example\Functional;
@@ -194,169 +247,165 @@ class ExampleTest extends BrowserTestBase {
 }
 ```
 
+^ PHP class
+Filename matches class name
+Namespace matches directory structure
+Extend BrowserTestBase
+Add test method
+
 ---
 
-## _What to test?_
+[.header: #53B0EB]
+
+## What to test?
+
+- Creating nodes with data from an API
+- Calculating attendance figures for an event
+- Determining if an event is purchasble
+- Promotions and coupons for new users
+- Cloning events
+- Queuing private message requests
+- Emails for new memberships
+- Closed support tickets are re-opened when comments are added
+- Custom form validation rules
+
+---
+
+[.header: #53B0EB]
+
+## What to test first?
 
 - What is the core piece of functionality?
 - What provides the most value to the client?
 - What would you not like to be fixing on a Friday afternoon or after hours?
 
+^ Payments! Anything related to money.
+What would provide the largest negative impact to the client if it were to fail?
+
 ---
 
 [.background-color: #FFFFFF]
 
-![inline 120%](images/matt-stauffer-tweet.png)
+![inline 150%](images/matt-stauffer-tweet.png)
 
 ---
 
-## _Types of tests_
 
-- Functional / FunctionalJavascript (web, browser)
-- Kernel (integration)
+[.header: #53B0EB]
+
+## What to test first?
+
+- Write a _new test_ when adding any _new functionality_
+- Write a _regression test_ when _fixing a bug_
+
+^ Use tests to replicate the bug
+Could be a new test, or adding to an existing test
+Test passes when the bug is fixed
+That issue cannot be re-added without the test failing again
+
+---
+
+[.header: #53B0EB]
+
+## Types of tests
+
 - Unit
+- Kernel _(integration)_
+- Functional / FunctionalJavascript _(web, browser, feature)_
 
 ---
 
-## _Functional Tests_
+[.header: #53B0EB]
 
-- Tests functionality
-- Interacts with database
-- Full Drupal installation
-- Slower to run
-- With/without JavaScript
+## Unit tests
 
-^ testing profile
+- Tests PHP logic
+- No database interaction
+- Fast to run
+- Need to mock dependencies
+- Can become tightly coupled
+- Can be hard to refactor
 
 ---
-
-[.hide-footer]
 
 ```php
-<?php
+// tests/src/Unit/JobTest.php
 
-// modules/phpunit_example/tests/src/Functional/PHPUnitExampleMenuTest.php
+namespace Drupal\Tests\advancedqueue\Unit;
 
-namespace Drupal\Tests\phpunit_example\Functional;
+use Drupal\advancedqueue\Job;
+use Drupal\Tests\UnitTestCase;
 
-use Drupal\Tests\BrowserTestBase;
+class JobTest extends UnitTestCase {
 
-class PHPUnitExampleMenuTest extends BrowserTestBase {
+  public function testCreate() {
+    $job = Job::create('test', ['my' => 'data']);
 
-  public static $modules = ['phpunit_example'];
-
-  public function testPhpUnitExampleMenu() {
-    $this->drupalGet('/examples/phpunit-example');
-
-    $this->assertSession()->statusCodeEquals(200);
+    $this->assertEquals('test', $job->getType());
+    $this->assertEquals(['my' => 'data'], $job->getPayload());
+    $this->assertEquals(Job::STATE_QUEUED, $job->getState());
   }
+
 }
 ```
 
----
-
-[.hide-footer]
-
-```php, [.highlight: 5]
-<?php
-
-// modules/phpunit_example/tests/src/Functional/PHPUnitExampleMenuTest.php
-
-namespace Drupal\Tests\phpunit_example\Functional;
-
-use Drupal\Tests\BrowserTestBase;
-
-class PHPUnitExampleMenuTest extends BrowserTestBase {
-
-  public static $modules = ['phpunit_example'];
-
-  public function testPhpUnitExampleMenu() {
-    $this->drupalGet('/examples/phpunit-example');
-
-    $this->assertSession()->statusCodeEquals(200);
-  }
-}
-```
+^ Within a Unit directory and namespace
+Called JobTest because it's testing the Job class
+Called testCreate because it's testing the create method
+Create a job with the create method
+Retrieve data from the object with getters
 
 ---
-
-[.hide-footer]
-
-```php, [.highlight: 7-9]
-<?php
-
-// modules/phpunit_example/tests/src/Functional/PHPUnitExampleMenuTest.php
-
-namespace Drupal\Tests\phpunit_example\Functional;
-
-use Drupal\Tests\BrowserTestBase;
-
-class PHPUnitExampleMenuTest extends BrowserTestBase {
-
-  public static $modules = ['phpunit_example'];
-
-  public function testPhpUnitExampleMenu() {
-    $this->drupalGet('/examples/phpunit-example');
-
-    $this->assertSession()->statusCodeEquals(200);
-  }
-}
-```
-
----
-
-[.hide-footer]
 
 ```php, [.highlight: 11]
-<?php
+// tests/src/Unit/JobTest.php
 
-// modules/phpunit_example/tests/src/Functional/PHPUnitExampleMenuTest.php
+namespace Drupal\Tests\advancedqueue\Unit;
 
-namespace Drupal\Tests\phpunit_example\Functional;
+use Drupal\advancedqueue\Job;
+use Drupal\Tests\UnitTestCase;
 
-use Drupal\Tests\BrowserTestBase;
+class JobTest extends UnitTestCase {
 
-class PHPUnitExampleMenuTest extends BrowserTestBase {
+  public function testCreate() {
+    $job = Job::create('test', ['my' => 'data']);
 
-  public static $modules = ['phpunit_example'];
-
-  public function testPhpUnitExampleMenu() {
-    $this->drupalGet('/examples/phpunit-example');
-
-    $this->assertSession()->statusCodeEquals(200);
+    $this->assertEquals('test', $job->getType());
+    $this->assertEquals(['my' => 'data'], $job->getPayload());
+    $this->assertEquals(Job::STATE_QUEUED, $job->getState());
   }
+
 }
 ```
 
 ---
 
-[.hide-footer]
+```php, [.highlight: 13-15]
+// tests/src/Unit/JobTest.php
 
-```php, [.highlight: 13-17]
-<?php
+namespace Drupal\Tests\advancedqueue\Unit;
 
-// modules/phpunit_example/tests/src/Functional/PHPUnitExampleMenuTest.php
+use Drupal\advancedqueue\Job;
+use Drupal\Tests\UnitTestCase;
 
-namespace Drupal\Tests\phpunit_example\Functional;
+class JobTest extends UnitTestCase {
 
-use Drupal\Tests\BrowserTestBase;
+  public function testCreate() {
+    $job = Job::create('test', ['my' => 'data']);
 
-class PHPUnitExampleMenuTest extends BrowserTestBase {
-
-  public static $modules = ['phpunit_example'];
-
-  public function testPhpUnitExampleMenu() {
-    $this->drupalGet('/examples/phpunit-example');
-
-    $this->assertSession()->statusCodeEquals(200);
+    $this->assertEquals('test', $job->getType());
+    $this->assertEquals(['my' => 'data'], $job->getPayload());
+    $this->assertEquals(Job::STATE_QUEUED, $job->getState());
   }
+
 }
 ```
 
 ---
 
+[.header: #53B0EB]
 
-## _Kernel Tests_
+## Kernel Tests
 
 - Integration tests
 - Can install modules, interact with services, container, database
@@ -366,80 +415,315 @@ class PHPUnitExampleMenuTest extends BrowserTestBase {
 
 ---
 
-## _Unit Tests_
-
-- Tests PHP logic
-- No database interaction
-- Fast to run
-- Tightly coupled
-- Complicated mocking
-
----
-
-[.hide-footer]
-
 ```php
-namespace Drupal\collection_class;
+// tests/src/Kernel/ProcessorTest.php
 
-class Collection implements \Countable, \IteratorAggregate {
-  private $items;
+namespace Drupal\Tests\advancedqueue\Kernel;
 
-  public function __construct($items = array()) {
-    $this->items = is_array($items) ? $items
-      : $this->getArrayableItems($items);
-  }
+use Drupal\advancedqueue\Entity\Queue;
+use Drupal\advancedqueue\Job;
+use Drupal\KernelTests\KernelTestBase;
 
-  public function __toString() {
-    return $this->toJson();
-  }
+class ProcessorTest extends KernelTestBase {
 
-  public function all() {
-    return $this->items;
-  }
+  ...
 
-  public function count() {
-    return count($this->items);
-  }
-
-
-  public function isEmpty() {
-    return empty($this->items);
-  }
-
-  public function first() {
-    return array_shift($this->items);
-  }
 }
 ```
 
 ---
 
-[.hide-footer]
-
 ```php
-$collection = new Collection([1, 2, 3, 4, 5]);
+// tests/src/Kernel/ProcessorTest.php
 
-// Returns all items.
-$collection->all();
+protected function setUp() {
+  parent::setUp();
 
-// Counts the number of items.
-$collection->count();
+  $this->installSchema('advancedqueue', ['advancedqueue']);
 
-// Returns the array keys.
-$collection->keys();
+  $this->queue = Queue::create([
+    'id' => 'test',
+    'label' => 'Test queue',
+    'backend' => 'database',
+    'backend_configuration' => [
+      'lease_time' => 5,
+    ],
+  ]);
+  $this->queue->save();
+
+  $this->processor = $this->container->get('advancedqueue.processor');
+}
 ```
 
 ---
 
-[.hide-footer]
+```php, [.highlight: 6]
+// tests/src/Kernel/ProcessorTest.php
+
+protected function setUp() {
+  parent::setUp();
+
+  $this->installSchema('advancedqueue', ['advancedqueue']);
+
+  $this->queue = Queue::create([
+    'id' => 'test',
+    'label' => 'Test queue',
+    'backend' => 'database',
+    'backend_configuration' => [
+      'lease_time' => 5,
+    ],
+  ]);
+  $this->queue->save();
+
+  $this->processor = $this->container->get('advancedqueue.processor');
+}
+```
+
+---
+
+```php, [.highlight: 8-16]
+// tests/src/Kernel/ProcessorTest.php
+
+protected function setUp() {
+  parent::setUp();
+
+  $this->installSchema('advancedqueue', ['advancedqueue']);
+
+  $this->queue = Queue::create([
+    'id' => 'test',
+    'label' => 'Test queue',
+    'backend' => 'database',
+    'backend_configuration' => [
+      'lease_time' => 5,
+    ],
+  ]);
+  $this->queue->save();
+
+  $this->processor = $this->container->get('advancedqueue.processor');
+}
+```
+
+---
+
+```php, [.highlight: 18]
+// tests/src/Kernel/ProcessorTest.php
+
+protected function setUp() {
+  parent::setUp();
+
+  $this->installSchema('advancedqueue', ['advancedqueue']);
+
+  $this->queue = Queue::create([
+    'id' => 'test',
+    'label' => 'Test queue',
+    'backend' => 'database',
+    'backend_configuration' => [
+      'lease_time' => 5,
+    ],
+  ]);
+  $this->queue->save();
+
+  $this->processor = $this->container->get('advancedqueue.processor');
+}
+```
+
+---
 
 ```php
-public function testAll() {
-  $items = ['foo', 'bar', 'baz'];
+// tests/src/Kernel/ProcessorTest.php
 
-  $collection = new Collection($items);
+public function testProcessor() {
+  $first_job = Job::create('simple', [
+    'test' => '1',
+  ]);
 
-  $this->assertEqual($items, $collection->all());
+  $second_job = Job::create('flexible', [
+    'expected_state' => Job::STATE_SUCCESS,
+    'expected_message' => 'Done!',
+  ]);
+
+  $third_job = Job::create(
+    'flexible', ['expected_exception' => 'DB down!'],
+  );
+
+  $fourth_job = Job::create('flexible', [
+    'expected_state' => Job::STATE_FAILURE,
+    'expected_message' => 'Failed!',
+  ]);
+
+  ...
+}
+```
+
+---
+
+```php, [.highlight: 6-10]
+// tests/src/Kernel/ProcessorTest.php
+
+public function testProcessor() {
+  ...
+
+  $this->queue->enqueueJob($first_job);
+  $this->queue->enqueueJob($second_job);
+  $this->queue->enqueueJob($third_job);
+  $this->queue->enqueueJob($fourth_job);
+
+  $num_processed = $this->processor->processQueue($this->queue);
+
+  $this->assertEquals(4, $num_processed);
+}
+```
+
+---
+
+```php, [.highlight: 11-13]
+// tests/src/Kernel/ProcessorTest.php
+
+public function testProcessor() {
+  ...
+
+  $this->queue->enqueueJob($first_job);
+  $this->queue->enqueueJob($second_job);
+  $this->queue->enqueueJob($third_job);
+  $this->queue->enqueueJob($fourth_job);
+
+  $num_processed = $this->processor->processQueue($this->queue);
+
+  $this->assertEquals(4, $num_processed);
+}
+```
+
+---
+
+[.header: #53B0EB]
+
+## Functional Tests
+
+- Tests end-to-end functionality
+- UI testing
+- Interacts with database
+- Full Drupal installation
+- Slower to run
+- With/without JavaScript
+
+^ testing profile
+
+---
+
+```php
+// tests/src/Functional/QueueTest.php
+
+namespace Drupal\Tests\advancedqueue\Functional;
+
+use Drupal\advancedqueue\Entity\Queue;
+use Drupal\advancedqueue\Entity\QueueInterface;
+use Drupal\Tests\BrowserTestBase;
+
+class QueueTest extends BrowserTestBase {
+  ...
+}
+```
+
+---
+
+```php, [.highlight: 6-8]
+// tests/src/Functional/QueueTest.php
+
+protected function setUp() {
+  parent::setUp();
+
+  $this->placeBlock('local_tasks_block');
+  $this->placeBlock('local_actions_block');
+  $this->placeBlock('page_title_block');
+
+  $this->adminUser = $this->drupalCreateUser(['administer advancedqueue']);
+  $this->drupalLogin($this->adminUser);
+}
+```
+
+---
+
+```php, [.highlight: 10-11]
+// tests/src/Functional/QueueTest.php
+
+protected function setUp() {
+  parent::setUp();
+
+  $this->placeBlock('local_tasks_block');
+  $this->placeBlock('local_actions_block');
+  $this->placeBlock('page_title_block');
+
+  $this->adminUser = $this->drupalCreateUser(['administer advancedqueue']);
+  $this->drupalLogin($this->adminUser);
+}
+```
+
+---
+
+```php, [.highlight: 4-11]
+// tests/src/Functional/QueueTest.php
+
+public function testQueueDeletion() {
+  $queue = Queue::create([
+    'id' => 'test',
+    'label' => 'Test',
+    'backend' => 'database',
+    'processor' => QueueInterface::PROCESSOR_DAEMON,
+    'processing_time' => 100,
+  ]);
+  $queue->save();
+  $this->drupalGet('admin/config/system/queues/manage/' . $queue->id() . '/delete');
+  $this->submitForm([], 'Delete');
+  $this->assertSession()->addressEquals('admin/config/system/queues');
+
+  $queue_exists = (bool) Queue::load('test');
+  $this->assertEmpty($queue_exists, 'The queue has been deleted from the database.');
+}
+```
+
+---
+
+```php, [.highlight: 12-14]
+// tests/src/Functional/QueueTest.php
+
+public function testQueueDeletion() {
+  $queue = Queue::create([
+    'id' => 'test',
+    'label' => 'Test',
+    'backend' => 'database',
+    'processor' => QueueInterface::PROCESSOR_DAEMON,
+    'processing_time' => 100,
+  ]);
+  $queue->save();
+  $this->drupalGet('admin/config/system/queues/manage/' . $queue->id() . '/delete');
+  $this->submitForm([], 'Delete');
+  $this->assertSession()->addressEquals('admin/config/system/queues');
+
+  $queue_exists = (bool) Queue::load('test');
+  $this->assertEmpty($queue_exists, 'The queue has been deleted from the database.');
+}
+```
+
+---
+
+```php, [.highlight: 16-17]
+// tests/src/Functional/QueueTest.php
+
+public function testQueueDeletion() {
+  $queue = Queue::create([
+    'id' => 'test',
+    'label' => 'Test',
+    'backend' => 'database',
+    'processor' => QueueInterface::PROCESSOR_DAEMON,
+    'processing_time' => 100,
+  ]);
+  $queue->save();
+  $this->drupalGet('admin/config/system/queues/manage/' . $queue->id() . '/delete');
+  $this->submitForm([], 'Delete');
+  $this->assertSession()->addressEquals('admin/config/system/queues');
+
+  $queue_exists = (bool) Queue::load('test');
+  $this->assertEmpty($queue_exists, 'The queue has been deleted from the database.');
 }
 ```
 
@@ -467,9 +751,21 @@ public function testAll() {
 
 ---
 
-## _Setup (functional)_
+## _Should you test that_ <br>a block is rendered correctly?
 
-[.hide-footer]
+---
+
+## _Or should you test_ <br>your render array to generate the block?
+
+^ The answer might be 'both'.
+The right type of test to use might not be that obvious.
+You may be able to use a different type of test if you take a different approach.
+
+---
+
+[.header: #53B0EB]
+
+## Setup (functional)
 
 ```
 drupalCreateUser()
@@ -504,15 +800,16 @@ assertMail()
 
 ---
 
-## _Assertions_
+[.header: #53B0EB]
 
-[.hide-footer]
+## Assertions
 
 ```php
 assertTrue()
 assertFalse()
 
 assertEquals()
+assertSame()
 
 assertNull()
 assertNotNull()
@@ -525,11 +822,13 @@ assertArraySubset()
 
 ---
 
-## _Assertions (functional)_
+[.header: #53B0EB]
 
-[.hide-footer]
+## Assertions (functional)
 
 ```php
+assertSession()
+
 pageTextContains()
 pageTextNotContains()
 
@@ -555,17 +854,30 @@ statusCodeNotEquals()
 
 ---
 
-## _Specification_
+[.header: #53B0EB]
 
-- Job adverts created on third-party system, needs to create nodes in Drupal, links users to separate application system
-- Adverts need to be linked to offices
-- Advert length specified in number of days
+## Specification
+
+- Job adverts created in Broadbean UI, needs to create nodes in Drupal
+- Application URL links users to separate application system
+- Jobs need to be linked to offices
+- Job length specified in number of days
 - Path is specified as a field in the API
 - Application URL constructed from domain, includes role ID as a GET parameter and optionally UTM parameters
 
 ---
 
-[.hide-footer]
+[.background-color: #FFFFFF]
+
+![inline 125%](images/broadbean-drupal-flow-1.png)
+
+---
+
+[.background-color: #FFFFFF]
+
+![inline 125%](images/broadbean-drupal-flow-2.png)
+
+---
 
 ```php
 $data = [
@@ -594,17 +906,33 @@ $data = [
 
 ---
 
-## _Implementation_
+[.header: #53B0EB]
+
+## Implementation
 
 - Added route to accept data from API as XML
-- Added user with API role to authenticate
-- `active_for` converted from number of days to UNIX timestamp
-- `branch_name` and `locations` converted from plain text to entity reference (job node to office node)
-- `url_alias` property mapped to `path`
+- Added system user with API role to authenticate
+- *active_for* converted from number of days to UNIX timestamp
+- *branch_name* and *locations* converted from plain text to entity reference (job node to office node)
+- *url_alias* property mapped to *path*
 
 ---
 
-## _Goals_
+[.header: #53B0EB]
+
+## Implementation
+
+- If no error, create the job node, return OK response to Broadbean
+- If an Exception is thrown, return an error code and message
+
+^ Required field missing
+Incorrect branch name
+
+---
+
+[.header: #53B0EB]
+
+## Testing Goals
 
 - Ensure job nodes are _successfully created_
 - Ensure that fields are _mapped correctly_
@@ -613,7 +941,9 @@ $data = [
 
 ---
 
-## _Types of tests_
+[.header: #53B0EB]
+
+## Types of tests
 
 - _Unit:_ ensure number of days are converted to timestamps correctly
 - _Kernel:_ job nodes can be added and deleted, expired job nodes are deleted, application URL is generated correctly
@@ -622,7 +952,9 @@ $data = [
 
 ---
 
-## _Results_
+[.header: #53B0EB]
+
+## Results
 
 - _0 bugs!_
 - Reduced debugging time
@@ -636,19 +968,41 @@ $data = [
 
 ---
 
-![fit](images/simpletest-1.png)
+### _Option 1_
+## SimpleTest module (UI)
 
 ---
 
-![fit](images/simpletest-2.png)
+![fit](images/d8-simpletest-1.png)
 
 ---
 
-![fit](images/simpletest-3.png)
+![fit](images/d8-simpletest-2.png)
 
 ---
 
-![fit](images/simpletest-4.png)
+![fit](images/d8-simpletest-3.png)
+
+---
+
+![fit](images/d8-simpletest-4.png)
+
+---
+
+![fit](images/d8-simpletest-5.png)
+
+---
+
+![fit](images/d8-simpletest-6.png)
+
+---
+
+![fit](images/d8-simpletest-7.png)
+
+---
+
+### _Option 2_
+## Core script
 
 ---
 
@@ -662,13 +1016,58 @@ $ php core/scripts/run-tests.sh --class ExampleTest
 
 ---
 
-```
-vendor/bin/phpunit -c core path/to/module
+### _Option 3_
+## PHPUnit
 
-vendor/bin/phpunit -c core path/to/module --filter testSomething
+---
 
-vendor/bin/phpunit -c core path/to/module --verbose
+## Prerequisite _(creating a phpunit.xml file)_
+
+- Configures PHPUnit
+- Needed to run some types of tests
+- Ignored by Git by default
+- Copy _core/phpunit.xml.dist_ to _core/phpunit.xml_
+- Add and change as needed
+  - `SIMPLETEST_BASE_URL`, `SIMPLETEST_DB`, `BROWSERTEST_OUTPUT_DIRECTORY`
+  - `stopOnFailure="true"`
+
+---
+
 ```
+cd web
+
+../vendor/bin/phpunit -c core \
+modules/contrib/examples/phpunit_example
+```
+
+---
+
+```
+cd web/core
+
+../../vendor/bin/phpunit \
+../modules/contrib/examples/phpunit_example
+```
+
+---
+
+```
+--filter
+
+--testsuite
+
+--group
+
+--colors
+
+--stop-on-failure
+
+--verbose --debug
+```
+
+---
+
+![fit](images/phpstorm-integration.png)
 
 ---
 
@@ -678,12 +1077,15 @@ vendor/bin/phpunit -c core path/to/module --verbose
 
 ---
 
-## _Test Driven Development_
+[.header: #53B0EB]
+
+## Test Driven Development
 
 - Write a test
-- See it fail
-- Write code until test passes
-- Refactor when tests are green
+- Test fails
+- Write code
+- Test passes
+- Refactor
 - Repeat
 
 ---
@@ -702,7 +1104,9 @@ vendor/bin/phpunit -c core path/to/module --verbose
 
 ---
 
-## _Porting Modules to Drupal 8_
+[.header: #53B0EB]
+
+## Porting Modules to Drupal 8
 
 - Make a new branch
 - Add/update the tests
@@ -712,23 +1116,28 @@ vendor/bin/phpunit -c core path/to/module --verbose
 
 ---
 
-## _How I Write Tests - "Outside In"_
+[.header: #53B0EB]
+
+## How I Write Tests - "Outside In"
 
 - Start with functional tests
 - Drop down to integration or unit tests where needed
 - Programming by wishful thinking
 - Write comments first, then fill in the code
-- Write assertions first, sometimes
+- Sometimes write assertions first
 
 ---
 
 [.header: alignment(center)]
 
-## Building a new _Drupal 8 Module_ with _TDD_
+## [fit] _Building a new Drupal 8 Module with_
+## [fit] test driven development
 
 ---
 
-## _Acceptance criteria_
+[.header: #53B0EB]
+
+## Acceptance criteria
 
 - As a site visitor
 - I want to see a list of published articles at /blog
@@ -736,7 +1145,9 @@ vendor/bin/phpunit -c core path/to/module --verbose
 
 ---
 
-## _Tasks_
+[.header: #53B0EB]
+
+## Tasks
 
 - Ensure the blog page exists
 - Ensure only published articles are shown
@@ -744,7 +1155,9 @@ vendor/bin/phpunit -c core path/to/module --verbose
 
 ---
 
-## _Implementation_
+[.header: #53B0EB]
+
+## Implementation
 
 - Use views module
 - Do the mininum amount at each step, make no assumptions, let the tests guide us
@@ -752,28 +1165,27 @@ vendor/bin/phpunit -c core path/to/module --verbose
 
 ---
 
-[.hide-footer]
+### _Step 1_
+## Create the module
+
+---
 
 ```yml
 # tdd_blog.info.yml
 
-name: 'TDD Example'
+name: 'TDD Blog'
 core: '8.x'
 type: 'module'
 ```
 
 ---
 
-### _Task 1:_
+### _Step 2_
 ## Ensure the blog page exists
 
 ---
 
-[.hide-footer]
-
 ```php
-<?php
-
 // tests/src/Functional/BlogPageTest.php
 
 namespace Drupal\Tests\tdd_blog\Functional;
@@ -795,11 +1207,8 @@ class BlogPageTest extends BrowserTestBase {
 
 ---
 
-[.hide-footer]
 
-```php, [.highlight: 5]
-<?php
-
+```php, [.highlight: 3]
 // tests/src/Functional/BlogPageTest.php
 
 namespace Drupal\Tests\tdd_blog\Functional;
@@ -821,11 +1230,8 @@ class BlogPageTest extends BrowserTestBase {
 
 ---
 
-[.hide-footer]
 
-```php, [.highlight: 7-9]
-<?php
-
+```php, [.highlight: 5-7]
 // tests/src/Functional/BlogPageTest.php
 
 namespace Drupal\Tests\tdd_blog\Functional;
@@ -847,11 +1253,8 @@ class BlogPageTest extends BrowserTestBase {
 
 ---
 
-[.hide-footer]
 
-```php, [.highlight: 11]
-<?php
-
+```php, [.highlight: 9]
 // tests/src/Functional/BlogPageTest.php
 
 namespace Drupal\Tests\tdd_blog\Functional;
@@ -873,11 +1276,8 @@ class BlogPageTest extends BrowserTestBase {
 
 ---
 
-[.hide-footer]
 
-```php, [.highlight: 13-17]
-<?php
-
+```php, [.highlight: 11-15]
 // tests/src/Functional/BlogPageTest.php
 
 namespace Drupal\Tests\tdd_blog\Functional;
@@ -899,7 +1299,6 @@ class BlogPageTest extends BrowserTestBase {
 
 ---
 
-[.hide-footer]
 
 ```bash, [.highlight: 1]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
@@ -925,7 +1324,6 @@ Tests: 1, Assertions: 3, Errors: 1.
 
 ---
 
-[.hide-footer]
 
 ```bash, [.highlight: 4]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
@@ -951,7 +1349,6 @@ Tests: 1, Assertions: 3, Errors: 1.
 
 ---
 
-[.hide-footer]
 
 ```bash, [.highlight: 5-13]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
@@ -977,7 +1374,6 @@ Tests: 1, Assertions: 3, Errors: 1.
 
 ---
 
-[.hide-footer]
 
 ```bash, [.highlight: 14-16]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
@@ -1003,7 +1399,6 @@ Tests: 1, Assertions: 3, Errors: 1.
 
 ---
 
-[.hide-footer]
 
 ```bash, [.highlight: 18-19]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
@@ -1030,14 +1425,49 @@ Tests: 1, Assertions: 3, Errors: 1.
 ---
 
 - _The view has not been created_
-- Create a new view
+- Create a new view, page display
 - Set the path
 - Export the config
 - Copy it into the module's `config/install` directory
 
 ---
 
-[.hide-footer]
+![fit](images/tdd-blog-1.png)
+
+---
+
+![fit](images/tdd-blog-2.png)
+
+---
+
+```
+drush cex -y
+
+cp ../config/default/views.view.blog.yml \
+  modules/custom/tdd_blog/config/install
+```
+
+---
+
+```diff
+# views.view.blog.yml
+
+- uuid: 84305edf-7aef-4109-bc93-e87f685fb678
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+  module:
+    - node
+    - user
+- _core:
+-   default_config_hash: iGZkqLWpwWNORq6_fy6v_Kn_KE4BjYHqj9vpgQsWJCs
+id: blog
+...
+```
+
+---
 
 ```[.highlight: 11-13]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
@@ -1069,12 +1499,11 @@ Tests: 1, Assertions: 0, Errors: 1.
 
 ---
 
-[.hide-footer]
 
 ```yml,[.highlight: 1, 7-10]
 # tdd_blog.info.yml
 
-name: 'TDD Dublin'
+name: 'TDD Blog'
 description: 'A demo module to show test driven module development.'
 core: 8.x
 type: module
@@ -1086,7 +1515,6 @@ dependencies:
 
 ---
 
-[.hide-footer]
 
 ```[.highlight: 10-13]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
@@ -1122,7 +1550,6 @@ Tests: 1, Assertions: 0, Errors: 1.
 
 ---
 
-[.hide-footer]
 
 ```[.highlight: 5, 9]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
@@ -1138,6 +1565,8 @@ OK (1 test, 3 assertions)
 
 ---
 
+[.build-lists: false]
+
 ## _Tasks_
 
 - ~~Ensure the blog page exists~~
@@ -1146,12 +1575,11 @@ OK (1 test, 3 assertions)
 
 ---
 
-### _Task 2:_
+### _Step 3_
 ## Ensure only published articles are shown
 
 ---
 
-[.hide-footer]
 
 ```php
 public function testOnlyPublishedArticlesAreShown() {
@@ -1166,13 +1594,11 @@ public function testOnlyPublishedArticlesAreShown() {
 
 ---
 
-[.header: alignment(center)]
-
-### _Option 1:_ Functional tests
+### _Option 1_
+## Functional tests
 
 ---
 
-[.hide-footer]
 
 ```php,[.highlight: 1, 4-8]
 // modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php
@@ -1199,7 +1625,6 @@ public function testOnlyPublishedArticlesAreShown() {
 
 ---
 
-[.hide-footer]
 
 ```php,[.highlight: 10-12]
 // modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php
@@ -1224,7 +1649,6 @@ public function testOnlyPublishedArticlesAreShown() {
 
 ---
 
-[.hide-footer]
 
 ```php, [.highlight: 13-17]
 // modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php
@@ -1249,17 +1673,13 @@ public function testOnlyPublishedArticlesAreShown() {
 
 ---
 
-[.header: alignment(center)]
-
-### _Option 2:_ Kernel tests
+### _Option 2_
+## Kernel tests
 
 ---
 
-[.hide-footer]
 
 ```php
-<?php
-
 namespace Drupal\Tests\tdd_blog\Kernel;
 
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
@@ -1287,11 +1707,7 @@ Faster to run
 
 ---
 
-[.hide-footer]
-
-```php, [.highlight: 3-8]
-<?php
-
+```php, [.highlight: 1-6]
 namespace Drupal\Tests\tdd_blog\Kernel;
 
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
@@ -1314,11 +1730,7 @@ class BlogPageTest extends EntityKernelTestBase {
 
 ---
 
-[.hide-footer]
-
-```php, [.highlight: 10]
-<?php
-
+```php, [.highlight: 8]
 namespace Drupal\Tests\tdd_blog\Kernel;
 
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
@@ -1341,11 +1753,7 @@ class BlogPageTest extends EntityKernelTestBase {
 
 ---
 
-[.hide-footer]
-
-```php, [.highlight: 14-18]
-<?php
-
+```php, [.highlight: 12-16]
 namespace Drupal\Tests\tdd_blog\Kernel;
 
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
@@ -1368,7 +1776,6 @@ class BlogPageTest extends EntityKernelTestBase {
 
 ---
 
-[.hide-footer]
 
 ```[.highlight: 9-16]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog/tests/src/Kernel/
@@ -1394,7 +1801,6 @@ Tests: 1, Assertions: 2, Errors: 1.
 
 ---
 
-[.hide-footer]
 
 ```php, [.highlight: 2]
 public function testOnlyPublishedArticlesAreShown() {
@@ -1408,7 +1814,6 @@ public function testOnlyPublishedArticlesAreShown() {
 
 ---
 
-[.hide-footer]
 
 ```php, [.highlight: 8]
 public function testOnlyPublishedArticlesAreShown() {
@@ -1424,7 +1829,6 @@ public function testOnlyPublishedArticlesAreShown() {
 
 ---
 
-[.hide-footer]
 
 ```php, [.highlight: 3]
 ...
@@ -1447,7 +1851,6 @@ public function testOnlyPublishedArticlesAreShown() {
 
 ---
 
-[.hide-footer]
 
 ```php, [.highlight: 6]
 ...
@@ -1470,7 +1873,6 @@ public function testOnlyPublishedArticlesAreShown() {
 
 ---
 
-[.hide-footer]
 
 ```php, [.highlight: 8-15]
 ...
@@ -1497,7 +1899,6 @@ Node IDs are reset on each test method
 
 ---
 
-[.hide-footer]
 
 ```
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -1510,7 +1911,7 @@ Time: 2.16 seconds, Memory: 6.00MB
 There was 1 failure:
 
 1) Drupal\Tests\tdd_blog\Kernel\BlogPageTest::testOnlyPublishedArticlesAreShown
-Failed asserting that actual size 3 matches expected size 1.
+Failed asserting that actual size 2 matches expected size 1.
 
 /Users/opdavies/Code/drupal-testing-workshop/web/modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php:23
 
@@ -1520,7 +1921,6 @@ Tests: 1, Assertions: 4, Failures: 1.
 
 ---
 
-[.hide-footer]
 
 ```[.highlight: 8-13]
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -1533,7 +1933,7 @@ Time: 2.16 seconds, Memory: 6.00MB
 There was 1 failure:
 
 1) Drupal\Tests\tdd_blog\Kernel\BlogPageTest::testOnlyPublishedArticlesAreShown
-Failed asserting that actual size 3 matches expected size 1.
+Failed asserting that actual size 2 matches expected size 1.
 
 /Users/opdavies/Code/drupal-testing-workshop/web/modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php:23
 
@@ -1543,9 +1943,17 @@ Tests: 1, Assertions: 4, Failures: 1.
 
 ---
 
->- _There are no filters on the view_
-- Add the filters
-- Export and save the view
+![inline](images/tdd-blog-3.png)
+
+---
+
+>- _There is no content type filter on the view_
+- Add the filter
+- Re-export and save the view
+
+---
+
+![inline](images/tdd-blog-4.png)
 
 ---
 
@@ -1562,6 +1970,8 @@ OK (1 test, 6 assertions)
 
 ---
 
+[.build-lists: false]
+
 ## _Tasks_
 
 - ~~Ensure the blog page exists~~
@@ -1570,12 +1980,11 @@ OK (1 test, 6 assertions)
 
 ---
 
-### _Task 3:_
-## Ensure the articles are shown in the correct order
+### _Step 4_
+## Ensure the articles are ordered by date
 
 ---
 
-[.hide-footer]
 
 ```php
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
@@ -1591,17 +2000,16 @@ public function testArticlesAreOrderedByDate() {
 
 ---
 
-[.hide-footer]
 
 ```php, [.highlight: 4-9]
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
 
 public function testArticlesAreOrderedByDate() {
   // Given that I have numerous articles with different post dates.
-  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 day')->getTimestamp()]);
-  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 month')->getTimestamp()]);
-  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+3 days')->getTimestamp()]);
-  $this->createNode(['type' => 'article', 'created' => (new \DateTime())->modify('+1 hour')->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime('+1 day'))->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime('+1 month'))->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime('+3 days'))->getTimestamp()]);
+  $this->createNode(['type' => 'article', 'created' => (new \DateTime('+1 hour'))->getTimestamp()]);
 
   // When I go to the blog page.
 
@@ -1611,7 +2019,17 @@ public function testArticlesAreOrderedByDate() {
 
 ---
 
-[.hide-footer]
+```php
+$this->createNode([
+  'type' => 'article',
+  'created' => (new \DateTime())->modify('+1 day')->getTimestamp(),
+]);
+```
+
+^ Array of default values
+
+---
+
 
 ```php, [.highlight: 10-11]
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
@@ -1631,8 +2049,6 @@ public function testArticlesAreOrderedByDate() {
 ```
 
 ---
-
-[.hide-footer]
 
 ```php, [.highlight:10-15]
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
@@ -1657,7 +2073,6 @@ public function testArticlesAreOrderedByDate() {
 
 ---
 
-[.hide-footer]
 
 ```php, [.highlight: 5-9, 17-18]
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
@@ -1683,7 +2098,6 @@ public function testArticlesAreOrderedByDate() {
 
 ---
 
-[.hide-footer]
 
 ```
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -1705,10 +2119,10 @@ Failed asserting that two arrays are equal.
 -    1 => 1
 -    2 => 3
 -    3 => 2
-+    0 => '3'
++    0 => '1'
 +    1 => '2'
-+    2 => '4'
-+    3 => '1'
++    2 => '3'
++    3 => '4'
 
 /Users/opdavies/Code/drupal-testing-workshop/web/core/tests/Drupal/KernelTests/KernelTestBase.php:1114
 /Users/opdavies/Code/drupal-testing-workshop/web/modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php:43
@@ -1719,7 +2133,7 @@ Tests: 1, Assertions: 4, Failures: 1.
 
 ---
 
-[.hide-footer]
+[.text: comic sans]
 
 ```[.highlight: 8-26]
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -1741,10 +2155,10 @@ Failed asserting that two arrays are equal.
 -    1 => 1
 -    2 => 3
 -    3 => 2
-+    0 => '3'
++    0 => '1'
 +    1 => '2'
-+    2 => '4'
-+    3 => '1'
++    2 => '3'
++    3 => '4'
 
 /Users/opdavies/Code/drupal-testing-workshop/web/core/tests/Drupal/KernelTests/KernelTestBase.php:1114
 /Users/opdavies/Code/drupal-testing-workshop/web/modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php:43
@@ -1755,9 +2169,17 @@ Tests: 1, Assertions: 4, Failures: 1.
 
 ---
 
+![inline](images/tdd-blog-4.png)
+
+---
+
 - _There is no sort order defined on the view_
 - Add the sort order
 - Re-export the view
+
+---
+
+![inline](images/tdd-blog-5.png)
 
 ---
 
@@ -1774,11 +2196,28 @@ OK (1 test, 5 assertions)
 
 ---
 
+[.build-lists: false]
+
 ## _Tasks_
 
 - ~~Ensure the blog page exists~~
 - ~~Ensure only published articles are shown~~
 - ~~Ensure the articles are shown in the correct order~~
+
+---
+
+![inline fit](images/tdd-blog-directories.png)
+
+---
+
+![fit](images/tdd-blog-installed.png)
+
+^ Using the minimal installation profile
+Post 3 is unpublished
+
+---
+
+![inline 75%](images/tada.png)
 
 ---
 
@@ -1806,40 +2245,88 @@ Manual testing is still important
 
 ---
 
-[.hide-footer]
+[.header: alignment(center)]
+
+## [fit] _Having tests does not mean_
+## [fit] there will be no bugs
+
+^ Only means that the tests you wrote are passing
+You may not have included a certain use case
+Be sure to test in the UI!
+We can test what happens in a test when a user has a permission, but in our site we still need to assign the permission to a role and the role to a user.
+
+---
+
+### _You might be testing the wrong thing_
+## Maybe it doesn't work the way you think it does
+
+---
+
+### _Have you written enough assertions?_
+## Have you only covered the 'happy path' scenarios?
+
+^ If your tests are passing but there is an issue, maybe you haven't written enough assertions
+Be sure to check for the negative use cases too
+Check that something is not included as well as what should be included
+What if you pass in an incorrect value?
+
+---
+
+### _Other modules can affect things_
+## Tests may pass, but fail when other modules are enabled
+
+---
+
+[.header: alignment(center)]
+
+## [fit] _Testing may add time now_
+## [fit] but save more time in the future
+
+---
+
+[.header: alignment(center)]
+
+## [fit] _How do you get quicker at writing tests?_
+# [fit] By writing more tests
+
+^ Practice makes perfect
+Become more familar with and knowledge of recurring errors
+Find better practices and approaches. Different base classes? Less setup steps. Less time, more productive.
+
+---
+
+## _Start small_
+## Some tests are better than no tests
+
+---
+
+
+[.background-color: #FFFFFF]
+
+![140%](images/tawny-tweet-1.png)
+
+---
+
+[.background-color: #FFFFFF]
+
+![150%](images/tawny-tweet-2.png)
+
+---
+
 [.text: alignment(center)]
 
 > ![inline 150%](images/when-you-do-things-right.jpg)
 
 ---
 
-## _Resources_
-
-- github.com/opdavies/drupal-module-tdd-dublin
-- drupalize.me/series/testing-drupal-7-simpletest
-- lullabot.com/articles/an-overview-of-testing-in-drupal-8
-- mediacurrent.com/blog/writing-simple-simpletest-tests-your-d7-module
-- mediacurrent.com/blog/writing-simple-phpunit-tests-your-d8-module
-- knpuniversity.com/screencast/phpunit
-- adamwathan.me/test-driven-laravel
-- laracasts.com
-
----
-
-- oliverdavies.uk/_talks_
-- oliverdavies.uk/_twitter_
-- oliverdavies.uk/_drupal_
-- oliverdavies.uk/_github_
-- oliverdavies.uk/_youtube_
-
----
-
 [.header: alignment(center)]
 
-## Questions?
+# Questions?
 
 ---
 
 [.header: alignment(center)]
 
 # Thanks
+### _@opdavies_
+### _oliverdavies.uk_
