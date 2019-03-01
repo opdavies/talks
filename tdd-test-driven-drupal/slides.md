@@ -122,8 +122,8 @@ Blog on my website
 - Become maintainer in 2012
 - Had some existing tests
 - Used on _11,046 sites_ in October 2012 (_84_ D5, _7,094_ D6, _3,868_ D7)
-- Used on _29,023 sites_ in June 2018 (_9_ D5, _1,853_ D6, _23,602_ D7, _3,559_ D8)
-- _#236_ most used module on Drupal.org
+- Used on _30,572 sites_ in March 2019 (_10_ D5, _1,180_ D6, _24,057_ D7, _5,335_ D8)
+- _#230_ most used module on Drupal.org
 - Crucial to preventing regressions when adding new features or fixing bugs
 
 ^ Preventing regressions in my additions but also user submitted patches
