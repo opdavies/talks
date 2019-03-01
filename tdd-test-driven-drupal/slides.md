@@ -65,10 +65,10 @@ Blog on my website
 
 [.build-lists: false]
 
-- oliverdavies.uk/_talks_
-- oliverdavies.uk/_twitter_
-- oliverdavies.uk/_drupal_
-- oliverdavies.uk/_github_
+- opdavi.es/_talks_
+- opdavi.es/_twitter_
+- opdavi.es/_drupal_
+- opdavi.es/_github_
 
 ^ Example code on GitHub
 
