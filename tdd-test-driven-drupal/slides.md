@@ -23,37 +23,6 @@ code: Monaco, #6699FF, #999999, #6666FF, #66FF66, #66FF66, line-height(1.3)
 
 ---
 
-[.background-color: #FFFFFF]
-[.header: #111111, alignment(left)]
-
-## Diamond sponsor
-
-![inline 100%](images/ddd-2.jpeg)
-
----
-
-[.background-color: #FFFFFF]
-[.header: #111111, alignment(left)]
-
-## Platinum sponsors
-
-![inline 100%](images/ddd-3.jpeg)
-
----
-
-[.background-color: #FFFFFF]
-[.header: #111111, alignment(left)]
-
-## Gold sponsors
-
-![inline 100%](images/ddd-4.jpeg)
-
----
-
-![fit](images/ddd-5.jpg)
-
----
-
 [.build-lists: false]
 
 - Module and theme developers
