@@ -53,7 +53,7 @@ code: Monaco, #6699FF, #999999, #6666FF, #66FF66, #66FF66, line-height(1.3)
 - Part-time freelancer
 - Acquia certified Drupal 8 Grand Master
 - Drupal 7 & 8 core contributor
-- Symfony, Laravel, ~~Silex,~~ Sculpin
+- Drupal, Symfony, Laravel, Sculpin
 - @opdavies
 - www.oliverdavies.uk
 
@@ -91,6 +91,13 @@ Blog on my website
 
 ## test_driven_drupal_.com_
 
+^ Book on automated testing in Drupal 8
+Building a conference website
+
+---
+
+![80%](images/tdd-drupal-tasks.png)
+
 ---
 
 [.header: alignment(center)]
@@ -124,9 +131,9 @@ Blog on my website
 - Used on _11,046 sites_ in October 2012 (_84_ D5, _7,094_ D6, _3,868_ D7)
 - Used on _30,572 sites_ in March 2019 (_10_ D5, _1,180_ D6, _24,057_ D7, _5,335_ D8)
 - _#230_ most used module on Drupal.org
-- Crucial to preventing regressions when adding new features or fixing bugs
+- Crucial to preventing regressions
 
-^ Preventing regressions in my additions but also user submitted patches
+^ Preventing regressions when adding new features or fixing bugs, but also user submitted patches
 First module I ported to Drupal 8, aided by tests
 
 ---
@@ -159,7 +166,13 @@ ONO merge conflict
 - If the feature does not have an implementation, provide a test implementation.
 - Bug fixes should be accompanied by changes to a test (either modifying an existing test case or adding a new one) that demonstrate the bug.
 
-[.footer: https://www.drupal.org/core/gates#testing]
+[.footer: https://opdavi.es/drupal-core-testing-gate]
+
+---
+
+[.background-color: #FFFFFF]
+
+![fit inline](images/afilina-tweet.png)
 
 ---
 
@@ -168,6 +181,10 @@ ONO merge conflict
 - _Drupal 7_ - SimpleTest (testing) module provided as part of core
 - _Drupal 8_ - PHPUnit added as a core dependency
 - _PHPUnit Initiative_ - SimpleTest to be deprecated and removed in Drupal 9
+
+---
+
+![fit](images/simpletest-countdown.png)
 
 ---
 
@@ -181,7 +198,6 @@ ONO merge conflict
 - Class name must match the filename
 - Namespace must match the directory structure
 - One test class per feature
-- Each method must start with _test_
 
 ^ Different to D7
 
@@ -195,6 +211,13 @@ ONO merge conflict
 
 ---
 
+[.header: alignment(center)]
+
+## _3._ Assert
+## _2._ Act
+## _1._ Arrange
+
+---
 
 ```php
 // modules/example/tests/src/Functional/ExampleTest.php
@@ -221,6 +244,17 @@ Filename matches class name
 Namespace matches directory structure
 Extend BrowserTestBase
 Add test method
+
+---
+
+```php
+public function testSomething() {}
+
+public function test_something() {}
+
+/** @test */
+public function it_does_something() {}
+```
 
 ---
 
@@ -321,8 +355,6 @@ class JobTest extends UnitTestCase {
 ^ Within a Unit directory and namespace
 Called JobTest because it's testing the Job class
 Called testCreate because it's testing the create method
-Create a job with the create method
-Retrieve data from the object with getters
 
 ---
 
@@ -347,6 +379,8 @@ class JobTest extends UnitTestCase {
 }
 ```
 
+^ Create a job with the create method
+
 ---
 
 ```php, [.highlight: 13-15]
@@ -369,6 +403,9 @@ class JobTest extends UnitTestCase {
 
 }
 ```
+
+^ Retrieve data from the object with getters
+Asssert that the data is correct.
 
 ---
 
@@ -424,6 +461,8 @@ protected function setUp() {
 }
 ```
 
+^ Steps that need to run before each test method
+
 ---
 
 ```php, [.highlight: 6]
@@ -447,6 +486,8 @@ protected function setUp() {
   $this->processor = $this->container->get('advancedqueue.processor');
 }
 ```
+
+^ Create the database tables
 
 ---
 
@@ -472,6 +513,8 @@ protected function setUp() {
 }
 ```
 
+^ Create and save a queue
+
 ---
 
 ```php, [.highlight: 18]
@@ -495,6 +538,9 @@ protected function setUp() {
   $this->processor = $this->container->get('advancedqueue.processor');
 }
 ```
+
+^ Because it's a kernel test, we have access to the container
+to get the AdvancedQueue processor service.
 
 ---
 
@@ -524,6 +570,8 @@ public function testProcessor() {
 }
 ```
 
+^ Start by creating some jobs.
+
 ---
 
 ```php, [.highlight: 6-10]
@@ -542,6 +590,8 @@ public function testProcessor() {
   $this->assertEquals(4, $num_processed);
 }
 ```
+
+^ Add the jobs to the queue
 
 ---
 
@@ -562,6 +612,8 @@ public function testProcessor() {
 }
 ```
 
+^ Process the queue, and check the number of processed items.
+
 ---
 
 [.header: #53B0EB]
@@ -576,6 +628,8 @@ public function testProcessor() {
 - With/without JavaScript
 
 ^ testing profile
+Functional/FunctionalJavascript
+Nightwatch
 
 ---
 
@@ -593,6 +647,8 @@ class QueueTest extends BrowserTestBase {
 }
 ```
 
+^ Extend BrowserTestBase
+
 ---
 
 ```php, [.highlight: 6-8]
@@ -609,6 +665,9 @@ protected function setUp() {
   $this->drupalLogin($this->adminUser);
 }
 ```
+
+^ We have the ability to place blocks
+And create users with permissions and log them in
 
 ---
 
@@ -651,7 +710,6 @@ public function testQueueDeletion() {
 ```
 
 ---
-
 ```php, [.highlight: 12-14]
 // tests/src/Functional/QueueTest.php
 
@@ -672,6 +730,8 @@ public function testQueueDeletion() {
   $this->assertEmpty($queue_exists, 'The queue has been deleted from the database.');
 }
 ```
+
+^ I prefer to use the route name and Url::fromRoute
 
 ---
 
@@ -1003,18 +1063,17 @@ $ php core/scripts/run-tests.sh --class ExampleTest
 ---
 
 ```
-cd web
-
-../vendor/bin/phpunit -c core \
+vendor/bin/phpunit \
+-c core \
 modules/contrib/examples/phpunit_example
 ```
 
 ---
 
 ```
-cd web/core
+cd core
 
-../../vendor/bin/phpunit \
+../vendor/bin/phpunit \
 ../modules/contrib/examples/phpunit_example
 ```
 
@@ -1036,7 +1095,22 @@ cd web/core
 
 ---
 
+# _Docksal_
+
+```
+fin addon install phpunit
+
+fin phpunit modules/custom
+```
+
+^ Copies a stub phpunit.xml file or copies phpunit.xml.dist
+Runs the phpunit command within the correct directory
+
+---
+
 ![fit](images/phpstorm-integration.png)
+
+[.footer: opdavi.es/docksal-phpunit-phpstorm]
 
 ---
 

@@ -1,7 +1,7 @@
 autoscale: true
 build-lists: true
 footer-style: alignment(left)
-footer: @opdavies | oliverdavi.es
+footer: @opdavies | opdavi.es
 header-emphasis: #53B0EB
 header: alignment(left)
 text: alignment(left)
@@ -21,17 +21,16 @@ theme: poster, 8
 [.header: #111111]
 [.text: #111111, alignment(left)]
 
-![right 700%](../../me-phpnw.png)
+![right 700%](../images/me-phpnw.png)
 
 - Full stack Web Developer & System Administrator
 - Senior Developer at Microserve
 - Part-time freelancer
 - Acquia certified Drupal 8 Grand Master
-- Drupal 7 & 8 core contributor
+- Drupal core contributor
 - Open source project maintainer
-- Drupal Bristol and PHPSW co-organiser
 - opdavies (Drupal.org, GitHub, Twitter)
-- www.oliverdavi.es
+- www.oliverdavies.uk
 
 ^ Work at Microserve.
 Maintain Drupal modules, PHP CLI tools and libraries
@@ -57,10 +56,38 @@ Talking about some open source project that I've written or in the process of wr
 
 ---
 
+[.hide-footer]
+
+![fit](images/microserve-website.png)
+
+^ In 2018 we rebuilt the Microserve website
+
+---
+
+[.hide-footer]
+
+![fit](images/spatie-website.png)
+
+^ Looking for a way to replicate Spatie's open source page for Drupal
+
+---
+
 ### _Did you know that_
 ## Drupal.org has an API?
 
 ^ We're all familiar with Drupal.org (it's where everyone registered for this event), but did you know D.o has a public API?
+
+---
+
+[.hide-footer]
+
+![fit](images/api-page.png)
+
+---
+
+[.hide-footer]
+
+![fit](images/api-result.png)
 
 ---
 
@@ -69,7 +96,6 @@ Talking about some open source project that I've written or in the process of wr
 
 ^ The first thing I built was...
 It's what the Drupal examples are built on top of.
-Does everyone understand what I mean by a PHP library?
 
 ---
 
@@ -83,6 +109,24 @@ Does everyone understand what I mean by a PHP library?
 ^ Re-usable by Drupal 7, Drupal 8, Symfony, Laravel etc
 Testing already covered.
 Demo
+
+---
+
+[.hide-footer]
+
+![fit](images/library-github.png)
+
+---
+
+[.hide-footer]
+
+![fit](images/library-packagist.png)
+
+---
+
+[.hide-footer]
+
+![fit](images/library-travis.png)
 
 ---
 
@@ -111,6 +155,18 @@ $ composer require opdavies/drupalorg-api-php
 
 ---
 
+[.hide-footer]
+
+![fit](images/do-projects-settings.png)
+
+---
+
+[.hide-footer]
+
+![fit](images/do-projects-page.png)
+
+---
+
 ### _When is your_
 ## Drupalversary?
 
@@ -130,10 +186,16 @@ Demo
 
 ---
 
-- oliverdavi.es/_talks_
-- oliverdavi.es/_youtube_
-- oliverdavi.es/_github_
-- oliverdavi.es/_packagist_
+[.hide-footer]
+
+![fit](images/drupalversary.png)
+
+---
+
+- opdavi.es/_talks_
+- opdavi.es/_do-library_
+- opdavi.es/_drupalversary_
+- opdavi.es/_do-projects_
 
 ---
 
@@ -146,4 +208,3 @@ Demo
 [.header: alignment(center)]
 
 # Thanks
-### joind.in/_24044_
