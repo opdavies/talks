@@ -203,3 +203,15 @@
   event: Drupal Bristol
   location: Bristol, UK
   talk: Out of the Box Initiative Update
+
+- date: 17-04-2019
+  event: WPChelt (Cheltenham WordPress Meetup)
+  url: https://www.meetup.com/Cheltenham-WordPress-Meetup
+  location: Cheltenham, UK
+  talk: Taking Flight with Tailwind CSS
+
+- date: 18-05-2019
+  event: WordCamp Bristol 2019
+  url: https://2019.bristol.wordcamp.org
+  location: Bristol, UK
+  talk: Taking Flight with Tailwind CSS
