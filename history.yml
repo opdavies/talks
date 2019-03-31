@@ -158,3 +158,48 @@
   event: Drupal Somerset
   location: Glastonbury, UK
   talk: TDD - Test Driven Drupal
+
+- date: 05-07-2018
+  event: Drupal Developer Days 2018
+  location: Lisbon, Portugal
+  talk: TDD - Test Driven Drupal
+
+- date: 25-07-2018
+  event: Drupal Bristol
+  location: Bristol, UK
+  talk: Configuring all the things (in Drupal 8)
+
+- date: 31-07-2018
+  event: PHP South Wales
+  location: Cardiff, UK
+  talk: Taking Flight with Tailwind CSS
+
+- date: 28-08-2018
+  event: PHP South Wales
+  location: Cardiff, UK
+  talk: Using Laravel Collections, outside Laravel (lightning talk)
+
+- date: 23-01-2019
+  event: Drupal Bristol
+  location: Bristol, UK
+  talk: Deploying Drupal with Ansible and Ansistrano
+
+- date: 28-01-2019
+  event: Swansea Software Development Community (SSDC)
+  location: Swansea, UK
+  talk: Things you should know about PHP
+
+- date: 02-03-2019
+  event: DrupalCamp London 2019
+  location: London, UK
+  talk: TDD - Test Driven Drupal
+
+- date: 03-03-2019
+  event: DrupalCamp London 2019
+  location: London, UK
+  talk: Having fun with Drupal 8, PHP libraries and the Drupal.org API
+
+- date: 27-03-2019
+  event: Drupal Bristol
+  location: Bristol, UK
+  talk: Out of the Box Initiative Update
