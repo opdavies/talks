@@ -5,12 +5,15 @@ header-emphasis: #53B0EB
 header: alignment(left)
 text: alignment(left)
 text-emphasis: #53B0EB
-code: Monaco, line-height(1.2)
+code: line-height(1.2)
 
 [.hide-footer]
 [.header: alignment(center)]
 
-## _Taking Flight with_<br>Tailwind CSS
+## [fit] _Taking Flight with_
+## [fit] Tailwind CSS
+
+With Oliver Davies
 
 ---
 
@@ -200,10 +203,23 @@ var colors = {
 
 let mix = require('laravel-mix');
 
-require('laravel-mix-tailwind');
 
-mix.postCss('build', 'assets/css/app.css')
-   .tailwind();
+mix.postCss('build', 'assets/css/app.css', [
+  require('laravel-mix-tailwind')()
+])
+```
+
+---
+
+```js
+// webpack.mix.js
+
+let mix = require('laravel-mix');
+
+
+mix.postCss('build', 'assets/css/app.css', [
+  require('laravel-mix-tailwind')('./tailwind.config.js')
+])
 ```
 
 ---
