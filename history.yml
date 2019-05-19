@@ -215,3 +215,15 @@
   url: https://2019.bristol.wordcamp.org
   location: Bristol, UK
   talk: Taking Flight with Tailwind CSS
+
+- date: 2019-06-07
+  event: Blue Conf 2019
+  url: https://blueconf.co.uk
+  location: Cardiff, UK
+  talk: Taking Flight with Tailwind CSS
+
+- date: 2019-06-07
+  event: Blue Conf 2019
+  url: https://blueconf.co.uk
+  location: Cardiff, UK
+  talk: Decoupling Drupal with Vue.js (lightning talk)
