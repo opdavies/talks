@@ -3,51 +3,16 @@ build-lists: true
 code: line-height(1.2)
 header-emphasis: #53B0EB
 text: alignment(left)
-theme: plain jane, 8
+theme: simple, 8
 
 # [fit] **Deploying PHP applications** <br>using Ansible, Ansible Vault <br>and Ansistrano
 
-^ Ansible crash course
-Basic deployment
-Better deployment
+^ I work primarily with PHP, and there will be some PHP-isms in this talk (LAMP stack, Composer).
+Will be using a Drupal 8 application as the example, but the tools are tool and language agnostic.
 
 ---
 
-[.build-lists: false]
-[.header: #111111]
-
-![right 500%](../images/me-phpnw-inviqa.jpg)
-
-- Full Stack Web Developer & System Administrator
-- **Senior Software Engineer** at **Inviqa**
-- Acquia certified **Drupal 8 Grand Master**
-- Open sourcer
-- Drupal 7 & 8 **core contributor**
-- @opdavies
-- www.oliverdavies.uk
-
-^ Maintain Drupal modules, PHP CLI tools and libraries
-Blog on my website
-I work for Inviqa, but this based on my personal and side projects, though I've implemented similar solutions in the past.
-
----
-
-![350% inline](images/logo-platformsh.png)
-![150% inline](images/logo-acquia.png)
-![130% inline](images/logo-pantheon.png)
-
-^ Large, well-known managed hosting companies
-Optimised servers for PHP/Drupal applications
-Include some sort of deployment system
-
----
-
-![100%](images/logo-digital-ocean.png)
-![30%](images/logo-linode.png)
-![30%](https://www.vultr.com/media/media_card_1200x630.png)
-
-^ More applicable to virtual or dedicated servers with no existing deployment process
-Not enough budget for fully-managed, or using internal infrastructure
+# [fit] **Deploying ~~PHP~~ applications** <br>using Ansible, Ansible Vault <br>and Ansistrano
 
 ---
 
@@ -59,13 +24,57 @@ Not enough budget for fully-managed, or using internal infrastructure
 
 ---
 
+[.build-lists: false]
+[.header: #111111]
+
+![right 500%](../images/me-phpnw-inviqa.jpg)
+
+- Full Stack Software Developer & System Administrator
+- **Senior Software Engineer** at **Inviqa**
+- Acquia certified **Drupal 8 Grand Master** and **Cloud Pro**
+- Open sourcer
+- Drupal 7 & 8 **core contributor**
+- @opdavies
+- www.oliverdavies.uk
+
+^ Maintain Drupal modules, PHP CLI tools and libraries, Ansible roles
+Blog on my website
+I work primarily with Drupal and Symfony
+I work for Inviqa, but this based on my personal and side projects.
+I've been using Ansible for a number of years, initially only for provisioning and setting up my laptop, and later for application deployments
+
+---
+
+![350% inline](images/logo-platformsh.png)
+![150% inline](images/logo-acquia.png)
+![130% inline](images/logo-pantheon.png)
+
+^ Large, well-known managed hosting companies
+Optimised servers for PHP/Drupal applications
+Include some sort of deployment system
+This workflow doesn't apply to this scenario
+
+---
+
+![100%](images/logo-digital-ocean.png)
+![30%](images/logo-linode.png)
+![30%](images/logo-vultr.png)
+
+^ More applicable to virtual or dedicated servers with no existing deployment process
+Not enough budget for fully-managed, or using internal infrastructure
+This is where the this workflow would be useful
+
+---
+
 # **What is Ansible?**
 
 ---
 
-## Ansible is **open source software** that automates **software provisioning**, <br>**configuration management**, <br>and **application deployment**.
+## Ansible is an open-source **software provisioning, configuration management, and application-deployment** tool.
 
 ![10% right](images/ansible.png)
+
+[.footer: https://en.wikipedia.org/wiki/Ansible_(software)]
 
 ---
 
@@ -76,12 +85,14 @@ Not enough budget for fully-managed, or using internal infrastructure
 * CLI tool
 * Written in Python
 * Configured with YAML
-* Executes remote commands
+* Executes ad-hoc remote commands
 * Installs software packages
 * Performs deployment steps
 * Batteries included
 
 ^ Written in Python but you don't need to write or know Python to use it
+Drupal, Symfony and a lot of other projects use YAML
+First-party modules (SSH keys, file and directory management, package repositories, stopping/starting/restarting services, DO/Linode/AWS integration)
 
 ---
 
@@ -95,6 +106,10 @@ Not enough budget for fully-managed, or using internal infrastructure
 * Tasks
 * Roles
 
+^ Hosts: where your managed nodes/hosts are. Can be static or dynamic.
+Commands: run from a control node onto managed nodes
+Playbooks and Tasks: YAML representation of a series of commands/steps
+
 ---
 
 ![10% right](images/ansible.png)
@@ -106,10 +121,12 @@ Not enough budget for fully-managed, or using internal infrastructure
 * No server dependencies
 * Easy to add to an existing project
 * Includes relevant modules (e.g. Composer)
+* Idempotency
 
 ^ Drupal 8, Symfony, Ansible all use YAML
 Runs on any server with Python
 Plugins into Drupal via CLI apps like Drush and Drupal Console
+Changes are only made when needed (once)
 
 ---
 
@@ -123,6 +140,8 @@ Plugins into Drupal via CLI apps like Drush and Drupal Console
 [webservers]
 192.168.33.10
 ```
+
+^ Supports wildcards and ranges.
 
 ---
 
@@ -140,11 +159,11 @@ webservers:
 
 ---
 
-# `ansible all -m ping`
+# `ansible all -i hosts.yml -m ping`
 
 ---
 
-```
+```json
 webservers | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -156,11 +175,11 @@ webservers | SUCCESS => {
 
 ---
 
-# `ansible all `<br>`-m command `<br>`-a 'git pull `<br>`--chdir=/app'`
+# `ansible all `<br>`-i hosts.yml `<br>`-m command `<br>`-a 'git pull `<br>`--chdir=/app'`
 
 ---
 
-# `ansible all `<br>`-m git -a 'repo=https://github.com/opdavies/dransible dest=/app`'
+# `ansible all -i hosts.yml`<br>`-m git -a 'repo=https://github.com/opdavies/dransible dest=/app`'
 
 ---
 
@@ -170,9 +189,8 @@ webservers | SUCCESS => {
 
 ```yaml
 # playbook.yml
-
 ---
-- hosts: all
+- hosts: webservers # or 'all'
 
   vars:
     git_repo: https://github.com/opdavies/dransible
@@ -188,11 +206,11 @@ webservers | SUCCESS => {
 
 ---
 
-# `ansible-playbook `<br>`ansible/playbook.yml `<br>`-i hosts.yml`
+# `ansible-playbook `<br>`playbook.yml -i hosts.yml`
 
 ---
 
-# **Roles**
+# **Roles: <br>configuring a LAMP stack**
 
 ^ Collections of tasks, variables and handlers
 
@@ -200,7 +218,6 @@ webservers | SUCCESS => {
 
 ```yaml
 # requirements.yml
-
 ---
 - src: geerlingguy.apache
 - src: geerlingguy.composer
@@ -213,15 +230,14 @@ webservers | SUCCESS => {
 
 ---
 
-# `ansible-galaxy -r`<br>`ansible/requirements.yml install`
+# `ansible-galaxy -r`<br>`requirements.yml install`
 
 ---
 
 ```yaml
-# playbook.yml
-
+# provision.yml
 ---
-- hosts: all
+- hosts: webservers
 
   roles:
     - geerlingguy.apache
@@ -236,72 +252,171 @@ webservers | SUCCESS => {
 ---
 
 ```yaml
-# ansible/provision.yml
+# provision.yml
+---
+- hosts: webservers
+  # ...
 
-tasks:
-  - name: Create a database
-    mysql_db:
-      name: mydatabase
-      state: present
-
-  - name: Add the database user
-    mysql_user:
-      name: drupal
-      password: secret
-      priv: 'mydatabase.*:ALL'
-      state: present
+  vars:
+    apache_vhosts:
+      - servername: dransible.wip
+        documentroot: /app/web
 ```
 
 ---
 
-# **Basic deployment**
-
----
-
 ```yaml
-# ansible/deploy.yml
+# provision.yml
+---
+- hosts: webservers
+  # ...
 
-tasks:
-  - name: Creating project directory
-    file:
-      path: /app
-      state: directory
-
-  - name: Uploading application
-    synchronize:
-      src: "{{ playbook_dir }}/../"
-      dest: /app
-
-  - name: Installing Composer dependencies
-    composer:
-      command: install
-      working_dir: /app
+  vars:
+    # ...
+    php_version: '7.4'
+    php_packages_extra:
+      - libapache2-mod-php{{ php_version }}
+      - libpcre3-dev
 ```
 
 ---
 
-# Disadvantages
+```yaml
+# provision.yml
+---
+- hosts: webservers
+  # ...
 
-* Single point of failure
-* No ability to roll back
-* Sensitive data stored in plain text
+  vars:
+    # ...
+    mysql_databases:
+      - name: main
+
+    mysql_users:
+      - name: user
+        password: secret
+        priv: main.*:ALL
+```
 
 ---
 
-# **Keeping secrets: <br>Ansible Vault**
+# `ansible-playbook provision.yml -i hosts.yml`
 
 ---
 
-# `ansible-vault create` <br>`ansible/vault.yml`
+```
+PLAY [Provision the webserver machines] ********************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+ok: [webservers]
+
+TASK [geerlingguy.apache : Include OS-specific variables.] *************************************************************
+ok: [webservers]
+
+TASK [geerlingguy.apache : Include variables for Amazon Linux.] 
+skipping: [webservers]
+
+TASK [geerlingguy.apache : Define apache_packages.] ********************************************************************
+ok: [webservers]
+
+TASK [geerlingguy.apache : include_tasks] ******************************************************************************
+included: /Users/opdavies/.ansible/roles/geerlingguy.apache/tasks/setup-Debian.yml for webservers
+
+TASK [geerlingguy.apache : Update apt cache.] **************************************************************************
+changed: [webservers]
+```
+
+---
+
+```
+TASK [geerlingguy.composer : Ensure composer directory exists.] ********************************************************
+ok: [webservers]
+
+TASK [geerlingguy.composer : include_tasks] ****************************************************************************
+skipping: [webservers]
+
+TASK [geerlingguy.composer : include_tasks] ****************************************************************************
+skipping: [webservers]
+
+RUNNING HANDLER [geerlingguy.apache : restart apache] ******************************************************************
+changed: [webservers]
+
+RUNNING HANDLER [geerlingguy.mysql : restart mysql] ********************************************************************
+changed: [webservers]
+
+RUNNING HANDLER [geerlingguy.php : restart webserver] ******************************************************************
+changed: [webservers]
+
+RUNNING HANDLER [geerlingguy.php : restart php-fpm] ********************************************************************
+skipping: [webservers]
+
+PLAY RECAP *************************************************************************************************************
+webservers                 : ok=111  changed=32   unreachable=0    failed=0    skipped=78   rescued=0    ignored=0
+```
+
+---
+
+![70%](images/after-provision-1.png)
+
+---
+
+![70%](images/after-provision-2.png)
+
+---
+
+# **Keeping secrets with <br>Ansible Vault**
 
 ---
 
 ```yaml
-# ansible/vars/vault.yml
+# provision.yml
+---
+- hosts: webservers
+  # ...
+
+  vars:
+    # ...
+    mysql_databases:
+      - name: main
+
+    mysql_users:
+      - name: user
+        password: secret
+        priv: main.*:ALL
+```
 
 ---
-vault_database_name: mydatabase
-vault_database_user: drupal
+
+[.code-highlight: 11-14]
+
+```yaml
+# provision.yml
+---
+- hosts: webservers
+  # ...
+
+  vars:
+    # ...
+    mysql_databases:
+      - name: main
+
+    mysql_users:
+      - name: user
+        password: secret
+        priv: main.*:ALL
+```
+
+---
+
+# `ansible-vault create` <br>`vault.yml`
+
+---
+
+```yaml
+# vars/vault.yml
+---
+vault_database_name: main
+vault_database_user: user
 vault_database_password: secret
 ```
 
@@ -327,8 +442,7 @@ $ANSIBLE_VAULT;1.1;AES256
 ---
 
 ```yaml
-# ansible/vars/vars.yml
-
+# vars/vars.yml
 ---
 database_name: "{{ vault_database_name }}"
 database_user: "{{ vault_database_user }}"
@@ -338,22 +452,58 @@ database_password: "{{ vault_database_password }}"
 ---
 
 ```yaml
-# ansible/provision.yml
+# provision.yml
+---
+mysql_databases:
+  - '{{ database_name }}'
 
-tasks:
-  - name: Create a database
-    mysql_db:
-      name: '{{ database_name }}'
-      state: present
+mysql_users:
+  - name: '{{ database_user }}'
+    password: '{{ database_password }}'
+    priv: '{{ database_name }}.*:ALL'
 ```
 
 ---
 
-# `ansible-vault edit ansible/vault.yml`
+# `ansible-vault edit vault.yml`
 
 ---
 
-# `ansible-playbook` <br>`-i hosts.yml` <br>`ansible/deploy.yml`<br>`--ask-vault-pass`
+# `ansible-playbook` <br>`-i hosts.yml` <br>`deploy.yml`<br>`--ask-vault-pass`
+
+---
+
+# **Basic deployment**
+
+---
+
+```yaml
+# deploy.yml
+
+tasks:
+  - name: Creating project directory
+    file:
+      path: /app
+      state: directory
+
+  - name: Uploading application
+    synchronize:
+      src: "{{ playbook_dir }}/../"
+      dest: /app
+
+  - name: Installing Composer dependencies
+    composer:
+      command: install
+      working_dir: /app
+```
+
+---
+
+# Disadvantages
+
+* Single point of failure
+* No ability to roll back
+* Sensitive data stored in plain text
 
 ---
 
@@ -383,10 +533,9 @@ Ansible port of Capistrano
 ---
 
 ```yaml
-# ansible/requirements.yml
-
+# requirements.yml
 ---
-...
+# ...
 - ansistrano.deploy
 - ansistrano.rollback
 ```
@@ -394,7 +543,7 @@ Ansible port of Capistrano
 ---
 
 ```yaml
-# ansible/deploy.yml
+# deploy.yml
 
 ---
 - hosts: all
@@ -406,12 +555,11 @@ Ansible port of Capistrano
 ---
 
 ```yaml
-# ansible/deploy.yml
-
+# deploy.yml
 ---
-  ...
+  # ...
   vars:
-    project_deploy_dir: /var/www
+    project_deploy_dir: /app
 
     ansistrano_deploy_to: '{{ project_deploy_dir }}'
     ansistrano_deploy_via: git
@@ -421,7 +569,59 @@ Ansible port of Capistrano
 
 ---
 
-# `ansible-playbook` <br>`-i hosts.yml` <br>`ansible/deploy.yml`
+# `ansible-playbook` <br>`-i hosts.yml` <br>`deploy.yml`
+
+---
+
+```
+PLAY [webservers] ******************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+ok: [webservers]
+
+TASK [ansistrano.deploy : include_tasks] *******************************************************************************
+
+TASK [ansistrano.deploy : include_tasks] *******************************************************************************
+included: /Users/opdavies/.ansible/roles/ansistrano.deploy/tasks/setup.yml for webservers
+
+TASK [ansistrano.deploy : ANSISTRANO | Ensure deployment base path exists] *********************************************
+ok: [webservers]
+
+TASK [ansistrano.deploy : ANSISTRANO | Ensure releases folder exists] **************************************************
+ok: [webservers]
+
+TASK [ansistrano.deploy : ANSISTRANO | Ensure shared elements folder exists] *******************************************
+ok: [webservers]
+
+TASK [ansistrano.deploy : ANSISTRANO | Ensure shared paths exists] *****************************************************
+ok: [webservers] => (item=web/sites/default/files)
+```
+
+---
+
+```
+TASK [ansistrano.deploy : Update file permissions] *********************************************************************
+changed: [webservers]
+
+TASK [ansistrano.deploy : include_tasks] *******************************************************************************
+
+TASK [ansistrano.deploy : include_tasks] *******************************************************************************
+included: /Users/opdavies/.ansible/roles/ansistrano.deploy/tasks/cleanup.yml for webservers
+
+TASK [ansistrano.deploy : ANSISTRANO | Clean up releases] **************************************************************
+changed: [webservers]
+
+TASK [ansistrano.deploy : include_tasks] *******************************************************************************
+
+TASK [ansistrano.deploy : include_tasks] *******************************************************************************
+included: /Users/opdavies/.ansible/roles/ansistrano.deploy/tasks/anon-stats.yml for webservers
+
+TASK [ansistrano.deploy : ANSISTRANO | Send anonymous stats] ***********************************************************
+skipping: [webservers]
+
+PLAY RECAP *************************************************************************************************************
+webservers                 : ok=33   changed=14   unreachable=0    failed=0    skipped=7    rescued=0    ignored=0
+```
 
 ---
 
@@ -449,9 +649,12 @@ drwxr-xr-x  9 4096 Jul 22 20:30 20190722203038Z
 
 ---
 
-```yaml
-# ansible/rollback.yml
+# `ansible-playbook` <br>`-i hosts.yml` <br>`rollback.yml`
 
+---
+
+```yaml
+# rollback.yml
 ---
 - hosts: all
 
@@ -461,10 +664,6 @@ drwxr-xr-x  9 4096 Jul 22 20:30 20190722203038Z
   vars:
     ansistrano_deploy_to: '{{ project_deploy_dir }}'
 ```
-
----
-
-# `ansible-playbook` <br>`-i hosts.yml` <br>`ansible/rollback.yml`
 
 ---
 
@@ -482,23 +681,25 @@ Clean up = remove node_modules, database export, sqlite testing DB
 ---
 
 ```yaml
-# ansible/deploy.yml
+# deploy.yml
+---
+# ...
 
-vars:
-  ...
-  ansistrano_after_symlink_shared_tasks_file: "{{ playbook_dir }}/deploy/after-symlink-shared.yml"
-  ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/deploy/after-symlink.yml"
-  ansistrano_after_update_code_tasks_file: "{{ playbook_dir }}/deploy/after-update-code.yml"
+ansistrano_after_symlink_shared_tasks_file: '{{ playbook_dir }}/deploy/after-symlink-shared.yml'
+ansistrano_after_symlink_tasks_file: '{{ playbook_dir }}/deploy/after-symlink.yml'
+ansistrano_after_update_code_tasks_file: '{{ playbook_dir }}/deploy/after-update-code.yml'
 
-  release_web_path: "{{ ansistrano_release_path.stdout }}/web"
-  release_drush_path: "{{ ansistrano_release_path.stdout }}/vendor/bin/drush"
+release_web_path: '{{ ansistrano_release_path.stdout }}/web'
+release_drush_path: '{{ ansistrano_release_path.stdout }}/vendor/bin/drush'
 ```
+
+^ Each step has a 'before' and 'after' step
+Ansistrano allows us to add more things by providing a path to a playbook and adding additional steps. 
 
 ---
 
 ```yaml
-# ansible/deploy/after-update-code.yml
-
+# deploy/after-update-code.yml
 ---
 - name: Install Composer dependencies
   composer:
@@ -509,8 +710,7 @@ vars:
 ---
 
 ```yaml
-# ansible/deploy/after-symlink-shared.yml
-
+# deploy/after-symlink-shared.yml
 ---
 - name: Run database updates
   command: '{{ release_drush_path }} --root {{ release_web_path }} updatedb'
@@ -519,8 +719,7 @@ vars:
 ---
 
 ```yaml
-# ansible/deploy/after-symlink.yml
-
+# deploy/after-symlink.yml
 ---
 - name: Clear Drupal cache
   command: '{{ release_drush_path }} --root {{ release_web_path }} cache-rebuild'
@@ -532,30 +731,12 @@ vars:
 
 ---
 
-# **Demo**
-
----
-
-# **Questions?**
-
----
-
-![](images/drupalcon/contribution.jpg)
-
----
-
-![](images/drupalcon/feedback.jpg)
-
-^ Please leave feedback via the DrupalCon app, or via Twitter
-
----
-
 # **Managing data <br>across deployments**
 
 ---
 
 ```yaml
-# ansible/deploy.yml
+# deploy.yml
 
 vars:
   # ...
@@ -588,29 +769,27 @@ drwxr-xr-x 3  4096 Jan 22 17:30 ..
 -rw-r--r-- 1  6762 Jul 19 00:14 default.services.yml
 -rw-r--r-- 1 31342 Jul 19 00:14 default.settings.php
 lrwxrwxrwx 1    45 Jul 19 00:14 files -> ../../../../../shared/web/sites/default/files
-lrwxrwxrwx 1    35 Jul 19 00:12 settings.php -> /tmp/app/sites/default/settings.php
+-rw-r--r-- 1    35 Jul 19 00:12 settings.php
 ```
 
 ---
 
-# **Generating Drupal settings <br>files per deployment**
+# **Generating settings <br>files per deployment**
 
 ---
 
 ```yaml
-# ansible/vars/vault.yml
-
+# vars/vault.yml
 ---
-vault_database_name: drupal
-vault_database_user: drupal
-vault_database_password: drupal
+vault_database_name: main
+vault_database_user: user
+vault_database_password: secret
 vault_hash_salt: dfgiy$fd2!34gsf2*34g74
 ```
 ---
 
 ```yaml
-# ansible/vars/vars.yml
-
+# vars/vars.yml
 ---
 database_name: "{{ vault_database_name }}"
 database_password: "{{ vault_database_password }}"
@@ -621,11 +800,10 @@ hash_salt: "{{ vault_hash_salt }}"
 ---
 
 ```yaml
-# ansible/vars/vars.yml
-
+# vars/vars.yml
 ---
 drupal_settings:
-  - drupal_root: /tmp/app
+  - drupal_root: /app/web
     sites:
       - name: default
         settings:
@@ -642,11 +820,11 @@ drupal_settings:
             sync: ../config/sync
 ```
 
-
 ---
 
 ```php
 // templates/settings.php.j2
+
 // {{ ansible_managed }}
 
 {% for key, values in item.1.settings.databases.items() %}
@@ -665,25 +843,106 @@ $databases['{{ key }}']['{{ target }}'] = array(
 {% if item.1.settings.base_url is defined %}
 $base_url = '{{ item.1.settings.base_url }}';
 {% endif %}
+
+{# ... #}
 ```
 
 ---
 
 ```yaml
-- name: Remove settings.php
+# tasks/main.yml
+---
+- name: Ensure directory exists
   file:
-    path: '{{ ansistrano_release_path.stdout }}/web/sites/{{ item.1.name|default("default")}}/settings.php'
-    state: absent
+    state: directory
+    path: '{{ item.0.drupal_root }}/sites/{{ item.1.name|default("default") }}'
   with_subelements:
     - '{{ drupal_settings }}'
     - sites
+  no_log: true
 
-- name: Link settings.php
-  file:
-    src: '/tmp/app/sites/{{ item.1.name|default("default")}}/settings.php'
-    dest: '{{ ansistrano_release_path.stdout }}/web/sites/{{ item.1.name|default("default")}}/settings.php'
-    state: link
+- name: Create settings files
+  template:
+    src: settings.php.j2
+    dest: '{{ item.0.drupal_root }}/sites/{{ item.1.name|default("default") }}/{{ item.1.filename|default("settings.php") }}'
   with_subelements:
     - '{{ drupal_settings }}'
     - sites
+  no_log: true
 ```
+
+---
+
+# **Multiple environments**
+## Dev, test, production
+
+---
+
+```yaml
+mysql_databases:
+  - name: production
+  - name: staging
+
+mysql_users:
+  - name: production
+    password: '{{ live_db_password }}'
+    priv: '{{ live_db_name }}.*:ALL'
+
+  - name: staging
+    password: '{{ staging_db_password }}'
+    priv: staging.*:ALL
+```
+
+---
+
+```yaml
+# inventories/live.yml
+---
+all:
+  hosts:
+    webservers:
+      ansible_ssh_host: 192.168.33.10
+      ansible_ssh_port: 22
+
+      project_deploy_path: /app
+      git_branch: master
+
+      drupal_hash_salt: "{{ vault_drupal_hash_salt }}"
+      drupal_install: true
+
+      drupal_settings:
+        # ...
+```
+
+---
+
+```yaml
+# inventories/staging.yml
+---
+all:
+  hosts:
+    webservers:
+      ansible_ssh_host: 192.168.33.10
+      ansible_ssh_port: 22
+
+      project_deploy_path: /app-test
+      git_branch: develop
+
+      drupal_hash_salt: "{{ vault_drupal_hash_salt }}"
+      drupal_install: true
+
+      drupal_settings:
+        # ...
+```
+
+---
+
+# `ansible-playbook deploy.yml -i inventories/staging.yml`
+
+---
+
+# `ansible-playbook deploy.yml -i inventories/live.yml`
+
+---
+
+# **Questions?**
