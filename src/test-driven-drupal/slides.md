@@ -1,11 +1,6 @@
-theme: poster, 8
-autoscale: true
-build-lists: true
-header-emphasis: #53B0EB
-header: alignment(left)
-text: alignment(left)
-text-emphasis: #53B0EB
-code: Monaco, #6699FF, #999999, #6666FF, #66FF66, #66FF66, line-height(1.3)
+theme: poster, 8 autoscale: true build-lists: true header-emphasis: #53B0EB
+header: alignment(left) text: alignment(left) text-emphasis: #53B0EB code:
+Monaco, #6699FF, #999999, #6666FF, #66FF66, #66FF66, line-height(1.3)
 
 [.header: alignment(center)]
 
@@ -41,10 +36,8 @@ code: Monaco, #6699FF, #999999, #6666FF, #66FF66, #66FF66, line-height(1.3)
 
 ---
 
-[.background-color: #FFFFFF]
-[.build-lists: false]
-[.header: #111111]
-[.text: #111111, alignment(left)]
+[.background-color: #FFFFFF][.build-lists: false] [.header:
+#111111][.text: #111111, alignment(left)]
 
 ![right 800%](../images/me-phpnw.png)
 
@@ -57,9 +50,8 @@ code: Monaco, #6699FF, #999999, #6666FF, #66FF66, #66FF66, line-height(1.3)
 - @opdavies
 - www.oliverdavies.uk
 
-^ Work at Microserve.
-Maintain Drupal modules, PHP CLI tools and libraries
-Blog on my website
+^ Work at Microserve. Maintain Drupal modules, PHP CLI tools and libraries Blog
+on my website
 
 ---
 
@@ -74,8 +66,7 @@ Blog on my website
 
 ---
 
-[.background-color: #FFFFFF]
-[.text: #111111, alignment(left)]
+[.background-color: #FFFFFF][.text: #111111, alignment(left)]
 
 ![right 100%](../images/microserve-light.png)
 
@@ -89,10 +80,9 @@ Blog on my website
 
 [.header: alignment(center)]
 
-## test_driven_drupal_.com_
+## test*driven_drupal*.com\_
 
-^ Book on automated testing in Drupal 8
-Building a conference website
+^ Book on automated testing in Drupal 8 Building a conference website
 
 ---
 
@@ -129,12 +119,13 @@ Building a conference website
 - Become maintainer in 2012
 - Had some existing tests
 - Used on _11,046 sites_ in October 2012 (_84_ D5, _7,094_ D6, _3,868_ D7)
-- Used on _30,572 sites_ in March 2019 (_10_ D5, _1,180_ D6, _24,057_ D7, _5,335_ D8)
+- Used on _30,572 sites_ in March 2019 (_10_ D5, _1,180_ D6, _24,057_ D7,
+  _5,335_ D8)
 - _#230_ most used module on Drupal.org
 - Crucial to preventing regressions
 
-^ Preventing regressions when adding new features or fixing bugs, but also user submitted patches
-First module I ported to Drupal 8, aided by tests
+^ Preventing regressions when adding new features or fixing bugs, but also user
+submitted patches First module I ported to Drupal 8, aided by tests
 
 ---
 
@@ -154,9 +145,9 @@ First module I ported to Drupal 8, aided by tests
 - Drupal core requirement - _<https://www.drupal.org/core/gates#testing>_
 - More important with regular D8 releases
 
-^ Dave Liddament talk - better and cheaper to catch bugs earlier (e.g. whilst developing rather than after it's been released)
-Refer to tests when writing implementation code
-ONO merge conflict
+^ Dave Liddament talk - better and cheaper to catch bugs earlier (e.g. whilst
+developing rather than after it's been released) Refer to tests when writing
+implementation code ONO merge conflict
 
 ---
 
@@ -164,7 +155,8 @@ ONO merge conflict
 
 - New features should be accompanied by automated tests.
 - If the feature does not have an implementation, provide a test implementation.
-- Bug fixes should be accompanied by changes to a test (either modifying an existing test case or adding a new one) that demonstrate the bug.
+- Bug fixes should be accompanied by changes to a test (either modifying an
+  existing test case or adding a new one) that demonstrate the bug.
 
 [.footer: https://opdavi.es/drupal-core-testing-gate]
 
@@ -194,7 +186,7 @@ ONO merge conflict
 
 - PHP class with _.php_ extension
 - _tests/src_ directory within each module
-- Within the *Drupal\Tests\module_name* namespace
+- Within the _Drupal\Tests\module_name_ namespace
 - Class name must match the filename
 - Namespace must match the directory structure
 - One test class per feature
@@ -206,7 +198,9 @@ ONO merge conflict
 [.header: alignment(center)]
 
 ## _1._ Arrange
+
 ## _2._ Act
+
 ## _3._ Assert
 
 ---
@@ -214,7 +208,9 @@ ONO merge conflict
 [.header: alignment(center)]
 
 ## _3._ Assert
+
 ## _2._ Act
+
 ## _1._ Arrange
 
 ---
@@ -239,11 +235,8 @@ class ExampleTest extends BrowserTestBase {
 }
 ```
 
-^ PHP class
-Filename matches class name
-Namespace matches directory structure
-Extend BrowserTestBase
-Add test method
+^ PHP class Filename matches class name Namespace matches directory structure
+Extend BrowserTestBase Add test method
 
 ---
 
@@ -282,8 +275,8 @@ public function it_does_something() {}
 - What provides the most value to the client?
 - What would you not like to be fixing on a Friday afternoon or after hours?
 
-^ Payments! Anything related to money.
-What would provide the largest negative impact to the client if it were to fail?
+^ Payments! Anything related to money. What would provide the largest negative
+impact to the client if it were to fail?
 
 ---
 
@@ -293,7 +286,6 @@ What would provide the largest negative impact to the client if it were to fail?
 
 ---
 
-
 [.header: #53B0EB]
 
 ## What to test first?
@@ -301,10 +293,9 @@ What would provide the largest negative impact to the client if it were to fail?
 - Write a _new test_ when adding any _new functionality_
 - Write a _regression test_ when _fixing a bug_
 
-^ Use tests to replicate the bug
-Could be a new test, or adding to an existing test
-Test passes when the bug is fixed
-That issue cannot be re-added without the test failing again
+^ Use tests to replicate the bug Could be a new test, or adding to an existing
+test Test passes when the bug is fixed That issue cannot be re-added without the
+test failing again
 
 ---
 
@@ -352,9 +343,8 @@ class JobTest extends UnitTestCase {
 }
 ```
 
-^ Within a Unit directory and namespace
-Called JobTest because it's testing the Job class
-Called testCreate because it's testing the create method
+^ Within a Unit directory and namespace Called JobTest because it's testing the
+Job class Called testCreate because it's testing the create method
 
 ---
 
@@ -404,8 +394,7 @@ class JobTest extends UnitTestCase {
 }
 ```
 
-^ Retrieve data from the object with getters
-Asssert that the data is correct.
+^ Retrieve data from the object with getters Asssert that the data is correct.
 
 ---
 
@@ -539,8 +528,8 @@ protected function setUp() {
 }
 ```
 
-^ Because it's a kernel test, we have access to the container
-to get the AdvancedQueue processor service.
+^ Because it's a kernel test, we have access to the container to get the
+AdvancedQueue processor service.
 
 ---
 
@@ -627,9 +616,7 @@ public function testProcessor() {
 - Slower to run
 - With/without JavaScript
 
-^ testing profile
-Functional/FunctionalJavascript
-Nightwatch
+^ testing profile Functional/FunctionalJavascript Nightwatch
 
 ---
 
@@ -666,8 +653,8 @@ protected function setUp() {
 }
 ```
 
-^ We have the ability to place blocks
-And create users with permissions and log them in
+^ We have the ability to place blocks And create users with permissions and log
+them in
 
 ---
 
@@ -710,6 +697,7 @@ public function testQueueDeletion() {
 ```
 
 ---
+
 ```php, [.highlight: 12-14]
 // tests/src/Functional/QueueTest.php
 
@@ -761,21 +749,25 @@ public function testQueueDeletion() {
 [.header: #FFFFFF, alignment(left)]
 
 ### _How do I know_
+
 ## Which type of test to use?
 
 ---
 
 ### _Need a browser?_
+
 ## Use a functional test
 
 ---
 
 ### _Interact with other services?_
+
 ## Use a kernel test
 
 ---
 
 ### _Isolated PHP code?_
+
 ## Use a unit test
 
 ---
@@ -786,9 +778,9 @@ public function testQueueDeletion() {
 
 ## _Or should you test_ <br>your render array to generate the block?
 
-^ The answer might be 'both'.
-The right type of test to use might not be that obvious.
-You may be able to use a different type of test if you take a different approach.
+^ The answer might be 'both'. The right type of test to use might not be that
+obvious. You may be able to use a different type of test if you take a different
+approach.
 
 ---
 
@@ -876,8 +868,7 @@ statusCodeNotEquals()
 
 ---
 
-[.background-color: #FFFFFF]
-[.footer-style: #2F2F2F]
+[.background-color: #FFFFFF][.footer-style: #2f2f2f]
 
 ![inline 150%](images/broadbean.png)
 
@@ -892,7 +883,8 @@ statusCodeNotEquals()
 - Jobs need to be linked to offices
 - Job length specified in number of days
 - Path is specified as a field in the API
-- Application URL constructed from domain, includes role ID as a GET parameter and optionally UTM parameters
+- Application URL constructed from domain, includes role ID as a GET parameter
+  and optionally UTM parameters
 
 ---
 
@@ -941,9 +933,10 @@ $data = [
 
 - Added route to accept data from API as XML
 - Added system user with API role to authenticate
-- *active_for* converted from number of days to UNIX timestamp
-- *branch_name* and *locations* converted from plain text to entity reference (job node to office node)
-- *url_alias* property mapped to *path*
+- _active_for_ converted from number of days to UNIX timestamp
+- _branch_name_ and _locations_ converted from plain text to entity reference
+  (job node to office node)
+- _url_alias_ property mapped to _path_
 
 ---
 
@@ -954,8 +947,7 @@ $data = [
 - If no error, create the job node, return OK response to Broadbean
 - If an Exception is thrown, return an error code and message
 
-^ Required field missing
-Incorrect branch name
+^ Required field missing Incorrect branch name
 
 ---
 
@@ -975,9 +967,12 @@ Incorrect branch name
 ## Types of tests
 
 - _Unit:_ ensure number of days are converted to timestamps correctly
-- _Kernel:_ job nodes can be added and deleted, expired job nodes are deleted, application URL is generated correctly
-- _Functional:_ job nodes are created with the correct URL and the correct response code is returned
-- _FunctionalJavaScript:_ application URL is updated with JavaScript based on UTM parameters (hosting)
+- _Kernel:_ job nodes can be added and deleted, expired job nodes are deleted,
+  application URL is generated correctly
+- _Functional:_ job nodes are created with the correct URL and the correct
+  response code is returned
+- _FunctionalJavaScript:_ application URL is updated with JavaScript based on
+  UTM parameters (hosting)
 
 ---
 
@@ -998,6 +993,7 @@ Incorrect branch name
 ---
 
 ### _Option 1_
+
 ## SimpleTest module (UI)
 
 ---
@@ -1031,6 +1027,7 @@ Incorrect branch name
 ---
 
 ### _Option 2_
+
 ## Core script
 
 ---
@@ -1046,6 +1043,7 @@ $ php core/scripts/run-tests.sh --class ExampleTest
 ---
 
 ### _Option 3_
+
 ## PHPUnit
 
 ---
@@ -1103,8 +1101,8 @@ fin addon install phpunit
 fin phpunit modules/custom
 ```
 
-^ Copies a stub phpunit.xml file or copies phpunit.xml.dist
-Runs the phpunit command within the correct directory
+^ Copies a stub phpunit.xml file or copies phpunit.xml.dist Runs the phpunit
+command within the correct directory
 
 ---
 
@@ -1133,8 +1131,8 @@ Runs the phpunit command within the correct directory
 
 ---
 
-[.background-color: #FFFFFF]
-[.footer: https://github.com/foundersandcoders/testing-tdd-intro]
+[.background-color:
+#FFFFFF][.footer: https://github.com/foundersandcoders/testing-tdd-intro]
 [.footer-style: #2F2F2F]
 
 ![100%](images/tdd-loop.png)
@@ -1174,6 +1172,7 @@ Runs the phpunit command within the correct directory
 [.header: alignment(center)]
 
 ## [fit] _Building a new Drupal 8 Module with_
+
 ## [fit] test driven development
 
 ---
@@ -1203,12 +1202,14 @@ Runs the phpunit command within the correct directory
 ## Implementation
 
 - Use views module
-- Do the mininum amount at each step, make no assumptions, let the tests guide us
+- Do the mininum amount at each step, make no assumptions, let the tests guide
+  us
 - Start with functional test
 
 ---
 
 ### _Step 1_
+
 ## Create the module
 
 ---
@@ -1224,6 +1225,7 @@ type: 'module'
 ---
 
 ### _Step 2_
+
 ## Ensure the blog page exists
 
 ---
@@ -1250,7 +1252,6 @@ class BlogPageTest extends BrowserTestBase {
 
 ---
 
-
 ```php, [.highlight: 3]
 // tests/src/Functional/BlogPageTest.php
 
@@ -1272,7 +1273,6 @@ class BlogPageTest extends BrowserTestBase {
 ```
 
 ---
-
 
 ```php, [.highlight: 5-7]
 // tests/src/Functional/BlogPageTest.php
@@ -1296,7 +1296,6 @@ class BlogPageTest extends BrowserTestBase {
 
 ---
 
-
 ```php, [.highlight: 9]
 // tests/src/Functional/BlogPageTest.php
 
@@ -1319,7 +1318,6 @@ class BlogPageTest extends BrowserTestBase {
 
 ---
 
-
 ```php, [.highlight: 11-15]
 // tests/src/Functional/BlogPageTest.php
 
@@ -1341,7 +1339,6 @@ class BlogPageTest extends BrowserTestBase {
 ```
 
 ---
-
 
 ```bash, [.highlight: 1]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
@@ -1367,7 +1364,6 @@ Tests: 1, Assertions: 3, Errors: 1.
 
 ---
 
-
 ```bash, [.highlight: 4]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -1391,7 +1387,6 @@ Tests: 1, Assertions: 3, Errors: 1.
 ```
 
 ---
-
 
 ```bash, [.highlight: 5-13]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
@@ -1417,7 +1412,6 @@ Tests: 1, Assertions: 3, Errors: 1.
 
 ---
 
-
 ```bash, [.highlight: 14-16]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -1441,7 +1435,6 @@ Tests: 1, Assertions: 3, Errors: 1.
 ```
 
 ---
-
 
 ```bash, [.highlight: 18-19]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
@@ -1542,7 +1535,6 @@ Tests: 1, Assertions: 0, Errors: 1.
 
 ---
 
-
 ```yml,[.highlight: 1, 7-10]
 # tdd_blog.info.yml
 
@@ -1557,7 +1549,6 @@ dependencies:
 ```
 
 ---
-
 
 ```[.highlight: 10-13]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
@@ -1593,7 +1584,6 @@ Tests: 1, Assertions: 0, Errors: 1.
 
 ---
 
-
 ```[.highlight: 5, 9]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -1619,10 +1609,10 @@ OK (1 test, 3 assertions)
 ---
 
 ### _Step 3_
+
 ## Ensure only published articles are shown
 
 ---
-
 
 ```php
 public function testOnlyPublishedArticlesAreShown() {
@@ -1638,10 +1628,10 @@ public function testOnlyPublishedArticlesAreShown() {
 ---
 
 ### _Option 1_
+
 ## Functional tests
 
 ---
-
 
 ```php,[.highlight: 1, 4-8]
 // modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php
@@ -1668,7 +1658,6 @@ public function testOnlyPublishedArticlesAreShown() {
 
 ---
 
-
 ```php,[.highlight: 10-12]
 // modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php
 
@@ -1691,7 +1680,6 @@ public function testOnlyPublishedArticlesAreShown() {
 ```
 
 ---
-
 
 ```php, [.highlight: 13-17]
 // modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php
@@ -1717,10 +1705,10 @@ public function testOnlyPublishedArticlesAreShown() {
 ---
 
 ### _Option 2_
+
 ## Kernel tests
 
 ---
-
 
 ```php
 namespace Drupal\Tests\tdd_blog\Kernel;
@@ -1743,10 +1731,8 @@ class BlogPageTest extends EntityKernelTestBase {
 }
 ```
 
-^ Kernel test approach
-Dropping down a level
-No need for the brower, not asserting against HTML
-Faster to run
+^ Kernel test approach Dropping down a level No need for the brower, not
+asserting against HTML Faster to run
 
 ---
 
@@ -1819,7 +1805,6 @@ class BlogPageTest extends EntityKernelTestBase {
 
 ---
 
-
 ```[.highlight: 9-16]
 docker@cli:/var/www/web$ ../vendor/bin/phpunit -c core modules/custom/tdd_blog/tests/src/Kernel/
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -1844,7 +1829,6 @@ Tests: 1, Assertions: 2, Errors: 1.
 
 ---
 
-
 ```php, [.highlight: 2]
 public function testOnlyPublishedArticlesAreShown() {
   $this->installConfig(['filter']);
@@ -1856,7 +1840,6 @@ public function testOnlyPublishedArticlesAreShown() {
 ```
 
 ---
-
 
 ```php, [.highlight: 8]
 public function testOnlyPublishedArticlesAreShown() {
@@ -1871,7 +1854,6 @@ public function testOnlyPublishedArticlesAreShown() {
 ```
 
 ---
-
 
 ```php, [.highlight: 3]
 ...
@@ -1894,7 +1876,6 @@ public function testOnlyPublishedArticlesAreShown() {
 
 ---
 
-
 ```php, [.highlight: 6]
 ...
 
@@ -1916,7 +1897,6 @@ public function testOnlyPublishedArticlesAreShown() {
 
 ---
 
-
 ```php, [.highlight: 8-15]
 ...
 
@@ -1936,12 +1916,10 @@ public function testOnlyPublishedArticlesAreShown() {
 }
 ```
 
-^ Assert
-Should only be one result, should be node 2
-Node IDs are reset on each test method
+^ Assert Should only be one result, should be node 2 Node IDs are reset on each
+test method
 
 ---
-
 
 ```
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -1963,7 +1941,6 @@ Tests: 1, Assertions: 4, Failures: 1.
 ```
 
 ---
-
 
 ```[.highlight: 8-13]
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -1990,7 +1967,8 @@ Tests: 1, Assertions: 4, Failures: 1.
 
 ---
 
->- _There is no content type filter on the view_
+> - _There is no content type filter on the view_
+
 - Add the filter
 - Re-export and save the view
 
@@ -2024,10 +2002,10 @@ OK (1 test, 6 assertions)
 ---
 
 ### _Step 4_
+
 ## Ensure the articles are ordered by date
 
 ---
-
 
 ```php
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
@@ -2042,7 +2020,6 @@ public function testArticlesAreOrderedByDate() {
 ```
 
 ---
-
 
 ```php, [.highlight: 4-9]
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
@@ -2072,7 +2049,6 @@ $this->createNode([
 ^ Array of default values
 
 ---
-
 
 ```php, [.highlight: 10-11]
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
@@ -2116,7 +2092,6 @@ public function testArticlesAreOrderedByDate() {
 
 ---
 
-
 ```php, [.highlight: 5-9, 17-18]
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
 
@@ -2140,7 +2115,6 @@ public function testArticlesAreOrderedByDate() {
 ```
 
 ---
-
 
 ```
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -2255,8 +2229,7 @@ OK (1 test, 5 assertions)
 
 ![fit](images/tdd-blog-installed.png)
 
-^ Using the minimal installation profile
-Post 3 is unpublished
+^ Using the minimal installation profile Post 3 is unpublished
 
 ---
 
@@ -2277,45 +2250,49 @@ Post 3 is unpublished
 - Writing tests is an _investment_
 - OK to _start small_, introduce tests gradually
 - Easier to _refactor_
-- Tests can pass, but things can _still be broken_. Tests only report on what they cover.
+- Tests can pass, but things can _still be broken_. Tests only report on what
+  they cover.
 
-^ Made me think about how I'm going to do something more starting to do it
-Less cruft, only write code that serves a purpose
-Spending time writing tests pays dividends later on
-Start by introducing tests for new features or regression tests when fixing bugs
-If you know things pass, then you can refactor code knowing if something is broken
-Manual testing is still important
+^ Made me think about how I'm going to do something more starting to do it Less
+cruft, only write code that serves a purpose Spending time writing tests pays
+dividends later on Start by introducing tests for new features or regression
+tests when fixing bugs If you know things pass, then you can refactor code
+knowing if something is broken Manual testing is still important
 
 ---
 
 [.header: alignment(center)]
 
 ## [fit] _Having tests does not mean_
+
 ## [fit] there will be no bugs
 
-^ Only means that the tests you wrote are passing
-You may not have included a certain use case
-Be sure to test in the UI!
-We can test what happens in a test when a user has a permission, but in our site we still need to assign the permission to a role and the role to a user.
+^ Only means that the tests you wrote are passing You may not have included a
+certain use case Be sure to test in the UI! We can test what happens in a test
+when a user has a permission, but in our site we still need to assign the
+permission to a role and the role to a user.
 
 ---
 
 ### _You might be testing the wrong thing_
+
 ## Maybe it doesn't work the way you think it does
 
 ---
 
 ### _Have you written enough assertions?_
+
 ## Have you only covered the 'happy path' scenarios?
 
-^ If your tests are passing but there is an issue, maybe you haven't written enough assertions
-Be sure to check for the negative use cases too
-Check that something is not included as well as what should be included
-What if you pass in an incorrect value?
+^ If your tests are passing but there is an issue, maybe you haven't written
+enough assertions Be sure to check for the negative use cases too Check that
+something is not included as well as what should be included What if you pass in
+an incorrect value?
 
 ---
 
 ### _Other modules can affect things_
+
 ## Tests may pass, but fail when other modules are enabled
 
 ---
@@ -2323,6 +2300,7 @@ What if you pass in an incorrect value?
 [.header: alignment(center)]
 
 ## [fit] _Testing may add time now_
+
 ## [fit] but save more time in the future
 
 ---
@@ -2330,19 +2308,20 @@ What if you pass in an incorrect value?
 [.header: alignment(center)]
 
 ## [fit] _How do you get quicker at writing tests?_
+
 # [fit] By writing more tests
 
-^ Practice makes perfect
-Become more familar with and knowledge of recurring errors
-Find better practices and approaches. Different base classes? Less setup steps. Less time, more productive.
+^ Practice makes perfect Become more familar with and knowledge of recurring
+errors Find better practices and approaches. Different base classes? Less setup
+steps. Less time, more productive.
 
 ---
 
 ## _Start small_
+
 ## Some tests are better than no tests
 
 ---
-
 
 [.background-color: #FFFFFF]
 
@@ -2371,5 +2350,7 @@ Find better practices and approaches. Different base classes? Less setup steps. 
 [.header: alignment(center)]
 
 # Thanks
+
 ### _@opdavies_
+
 ### _oliverdavies.uk_

@@ -1,14 +1,11 @@
-autoscale: true
-build-lists: true
-code: line-height(1.2)
-header-emphasis: #53B0EB
-text: alignment(left)
-theme: simple, 8
+autoscale: true build-lists: true code: line-height(1.2) header-emphasis:
+#53B0EB text: alignment(left) theme: simple, 8
 
 # [fit] **Deploying PHP applications** <br>using Ansible, Ansible Vault <br>and Ansistrano
 
-^ I work primarily with PHP, and there will be some PHP-isms in this talk (LAMP stack, Composer).
-Will be using a Drupal 8 application as the example, but the tools are tool and language agnostic.
+^ I work primarily with PHP, and there will be some PHP-isms in this talk (LAMP
+stack, Composer). Will be using a Drupal 8 application as the example, but the
+tools are tool and language agnostic.
 
 ---
 
@@ -18,14 +15,13 @@ Will be using a Drupal 8 application as the example, but the tools are tool and 
 
 ## **What we'll be looking at**
 
-* **Ansible** crash course
-* Keeping secrets with **Ansible Vault**
-* Deployments with **Ansistrano**
+- **Ansible** crash course
+- Keeping secrets with **Ansible Vault**
+- Deployments with **Ansistrano**
 
 ---
 
-[.build-lists: false]
-[.header: #111111]
+[.build-lists: false][.header: #111111]
 
 ![right 500%](../images/me-phpnw-inviqa.jpg)
 
@@ -37,31 +33,28 @@ Will be using a Drupal 8 application as the example, but the tools are tool and 
 - @opdavies
 - www.oliverdavies.uk
 
-^ Maintain Drupal modules, PHP CLI tools and libraries, Ansible roles
-Blog on my website
-I work primarily with Drupal and Symfony
-I work for Inviqa, but this based on my personal and side projects.
-I've been using Ansible for a number of years, initially only for provisioning and setting up my laptop, and later for application deployments
+^ Maintain Drupal modules, PHP CLI tools and libraries, Ansible roles Blog on my
+website I work primarily with Drupal and Symfony I work for Inviqa, but this
+based on my personal and side projects. I've been using Ansible for a number of
+years, initially only for provisioning and setting up my laptop, and later for
+application deployments
 
 ---
 
 ![350% inline](images/logo-platformsh.png)
-![150% inline](images/logo-acquia.png)
-![130% inline](images/logo-pantheon.png)
+![150% inline](images/logo-acquia.png) ![130% inline](images/logo-pantheon.png)
 
-^ Large, well-known managed hosting companies
-Optimised servers for PHP/Drupal applications
-Include some sort of deployment system
-This workflow doesn't apply to this scenario
+^ Large, well-known managed hosting companies Optimised servers for PHP/Drupal
+applications Include some sort of deployment system This workflow doesn't apply
+to this scenario
 
 ---
 
-![100%](images/logo-digital-ocean.png)
-![30%](images/logo-linode.png)
+![100%](images/logo-digital-ocean.png) ![30%](images/logo-linode.png)
 ![30%](images/logo-vultr.png)
 
-^ More applicable to virtual or dedicated servers with no existing deployment process
-Not enough budget for fully-managed, or using internal infrastructure
+^ More applicable to virtual or dedicated servers with no existing deployment
+process Not enough budget for fully-managed, or using internal infrastructure
 This is where the this workflow would be useful
 
 ---
@@ -82,17 +75,18 @@ This is where the this workflow would be useful
 
 ### **What is Ansible?**
 
-* CLI tool
-* Written in Python
-* Configured with YAML
-* Executes ad-hoc remote commands
-* Installs software packages
-* Performs deployment steps
-* Batteries included
+- CLI tool
+- Written in Python
+- Configured with YAML
+- Executes ad-hoc remote commands
+- Installs software packages
+- Performs deployment steps
+- Batteries included
 
-^ Written in Python but you don't need to write or know Python to use it
-Drupal, Symfony and a lot of other projects use YAML
-First-party modules (SSH keys, file and directory management, package repositories, stopping/starting/restarting services, DO/Linode/AWS integration)
+^ Written in Python but you don't need to write or know Python to use it Drupal,
+Symfony and a lot of other projects use YAML First-party modules (SSH keys, file
+and directory management, package repositories, stopping/starting/restarting
+services, DO/Linode/AWS integration)
 
 ---
 
@@ -100,15 +94,15 @@ First-party modules (SSH keys, file and directory management, package repositori
 
 ### **What is Ansible?**
 
-* Hosts/Inventories
-* Commands
-* Playbooks
-* Tasks
-* Roles
+- Hosts/Inventories
+- Commands
+- Playbooks
+- Tasks
+- Roles
 
-^ Hosts: where your managed nodes/hosts are. Can be static or dynamic.
-Commands: run from a control node onto managed nodes
-Playbooks and Tasks: YAML representation of a series of commands/steps
+^ Hosts: where your managed nodes/hosts are. Can be static or dynamic. Commands:
+run from a control node onto managed nodes Playbooks and Tasks: YAML
+representation of a series of commands/steps
 
 ---
 
@@ -116,17 +110,16 @@ Playbooks and Tasks: YAML representation of a series of commands/steps
 
 ### **Why Ansible?**
 
-* Familiar syntax
-* Easily readable
-* No server dependencies
-* Easy to add to an existing project
-* Includes relevant modules (e.g. Composer)
-* Idempotency
+- Familiar syntax
+- Easily readable
+- No server dependencies
+- Easy to add to an existing project
+- Includes relevant modules (e.g. Composer)
+- Idempotency
 
-^ Drupal 8, Symfony, Ansible all use YAML
-Runs on any server with Python
-Plugins into Drupal via CLI apps like Drush and Drupal Console
-Changes are only made when needed (once)
+^ Drupal 8, Symfony, Ansible all use YAML Runs on any server with Python Plugins
+into Drupal via CLI apps like Drush and Drupal Console Changes are only made
+when needed (once)
 
 ---
 
@@ -175,7 +168,7 @@ webservers | SUCCESS => {
 
 ---
 
-# `ansible all `<br>`-i hosts.yml `<br>`-m command `<br>`-a 'git pull `<br>`--chdir=/app'`
+# `ansible all`<br>`-i hosts.yml`<br>`-m command`<br>`-a 'git pull`<br>`--chdir=/app'`
 
 ---
 
@@ -206,7 +199,7 @@ webservers | SUCCESS => {
 
 ---
 
-# `ansible-playbook `<br>`playbook.yml -i hosts.yml`
+# `ansible-playbook`<br>`playbook.yml -i hosts.yml`
 
 ---
 
@@ -313,7 +306,7 @@ ok: [webservers]
 TASK [geerlingguy.apache : Include OS-specific variables.] *************************************************************
 ok: [webservers]
 
-TASK [geerlingguy.apache : Include variables for Amazon Linux.] 
+TASK [geerlingguy.apache : Include variables for Amazon Linux.]
 skipping: [webservers]
 
 TASK [geerlingguy.apache : Define apache_packages.] ********************************************************************
@@ -444,9 +437,9 @@ $ANSIBLE_VAULT;1.1;AES256
 ```yaml
 # vars/vars.yml
 ---
-database_name: "{{ vault_database_name }}"
-database_user: "{{ vault_database_user }}"
-database_password: "{{ vault_database_password }}"
+database_name: '{{ vault_database_name }}'
+database_user: '{{ vault_database_user }}'
+database_password: '{{ vault_database_password }}'
 ```
 
 ---
@@ -488,7 +481,7 @@ tasks:
 
   - name: Uploading application
     synchronize:
-      src: "{{ playbook_dir }}/../"
+      src: '{{ playbook_dir }}/../'
       dest: /app
 
   - name: Installing Composer dependencies
@@ -501,9 +494,9 @@ tasks:
 
 # Disadvantages
 
-* Single point of failure
-* No ability to roll back
-* Sensitive data stored in plain text
+- Single point of failure
+- No ability to roll back
+- Sensitive data stored in plain text
 
 ---
 
@@ -513,20 +506,19 @@ tasks:
 
 ![full inline](images/ansistrano.png)
 
-^ Just another role, specifically for deployments
-Ansible port of Capistrano
+^ Just another role, specifically for deployments Ansible port of Capistrano
 
 ---
 
 # Features
 
-* Multiple release directories
-* Shared paths and files
-* Customisable
-* Multiple deployment strategies
-* Multi-stage environments
-* Prune old releases
-* Rollbacks
+- Multiple release directories
+- Shared paths and files
+- Customisable
+- Multiple deployment strategies
+- Multi-stage environments
+- Prune old releases
+- Rollbacks
 
 ^ rsync, Git, SVN etc
 
@@ -544,7 +536,6 @@ Ansible port of Capistrano
 
 ```yaml
 # deploy.yml
-
 ---
 - hosts: all
 
@@ -557,14 +548,14 @@ Ansible port of Capistrano
 ```yaml
 # deploy.yml
 ---
-  # ...
-  vars:
-    project_deploy_dir: /app
+# ...
+vars:
+  project_deploy_dir: /app
 
-    ansistrano_deploy_to: '{{ project_deploy_dir }}'
-    ansistrano_deploy_via: git
-    ansistrano_git_branch: master
-    ansistrano_git_repo: 'git@github.com:opdavies/dransible'
+  ansistrano_deploy_to: '{{ project_deploy_dir }}'
+  ansistrano_deploy_via: git
+  ansistrano_git_branch: master
+  ansistrano_git_repo: 'git@github.com:opdavies/dransible'
 ```
 
 ---
@@ -673,10 +664,9 @@ drwxr-xr-x  9 4096 Jul 22 20:30 20190722203038Z
 
 ![inline 140%](images/ansistrano-flow.png)
 
-^ Shared = files directory, logs
-Before/after symlink shared = run tests
-Symlink = 'current' symlink, site is live
-Clean up = remove node_modules, database export, sqlite testing DB
+^ Shared = files directory, logs Before/after symlink shared = run tests Symlink
+= 'current' symlink, site is live Clean up = remove node_modules, database
+export, sqlite testing DB
 
 ---
 
@@ -685,16 +675,19 @@ Clean up = remove node_modules, database export, sqlite testing DB
 ---
 # ...
 
-ansistrano_after_symlink_shared_tasks_file: '{{ playbook_dir }}/deploy/after-symlink-shared.yml'
-ansistrano_after_symlink_tasks_file: '{{ playbook_dir }}/deploy/after-symlink.yml'
-ansistrano_after_update_code_tasks_file: '{{ playbook_dir }}/deploy/after-update-code.yml'
+ansistrano_after_symlink_shared_tasks_file:
+  '{{ playbook_dir }}/deploy/after-symlink-shared.yml'
+ansistrano_after_symlink_tasks_file:
+  '{{ playbook_dir }}/deploy/after-symlink.yml'
+ansistrano_after_update_code_tasks_file:
+  '{{ playbook_dir }}/deploy/after-update-code.yml'
 
 release_web_path: '{{ ansistrano_release_path.stdout }}/web'
 release_drush_path: '{{ ansistrano_release_path.stdout }}/vendor/bin/drush'
 ```
 
-^ Each step has a 'before' and 'after' step
-Ansistrano allows us to add more things by providing a path to a playbook and adding additional steps. 
+^ Each step has a 'before' and 'after' step Ansistrano allows us to add more
+things by providing a path to a playbook and adding additional steps.
 
 ---
 
@@ -722,7 +715,8 @@ Ansistrano allows us to add more things by providing a path to a playbook and ad
 # deploy/after-symlink.yml
 ---
 - name: Clear Drupal cache
-  command: '{{ release_drush_path }} --root {{ release_web_path }} cache-rebuild'
+  command:
+    '{{ release_drush_path }} --root {{ release_web_path }} cache-rebuild'
 ```
 
 ---
@@ -741,7 +735,7 @@ Ansistrano allows us to add more things by providing a path to a playbook and ad
 vars:
   # ...
   ansistrano_shared_paths:
-    - "{{ drupal_root }}/sites/default/files"
+    - '{{ drupal_root }}/sites/default/files'
 ```
 
 ---
@@ -786,15 +780,16 @@ vault_database_user: user
 vault_database_password: secret
 vault_hash_salt: dfgiy$fd2!34gsf2*34g74
 ```
+
 ---
 
 ```yaml
 # vars/vars.yml
 ---
-database_name: "{{ vault_database_name }}"
-database_password: "{{ vault_database_password }}"
-database_user: "{{ vault_database_user }}"
-hash_salt: "{{ vault_hash_salt }}"
+database_name: '{{ vault_database_name }}'
+database_password: '{{ vault_database_password }}'
+database_user: '{{ vault_database_user }}'
+hash_salt: '{{ vault_hash_salt }}'
 ```
 
 ---
@@ -864,7 +859,9 @@ $base_url = '{{ item.1.settings.base_url }}';
 - name: Create settings files
   template:
     src: settings.php.j2
-    dest: '{{ item.0.drupal_root }}/sites/{{ item.1.name|default("default") }}/{{ item.1.filename|default("settings.php") }}'
+    dest:
+      '{{ item.0.drupal_root }}/sites/{{ item.1.name|default("default") }}/{{
+      item.1.filename|default("settings.php") }}'
   with_subelements:
     - '{{ drupal_settings }}'
     - sites
@@ -874,6 +871,7 @@ $base_url = '{{ item.1.settings.base_url }}';
 ---
 
 # **Multiple environments**
+
 ## Dev, test, production
 
 ---
@@ -907,7 +905,7 @@ all:
       project_deploy_path: /app
       git_branch: master
 
-      drupal_hash_salt: "{{ vault_drupal_hash_salt }}"
+      drupal_hash_salt: '{{ vault_drupal_hash_salt }}'
       drupal_install: true
 
       drupal_settings:
@@ -928,7 +926,7 @@ all:
       project_deploy_path: /app-test
       git_branch: develop
 
-      drupal_hash_salt: "{{ vault_drupal_hash_salt }}"
+      drupal_hash_salt: '{{ vault_drupal_hash_salt }}'
       drupal_install: true
 
       drupal_settings:

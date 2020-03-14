@@ -1,10 +1,5 @@
-autoscale: true
-build-lists: true
-header-emphasis: #3D85C6
-header: alignment(left)
-text: alignment(left)
-text-emphasis: #3D85C6
-theme: poster, 8
+autoscale: true build-lists: true header-emphasis: #3D85C6 header:
+alignment(left) text: alignment(left) text-emphasis: #3D85C6 theme: poster, 8
 code: Monaco, #6699FF, #999999, #6666FF, #66FF66, #66FF66, line-height(1.5)
 
 [.header: alignment(center)]
@@ -12,6 +7,7 @@ code: Monaco, #6699FF, #999999, #6666FF, #66FF66, #66FF66, line-height(1.5)
 ![](../images/title.png)
 
 # [fit] Drupal Testing Workshop
+
 ### _September 2018_
 
 ---
@@ -32,15 +28,16 @@ code: Monaco, #6699FF, #999999, #6666FF, #66FF66, #66FF66, line-height(1.5)
 - Drupal core requirement - _<https://www.drupal.org/core/gates#testing>_
 - More important with regular D8 releases
 
-^ Dave Liddament talk - better and cheaper to catch bugs earlier (e.g. whilst developing rather than after it's been released)
-Refer to tests when writing implementation code
-ONO merge conflict
+^ Dave Liddament talk - better and cheaper to catch bugs earlier (e.g. whilst
+developing rather than after it's been released) Refer to tests when writing
+implementation code ONO merge conflict
 
 ---
 
 [.header: alignment(center)]
 
 ## [fit] _Having tests does not mean_
+
 ## [fit] there will be no bugs
 
 ---
@@ -48,6 +45,7 @@ ONO merge conflict
 [.header: alignment(center)]
 
 ## [fit] _Testing may add time now_
+
 ## [fit] but save more time in the future
 
 ---
@@ -68,7 +66,7 @@ ONO merge conflict
 
 - PHP class with _.php_ extension
 - _tests/src_ directory within each module
-- Within the *Drupal\Tests\module_name* namespace
+- Within the _Drupal\Tests\module_name_ namespace
 - Class name must match the filename
 - Namespace must match the directory structure
 - One test class per feature
@@ -79,6 +77,7 @@ ONO merge conflict
 ---
 
 ### _Exercise 1_
+
 ## Local site setup
 
 ---
@@ -109,11 +108,13 @@ ONO merge conflict
 ---
 
 ### _Exercise 2_
+
 ## Running Tests
 
 ---
 
 ### _Option 1_
+
 ## Simpletest module (UI)
 
 ---
@@ -147,6 +148,7 @@ ONO merge conflict
 ---
 
 ### _Option 2_
+
 ## Command line
 
 ---
@@ -181,7 +183,7 @@ cd web/core
 
 ---
 
-## Pro-tip: Add paths to _$PATH_
+## Pro-tip: Add paths to _\$PATH_
 
 ```bash
 # ~/.zshrc
@@ -196,6 +198,7 @@ export PATH=node_modules/.bin:$PATH
 ---
 
 ### _Option 2_
+
 ## CLI with Docksal
 
 ---
@@ -223,6 +226,7 @@ cd web/core
 ---
 
 ### _Option 3_
+
 ## Docksal PHPUnit addon
 
 ---
@@ -234,8 +238,7 @@ cd web/core
 - Copies a stub phpunit.xml file if exists, or duplicates phpunit.xml.dist
 - Shorter command, combines two actions
 
-^ Checks for core/phpunit.xml on each test run
-Will create one if is not present
+^ Checks for core/phpunit.xml on each test run Will create one if is not present
 
 ---
 
@@ -271,6 +274,7 @@ fin phpunit web/modules/contrib/examples/phpunit_example
 Copying /var/www/web/core/phpunit.xml.dist to /var/www/web/core/phpunit.xml.
 Please edit it's values as needed and re-run 'fin phpunit'.
 ```
+
 ---
 
 ```
@@ -290,6 +294,7 @@ OK (34 tests, 41 assertions)
 ---
 
 ### _Option 4_
+
 ## IDE/text editor integration
 
 ---
@@ -317,8 +322,6 @@ OK (34 tests, 41 assertions)
 
 ---
 
-
-
 [.header: #3D85C6]
 
 ## Functional tests
@@ -327,12 +330,12 @@ OK (34 tests, 41 assertions)
 - Easiest to start with
 - Provide most value
 
-^ Less setup steps
-No mocking etc.
+^ Less setup steps No mocking etc.
 
 ---
 
 ### _Exercise_
+
 ## Let's write a <br>functional test
 
 ---
@@ -356,7 +359,6 @@ type: module
 - Create an _ExampleFunctionalTest.php_ file
 
 ---
-
 
 ```php
 // ExampleFunctionalTest.php
@@ -393,10 +395,8 @@ public function test_example_page_exists() {
 }
 ```
 
-^ Snake case test method names
-Still works because it has the 'test' prefix
-More readable than camel case?
-Works with Simpletest/D7
+^ Snake case test method names Still works because it has the 'test' prefix More
+readable than camel case? Works with Simpletest/D7
 
 ---
 
@@ -410,8 +410,7 @@ public function example_page_exists() {
 }
 ```
 
-^ Remove the prefix, use annotation
-PHPUnit only
+^ Remove the prefix, use annotation PHPUnit only
 
 ---
 
@@ -541,6 +540,7 @@ OK (1 test, 3 assertions)
 ---
 
 ### _Exercise_
+
 ## Let's write a <br>kernel test
 
 ---
@@ -692,6 +692,7 @@ OK (1 test, 5 assertions)
 ---
 
 ### _Exercise_
+
 ## Let's write a <br>unit test
 
 ---
@@ -775,7 +776,6 @@ OK (1 test, 1 assertion)
 
 ---
 
-
 ## _Test Driven Development_
 
 - Write a failing test
@@ -785,8 +785,8 @@ OK (1 test, 1 assertion)
 
 ---
 
-[.background-color: #FFFFFF]
-[.footer: https://github.com/foundersandcoders/testing-tdd-intro]
+[.background-color:
+#FFFFFF][.footer: https://github.com/foundersandcoders/testing-tdd-intro]
 [.footer-style: #2F2F2F]
 
 ![100%](../images/tdd-loop.png)
@@ -804,8 +804,8 @@ OK (1 test, 1 assertion)
 ---
 
 ### _Exercise_
-## Let's build a blog using test driven development
 
+## Let's build a blog using test driven development
 
 ---
 
@@ -828,12 +828,14 @@ OK (1 test, 1 assertion)
 ## _Implementation_
 
 - Use views module
-- Do the mininum amount at each step, make no assumptions, let the tests guide us
+- Do the mininum amount at each step, make no assumptions, let the tests guide
+  us
 - Start with functional test
 
 ---
 
 ### _Step 1_
+
 ## Create the module
 
 ---
@@ -849,6 +851,7 @@ type: 'module'
 ---
 
 ### _Step 2_
+
 ## Ensure the blog page exists
 
 ---
@@ -869,7 +872,6 @@ class BlogPageTest extends BrowserTestBase {
 
 ---
 
-
 ```php
 public function testBlogPageExists() {
   $this->drupalGet('/blog');
@@ -879,7 +881,6 @@ public function testBlogPageExists() {
 ```
 
 ---
-
 
 ```
 There was 1 error:
@@ -937,14 +938,13 @@ id: blog
 
 ```
 1) Drupal\Tests\tdd_blog\Functional\BlogPageTest::testBlogPageExists
-Drupal\Core\Config\UnmetDependenciesException: Configuration objects provided 
+Drupal\Core\Config\UnmetDependenciesException: Configuration objects provided
 by <em class="placeholder">tdd_blog</em>
 have unmet dependencies: <em class="placeholder">views.view.blog
 (node.type.article, node, views)</em>
 ```
 
 ---
-
 
 ```yml,[.highlight: 1, 7-10]
 # tdd_blog.info.yml
@@ -961,10 +961,9 @@ dependencies:
 
 ---
 
-
 ```
 1) Drupal\Tests\tdd_blog\Functional\BlogPageTest::testBlogPageExists
-Drupal\Core\Config\UnmetDependenciesException: Configuration objects provided 
+Drupal\Core\Config\UnmetDependenciesException: Configuration objects provided
 by <em class="placeholder">tdd_blog</em> have unmet dependencies:
 <em class="placeholder">views.view.blog (node.type.article)</em>
 ```
@@ -974,7 +973,6 @@ by <em class="placeholder">tdd_blog</em> have unmet dependencies:
 - Add the article content type
 
 ---
-
 
 ```
 OK (1 test, 3 assertions)
@@ -993,10 +991,10 @@ OK (1 test, 3 assertions)
 ---
 
 ### _Step 3_
+
 ## Ensure only published articles are shown
 
 ---
-
 
 ```php
 public function testOnlyPublishedArticlesAreShown() {
@@ -1012,10 +1010,10 @@ public function testOnlyPublishedArticlesAreShown() {
 ---
 
 ### _Option 1_
+
 ## Functional tests
 
 ---
-
 
 ```php
 // modules/custom/tdd_blog/tests/src/Functional/BlogPageTest.php
@@ -1043,10 +1041,10 @@ public function testOnlyPublishedArticlesAreShown() {
 ---
 
 ### _Option 2_
+
 ## Kernel tests
 
 ---
-
 
 ```php
 namespace Drupal\Tests\tdd_blog\Kernel;
@@ -1074,10 +1072,8 @@ public function testOnlyPublishedArticlesAreShown() {
 }
 ```
 
-^ Kernel test approach
-Dropping down a level
-No need for the brower, not asserting against HTML
-Faster to run
+^ Kernel test approach Dropping down a level No need for the brower, not
+asserting against HTML Faster to run
 
 ---
 
@@ -1156,7 +1152,8 @@ Failed asserting that actual size 2 matches expected size 1.
 
 ---
 
->- _There is no content type filter on the view_
+> - _There is no content type filter on the view_
+
 - Add the filter
 - Re-export and save the view
 
@@ -1183,10 +1180,10 @@ OK (1 test, 6 assertions)
 ---
 
 ### _Step 4_
+
 ## Ensure the articles are ordered by date
 
 ---
-
 
 ```php
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
@@ -1201,7 +1198,6 @@ public function testArticlesAreOrderedByDate() {
 ```
 
 ---
-
 
 ```php
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
@@ -1231,7 +1227,6 @@ $this->createNode([
 ^ Array of default values
 
 ---
-
 
 ```php
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
@@ -1267,7 +1262,6 @@ public function testArticlesAreOrderedByDate() {
 
 ---
 
-
 ```php
 // modules/custom/tdd_blog/tests/src/Kernel/BlogPageTest.php
 
@@ -1280,7 +1274,6 @@ public function testArticlesAreOrderedByDate() {
 ```
 
 ---
-
 
 ```
 There was 1 failure:
@@ -1346,14 +1339,14 @@ OK (1 test, 5 assertions)
 - Writing tests is an _investment_
 - OK to _start small_, introduce tests gradually
 - Easier to _refactor_
-- Tests can pass, but things can _still be broken_. Tests only report on what they cover.
+- Tests can pass, but things can _still be broken_. Tests only report on what
+  they cover.
 
-^ Made me think about how I'm going to do something more starting to do it
-Less cruft, only write code that serves a purpose
-Spending time writing tests pays dividends later on
-Start by introducing tests for new features or regression tests when fixing bugs
-If you know things pass, then you can refactor code knowing if something is broken
-Manual testing is still important
+^ Made me think about how I'm going to do something more starting to do it Less
+cruft, only write code that serves a purpose Spending time writing tests pays
+dividends later on Start by introducing tests for new features or regression
+tests when fixing bugs If you know things pass, then you can refactor code
+knowing if something is broken Manual testing is still important
 
 ---
 

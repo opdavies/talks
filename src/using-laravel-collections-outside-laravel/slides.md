@@ -1,15 +1,8 @@
-theme: poster, 8
-autoscale: true
-build-lists: true
-header-emphasis: #53B0EB
-header: alignment(left)
-text: alignment(left)
-text-emphasis: #53B0EB
-code: Operator Mono, line-height(1.5)
+theme: poster, 8 autoscale: true build-lists: true header-emphasis: #53B0EB
+header: alignment(left) text: alignment(left) text-emphasis: #53B0EB code:
+Operator Mono, line-height(1.5)
 
-[.background-color: #FFFFFF]
-[.hide-footer]
-[.header: #111111, alignment(center)]
+[.background-color: #FFFFFF][.hide-footer] [.header: #111111, alignment(center)]
 
 ## Using Laravel Collections... <br>Outside Laravel
 
@@ -21,12 +14,11 @@ code: Operator Mono, line-height(1.5)
 
 ## Collections :thumbsup:
 
-^ Became a fan of Collections whilst learning Laravel
-Powerful object orientated way to interact with arrays
-Store items within the collection, run methods, chainable
-More readable, less temporary variables
-Video on Laracasts, Adam Wathan's refactoring to Collections
-Wanted to use them with different PHP projects e.g. Drupal
+^ Became a fan of Collections whilst learning Laravel Powerful object orientated
+way to interact with arrays Store items within the collection, run methods,
+chainable More readable, less temporary variables Video on Laracasts, Adam
+Wathan's refactoring to Collections Wanted to use them with different PHP
+projects e.g. Drupal
 
 ---
 
@@ -36,15 +28,13 @@ collect(['foo', 'bar']); // ['foo', 'bar']
 collect('foobar'); // ['foobar']
 
 $object = new stdClass();
-$object->foo = 'bar'; 
+$object->foo = 'bar';
 collect($object); // ['foo' => 'bar']
 collect($object)->get('foo'); // bar
 ```
 
-^ How do you make a collection?
-collect function is provided
-String, array or object
-Stored as items within the Collection object
+^ How do you make a collection? collect function is provided String, array or
+object Stored as items within the Collection object
 
 ---
 
@@ -68,10 +58,9 @@ $collection->filter(function ($item) {
 }); // [3, 4]
 ```
 
-^ Once you have a collection, what can you do with it?
-"contains" - no more needle/haystack, haystack/needle
-"filter" - filters false, null values
-Can pass callbacks to `first` and `filter`, return true or false as needed.
+^ Once you have a collection, what can you do with it? "contains" - no more
+needle/haystack, haystack/needle "filter" - filters false, null values Can pass
+callbacks to `first` and `filter`, return true or false as needed.
 
 ---
 
@@ -96,12 +85,12 @@ $collection->filter(function ($person) {
 
 ![100%](images/druplicon.png)
 
-^ This is great, but how can I do that in my Drupal code?
-How can I do that?
+^ This is great, but how can I do that in my Drupal code? How can I do that?
 
 ---
 
 ## There’s a module for that!
+
 ### _- Drupalers_
 
 ---
@@ -109,6 +98,7 @@ How can I do that?
 [.text: alignment(center)]
 
 ## [fit] There's not a module for that. :disappointed:
+
 ### _- Me_
 
 ---
@@ -119,12 +109,11 @@ How can I do that?
 
 ---
 
-
 ### _Version 1.0_
+
 ## Write my own Collection class
 
-^ Wrote my own Collection class
-Wrote my own tests
+^ Wrote my own Collection class Wrote my own tests
 
 ---
 
@@ -140,13 +129,14 @@ Wrote my own tests
 
 ---
 
-
 ### Collect - Illuminate Collections as a separate package.
+
 #### _https://packagist.org/packages/tightenco/collect_
 
 ---
 
 ### Import Laravel's Collections into non-Laravel packages easily, without needing to require the entire Illuminate\Support package.
+
 #### _https://packagist.org/packages/tightenco/collect_
 
 ---
@@ -162,6 +152,7 @@ Wrote my own tests
 ## _composer require_<br>tightenco/collect
 
 ---
+
 ![](images/drupal-issue-2.png)
 
 ---
@@ -171,6 +162,7 @@ Wrote my own tests
 ---
 
 ### _Version 2.0_
+
 ## Use someone else’s Collection class
 
 ^ More fully featured, less code to maintain
@@ -215,9 +207,8 @@ $collection->each(function ($item) {
 });
 ```
 
-^ Require/include autoload.php
-Start using Collections!
-`collect` function is autoloaded
+^ Require/include autoload.php Start using Collections! `collect` function is
+autoloaded
 
 ---
 
@@ -242,5 +233,7 @@ Start using Collections!
 [.header: alignment(center)]
 
 # Thanks!
+
 ### _@opdavies_
+
 ### _oliverdavies.uk_

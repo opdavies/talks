@@ -1,5 +1,4 @@
-autoscale: true
-theme: Plain Jane, 1
+autoscale: true theme: Plain Jane, 1
 
 # **Taking Flight with <br>Tailwind CSS**
 
@@ -36,10 +35,8 @@ Going to be using Tailwind 1.0 which was released recently (May 13th)
 
 # A **utility-first** CSS framework for rapidly building **custom designs**.
 
-^ CSS utility class generator
-PostCSS
-Make different looking sites using the same class names
-No "Tailwind looking site" like there is with Bootstrap
+^ CSS utility class generator PostCSS Make different looking sites using the
+same class names No "Tailwind looking site" like there is with Bootstrap
 
 ---
 
@@ -47,11 +44,9 @@ No "Tailwind looking site" like there is with Bootstrap
 
 # Tailwind CSS is a **highly customizable**, **low-level** CSS framework
 
-^ No components like Bootstrap or Bulma
-Configure it per project
-Extendable if needed via additional plugins
-Avoids the need to name things prematurely
-Can extract components if needed (reusability)
+^ No components like Bootstrap or Bulma Configure it per project Extendable if
+needed via additional plugins Avoids the need to name things prematurely Can
+extract components if needed (reusability)
 
 ---
 
@@ -59,8 +54,10 @@ Can extract components if needed (reusability)
 
 # Tailwind is more than a CSS framework, it's an engine for <br>**creating design systems**.
 
-^ Good default values provided - colours, fonts, padding, widths
-Designing with constraints. Using inline styles, every value is a magic number. With utilities, you're choosing styles from a predefined design system, which makes it much easier to build visually consistent UIs.
+^ Good default values provided - colours, fonts, padding, widths Designing with
+constraints. Using inline styles, every value is a magic number. With utilities,
+you're choosing styles from a predefined design system, which makes it much
+easier to build visually consistent UIs.
 
 ---
 
@@ -106,15 +103,22 @@ Designing with constraints. Using inline styles, every value is a magic number. 
 ---
 
 ## **Benefits**
+
 - You aren't wasting time and energy inventing class names
 - Your CSS stops growing
 - Making changes feels safer
 
-^ No more adding silly class names like sidebar-inner-wrapper just to be able to style something, and no more agonizing over the perfect abstract name for something that's really just a flex container.
+^ No more adding silly class names like sidebar-inner-wrapper just to be able to
+style something, and no more agonizing over the perfect abstract name for
+something that's really just a flex container.
 
-^ Using a traditional approach, your CSS files get bigger every time you add a new feature. With utilities, everything is reusable so you rarely need to write new CSS.
+^ Using a traditional approach, your CSS files get bigger every time you add a
+new feature. With utilities, everything is reusable so you rarely need to write
+new CSS.
 
-^ CSS is global and you never know what you're breaking when you make a change. Classes in your HTML are local, so you can change them without worrying about something else breaking.
+^ CSS is global and you never know what you're breaking when you make a change.
+Classes in your HTML are local, so you can change them without worrying about
+something else breaking.
 
 ---
 
@@ -219,8 +223,9 @@ Designing with constraints. Using inline styles, every value is a magic number. 
 ## **To get the most out of Tailwind, <br>you really should install it via npm.**
 
 ^ - You can't customize Tailwind's default theme
-- You can't use any directives like *@apply*, *@variants*, etc.
-- You can't enable features like *group-hover*
+
+- You can't use any directives like _@apply_, _@variants_, etc.
+- You can't enable features like _group-hover_
 - You can't install third-party plugins
 
 ---
@@ -244,9 +249,7 @@ Designing with constraints. Using inline styles, every value is a magic number. 
 [.code-highlight: 2-7]
 
 ```css
-# src/css/style.css
-
-@tailwind base;
+#src/css/style.css @tailwind base;
 
 @tailwind components;
 
@@ -277,8 +280,7 @@ Designing with constraints. Using inline styles, every value is a magic number. 
 
 ## **Processing your CSS with Tailwind <br>with the build command**
 
-^ Compile the generated CSS
-Pass through PostCSS and Tailwind
+^ Compile the generated CSS Pass through PostCSS and Tailwind
 
 ---
 
@@ -288,19 +290,19 @@ Pass through PostCSS and Tailwind
 
 ```css
 .text-left {
-    text-align: left;
+  text-align: left;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .text-right {
-    text-align: right;
+  text-align: right;
 }
 
 .text-justify {
-    text-align: justify;
+  text-align: justify;
 }
 ```
 
@@ -317,9 +319,7 @@ Pass through PostCSS and Tailwind
 ```js
 const mix = require('laravel-mix')
 
-mix.postCss('src/css/app.css', 'dist/css', [
-  require('tailwindcss')()
-])
+mix.postCss('src/css/app.css', 'dist/css', [require('tailwindcss')()])
 ```
 
 ^ PostCSS - useful if you're including other PostCSS plugins like PostCSS Nested
@@ -331,8 +331,7 @@ const mix = require('laravel-mix')
 
 require('laravel-mix-tailwind')
 
-mix.postCss('src/css/app.css', 'dist/css')
-  .tailwind()
+mix.postCss('src/css/app.css', 'dist/css').tailwind()
 ```
 
 ---
@@ -341,13 +340,11 @@ mix.postCss('src/css/app.css', 'dist/css')
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>My new website</title>
-    <link rel="stylesheet" href="/dist/css/app.css">
+    <link rel="stylesheet" href="/dist/css/app.css" />
   </head>
-  <body>
-
-  </body>
+  <body></body>
 </html>
 ```
 
@@ -359,10 +356,10 @@ mix.postCss('src/css/app.css', 'dist/css')
 
 # `npm run prod`
 
-
 ---
 
 # **Interaction states**
+
 ## hover, focus, group-hover, focus-within
 
 ^ Start to differ from inline styles
@@ -371,9 +368,9 @@ mix.postCss('src/css/app.css', 'dist/css')
 
 # `.[state][separator][class]`
 
-^ State = hover, focus, group focus, focus within
-Separator = configurable, colon by default
-Class = the same utility class that you would have used normally
+^ State = hover, focus, group focus, focus within Separator = configurable,
+colon by default Class = the same utility class that you would have used
+normally
 
 ---
 
@@ -594,11 +591,10 @@ colors: {
 ```js
 const mix = require('laravel-mix')
 
-mix.postCss('src/css/site.css', 'dist/css')
-  .purgeCss({
-    folders: ['templates'],
-    extensions: ['html', 'php', 'twig']
-  })
+mix.postCss('src/css/site.css', 'dist/css').purgeCss({
+  folders: ['templates'],
+  extensions: ['html', 'php', 'twig'],
+})
 ```
 
 ---
@@ -610,14 +606,14 @@ const mix = require('laravel-mix')
 
 require('laravel-mix-purgecss')
 
-mix.postCss('src/css/site.css', 'dist/css')
-  .purgeCss({
-    folders: ['templates'],
-    extensions: ['html', 'php', 'twig']
-  })
+mix.postCss('src/css/site.css', 'dist/css').purgeCss({
+  folders: ['templates'],
+  extensions: ['html', 'php', 'twig'],
+})
 ```
 
-^ Can be tricky using Drupal/WordPress as you don't know where the classes could be coming from, no generated output directory
+^ Can be tricky using Drupal/WordPress as you don't know where the classes could
+be coming from, no generated output directory
 
 ---
 
@@ -631,9 +627,7 @@ mix.postCss('src/css/site.css', 'dist/css')
 
 # Could the duplication <br>**be moved elsewhere**?
 
-^ Twig partials
-Vue components
-WordPress template parts
+^ Twig partials Vue components WordPress template parts
 
 ---
 
@@ -672,8 +666,8 @@ WordPress template parts
 } %}
 ```
 
-^ Move the duplicate markup into a partial, so there's only one version
-Pass data in.
+^ Move the duplicate markup into a partial, so there's only one version Pass
+data in.
 
 ---
 
@@ -689,9 +683,8 @@ a.btn:hover {
 }
 ```
 
-^ Use utilities as mixins
-Copy classes from markup
-Still re-using the same design system and constraints as before
+^ Use utilities as mixins Copy classes from markup Still re-using the same
+design system and constraints as before
 
 ---
 
@@ -730,12 +723,13 @@ a.btn:hover {
 
 module.exports = {
   theme: {
-    extend: {}
+    extend: {},
   },
   plugins: [],
-  variants: {}
+  variants: {},
 }
 ```
+
 ---
 
 [.code-highlight: 5-7]
@@ -746,12 +740,12 @@ module.exports = {
 module.exports = {
   theme: {
     colors: {
-      inherit: 'inherit'
+      inherit: 'inherit',
     },
-    extend: {}
+    extend: {},
   },
   plugins: [],
-  variants: {}
+  variants: {},
 }
 ```
 
@@ -768,12 +762,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        inherit: 'inherit'
-      }
-    }
+        inherit: 'inherit',
+      },
+    },
   },
   plugins: [],
-  variants: {}
+  variants: {},
 }
 ```
 
@@ -790,10 +784,10 @@ module.exports = {
   prefix: '',
   important: false,
   theme: {
-    extend: {}
+    extend: {},
   },
   plugins: [],
-  variants: {}
+  variants: {},
 }
 ```
 
@@ -818,12 +812,10 @@ module.exports = {
 
 module.exports = {
   theme: {
-    extend: {}
+    extend: {},
   },
-  plugins: [
-    require('tailwindcss-list-reset')()
-  ],
-  variants: {}
+  plugins: [require('tailwindcss-list-reset')()],
+  variants: {},
 }
 ```
 
@@ -841,13 +833,16 @@ module.exports = {
 ```js
 // index.js
 
-module.exports = (variants) => ({ addUtilities }) => {
-  addUtilities({
-    '.list-reset': {
-      listStyle: 'none',
-      padding: 0
-    }
-  }, variants)
+module.exports = variants => ({addUtilities}) => {
+  addUtilities(
+    {
+      '.list-reset': {
+        listStyle: 'none',
+        padding: 0,
+      },
+    },
+    variants,
+  )
 }
 ```
 
@@ -874,10 +869,11 @@ module.exports = (variants) => ({ addUtilities }) => {
 ---
 
 # **Thanks!**
+
 # opdavi.es/talks/tailwind
+
 ## _@opdavies_ <br>_oliverdavies.uk_
 
-^ Find this talk at opdavi.es/talks/tailwind
-Follow me on Twitter
-oliverdavies.uk where I blog about PHP, Drupal, Symfony, automated testing, Tailwind etc.
-Subscribe to the RSS feed
+^ Find this talk at opdavi.es/talks/tailwind Follow me on Twitter
+oliverdavies.uk where I blog about PHP, Drupal, Symfony, automated testing,
+Tailwind etc. Subscribe to the RSS feed
