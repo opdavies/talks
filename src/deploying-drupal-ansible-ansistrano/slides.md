@@ -1,15 +1,15 @@
-autoscale: true build-lists: true code: line-height(1.2) header-emphasis:
-#53B0EB text: alignment(left) theme: simple, 8
+autoscale: true
+build-lists: true
+code: line-height(1.2)
+header-emphasis: #53B0EB
+text: alignment(left)
+theme: simple, 8
 
 # [fit] **Deploying PHP applications** <br>using Ansible, Ansible Vault <br>and Ansistrano
 
 ^ I work primarily with PHP, and there will be some PHP-isms in this talk (LAMP
 stack, Composer). Will be using a Drupal 8 application as the example, but the
 tools are tool and language agnostic.
-
----
-
-# [fit] **Deploying ~~PHP~~ applications** <br>using Ansible, Ansible Vault <br>and Ansistrano
 
 ---
 
@@ -132,6 +132,10 @@ when needed (once)
 
 [webservers]
 192.168.33.10
+
+[webservers:vars]
+ansible_ssh_port=22
+
 ```
 
 ^ Supports wildcards and ranges.
@@ -141,9 +145,13 @@ when needed (once)
 ```yaml
 # hosts.yml
 
-webservers:
-  hosts:
-    192.168.33.10:
+all:
+  children:
+    webservers:
+      hosts:
+        192.168.33.10:
+      vars:
+        ansible_ssh_port: 22
 ```
 
 ---
@@ -466,6 +474,10 @@ mysql_users:
 
 ---
 
+# `ansible-playbook` <br>`-i hosts.yml` <br>`deploy.yml`<br>`--vault-password-file secret.txt`
+
+---
+
 # **Basic deployment**
 
 ---
@@ -506,7 +518,7 @@ tasks:
 
 ![full inline](images/ansistrano.png)
 
-^ Just another role, specifically for deployments Ansible port of Capistrano
+^ Just another role, specifically for deployments Ansible port of Capistrano (Ruby)
 
 ---
 
@@ -943,4 +955,10 @@ all:
 
 ---
 
+# **Demo**
+
+---
+
 # **Questions?**
+
+### oliverdavies.uk/dransible <br>@opdavies

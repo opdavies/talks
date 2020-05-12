@@ -1,4 +1,5 @@
-autoscale: true theme: Plain Jane, 1
+autoscale: true
+theme: Plain Jane, 1
 
 # **Taking Flight with <br>Tailwind CSS**
 
@@ -70,7 +71,18 @@ easier to build visually consistent UIs.
 - Lists
 - z-index
 - Opacity
-- ...
+
+^ Some of the 'original' things that Tailwind would generate classes for.
+
+---
+
+- Screenreader visibility
+- Placeholder colour
+- first-child, last-child, nth-child
+- CSS Grid
+- Transition
+- Transform
+- Spacing / Divide
 
 ^ All generated from a single, customisable configuration file.
 
@@ -249,7 +261,9 @@ something else breaking.
 [.code-highlight: 2-7]
 
 ```css
-#src/css/style.css @tailwind base;
+/* src/css/app.pcss */
+
+@tailwind base;
 
 @tailwind components;
 
@@ -261,19 +275,19 @@ something else breaking.
 [.code-highlight: 5,9,13]
 
 ```
-# app.css
+/* src/css/app.pcss */
 
 @tailwind base;
 
-# Custom base styles
+/* Custom base styles go here */
 
 @tailwind components;
 
-# Custom components
+/* Custom components go here */
 
 @tailwind utilities;
 
-# Custom utilities
+/* Custom utilities go here */
 ```
 
 ---
@@ -284,7 +298,7 @@ something else breaking.
 
 ---
 
-# `npx tailwind build` <br>`src/css/app.css` <br>`-o dist/css/app.css`
+# `npx tailwind build` <br>`src/css/app.pcss` <br>`-o dist/css/app.css`
 
 ---
 
@@ -317,9 +331,17 @@ something else breaking.
 ---
 
 ```js
+// webpack.mix.js
+
 const mix = require('laravel-mix')
 
-mix.postCss('src/css/app.css', 'dist/css', [require('tailwindcss')()])
+mix.postCss(
+  'src/css/app.pcss',
+  'dist/css',
+  [
+    require('tailwindcss')()
+  ]
+)
 ```
 
 ^ PostCSS - useful if you're including other PostCSS plugins like PostCSS Nested
@@ -327,11 +349,14 @@ mix.postCss('src/css/app.css', 'dist/css', [require('tailwindcss')()])
 ---
 
 ```js
+// webpack.mix.js
+
 const mix = require('laravel-mix')
 
 require('laravel-mix-tailwind')
 
-mix.postCss('src/css/app.css', 'dist/css').tailwind()
+mix.postCss('src/css/app.pcss', 'dist/css')
+  .tailwind()
 ```
 
 ---
@@ -360,13 +385,13 @@ mix.postCss('src/css/app.css', 'dist/css').tailwind()
 
 # **Interaction states**
 
-## hover, focus, group-hover, focus-within
+## hover, focus, active, disabled, visited, <br>group-hover, focus-within, <br>first-child, last-child...
 
 ^ Start to differ from inline styles
 
 ---
 
-# `.[state][separator][class]`
+# `[state][separator][class]`
 
 ^ State = hover, focus, group focus, focus within Separator = configurable,
 colon by default Class = the same utility class that you would have used
@@ -374,15 +399,7 @@ normally
 
 ---
 
-# `.hover:text-red-500`
-
----
-
-```html
-<a href="#" class="text-red-500 hover:text-red-800">
-  Read more
-</a>
-```
+# `hover:text-red-500`
 
 ---
 
@@ -398,6 +415,14 @@ normally
 .focus\:text-red-500:focus {
   color: #f56565;
 }
+```
+
+---
+
+```html
+<a href="#" class="text-red-500 hover:text-red-800">
+  Read more
+</a>
 ```
 
 ---
@@ -446,17 +471,7 @@ screens: {
 
 ---
 
-```html
-<div class="block md:flex">
-  <div class="w-full md:w-1/2">
-    Column 1
-  </div>
-
-  <div class="w-full md:w-1/2">
-    Column 2
-  </div>
-</div>
-```
+# `md:hover:bg-red-500`
 
 ---
 
@@ -476,6 +491,20 @@ screens: {
     display: block;
   }
 }
+```
+
+---
+
+```html
+<div class="block md:flex">
+  <div class="w-full md:w-1/2">
+    Column 1
+  </div>
+
+  <div class="w-full md:w-1/2">
+    Column 2
+  </div>
+</div>
 ```
 
 ---
@@ -518,7 +547,7 @@ variants: {
 
 ---
 
-# Manually removing unused or unwanted classes
+# **Manually removing** unused or unwanted classes
 
 ---
 
@@ -580,7 +609,7 @@ colors: {
 
 ---
 
-# Automatically removing <br>unused classes
+# **Automatically removing** <br>unused classes
 
 ---
 
@@ -617,7 +646,29 @@ be coming from, no generated output directory
 
 ---
 
-# **Avoiding Repetition: <br>Extracting Components**
+# PurgeCSS is now **included by default** with Tailwind 1.4
+
+---
+
+[.code-highlight: 2-6]
+
+
+```js
+module.exports = {
+  purge: [
+    './src/**/*.html',
+    './src/**/*.vue',
+    './src/**/*.jsx',
+  ],
+  theme: {},
+  variants: {},
+  plugins: [],
+}
+```
+
+---
+
+# Avoid repetition by **extracting components**
 
 ---
 
@@ -852,28 +903,18 @@ module.exports = variants => ({addUtilities}) => {
 
 ---
 
-## **Resources**
+## **Useful links**
 
 - tailwindcss.com
-- tailwindcomponents.com
+- tailwindui.com
 - builtwithtailwind.com
-- github.com/aniftyco/awesome-tailwind
 - youtube.com/adamwathan
-- opdavi.es/tailwind-repos
-- opdavi.es/tags/tailwind-css
+- drupal.org/project/tailwindcss
+- oliverdavies.uk/tags/tailwind-css
+- oliverdavies.uk/tailwind-repos
 
 ---
 
 # **Questions?**
 
----
-
-# **Thanks!**
-
-# opdavi.es/talks/tailwind
-
-## _@opdavies_ <br>_oliverdavies.uk_
-
-^ Find this talk at opdavi.es/talks/tailwind Follow me on Twitter
-oliverdavies.uk where I blog about PHP, Drupal, Symfony, automated testing,
-Tailwind etc. Subscribe to the RSS feed
+### oliverdavies.uk/tailwind-talk <br>@opdavies
