@@ -1,2 +1,0 @@
-- Show composer.json setup
-- Add "things you can test" and "things you shouldn't test"

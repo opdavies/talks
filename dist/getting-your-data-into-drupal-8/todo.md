@@ -1,5 +1,0 @@
-- Demonstrate plugins
-- Writing own source/process plugins
-- Core source plugins (Drupal to Drupal)
-- Demo `hook_migrate_prepare_row()` and
-  `hook_migrate_MIGRATION_ID_prepare_row()`
