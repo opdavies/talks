@@ -1,0 +1,110 @@
+pageSetup:
+    firstTemplate: coverPage
+    height: 18cm
+    margin-bottom: 0cm
+    margin-gutter: 0cm
+    margin-left: 0cm
+    margin-right: 0cm
+    margin-top: 0cm
+    size: null
+    spacing-footer: 2mm
+    spacing-header: 2mm
+    width: 32cm
+
+pageTemplates:
+    coverPage:
+        frames: []
+            [12%, 10%, 76%, 75%]
+        showFooter: false
+        showHeader: false
+
+    titlePage:
+        alignment: TA_CENTER
+        frames: []
+            [8%, 8%, 85%, 60%]
+        showFooter: true
+        showHeader: false
+
+    standardPage:
+        frames: []
+            [3%, 3%, 94%, 92%]
+        showFooter: true
+        showHeader: false
+
+    imagePage:
+        alignment: TA_CENTER
+        frames: []
+            [12%, 10%, 76%, 80%]
+        showFooter: true
+        showHeader: false
+ 
+linkColor: #24608a
+
+styles:
+    normal:
+        fontSize: 28
+        textColor: #383745
+
+    bodytext:
+        alignment: TA_LEFT
+
+    heading:
+        alignment: TA_CENTER
+        fontSize: 24
+        spaceAfter: 16
+        textColor: #24608a
+
+    heading1:
+        parent: heading
+        alignment: TA_LEFT
+
+    title:
+        fontSize: 250%
+        parent: heading
+
+    bullet-list:
+        commands: []
+             [LEFTPADDING, [0, 0], [1, -1], 10]
+             [RIGHTPADDING, [0, 0], [1, -1], 0]
+             [VALIGN, [0, 0], [-1, -1], TOP]
+        colWidths: ["20", null]
+        textColor: #aaaaaa
+
+    bullet-list-item:
+        spaceBefore: 14
+        spaceAfter: 0
+
+    titleslideinfo:
+        alignment: TA_CENTER
+        fontSize: 120%
+        parent: normal
+
+    footer:
+        alignment: TA_RIGHT
+        fontName: stdMono
+        fontSize: 18
+        textColor: #24608a
+        rightIndent: 16
+        spaceBefore: 0
+
+    literal:
+        backColor: #eeeeee
+        fontName: stdMono
+
+    code:
+        backColor: #eeeeee
+        borderWidth: 0
+        fontSize: 24
+        parent: literal
+        spaceBefore: 4
+    
+    blockquote:
+        parent: normal
+        fontName: stdItalic
+
+    attribution:
+        parent: normal
+        textColor: #666666
+
+    smaller:
+        textColor: red
