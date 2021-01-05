@@ -1,0 +1,13 @@
+// web/modules/custom/example/tests/src/Functional.
+
+namespace Drupal\Tests\example\Functional;
+
+use Drupal\Tests\BrowserTestBase;
+
+class ExampleTest extends BrowserTestBase {
+
+  public function testSomething() {
+    $this->assertTrue(FALSE);
+  }
+
+}

@@ -1,0 +1,6 @@
+public function testSomething()
+
+public function test_something()
+
+/** @test */
+public function it_does_something()
