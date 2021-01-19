@@ -1,0 +1,9 @@
+<div class="block md:flex">
+  <div class="w-full md:w-1/2">
+    Column 1
+  </div>
+
+  <div class="w-full md:w-1/2">
+    Column 2
+  </div>
+</div>

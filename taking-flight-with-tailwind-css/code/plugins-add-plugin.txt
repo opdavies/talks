@@ -1,0 +1,11 @@
+// tailwind.config.js
+
+module.exports = {
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    require('tailwindcss-list-reset')()
+  ],
+  variants: {},
+}

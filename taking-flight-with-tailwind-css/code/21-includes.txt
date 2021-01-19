@@ -1,0 +1,13 @@
+{# classes.html.twig #}
+
+<h2>Adults</h2>
+{% include 'class-list' with {
+    classes: page.classes,
+    type: 'adults',
+} %}
+
+<h2>Kids</h2>
+{% include 'class-list' with {
+    classes: page.classes,
+    type: 'kids',
+} %}

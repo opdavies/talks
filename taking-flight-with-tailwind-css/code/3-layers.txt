@@ -1,0 +1,9 @@
+/* src/css/tailwind.pcss */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Custom components */
+}

@@ -1,0 +1,9 @@
+.block {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .sm\:block {
+    display: block;
+  }
+}

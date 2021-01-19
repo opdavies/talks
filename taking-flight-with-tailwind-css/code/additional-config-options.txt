@@ -1,0 +1,14 @@
+module.exports = {
+  important: true,
+  prefix: '',
+  separator: ':',
+  purge: [],
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    colors: {
+      inherit: 'inherit'
+    },
+    extend: {},
+  },
+  // ...
+}

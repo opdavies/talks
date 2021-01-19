@@ -1,0 +1,11 @@
+.text-red-500 {
+  color: #f56565;
+}
+
+.hover\:text-red-500:hover {
+  color: #f56565;
+}
+
+.focus\:text-red-500:focus {
+  color: #f56565;
+}

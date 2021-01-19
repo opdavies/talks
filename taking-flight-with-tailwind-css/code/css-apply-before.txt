@@ -1,0 +1,7 @@
+a.btn {
+  @apply text-sm no-underline font-bold;
+  @apply rounded-full inline-block px-5 py-2;
+  @apply text-white bg-blue-600;
+
+  @apply hover:bg-blue-700;
+}

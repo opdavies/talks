@@ -1,0 +1,10 @@
+/* src/css/tailwind.pcss */
+
+@tailwind base;
+/* Custom base styles */
+
+@tailwind components;
+/* Custom components */
+
+@tailwind utilities;
+/* Custom utilities */

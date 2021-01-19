@@ -1,0 +1,10 @@
+let Encore = require('@symfony/webpack-encore')
+
+Encore
+  .disableSingleRuntimeChunk()
+  .setOutputPath('dist/')
+  .setPublicPath('/dist')
+  .addStyleEntry('app', './src/css/tailwind.pcss')
+  .enablePostCssLoader()
+
+module.exports = Encore.getWebpackConfig()

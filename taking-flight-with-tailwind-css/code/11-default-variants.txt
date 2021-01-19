@@ -1,0 +1,13 @@
+// defaultConfig.stub.js
+
+variants: {
+  alignContent: ['responsive'],
+  alignItems: ['responsive'],
+  alignSelf: ['responsive'],
+  appearance: ['responsive'],
+  backgroundAttachment: ['responsive'],
+  backgroundColor: ['responsive', 'hover', 'focus'],
+  backgroundPosition: ['responsive'],
+  backgroundRepeat: ['responsive'],
+  // ...
+}

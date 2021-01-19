@@ -1,0 +1,11 @@
+  // tailwind.config.js
+
+  variants: {
+    alignContent: ['responsive'],
+    alignItems: ['responsive'],
+-   alignSelf: ['responsive'],
++   alignSelf: false,
+    appearance: ['responsive'],
+    backgroundAttachment: ['responsive'],
+-   backgroundColor: ['responsive', 'hover', 'focus'],
++   backgroundColor: ['responsive'],
