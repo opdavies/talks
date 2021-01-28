@@ -1,0 +1,4 @@
+.. code-block:: javascript
+    :include: code/additional-config-options.txt
+    :hl_lines: 2 3 4
+    :linenos:

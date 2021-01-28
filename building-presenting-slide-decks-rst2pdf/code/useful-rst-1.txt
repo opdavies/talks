@@ -1,0 +1,14 @@
+Building and presenting slide decks with rst2pdf
+################################################
+
+.. class:: titleslideinfo
+
+Oliver Davies (@opdavies)
+
+
+What is rst2pdf?
+================
+
+* "Use a text editor. Make a PDF."
+* reStructuredText to PDF
+* Each slide is a page

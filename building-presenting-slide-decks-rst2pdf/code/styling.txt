@@ -1,0 +1,29 @@
+linkColor: #24608a
+
+styles:
+    normal:
+        fontSize: 24
+        leading: 32
+        textColor: #383745
+
+    bodytext:
+        alignment: TA_LEFT
+
+    heading:
+        fontSize: 20
+        spaceAfter: 16
+        textColor: #24608a
+
+    title:
+        fontSize: 300%
+        parent: heading
+        textColor: white
+
+    bullet-list:
+        commands: []
+             [LEFTPADDING, [0, 0], [1, -1], 10]
+             [RIGHTPADDING, [0, 0], [1, -1], 0]
+             [VALIGN, [0, 0], [-1, -1], TOP]
+        colWidths: ["20", null]
+        textColor: #aaaaaa
+
