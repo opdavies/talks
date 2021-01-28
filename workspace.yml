@@ -1,0 +1,45 @@
+workspace('talks'):
+  description: 'My slide decks'
+
+attributes:
+  rst2pdf:
+    command: |
+      = 'rst2pdf ' ~ @('rst2pdf.filename.rst') ~ '
+        --break-level 1
+        --stylesheets main
+        --fit-background-mode scale
+        --extension-module preprocess
+        --output ' ~ @('rst2pdf.filename.pdf')
+    filename:
+      pdf: slides.pdf
+      rst: slides.rst
+  thumbnail:
+    filename: thumbnail.png
+
+command('clean all'):
+  env:
+    PDF_FILENAME: = @('rst2pdf.filename.pdf')
+    RST_FILENAME: = @('rst2pdf.filename.rst')
+    THUMBNAIL_FILENAME: = @('thumbnail.filename')
+  exec: |
+    #!bash
+    run "find . -type f \( -name '$PDF_FILENAME*' -o -name $RST_FILENAME.build_temp -o -name $THUMBNAIL_FILENAME \) -delete"
+
+command('pdf generate <talk>'): |
+  #!bash|=
+  cd ={ input.argument('talk') }
+  passthru ={ @('rst2pdf.command') }
+
+command('pdf watch <talk>'): |
+  #!bash|=
+  cd ={ input.argument('talk') }
+  passthru nodemon -e rst,style,txt -x "={ @('rst2pdf.command') }"
+
+command('thumbnail <talk>'):
+  env:
+    PDF_FILENAME: = @('rst2pdf.filename.pdf')
+    THUMBNAIL_FILENAME: = @('thumbnail.filename')
+  exec: |
+    #!bash|=
+    cd ={ input.argument('talk') }
+    passthru gs -sDEVICE=png16m -r300 -dDownScaleFactor=4 -sOutputFile=$THUMBNAIL_FILENAME -dLastPage=1 $PDF_FILENAME
