@@ -1,0 +1,5 @@
+command('say-hello'):
+  #!bash
+  run echo 'Hello World'
+
+  passthru echo 'Hello World'

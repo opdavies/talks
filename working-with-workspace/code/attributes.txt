@@ -1,0 +1,5 @@
+attribute('message'): Hello World!
+
+command('say-hello'): |
+  #!bash|@
+  echo @('message')

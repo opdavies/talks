@@ -1,0 +1,12 @@
+# workspace.yml
+
+workspace('oliverdavies-uk'):
+  description: My personal website codebase.
+
+command('say-hello'):
+  #!bash
+  echo 'Hello world'
+
+command('say-hello'):
+  #!php
+  echo 'Hello World';

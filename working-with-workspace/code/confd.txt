@@ -1,0 +1,11 @@
+attributes:
+  drupal:
+    docroot: web
+
+command('apply config'): |
+  #!php
+  $ws->confd('workspace:/confd')->apply();
+
+confd('workspace:/confd'):
+  - src: 'vhost.conf'
+    dst: 'workspace:/.my127ws/docker/nginx/default.conf'

@@ -1,0 +1,8 @@
+server {
+    server_name _;
+    root /app/{{ @('drupal.docroot' )}};
+
+# output
+server {
+    server_name _;
+    root /app/web;

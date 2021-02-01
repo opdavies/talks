@@ -1,0 +1,7 @@
+command('say-hello <name>'):
+  env:
+    MESSAGE: = @('message')
+    NAME: = input.argument('name')
+  exec: |
+    #!bash|=
+    echo "$MESSAGE from $NAME"
