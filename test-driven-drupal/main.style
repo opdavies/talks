@@ -47,6 +47,11 @@ pageTemplates:
 
 linkColor: #24608a
 
+fontsAlias:
+    stdMono: Inconsolata-Regular
+    stdMonoBold: Inconsolata-Regular
+    stdMonoItalic: Inconsolata-Regular
+
 styles:
     normal:
         fontSize: 24
@@ -93,11 +98,11 @@ styles:
         spaceBefore: 0
 
     literal:
-        backColor: #eeeeee
+        backColor: white
         fontName: stdMono
 
     code:
-        backColor: #eeeeee
+        backColor: white
         borderWidth: 0
         fontSize: 20
         leading: 24

@@ -6,10 +6,11 @@ attributes:
     command: |
       = 'rst2pdf ' ~ @('rst2pdf.filename.rst') ~ '
         --break-level 1
-        --stylesheets main
+        --stylesheets main,tango
         --fit-background-mode scale
         --extension-module preprocess
-        --output ' ~ @('rst2pdf.filename.pdf')
+        --output ' ~ @('rst2pdf.filename.pdf') ~ '
+        --font-path ~/.local/share/fonts'
     filename:
       pdf: slides.pdf
       rst: slides.rst
