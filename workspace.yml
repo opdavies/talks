@@ -28,12 +28,12 @@ command('clean all'):
 
 command('pdf generate <talk>'): |
   #!bash|=
-  cd ={ input.argument('talk') }
+  cd "={ input.argument('talk') }"
   passthru ={ @('rst2pdf.command') }
 
 command('pdf watch <talk>'): |
   #!bash|=
-  cd ={ input.argument('talk') }
+  cd "={ input.argument('talk') }"
   passthru nodemon -e rst,style,txt -x "={ @('rst2pdf.command') }"
 
 command('thumbnail <talk>'):
@@ -42,5 +42,5 @@ command('thumbnail <talk>'):
     THUMBNAIL_FILENAME: = @('thumbnail.filename')
   exec: |
     #!bash|=
-    cd ={ input.argument('talk') }
+    cd "={ input.argument('talk') }"
     passthru gs -sDEVICE=png16m -r300 -dDownScaleFactor=4 -sOutputFile=$THUMBNAIL_FILENAME -dLastPage=1 $PDF_FILENAME
