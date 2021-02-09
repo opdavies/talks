@@ -71,38 +71,3 @@ Benefits
 
 .. image:: images/example/7.png
     :width: 18cm
-
-.. page::
-
-.. image:: images/example/8.png
-    :width: 18cm
-
-.. page::
-
-.. image:: images/example/9.png
-    :width: 18cm
-
-.. page::
-
-.. image:: images/example/10.png
-    :width: 18cm
-
-.. page::
-
-.. image:: images/example/11.png
-    :width: 18cm
-
-.. page::
-
-.. image:: images/example/12.png
-    :width: 18cm
-
-.. page::
-
-.. image:: images/example/13.png
-    :width: 18cm
-
-.. page::
-
-.. image:: images/example/14.png
-    :width: 18cm
