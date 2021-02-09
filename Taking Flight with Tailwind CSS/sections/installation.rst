@@ -10,10 +10,6 @@ How do I install Tailwind?
 
 1\. Use the CDN
 
-|
-
-https://unpkg.com/tailwindcss/dist/tailwind.min.css
-
 .. page:: titlePage
 
 .. class:: centredtitle
