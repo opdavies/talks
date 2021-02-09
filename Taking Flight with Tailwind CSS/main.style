@@ -116,8 +116,9 @@ styles:
         parent: normal
         textColor: #66666
 
-    centered:
+    centred:
         alignment: TA_CENTER
+        parent: normal
 
     centredtitle:
         alignment: TA_CENTER

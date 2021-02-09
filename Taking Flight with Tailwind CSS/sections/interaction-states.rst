@@ -4,6 +4,9 @@
 
 Interaction states
 
+
+.. class:: centred
+
 hover, focus, active, disabled, visited,
 group-hover, focus-within,
 first-child, last-child...
