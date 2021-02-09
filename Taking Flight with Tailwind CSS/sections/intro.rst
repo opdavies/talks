@@ -21,7 +21,7 @@ A utility-first CSS framework for rapidly building custom designs
 
 .. class:: centredtitle
 
-Tailwind CSS is a highly customizable, low-level CSS framework
+Tailwind CSS is a highly customisable, low-level CSS framework
 
 .. raw:: pdf
 

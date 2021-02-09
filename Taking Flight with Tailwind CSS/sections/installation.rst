@@ -18,7 +18,7 @@ To get the most out of Tailwind, you really should install it via npm
 
 .. raw:: pdf
 
-    TextAnnotation "You can't customize Tailwind's default theme."
+    TextAnnotation "You can't customise Tailwind's default theme."
     TextAnnotation "You can't use any directives like @apply, @variants, etc.."
     TextAnnotation "You can't enable features like group-hover."
     TextAnnotation "You can't install third-party plugins."
