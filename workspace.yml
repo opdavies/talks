@@ -24,7 +24,7 @@ command('clean all'):
     THUMBNAIL_FILENAME: = @('thumbnail.filename')
   exec: |
     #!bash
-    run "find . -type f \( -name '$PDF_FILENAME*' -o -name $RST_FILENAME.build_temp -o -name $THUMBNAIL_FILENAME \) -delete"
+    run "find . -type f \( -name '$PDF_FILENAME*' -o -name *.build_temp -o -name $THUMBNAIL_FILENAME \) -delete"
 
 command('pdf generate <talk>'): |
   #!bash|=
