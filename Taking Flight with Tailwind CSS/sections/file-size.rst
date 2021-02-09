@@ -17,7 +17,6 @@ Default variants
 
 .. code-block:: javascript
     :include: code/15-variants-before.txt
-    :linenos:
 
 Updated variants
 ================
@@ -64,7 +63,6 @@ PurgeCSS configuration
 
 .. code-block:: javascript
     :include: code/19-purge-config.txt
-    :linenos:
 
 .. page:: titlePage
 

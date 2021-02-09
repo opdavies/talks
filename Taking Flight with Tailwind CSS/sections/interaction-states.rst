@@ -43,18 +43,15 @@ Interaction states in CSS
 
 .. code-block:: css
     :include: code/9-hover-classes.txt
-    :linenos:
 
 Interaction states in HTML
 ==========================
 
 .. code-block:: html
     :include: code/10-hover-class-example.txt
-    :linenos:
 
 Default variants
 ================
 
 .. code-block:: javascript
     :include: code/11-default-variants.txt
-    :linenos:

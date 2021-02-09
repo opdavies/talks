@@ -21,7 +21,6 @@ Screens (aka breakpoints)
 
 .. code-block:: javascript
     :include: code/12-default-screens.txt
-    :linenos:
 
 .. page:: titlePage
 

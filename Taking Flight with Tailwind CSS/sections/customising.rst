@@ -17,7 +17,6 @@ tailwind.config.js
 
 .. code-block:: javascript
     :include: code/tailwind-basic-config.txt
-    :linenos:
 
 Overriding configuration
 ========================
@@ -25,7 +24,6 @@ Overriding configuration
 .. code-block:: javascript
     :include: code/override-colours.txt
     :hl_lines: 5 6 7
-    :linenos:
 
 .. raw:: pdf
 
@@ -37,7 +35,6 @@ Extending configuration
 .. code-block:: javascript
     :include: code/extending-colours.txt
     :hl_lines: 5 6 7 8 9
-    :linenos:
 
 .. raw:: pdf
 
@@ -49,7 +46,6 @@ Additional options
 .. code-block:: javascript
     :include: code/additional-config-options.txt
     :hl_lines: 2 3 4
-    :linenos:
 
 .. page:: titlePage
 

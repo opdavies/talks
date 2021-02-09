@@ -57,21 +57,18 @@ Including Tailwind
 
 .. code-block:: css 
     :include: code/1-adding-tailwind-directives.txt
-    :linenos:
 
 Adding your own classes
 =======================
 
 .. code-block:: css
     :include: code/2-adding-custom-classes.txt
-    :linenos:
 
 Adding your own classes (with layers)
 =====================================
 
 .. code-block:: css
     :include: code/3-layers.txt
-    :linenos:
 
 .. raw:: pdf
 
@@ -100,7 +97,6 @@ src/css/tailwind.pcss
 
 .. code-block:: css
     :include: code/4-sample-output.txt
-    :linenos:
 
 .. raw:: pdf
 
