@@ -1,0 +1,6 @@
+{
+  purge: {
+    content: ["templates/**/*.html"]
+  }
+  // ...
+}

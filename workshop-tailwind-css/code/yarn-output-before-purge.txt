@@ -1,0 +1,21 @@
+# yarn dev
+yarn run v1.22.5
+$ cross-env NODE_ENV=development postcss assets/css/tailwind.pcss -o public/build/tailwind.css
+Done in 2.77s.
+
+# ls -lh public/build 
+total 3.8M
+-rw-r--r-- 1 root root 3.8M Feb 11 12:00 tailwind.css
+
+# yarn prod
+yarn run v1.22.5
+$ cross-env NODE_ENV=production postcss assets/css/tailwind.pcss -o public/build/tailwind.css
+
+warn - Tailwind is not purging unused styles because no template paths have been provided.
+
+warn - If you have manually configured PurgeCSS outside of Tailwind or are deliberately
+not removing unused styles, set `purge: false` in your Tailwind config file to silence
+this warning.
+
+warn - https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
+Done in 2.75s.

@@ -1,0 +1,8 @@
+# yarn prod
+yarn run v1.22.5
+$ cross-env NODE_ENV=production postcss assets/css/tailwind.pcss -o public/build/tailwind.css
+Done in 2.52s.
+
+# ls -lh public/build
+total 12K
+-rw-r--r-- 1 root root 12K Feb 11 17:31 tailwind.css
