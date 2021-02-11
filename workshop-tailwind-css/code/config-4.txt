@@ -1,0 +1,7 @@
+{# templates/includes/navbar.html.twig #}
+
+- <a class="block px-2 py-4 text-lg font-bold text-blue-700 uppercase"
+
++ <a class="block px-2 py-3 text-2xl uppercase duration-200 ease-out
++    transition-color font-display text-blue-dark hover:bg-orange
++    focus:bg-orange hover:text-gray-dark focus:text-gray-dark"

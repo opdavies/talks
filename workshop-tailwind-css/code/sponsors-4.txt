@@ -1,0 +1,18 @@
+{% for sponsor in sponsors.findByType(type) %}
+    <li class="mt-2 ml-2">
+        <a
+            class="flex flex-col items-center justify-center w-64 h-48 p-4 bg-gray-light"
+            href="#0"
+        >
+            <span class="flex items-center h-full">
+                <img
+                    class="block w-4/5 max-h-full mx-auto"
+                    src="{{ sponsor.logo_url }}"
+                    alt=""
+                >
+            </span>
+
+            <p class="sr-only">{{ sponsor.name }}</p>
+        </a>
+    </li>
+{% endfor %}

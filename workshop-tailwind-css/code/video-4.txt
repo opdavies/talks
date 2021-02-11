@@ -1,0 +1,5 @@
+- <div class="px-4 mx-auto max-w-screen-2xl">
++ <div class="flex items-center justify-center px-4 mx-auto max-w-screen-2xl">
+
+-     <img src="https://www.fldrupal.camp/sites/all/themes/fldc17/images/logo-general.svg" ...
++     <img class="absolute w-96" src="..."

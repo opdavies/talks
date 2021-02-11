@@ -1,0 +1,16 @@
+{% set titleClasses = [
+    'text-5xl font-display',
+    type == 'bronze' ? 'text-bronze',
+    type == 'gold' ? 'text-gold',
+    type == 'in_kind' ? 'text-blue-dark',
+    type == 'platinum' ? 'text-platinum',
+    type == 'silver' ? 'text-silver',
+] %}
+
+<div class="mt-10 text-center">
+    <h2 class="{{ titleClasses|join(' ')|trim }}">{{ title }}</h2>
+
+    <div class="mt-6">
+        <ul class="flex flex-wrap justify-center mx-auto -mt-2 -ml-2">
+            {# ... #}
+        </ul>

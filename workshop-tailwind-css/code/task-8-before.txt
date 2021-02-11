@@ -1,0 +1,8 @@
+git add -A
+git commit -m 'Save progress'
+
+
+git checkout -b local/8-responsive origin/task/7-sponsors
+
+
+yarn dev

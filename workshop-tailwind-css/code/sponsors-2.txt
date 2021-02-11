@@ -1,0 +1,14 @@
+<div>
+    <h2>{{ title }}</h2>
+
+    <ul>
+        {% for sponsor in sponsors.findByType(type) %}
+            <li>
+                <a href="#0">
+                    <img src="{{ sponsor.logo_url }}" alt="">
+                    <p>{{ sponsor.name }}</p>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

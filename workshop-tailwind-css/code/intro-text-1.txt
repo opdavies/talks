@@ -1,0 +1,10 @@
+<!--  templates/pages/home.html.twig -->
+
+<div>
+    <p>Florida DrupalCamp is an annual conference that brings
+    together web developers from all over the world to learn,
+    network and discuss web development and the Drupal content
+    management system.</p>
+
+    <a>Learn more</a>
+</div>

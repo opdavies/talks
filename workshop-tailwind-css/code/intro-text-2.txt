@@ -1,0 +1,10 @@
+<!--  templates/pages/home.html.twig -->
+
+<div class="max-w-2xl px-4 py-8 mx-auto text-center">
+    <p>Florida DrupalCamp is an annual conference that brings
+    together web developers from all over the world to learn,
+    network and discuss web development and the Drupal content
+    management system.</p>
+
+    <a>Learn more</a>
+</div>

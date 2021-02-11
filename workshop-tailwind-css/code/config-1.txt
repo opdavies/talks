@@ -1,0 +1,27 @@
+module.exports = {
+  // ...
+
+  theme: {
+    fontFamily: {
+        display: ['Bebas Neue', 'Arial Narrow', 'Arial', 'sans-serif'],
+        sans: ['Helvetica', 'Arial', 'sans-serif'],
+    },
+    colors: {
+      blue: {
+        DEFAULT: '#56a9db',
+        dark: '#1772ae',
+      },
+      gray: {
+        dark: '#333333',
+      },
+      orange: '#fcb040',
+      white: '#ffffff',
+    },
+    extend: {
+      fontSize: {
+        '2xl': '1.5625rem', // 25px
+        '3xl': '1.6875rem', // 27px
+      },
+    },
+  },
+}

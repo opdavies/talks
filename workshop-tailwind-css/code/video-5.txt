@@ -1,0 +1,8 @@
+<img
+    class="absolute w-96"
+    src="https://www.fldrupal.camp/sites/all/themes/fldc17/images/logo-general.svg"
+    alt="Florida Drupalcamp Logo">
+
+<img src="https://www.fldrupal.camp/sites/all/themes/fldc17/images/stars-1.svg" alt="">
+<img src="https://www.fldrupal.camp/sites/all/themes/fldc17/images/stars-2.svg" alt="">
+<img src="https://www.fldrupal.camp/sites/all/themes/fldc17/images/stars-3.svg" alt="">

@@ -1,0 +1,13 @@
+- <div>
++ <div class="px-4 mx-auto max-w-screen-2xl">
+      <video
+          poster="https://www.fldrupal.camp/sites/all/themes/fldc17/images/video-poster.jpg"
+          preload="auto"
++         class="w-full opacity-60"
+      >
+          <source
+              src="https://www.fldrupal.camp/sites/default/files/FLDC17%20Promo-high.mp4"
+              type="video/mp4"
+          >
+      </video>
+  </div>

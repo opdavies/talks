@@ -1,0 +1,9 @@
+{# templates/includes/home/sponsor-list.html.twig #}
+
+- <li class="mt-2 ml-2">
+-     <a class="flex flex-col items-center justify-center w-64 h-48 p-4 bg-gray-light"
+-       href="#0">
+
++ <li class="w-full mt-2 ml-2 sm:w-auto">
++     <a class="flex flex-col items-center justify-center p-4 sm:w-64 sm:h-48
++       sm:bg-gray-light" href="#0">

@@ -1,0 +1,16 @@
+{% for menu_item in menu_items.findAll() %}
+
+    {% set linkClasses = [
+        'block px-2 py-3 text-2xl uppercase duration-200 ease-out transition-color font-display
+        text-blue-dark hover:bg-orange focus:bg-orange hover:text-gray-dark focus:text-gray-dark',
+
+        menu_item.is_active ? 'text-white bg-blue'
+    ] %}
+
+    <li>
+        <a class="{{ linkClasses|join(' ')|trim }}" href="#0">
+            {{ menu_item.title }}
+        </a>
+    </li>
+
+{% endfor %}

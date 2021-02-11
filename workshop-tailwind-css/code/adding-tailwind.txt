@@ -1,0 +1,25 @@
+# Add Tailwind, PostCSS, Autoprefixer, PostCSS CLI
+yarn add cross-env \
+  tailwindcss@latest \
+  postcss@latest \
+  autoprefixer@latest \
+  postcss-cli
+
+# Generate Tailwind and PostCSS configuration files
+npx tailwindcss init -p
+
+-- adding tailwind
+/* assets/css/tailwind.pcss */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+-- adding scripts
+"scripts": {
+  "dev": "cross-env NODE_ENV=development postcss assets/css/tailwind.pcss -o public/build/tailwind.css",
+  "prod": "cross-env NODE_ENV=production postcss assets/css/tailwind.pcss -o public/build/tailwind.css",
+  "watch": "cross-env NODE_ENV=development postcss assets/css/tailwind.pcss -o public/build/tailwind.css --watch"
+}
+
+-- adding the stylesheet
+<link rel="stylesheet" href="/build/tailwind.css"/>

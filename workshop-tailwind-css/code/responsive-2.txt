@@ -1,0 +1,17 @@
+{# templates/includes/navbar.html.twig #}
+
+- <img class="relative z-20" ...
++ <img class="relative z-20 w-auto h-20 md:h-24" ...
+
+- <div>
++ <div class="flex items-center justify-end h-full">
++    <button class="my-4 lg:hidden" type="button" aria-label="Toggle menu">
++        <svg class="w-10 h-10" fill="none" stroke="currentColor"
++           viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
++            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
++               d="M4 6h16M4 12h16M4 18h16"></path>
++        </svg>
++    </button>
++
+-    <ul class="flex justify-end h-full">
++    <ul class="justify-end hidden h-full md:flex">

@@ -1,0 +1,11 @@
+{# templates/includes/home/intro-text.html.twig #}
+
+- <p class="text-3xl leading-loose text-blue-dark">
++ <p class="text-xl leading-loose lg:text-3xl text-blue-dark">
+
+- <a class="inline-block px-5 py-4 mt-8 text-3xl transition-colors duration-200 ease-in-out
+-   border-2 text-blue-dark border-blue-dark hover:bg-blue-dark focus:bg-blue-dark
+-   hover:text-white focus:text-white"
++ <a class="inline-block px-4 py-3 mt-8 text-xl transition-colors duration-200 ease-in-out
++   border-2 lg:px-5 lg:py-4 lg:text-3xl text-blue-dark border-blue-dark hover:bg-blue-dark
++   focus:bg-blue-dark hover:text-white focus:text-white" href="#0">Learn more</a>

@@ -1,0 +1,10 @@
+git clone https://github.com/opdavies/workshop-tailwind-css.git 
+
+
+cd workshop-tailwind-css
+
+
+composer install
+
+
+php -S 127.0.0.1:8000 -t public

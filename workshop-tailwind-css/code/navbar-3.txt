@@ -1,0 +1,21 @@
+<!--  templates/pages/home.html.twig -->
+
+<div class="sticky top-0 z-30 px-4 mx-auto bg-white max-w-screen-2xl">
+    <div class="grid grid-cols-2 gap-4">
+        <div>
+            <a href="#0">
+                <img src="https://www.fldrupal.camp/sites/all/themes/fldc17/images/header-logo-general.svg">
+            </a>
+        </div>
+        <div>
+            <ul class="flex justify-end h-full">
+                <li><a class="block px-2 py-4 text-lg font-bold text-blue-700 uppercase" href="#0">Conference</a></li>
+                <li><a class="block px-2 py-4 text-lg font-bold text-blue-700 uppercase" href="#0">Sponsors</a></li>
+                <li><a class="block px-2 py-4 text-lg font-bold text-blue-700 uppercase" href="#0">Community</a></li>
+                <li><a class="block px-2 py-4 text-lg font-bold text-blue-700 uppercase" href="#0">FAQ</a></li>
+                <li><a class="block px-2 py-4 text-lg font-bold text-white uppercase bg-blue-500" href="#0">Register</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
