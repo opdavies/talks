@@ -34,7 +34,7 @@ command('pdf generate <talk>'): |
 command('pdf watch <talk>'): |
   #!bash|=
   cd ={ input.argument('talk') }
-  passthru nodemon -e rst,style,txt -x "={ @('rst2pdf.command') }"
+  passthru nodemon -e rst,style,txt,jpg,png -x "={ @('rst2pdf.command') }"
 
 command('thumbnail <talk>'):
   env:
