@@ -28,7 +28,7 @@ The D7 release cycle
 ====================
 
 * One long-running branch
-* Minor versions for bug fixes (7.73)
+* Minor versions for bug fixes (7.80, April 2021)
 * No big, new features
 * Long time for changes to get committed to core
 
