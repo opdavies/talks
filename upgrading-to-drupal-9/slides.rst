@@ -277,8 +277,8 @@ Always add '--no-dev' in production
 
 .. raw:: pdf
 
-    PageBreak titlePage
     TextAnnotation "Prevents development dependencies from being installed, and potential security exploits from being added."
+    PageBreak titlePage
 
 .. class:: centredtitle
 
