@@ -115,8 +115,9 @@ Contrib improvements
 
     PageBreak titlePage
 
+.. class:: centredtitle
+
 The difference  is deprecated code
-==================================
 
 .. raw:: pdf
 
@@ -153,8 +154,9 @@ Deprecation example
 
     PageBreak titlePage
 
+.. class:: centredtitle
+
 How do I find it?
-=================
 
 .. raw:: pdf
 
@@ -171,11 +173,15 @@ Drupal Check
 
     PageBreak titlePage
 
-composer global require mglaman/drupal-check
-============================================
+.. class:: centredtitle
 
-drupal-check web/modules/custom
-===============================
+``composer global require
+mglaman/drupal-check``
+
+.. page::
+.. class:: centredtitle
+
+``drupal-check web/modules/custom``
 
 .. raw:: pdf
 
@@ -188,8 +194,9 @@ drupal-check web/modules/custom
 
     PageBreak titlePage
 
+.. class:: centredtitle
+
 Upgrade Status module
-=====================
 
 .. raw:: pdf
 
@@ -246,24 +253,37 @@ Composer
 
     PageBreak titlePage
 
-composer require drupal/admin_toolbar:^2.0
-==========================================
+.. class:: centredtitle
 
-composer install
-================
+``composer require
+drupal/admin_toolbar:^2.0``
 
-composer update drupal/admin_toolbar
-====================================
+.. page::
+.. class:: centredtitle
+
+``composer install``
+
+.. page::
+.. class:: centredtitle
+
+``composer update
+drupal/admin_toolbar``
+
+.. page::
+.. class:: centredtitle
 
 Always add '--no-dev' in production
-===================================
 
 .. raw:: pdf
 
+    PageBreak titlePage
     TextAnnotation "Prevents development dependencies from being installed, and potential security exploits from being added."
 
+.. class:: centredtitle
+
 An Example: Dransible
-=====================
+
+.. class:: centred
 
 https://github.com/opdavies/dransible
 
@@ -299,11 +319,16 @@ Upgrading Dransible
 
     PageBreak titlePage
 
-composer update drupal/core-* --with-dependencies
-=================================================
+.. class:: centredtitle
 
-composer require drupal/upgrade_status
-======================================
+``composer update drupal/core-*
+--with-dependencies``
+
+.. page::
+.. class:: centredtitle
+
+``composer require
+drupal/upgrade_status``
 
 .. raw:: pdf
 
@@ -337,8 +362,10 @@ composer require drupal/upgrade_status
 
     PageBreak titlePage
 
-composer update drupal/core-* --with-dependencies
-=================================================
+.. class:: centredtitle
+
+``composer update drupal/core-*
+--with-dependencies``
 
 .. raw:: pdf
 
@@ -358,25 +385,30 @@ composer update drupal/core-* --with-dependencies
 
     PageBreak titlePage
 
+.. class:: centredtitle
+
 There were some autowiring gotchas...
-=====================================
 
 .. raw:: pdf
 
     PageBreak
 
-Error: Class 'Symfony\Component\Config\Resource\ClassExistenceResource' not found in Symfony\Component\DependencyInjection\Compiler\AutowirePass->createTypeNotFoundMessage()
+``Error: Class 'Symfony\Component\Config\Resource\ClassExistenceResource' not found in Symfony\Component\DependencyInjection\Compiler\AutowirePass->createTypeNotFoundMessage()``
 
-composer require symfony/config:^4
-==================================
+.. page::
+
+.. class:: centredtitle
+
+``composer require
+symfony/config:^4``
 
 .. raw:: pdf
 
     TextAnnotation "Composer tried installing version 5 by default, so locked to 4.x."
 
-    PageBreak 
+    PageBreak titlePage
 
-Cannot autowire service "Drupal\simple_message\DisplaySimpleMessage": argument "$messenger" of method "__construct()" references interface "Drupal\Core\Messenger\MessengerInterface" but no such service exists. You should maybe alias this interface to the existing "messenger" service
+``Cannot autowire service "Drupal\simple_message\DisplaySimpleMessage": argument "$messenger" of method "__construct()" references interface "Drupal\Core\Messenger\MessengerInterface" but no such service exists. You should maybe alias this interface to the existing "messenger" service``
 
 .. raw:: pdf
 

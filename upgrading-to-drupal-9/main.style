@@ -113,3 +113,14 @@ styles:
 
     smaller:
         textColor: red
+
+    centredtitle:
+        alignment: TA_CENTER
+        fontName: stdBold
+        fontSize: 48
+        leading: 64
+        parent: heading
+
+    centred:
+        alignment: TA_CENTER
+        parent: normal
