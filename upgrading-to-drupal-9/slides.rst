@@ -43,7 +43,7 @@ The D8 release cycle
 * Semantic versioning for core
 * Minor release (new features) every 6 months
 * Patch release (bug fixes) every month
-* Multiple supported versions of core (8.8, 8.9, 9.0)
+* Multiple supported versions of core (8.9, 9.0, 9.1)
 
 .. raw:: pdf
 
@@ -51,6 +51,7 @@ The D8 release cycle
     TextAnnotation "Minor release = new functionality"
     TextAnnotation "Patch release = bug fixes"
     TextAnnotation "Change from 'it will be ready when it's ready' (D7) to a fixed release cycle and schedule, and what makes it in time will be added."
+    TextAnnotation "8.9 is an LTS release"
 
 .. raw:: pdf
 
