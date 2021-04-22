@@ -401,6 +401,7 @@ Fixing autowiring
       services:
     +   Drupal\Core\Messenger\MessengerInterface:
     +     alias: messenger
+    +     private: true
 
         Drupal\simple_message\DisplaySimpleMessage:
           autowire: true
