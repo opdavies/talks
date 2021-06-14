@@ -4,13 +4,13 @@ workspace('talks'):
 attributes:
   rst2pdf:
     command: |
-      = 'rst2pdf ' ~ @('rst2pdf.filename.rst') ~ '
+      = 'docker run --rm -it -v $PWD:/rst2pdf -v $HOME/.local/share/fonts:/usr/share/fonts -w /rst2pdf opdavies/rst2pdf ' ~ @('rst2pdf.filename.rst') ~ '
         --break-level 1
         --stylesheets main,tango
         --fit-background-mode scale
         --extension-module preprocess
         --output ' ~ @('rst2pdf.filename.pdf') ~ '
-        --font-path ~/.local/share/fonts'
+        --font-path /usr/share/fonts'
     filename:
       pdf: slides.pdf
       rst: slides.rst
