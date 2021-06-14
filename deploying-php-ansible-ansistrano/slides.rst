@@ -7,7 +7,7 @@ Deploying PHP with Ansible, Ansible Vault, and Ansistrano
 
 .. class:: titleslideinfo
 
-Oliver Davies, Inviqa
+Oliver Davies (@opdavies)
 
 .. raw:: pdf
 
