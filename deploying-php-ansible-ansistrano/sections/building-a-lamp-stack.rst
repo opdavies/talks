@@ -2,7 +2,7 @@
 
 .. class:: centredtitle
 
-Roles: configuring a LAMP stack
+Configuring a LAMP stack
 
 .. page:: standardPage
 
