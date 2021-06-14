@@ -14,11 +14,6 @@ Oliver Davies, Inviqa
     TextAnnotation "Full stack Developer and Systems Administrator"
     TextAnnotation "Organiser of PHP South Wales"
 
-.. page:: imagePage
-
-.. image:: images/techs.png
-  :width: 14cm
-
 .. page:: standardPage
 
 .. include:: sections/intro.rst
