@@ -44,7 +44,7 @@ pageTemplates:
         showFooter: false
         showHeader: false
 
-linkColor: #24608a
+linkColor: #0045aa
 
 fontsAlias:
     stdMono: Inconsolata-Regular
@@ -63,7 +63,7 @@ styles:
     heading:
         fontSize: 20
         spaceAfter: 16
-        textColor: #24608a
+        textColor: #0045aa
 
     heading1:
       parent: heading
@@ -94,7 +94,7 @@ styles:
         alignment: TA_RIGHT
         fontName: stdMono
         fontSize: 20
-        textColor: #24608a
+        textColor: #0045aa
         rightIndent: 16
         spaceBefore: 0
 
