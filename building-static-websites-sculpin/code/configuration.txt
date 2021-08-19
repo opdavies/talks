@@ -1,0 +1,6 @@
+---
+title: My talk
+foo: bar
+menu_links:
+  - { title: About, href: / }
+  - { title: Talks, href: /talks/ }
