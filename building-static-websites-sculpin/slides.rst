@@ -35,23 +35,31 @@ What do I use it for?
 * My personal website
 * Some client websites
 * HTML prototypes and testing
-* Learning YAML and Twig (and maybe some Symfony)
+* Learning YAML and Twig (and some Symfony)
 
 Installation
 ============
 
 ``composer require sculpin/sculpin``
 
+|
+
+``composer create-project sculpin/blog-skeleton my-blog``
+
+|
+
+``composer create-project opdavies/sculpin-skeleton my-site``
+
 Using Sculpin
 =============
 
 * Configuration lives in ``app/config``
-* Source code lives in ``source``.
+* Source files live in ``source``.
 
 Generate a site
 ===============
 
-* ``sculpin generate``
+* ``vendor/bin/sculpin generate``
 * ``--server``
 * ``--watch``
 * ``--env``
@@ -62,6 +70,18 @@ source/index.md
 .. code-block:: markdown
     :include: code/index.md.txt
 
+output_dev/index.html
+=====================
+
+.. code-block:: html
+
+   <!DOCTYPE html>
+   <head>
+   </head>
+   <body>
+       <p>Hello, World!</p>
+   </body>
+
 Configuration
 =============
 
@@ -70,8 +90,18 @@ Configuration
     - ``sculpin_site_{env}.yml``
 - Key-value pairs
 
-.. code-block:: markdown
+.. code-block:: yaml
     :include: code/configuration.txt
+
+Using on pages
+==============
+
+.. code-block:: html
+
+   <!DOCTYPE html>
+   <head>
+       <title>{{ site.name }}</title>
+   </head>
 
 YAML front matter
 =================
@@ -142,6 +172,50 @@ Using on pages
         <p>{{ testimonial.text }}</p>
     {% endfor %}
 
+Layouts
+=======
+
+.. code-block:: twig
+
+    {# source/_layouts/app.html.twig #}
+
+    <!DOCTYPE html>
+    <html lang="{{ site.locale|default('en') }}">
+        <head>
+            <title>{{ site.name|default('Sculpin Skeleton') }}</title>
+        </head>
+        <body>
+            {% block body %}{% endblock %}
+        </body>
+    </html>
+
+Layouts
+=======
+
+.. code-block:: twig
+
+    {# source/_layouts/default.html.twig #}
+
+    {% extends 'app' %}
+
+    {% block body %}
+        {% block content %}{% endblock %}
+    {% endblock %}
+
+Includes
+========
+
+.. code-block:: twig
+
+    {% include 'about-author' with {
+        avatar: site.avatar,
+        work: site.work,
+    } only %}
+
+    {% for link in links %}
+        {% include 'menu-link' with { link } only %}
+    {% endfor %}
+
 Content types
 =============
 
@@ -164,16 +238,58 @@ Accessing custom content types
     use:
         - projects
     ---
+
     {% for project in data.projects %}
         <h2>{{ project.title }}</h2>
     {% endfor %}
 
+.. page:: titlePage
+
+.. class:: centredtitle
+
+Demo
+
+.. page:: standardPage
+
 Extending Sculpin
 =================
 
-* Custom (Symfony) bundles
-* Twig extensions
-* Other Symfony components or PHP libraries
+.. code-block:: yaml
+
+    # app/config/sculpin_kernel.yml
+
+    ...
+
+    services:
+        App\TwigExtension\TalkExtension:
+            tags:
+                - { name: twig.extension }
+
+.. page:: imagePage
+
+.. image:: images/packagist.png
+   :width: 22cm
+
+.. page:: standardPage
+
+
+.. code-block:: php
+   :startinline: true
+
+    // app/SculpinKernel.php
+
+    use Opdavies\Sculpin\Bundle\TwigMarkdownBundle\SculpinTwigMarkdownBundle;
+    use Sculpin\Bundle\SculpinBundle\HttpKernel\AbstractKernel;
+
+    final class SculpinKernel extends AbstractKernel
+    {
+        protected function getAdditionalSculpinBundles(): array
+        {
+            return [
+                SculpinTwigMarkdownBundle::class,
+            ];
+        }
+    }
 
 Thanks!
 =======
@@ -181,8 +297,8 @@ Thanks!
 References:
 
 * https://sculpin.io
-* https://github.com/sculpin/sculpin
-* https://github.com/opdavies/sculpin-skeleton
+* https://github.com/opdavies/sculpin-talk-demo
+* https://github.com/opdavies/oliverdavies.uk
 * https://github.com/opdavies/docker-image-sculpin-serve
 
 |

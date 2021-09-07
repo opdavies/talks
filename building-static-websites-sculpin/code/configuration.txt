@@ -1,6 +1,5 @@
 ---
-title: My talk
-foo: bar
+name: My talk
 menu_links:
-  - { title: About, href: / }
-  - { title: Talks, href: /talks/ }
+  - { title: Home, href: / }
+  - { title: About, href: /about }
