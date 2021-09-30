@@ -46,6 +46,7 @@ styles:
     heading:
         fontSize: 20
         spaceAfter: 20
+        textColor: #93140b
 
     title:
         fontSize: 300%
