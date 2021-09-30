@@ -47,6 +47,12 @@ Raffle
 .. image:: images2/book.jpg
    :height: 10cm
 
+Raffle
+======
+
+.. image:: images2/jetbrains.png
+   :height: 10cm
+
 Next month
 ==========
 
