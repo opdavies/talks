@@ -1,0 +1,56 @@
+#!/bin/bash
+
+set -e
+
+PDF_FILENAME=slides.pdf
+RST_FILENAME=slides.rst
+THUMBNAIL_FILENAME=thumbnail.jpg
+
+function clean:all {
+  # Clean all generated files.
+
+  find . \
+    -type f \( -name "${PDF_FILENAME}*" -o -name *.build_temp -o -name ${THUMBNAIL_FILENAME} \) \
+    -delete
+}
+
+function help {
+  printf "%s <task> [args]\n\nTasks:\n" "${0}"
+
+  compgen -A function | grep -v "^_" | cat -n
+
+  printf "\nExtended help:\n  Each task has comments for general usage\n"
+}
+
+function pdf:generate {
+  # Generate a new PDF file.
+
+  DIRECTORY_NAME=$1
+  shift 1
+
+  docker run --rm -it \
+    -v $HOME/.local/share/fonts:/usr/share/fonts \
+    -v $PWD/${DIRECTORY_NAME}:/rst2pdf \
+    -w /rst2pdf \
+    opdavies/rst2pdf \
+    ${RST_FILENAME} \
+      --break-level 1 \
+      --extension-module preprocess \
+      --fit-background-mode scale \
+      --font-path /usr/share/fonts \
+      --output ${PDF_FILENAME} \
+      --stylesheets main,tango \
+      "${@}"
+}
+
+function pdf:watch {
+  # Generate a new PDF file and watch for changes.
+  echo "TODO: pdf:watch"
+}
+
+function thumbnail:generate {
+  # Generate a thumbnail image of the first slide in the presentation.
+  echo "TODO: thumbnail:generate"
+}
+
+eval "${@:-help}"
