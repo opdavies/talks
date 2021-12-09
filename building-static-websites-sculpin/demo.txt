@@ -1,0 +1,8 @@
+- Adding a new page (`/talks`)
+- Adding a new menu link
+- Adding a new content type (talks)
+- Add a new talk
+- Show how to use page-level variables, adding events to a talk
+- Adding the talks page to the menu
+- Active menu link styling?
+- Generating a production version of the site
