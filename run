@@ -43,6 +43,14 @@ function pdf:generate {
       "${@}"
 }
 
+function pdf:present {
+  TALK_PATH=$1
+  shift 1
+
+  pdfpc "${@}" "$TALK_PATH/$PDF_FILENAME" \
+    --switch-screens
+}
+
 function pdf:watch {
   # Generate a new PDF file and watch for changes.
   echo "TODO: pdf:watch"
