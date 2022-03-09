@@ -1,0 +1,14 @@
+.. image:: images/editing.png
+    :width: 20cm
+
+
+.. code-block:: php
+    :startinline: true
+    :linenos:
+
+    echo 'Hello world!';
+
+
+.. raw:: pdf
+
+    TextAnnotation "This is a speaker note."
