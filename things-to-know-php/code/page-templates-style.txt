@@ -1,6 +1,0 @@
-pageTemplates:
-    standardPage:
-        frames: []
-            [3%, 3%, 92%, 92%]
-        showFooter: true
-        showHeader: false

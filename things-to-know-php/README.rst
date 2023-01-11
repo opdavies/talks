@@ -1,4 +1,4 @@
-Building and presenting slide decks with rst2pdf
-################################################
+Things to know about PHP
+========================
 
-https://www.oliverdavies.uk/talks/building-presenting-slide-decks-rst2pdf
+https://www.oliverdavies.uk/talks/things-you-should-know-about-php
