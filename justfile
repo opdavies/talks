@@ -8,12 +8,14 @@ generate name: (clean name)
   cd {{ name }} \
     && rst2pdf {{ name }}.rst \
       --break-level 1 \
+      -e preprocess \
       --fit-background-mode scale \
       --font-path ../fonts \
       --output {{ name }}.pdf \
       --stylesheets opdavies-light,tango,vs \
     && rst2pdf {{ name }}.rst \
       --break-level 1 \
+      -e preprocess \
       --fit-background-mode scale \
       --font-path ../fonts \
       --output {{ name }}-dark.pdf \
