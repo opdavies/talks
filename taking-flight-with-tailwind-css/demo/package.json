@@ -1,0 +1,13 @@
+{
+  "config": {
+    "content": "**/*.html",
+    "output": "build/tailwind.css"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=development tailwindcss --content $npm_package_config_content --output $npm_package_config_output --watch",
+    "build": "NODE_ENV=production tailwindcss --content $npm_package_config_content --output $npm_package_config_output --minify"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.2.6"
+  }
+}
