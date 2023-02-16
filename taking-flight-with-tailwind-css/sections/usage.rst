@@ -21,9 +21,10 @@ Using utility classes to build custom designs without writing CSS
 Benefits
 ========
 
-- You aren't wasting time and energy inventing class names
-- Your CSS stops growing
-- Making changes feels safer
+- You don't waste time and energy inventing class names.
+- No switching between CSS and HTML files.
+- Your CSS stops growing.
+- Making changes feels (and is) safer.
 
 .. raw:: pdf
 

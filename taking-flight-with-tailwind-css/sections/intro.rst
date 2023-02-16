@@ -74,9 +74,48 @@ Tailwind is more than a CSS framework, it's an engine for creating design system
 
 .. raw:: pdf
 
+    PageBreak titlePage
     TextAnnotation "All generated from a single, customisable configuration file."
 
-.. page:: imagePage
+.. class:: centredtitle
+
+``block
+inline
+flex
+grid``
+
+.. raw:: pdf
+
+   PageBreak
+   TextAnnotation "A class that toggles a single CSS property."
+
+
+.. class:: centredtitle
+
+``text-sm
+text-base
+text-lg
+text-xl
+text-2xl``
+
+.. raw:: pdf
+
+    PageBreak
+    TextAnnotation "T-shirt size arguments."
+
+.. class:: centredtitle
+
+``text-blue-50
+text-blue-100
+text-blue-200
+text-blue-300
+text-blue-400
+text-blue-500``
+
+.. raw:: pdf
+
+    PageBreak imagePage
+    TextAnnotation "Arguments for text colour and shade."
 
 .. image:: images/screenshot-laravel-nova.png
     :width: 23cm

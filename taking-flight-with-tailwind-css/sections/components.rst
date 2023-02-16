@@ -33,12 +33,14 @@ Loops
 =====
 
 .. code-block:: twig 
+    :linenos:
     :include: code/20-loops.txt
 
 Includes
 ========
 
 .. code-block:: twig 
+    :linenos:
     :include: code/21-includes.txt
 
 .. raw:: pdf
@@ -49,10 +51,12 @@ Extracting CSS components
 =========================
 
 .. code-block:: css 
+    :linenos:
     :include: code/css-apply-before.txt
 
 Extracting CSS components
 =========================
 
 .. code-block:: css 
+    :linenos:
     :include: code/css-apply-after.txt

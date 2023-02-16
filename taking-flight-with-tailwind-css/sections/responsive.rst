@@ -20,6 +20,7 @@ Screens (aka breakpoints)
 =========================
 
 .. code-block:: javascript
+    :linenos:
     :include: code/12-default-screens.txt
 
 .. page:: titlePage
@@ -40,10 +41,12 @@ Responsive classes in CSS
 =========================
 
 .. code-block:: css
+    :linenos:
     :include: code/13-responsive-classes.txt
 
 Responsive classes in HTML
 ==========================
 
 .. code-block:: html
+    :linenos:
     :include: code/14-responsive-class-example.txt

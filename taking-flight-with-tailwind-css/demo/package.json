@@ -9,5 +9,8 @@
   },
   "dependencies": {
     "tailwindcss": "^3.2.6"
+  },
+  "devDependencies": {
+    "tailwindcss-list-reset": "^1.0.0"
   }
 }

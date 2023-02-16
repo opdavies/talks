@@ -5,11 +5,15 @@
 Interaction states
 
 
-.. class:: centred
+.. raw:: pdf
 
-hover, focus, active, disabled, visited,
-group-hover, focus-within,
-first-child, last-child...
+   PageBreak
+
+.. class:: centredtitle
+
+``hover, focus, active, disabled, visited,
+focus-within,
+first-child, last-child``
 
 .. page::
 
@@ -43,15 +47,11 @@ Interaction states in CSS
 
 .. code-block:: css
     :include: code/9-hover-classes.txt
+    :linenos:
 
 Interaction states in HTML
 ==========================
 
 .. code-block:: html
     :include: code/10-hover-class-example.txt
-
-Default variants
-================
-
-.. code-block:: javascript
-    :include: code/11-default-variants.txt
+    :linenos:

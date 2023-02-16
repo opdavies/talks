@@ -1,13 +1,10 @@
-// index.js
+const plugin = require("tailwindcss/plugin");
 
-module.exports = variants => ({ addUtilities }) => {
-  addUtilities(
-    {
-      '.list-reset': {
-        listStyle: 'none',
-        padding: 0,
-      },
+plugin(function({ addUtilities }) {
+  addUtilities({
+    '.list-reset': {
+      listStyle: 'none',
+      padding: 0,
     },
-    variants,
-  )
-}
+  })
+})

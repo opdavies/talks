@@ -1,5 +1,3 @@
-{# base.html.twig #}
-
 {% for item in navItems %}
   <a
     class="block py-3 px-4 text-sm text-gray-800"

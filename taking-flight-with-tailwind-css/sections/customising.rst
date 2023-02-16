@@ -16,14 +16,17 @@ tailwind.config.js
 ==================
 
 .. code-block:: javascript
-    :include: code/tailwind-basic-config.txt
+   :include: code/tailwind-basic-config.txt
+   :linenos:
+
 
 Overriding configuration
 ========================
 
 .. code-block:: javascript
-    :include: code/override-colours.txt
-    :hl_lines: 5 6 7
+   :include: code/override-colours.txt
+   :linenos:
+   :hl_lines: 5 6 7
 
 .. raw:: pdf
 
@@ -33,22 +36,20 @@ Extending configuration
 =======================
 
 .. code-block:: javascript
-    :include: code/extending-colours.txt
-    :hl_lines: 5 6 7 8 9
+   :linenos:
+   :include: code/extending-colours.txt
+   :hl_lines: 5 6 7 8 9
 
 .. raw:: pdf
 
     TextAnnotation "Extends Tailwind's default colours."
-
-Additional options
-==================
-
-.. code-block:: javascript
-    :include: code/additional-config-options.txt
-    :hl_lines: 2 3 4
 
 .. page:: titlePage
 
 .. class:: centredtitle
 
 ``npx tailwind init --full``
+
+.. raw:: pdf
+
+   PageBreak titlePage
