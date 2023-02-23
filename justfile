@@ -2,7 +2,7 @@ _default:
   @just --list
 
 clean name:
-  find {{ name }} -type f -name *.pdf -delete
+  find {{ name }} -type f -name *.pdf -or -name *.rst.build_temp -delete
 
 generate name: (clean name)
   cd {{ name }} \
