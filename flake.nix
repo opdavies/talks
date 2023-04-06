@@ -13,7 +13,10 @@
         devShell = with pkgs; pkgs.mkShell {
           buildInputs = [
             just
-            python310Packages.rst2pdf
+            python39Packages.rst2pdf
+            pdfpc
+            libcanberra
+            libcanberra-gtk3
           ];
         };
       });

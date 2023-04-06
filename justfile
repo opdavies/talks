@@ -20,3 +20,6 @@ generate name: (clean name)
       --font-path ../fonts \
       --output {{ name }}-dark.pdf \
       --stylesheets opdavies-dark,tango,monokai
+
+thumbnail name slideNumber:
+  pdftoppm {{ name }}/{{ name }}.pdf -png -f {{ slideNumber }} -l {{ slideNumber }} > {{ name }}/{{ name }}-{{ slideNumber }}.png

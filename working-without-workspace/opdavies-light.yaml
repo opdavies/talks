@@ -1,0 +1,158 @@
+embeddedFonts:
+  - - Inconsolata.ttf
+    - Inconsolata.ttf
+    - Inconsolata.ttf
+    - Inconsolata.ttf
+  - - Helvetica.ttf
+    - Helvetica-Bold.ttf
+    - Helvetica.ttf
+    - Helvetica-Bold.ttf
+
+fontsAlias:
+  fontBold: Helvetica-Bold
+  fontFont: Helvetica
+  fontItalic: Helvetica
+  fontMono: Inconsolata
+  fontMonoBold: Inconsolata
+  fontMonoBoldItalic: Inconsolata
+  fontMonoItalic: Inconsolata
+
+linkColor: '#24608a'
+
+pageSetup:
+  firstTemplate: coverPage
+  height: 18cm
+  margin-bottom: 0cm
+  margin-gutter: 0cm
+  margin-left: 0cm
+  margin-right: 0cm
+  margin-top: 0cm
+  size: null
+  spacing-footer: 2mm
+  spacing-header: 2mm
+  width: 32cm
+
+pageTemplates:
+  coverPage:
+    frames:
+      - - 12%
+        - 10%
+        - 76%
+        - 75%
+    showFooter: false
+    showHeader: false
+
+  imagePage:
+    alignment: TA_CENTER
+    frames:
+      - - 3%
+        - 3%
+        - 92%
+        - 92%
+    showFooter: true
+    showHeader: false
+
+  outputPage:
+    frames:
+      - - 8%
+        - 10%
+        - 82%
+        - 65%
+    showFooter: false
+    showHeader: false
+
+  standardPage:
+    frames:
+      - - 3%
+        - 3%
+        - 92%
+        - 92%
+    showFooter: true
+    showHeader: false
+
+  titlePage:
+    alignment: TA_CENTER
+    frames:
+      - - 8%
+        - 8%
+        - 85%
+        - 65%
+    showFooter: true
+    showHeader: false
+
+styles:
+  bodytext:
+    alignment: TA_LEFT
+
+  bullet-list:
+    colWidths:
+      - '20'
+      - null
+    commands:
+      - - LEFTPADDING
+        - - 0
+          - 0
+        - - 1
+          - -1
+        - 5
+      - - RIGHTPADDING
+        - - 0
+          - 0
+        - - 1
+          - -1
+        - 0
+    textColor: '#aaaaaa'
+
+  bullet-list-item:
+    spaceAfter: 0
+    spaceBefore: 18
+
+  centred:
+    alignment: TA_CENTER
+    parent: normal
+
+  centredtitle:
+    alignment: TA_CENTER
+    fontName: fontBold
+    fontSize: 48
+    leading: 64
+    parent: heading
+
+  code:
+    backColor: white
+    borderWidth: 0
+    fontSize: 22
+    leading: 24
+    parent: literal
+    spaceBefore: 0
+
+  footer:
+    alignment: TA_RIGHT
+    fontName: fontMono
+    fontSize: 20
+    rightIndent: 16
+    spaceBefore: 0
+    textColor: '#24608a'
+
+  heading:
+    fontName: fontBold
+    fontSize: 20
+    spaceAfter: 16
+    textColor: '#24608a'
+
+  literal:
+    backColor: white
+    fontName: fontMono
+
+  normal:
+    fontSize: 24
+    textColor: '#383745'
+
+  title:
+    fontSize: 300%
+    parent: heading
+
+  titleslideinfo:
+    alignment: TA_CENTER
+    fontSize: 140%
+    parent: normal

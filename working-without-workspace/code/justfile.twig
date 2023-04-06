@@ -1,0 +1,12 @@
+{% if "php" is same as language %}
+composer *args:
+  {{ "just _exec php composer {{ args }}" | raw }}
+
+{% if "drupal-project" is same as type %}
+drush *args:
+  {{ "just _exec php drush {{ args }}" | raw }}
+
+install *args:
+  {{ "just _exec php drush site:install -y {{ args }}" | raw }}
+{% endif %}
+{% endif %}

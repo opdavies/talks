@@ -1,0 +1,12 @@
+FROM php:{{ php.version }} AS base
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+RUN which composer && composer -V
+
+ARG DOCKER_UID=1000
+ENV DOCKER_UID="${DOCKER_UID}"
+
+WORKDIR {{ project_root }}
+
+RUN adduser --disabled-password --uid "${DOCKER_UID}" app \
+  && chown app:app -R {{ project_root }}

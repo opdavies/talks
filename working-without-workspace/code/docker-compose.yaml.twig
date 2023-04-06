@@ -1,0 +1,15 @@
+{% if "php" == language %}
+php:
+  <<: *default-app
+  build:
+    context: .
+    target: build
+    args:
+      - "DOCKER_UID=${DOCKER_UID:-1000}"
+  volumes:
+    - .:{{ project_root }}
+  {% if "database" in dockerCompose.services|keys -%}
+  depends_on:
+    - database
+  {% endif -%}
+  profiles: [php]
