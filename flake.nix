@@ -1,23 +1,22 @@
 {
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/master";
-    flake-utils.url = "github:numtide/flake-utils";
-  };
+  inputs.devshell.url = "github:numtide/devshell";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        devShell = with pkgs; pkgs.mkShell {
-          buildInputs = [
+  outputs = inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ inputs.devshell.flakeModule ];
+
+      systems = [ "x86_64-linux" ];
+
+      perSystem = { config, self', inputs', pkgs, system, ... }: {
+        formatter = pkgs.nixpkgs-fmt;
+
+        devshells.default = {
+          packages = with pkgs; [
             just
-            python39Packages.rst2pdf
-            pdfpc
-            libcanberra
-            libcanberra-gtk3
+            python310Packages.rst2pdf
           ];
         };
-      });
+      };
+    };
 }
