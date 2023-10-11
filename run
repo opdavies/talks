@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -6,8 +6,9 @@ PDF_FILENAME=slides.pdf
 RST_FILENAME=slides.rst
 THUMBNAIL_FILENAME=thumbnail.jpg
 
-function clean:all {
-  # Clean all generated files.
+function clean {
+  mkdir -p dist
+  rm -fr dist/*
 
   find . \
     -type f \( -name "${PDF_FILENAME}*" -o -name *.build_temp -o -name ${THUMBNAIL_FILENAME} \) \
@@ -23,37 +24,28 @@ function help {
 }
 
 function pdf:generate {
-  # Generate a new PDF file.
-
   DIRECTORY_NAME=$1
   shift 1
+  pushd "${DIRECTORY_NAME}"
 
-  docker run --rm -it \
-    -v $HOME/.local/share/fonts:/usr/share/fonts \
-    -v $PWD/${DIRECTORY_NAME}:/rst2pdf \
-    -w /rst2pdf \
-    opdavies/rst2pdf \
-    ${RST_FILENAME} \
-      --break-level 1 \
-      --extension-module preprocess \
-      --fit-background-mode scale \
-      --font-path /usr/share/fonts \
-      --output ${PDF_FILENAME} \
-      --stylesheets main,tango \
-      "${@}"
+  rst2pdf "${RST_FILENAME}" \
+    --break-level 1 \
+    -e preprocess \
+    --fit-background-mode scale \
+    --font-path ../fonts \
+    --output "../dist/${DIRECTORY_NAME}.pdf" \
+    --stylesheets ../styles/style-light,tango \
+    "${@}"
+
+  popd
+  tree dist
 }
 
 function pdf:present {
   TALK_PATH=$1
   shift 1
 
-  pdfpc "${@}" "$TALK_PATH/$PDF_FILENAME" \
-    --switch-screens
-}
-
-function pdf:watch {
-  # Generate a new PDF file and watch for changes.
-  echo "TODO: pdf:watch"
+  pdfpc "${@}" "dist/${TALK_PATH}.pdf" --switch-screens
 }
 
 function thumbnail:generate {
@@ -61,4 +53,5 @@ function thumbnail:generate {
   echo "TODO: thumbnail:generate"
 }
 
-eval "${@:-help}"
+TIMEFORMAT=$'\nTask completed in %3lR'
+time "${@:-help}"
