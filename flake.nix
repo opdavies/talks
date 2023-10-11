@@ -12,10 +12,7 @@
         formatter = pkgs.nixpkgs-fmt;
 
         devshells.default = {
-          packages = with pkgs; [
-            just
-            python310Packages.rst2pdf
-          ];
+          packages = with pkgs; [ python310Packages.rst2pdf ];
         };
       };
     };
