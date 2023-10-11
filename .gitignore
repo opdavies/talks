@@ -1,3 +1,9 @@
+# Nix.
+/.direnv/
+
+# rst2df.
 /**/*.pdf
-/**/*.pdfpc
 /**/*.rst.build_temp
+
+# pdfpc.
+/**/*.pdfpc
