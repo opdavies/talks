@@ -1,0 +1,6 @@
+# drupalcon.info.yml
+
+name: DrupalCon demo
+type: module
+core_version_requirement: ^10
+package: DrupalCon

@@ -1,0 +1,44 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Drupal\drupalcon\Repository;
+
+use Drupal\Core\Entity\EntityStorageInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\node\NodeInterface;
+
+final class ArticleRepository {
+
+  private EntityStorageInterface $nodeStorage;
+
+  public function __construct(
+    private EntityTypeManagerInterface $entityTypeManager,
+  ) {
+    $this->nodeStorage = $this->entityTypeManager->getStorage('node');
+  }
+
+  public function getAll(): array {
+// start code
+    $articles = $this->nodeStorage->loadByProperties([
+      'status' => NodeInterface::PUBLISHED,
+    ]);
+
+    uasort($articles, fn (NodeInterface $a, NodeInterface $b) =>
+      $b->getCreatedTime() <=> $a->getCreatedTime());
+
+    return $articles;
+// end code
+  }
+
+}
+
+---
+
+// start output
+.                                                                   1 / 1 (100%)
+
+Time: 00:00.462, Memory: 6.00 MB
+
+OK (1 test, 11 assertions)
+// end output

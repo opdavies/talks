@@ -1,0 +1,25 @@
+// start code
+// src/Controller/BlogPageController.php
+
+namespace Drupal\drupalcon\Controller;
+
+class BlogPageController {
+
+  public function __invoke(): array {
+    return [];
+  }
+
+}
+// end code
+
+// start output
+.                                                                   1 / 1 (100%)
+
+Time: 00:01.916, Memory: 6.00 MB
+
+OK (1 test, 3 assertions)
+
+Task completed in 0m2.147s
+// end output
+
+Task completed in 0m2.124s

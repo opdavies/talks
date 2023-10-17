@@ -1,0 +1,34 @@
+// start services
+# drupalcon.services.yml
+
+services:
+  Drupal\drupalcon\Repository\ArticleRepository:
+    autowire: true
+// end services
+
+---
+
+// start output
+E                                                                   1 / 1 (100%)
+
+Time: 00:00.405, Memory: 6.00 MB
+
+There was 1 error:
+
+1) Drupal\Tests\drupalcon\Kernel\ArticleRepositoryTest::it_returns_blog_posts
+Drupal\Component\Plugin\Exception\PluginNotFoundException:
+The "node" entity type does not exist.
+// end output
+
+/app/web/core/lib/Drupal/Core/Entity/EntityTypeManager.php:139
+/app/web/core/lib/Drupal/Core/Entity/EntityTypeManager.php:253
+/app/web/core/lib/Drupal/Core/Entity/EntityTypeManager.php:192
+/app/web/modules/custom/drupalcon/src/Repository/ArticleRepository.php:12
+/app/vendor/symfony/dependency-injection/ContainerBuilder.php:1140
+/app/vendor/symfony/dependency-injection/ContainerBuilder.php:586
+/app/vendor/symfony/dependency-injection/ContainerBuilder.php:531
+/app/web/modules/custom/drupalcon/tests/src/ArticleRepositoryTest.php:15
+/app/vendor/phpunit/phpunit/src/Framework/TestResult.php:728
+
+ERRORS!
+Tests: 1, Assertions: 4, Errors: 1.

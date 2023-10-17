@@ -1,0 +1,40 @@
+namespace Drupal\Tests\drupalcon\Kernel;
+
+use Drupal\drupalcon\Repository\ArticleRepository;
+use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
+use Drupal\Tests\node\Traits\NodeCreationTrait;
+
+class ArticleRepositoryTest extends EntityKernelTestBase {
+
+  public static $modules = [
+    'drupalcon',
+    'node',
+  ];
+
+// start test
+  use NodeCreationTrait;
+
+  /** @test */
+  public function it_returns_blog_posts() {
+    $this->createNode(['type' => 'article']);
+
+    /** @var ArticleRepository */
+    $repository = $this->container->get(ArticleRepository::class);
+
+    $articles = $repository->getAll();
+
+    $this->assertCount(1, $articles);
+  }
+// end test
+
+}
+
+---
+
+// start output
+.                                                                   1 / 1 (100%)
+
+Time: 00:00.439, Memory: 6.00 MB
+
+OK (1 test, 11 assertions)
+// end output

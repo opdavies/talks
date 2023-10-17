@@ -1,0 +1,21 @@
+public static $modules = ['node', 'drupalcon']; // end code
+
+// start output
+E                                                                   1 / 1 (100%)
+
+Time: 00:01.906, Memory: 6.00 MB
+
+There was 1 error:
+
+1) Drupal\Tests\drupalcon\Functional\BlogPageTest::it_loads_the_blog_page
+Behat\Mink\Exception\ExpectationException:
+Current response status code is 500, but 200 expected.
+// end output
+
+/app/vendor/behat/mink/src/WebAssert.php:794
+/app/vendor/behat/mink/src/WebAssert.php:130
+/app/web/modules/custom/drupalcon/tests/src/BlogPageTest.php:17
+/app/vendor/phpunit/phpunit/src/Framework/TestResult.php:728
+
+ERRORS!
+Tests: 1, Assertions: 3, Errors: 1.

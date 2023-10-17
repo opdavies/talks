@@ -7,18 +7,23 @@ TDD: Test Driven Drupal
 
 .. class:: titleslideinfo
 
-Oliver Davies, Inviqa
+Oliver Davies (@opdavies)
+
+|
+.. class:: centred
+
+https://opdavi.es/tdd-test-driven-drupal
 
 .. page:: titlePage
 
 .. class:: centredtitle
 
-Software Engineer, open-source maintainer and contributor
+Software Engineer, Full Stack Development Consultant, Open-Source Maintainer
 
 .. raw:: pdf
 
-  TextAnnotation "I develop Drupal applications for clients, including custom modules and themes."
-  TextAnnotation "I contribute to open source projects including Drupal core."
+  TextAnnotation "I develop and consult on Drupal applications for clients."
+  TextAnnotation "I contribute to and maintain open source projects including Drupal core."
   TextAnnotation "Different perspectives."
 
 .. page:: imagePage
@@ -29,20 +34,29 @@ Software Engineer, open-source maintainer and contributor
 .. raw:: pdf
 
   TextAnnotation "Become maintainer in 2012"
-  TextAnnotation "~223 most used module on Drupal.org"
-  TextAnnotation "~30,000 sites - ~20,000 D7 and ~10,000 D8/9"
-
-  TextAnnotation "Had some existing tests, crucial to preventing regressions"
 
 .. page:: imagePage
 
-.. image:: images/override-node-options-2012-4.png
+.. image:: images/override-node-options-1.png
   :width: 18cm
 
 .. page::
 
-.. image:: images/override-node-options-2020-2.png
+|
+
+.. image:: images/override-node-options-2.png
   :width: 22cm
+
+|
+
+.. image:: images/override-node-options-3.png
+  :width: 22cm
+
+.. raw:: pdf
+
+    TextAnnotation "173rd most used module on Drupal.org"
+    TextAnnotation "~38,000 sites - ~13,000 D7 and ~24,000 D8/9/10"
+    TextAnnotation "Had some existing tests, crucial to preventing regressions"
 
 .. page:: standardPage
 
@@ -59,10 +73,10 @@ Why write tests?
 
 .. raw:: pdf
 
-    TextAnnotation "I don't want to break 30,000 Drupal sites when rolling a new release, or causing a regression in a client codebase."
+    TextAnnotation "I don't want to break 38,000 Drupal sites when rolling a new release, or causing a regression in a client codebase."
     TextAnnotation "TDD often results in writing less code as you're figuring things out whilst writing the test, only writing code that's needed for the tests."
     TextAnnotation "Drupal core gates. Testing gate requires new tests for new features, failing test cases for bug fixes, and code coverage when refactoring code."
-    TextAnnotation "Same projects can work for Drupal 8 and 9, and in theory 10."
+    TextAnnotation "Same projects can work for Drupal 8, 9 and 10 etc."
 
 Testing in Drupal
 =================
@@ -71,8 +85,8 @@ Testing in Drupal
 * **Drupal 8** - PHPUnit added as a core dependency, later became the default via the PHPUnit initiative
 * **Drupal 9** - SimpleTest removed from core, moved back to contrib
 
-Writing Tests (Drupal 8/9)
-==========================
+Writing PHPUnit Tests for Drupal
+================================
 
 * PHP class with ``.php`` extension
 * ``tests/src`` directory within each module
@@ -83,6 +97,7 @@ Writing Tests (Drupal 8/9)
 
 .. raw:: pdf
 
+    TextAnnotation "Tests per module."
     TextAnnotation "PSR-4 autoloading."
     TextAnnotation "Different to D7."
 
@@ -91,6 +106,10 @@ Writing Tests (Drupal 8/9)
 .. class:: centredtitle
 
 Arrange, Act, Assert
+
+.. raw:: pdf
+
+   TextAnnotation "Set up the world, perform an action, then make assertions."
 
 .. page::
 
@@ -119,9 +138,11 @@ What to test?
 
 .. raw:: pdf
 
-  TextAnnotation "Examples of some things that I tested on a previous project."
+  TextAnnotation "Examples of some things that I tested on previous projects."
 
 .. page:: imagePage
+
+|
 
 .. image:: images/matt-stauffer-tweet.png
     :width: 20cm
@@ -150,6 +171,10 @@ Types of Tests
 * **Functional/FunctionalJavascript** (web, browser, feature)
 * **Kernel** (integration)
 * **Unit**
+
+.. raw:: pdf
+
+   TextAnnotation "Not just unit tests."
 
 Functional Tests
 ================
@@ -197,25 +222,79 @@ Core script
 
 .. code-block:: shell
 
-    $ php core/scripts/run-tests.sh
+    $ php web/core/scripts/run-tests.sh
 
-    $ php core/scripts/run-tests.sh --module example
+    $ php web/core/scripts/run-tests.sh \
+      --all
 
-    $ php core/scripts/run-tests.sh --class ExampleTest
+    $ php web/core/scripts/run-tests.sh \
+      --module example
+
+    $ php web/core/scripts/run-tests.sh \
+      --class ExampleTest
+
+Core script
+===========
+
+.. code-block:: shell
+
+    $ php web/core/scripts/run-tests.sh \
+      --module example \
+      --sqlite /dev/shm/test.sqlite \
+      --url http://web
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block::
+
+    Drupal test run
+    ---------------
+
+    Tests to be run:
+      - Drupal\Tests\example\Functional\ExamplePageTest
+
+    Test run started:
+      Saturday, October 14, 2023 - 10:28
+
+    Test summary
+    ------------
+
+    Drupal\Tests\example\Functional\ExamplePageTest                1 passes
+
+    Test run duration: 7 sec
 
 PHPUnit
 =======
 
 .. code-block:: shell
 
-   $ vendor/bin/phpunit \
-    -c core \
-    modules/contrib/examples/phpunit_example 
+   $ export SIMPLETEST_BASE_URL=http://web
+
+   $ web/vendor/bin/phpunit \
+    -c web/core \
+    modules/contrib/examples/modules/phpunit_example 
 
 .. raw:: pdf
 
     TextAnnotation "Update the phpunit path and config file path for your project."
     TextAnnotation "-c not needed if the phpunit.xml.dist or phpunit.xml is in the same directory."
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block:: plain
+
+    PHPUnit 9.6.13 by Sebastian Bergmann and contributors.
+
+    Testing /app/web/modules/contrib/examples/modules/phpunit_example
+    .................................                                 33 / 33 (100%)
+
+    Time: 00:08.660, Memory: 10.00 MB
+
+    OK (33 tests, 43 assertions)
 
 Creating a phpunit.xml file
 ===========================
@@ -229,111 +308,11 @@ Creating a phpunit.xml file
     - ``SIMPLETEST_BASE_URL``, ``SIMPLETEST_DB``, ``BROWSERTEST_OUTPUT_DIRECTORY``
     - ``stopOnFailure="true"``
 
-.. page:: titlePage
-
-.. class:: centredtitle
-
-Example
-
-.. page:: imagePage
-
-.. image:: images/broadbean-website.png
-    :width: 20cm
-
-.. page:: standardPage
-
-Specification
-=============
-
-* Job adverts created in Broadbean UI, create nodes in Drupal.
-* Application URL links users to separate application system.
-* Constructed from domain, includes role ID as a GET parameter and optionally UTM parameters.
-* Jobs need to be linked to offices.
-* Job length specified in number of days.
-* Path is specified as a field in the API.
-
 .. raw:: pdf
 
-    TextAnnotation "Jobs added to a different system by the client, data POSTed to Drupal."
-    TextAnnotation "Job applicants would visit the job on the Drupal site, click the application URL and go to another (CRM) system to apply."
-    TextAnnotation "Client wanted to be able to specify the Drupal path in advance."
+   TextAnnotation "For core. For projects, I create a customised phpunit.xml.dist in my project."
 
-.. page:: imagePage
-
-.. image:: images/broadbean-drupal-flow-2.png
-    :width: 20cm
-
-.. page:: standardPage
-
-Implementation
-==============
-
-* Added route to accept data from API as XML
-* Added system user with API role to authenticate
-* ``active_for`` converted from number of days to UNIX timestamp
-* ``branch_name`` and ``locations`` converted from plain text to entity reference (job node to office node)
-* ``url_alias`` property mapped to ``path``
-
-.. raw:: pdf
-
-    TextAnnotation "Required field missing."
-    TextAnnotation "Incorrect branch name."
-
-Incoming data
-=============
-
-.. code-block:: php
-    :startinline: true
-
-    $data = [
-      'command' => 'add',
-      'username' => 'bobsmith',
-      'password' => 'p455w0rd',
-      'active_for' => '365',
-      'details' => 'This is the detailed description.',
-      'job_title' => 'Healthcare Assistant (HCA)',
-      'locations' => 'Bath, Devizes',
-      'role_id' => 'A/52/86',
-      'summary' => 'This is the short description.',
-      'url_alias' => 'healthcare-assistant-aldershot-june17',
-      // ...
-    ];
-
-.. raw:: pdf
-
-    TextAnnotation "Some pf the information sent to our endpoint."
-
-Implementation
-==============
-
-* If no error, create the job node, return OK response to Broadbean
-* If an Exception is thrown, return an error code and message
-
-.. raw:: pdf
-
-    TextAnnotation "Required field missing."
-    TextAnnotation "Branch name incorrect, Exception caught."
-
-Types of tests
-==============
-
-* **Functional**: job nodes are created with the correct URL and the correct response code is returned
-* **FunctionalJavaScript**: application URL is updated with JavaScript based on UTM parameters (hosting)
-* **Kernel**: job nodes can be added and deleted, expired job nodes are deleted, application URL is generated correctly
-* **Unit**: ensure number of days are converted to timestamps correctly
-
-Results
-=======
-
-* 0 bugs!
-* Easier to identify where issues occurred and responsibilities
-* Reduced debugging time
-* Added more tests for any bugs to prevent regressions
-
-.. raw:: pdf
-
-    TextAnnotation "Best case scenario."
-    TextAnnotation "Just because there are tests, it doesn't mean that everything works and everything's passing - just the tests that you wrote are passing."
+.. include:: example.rst
 
 Test Driven Development
 =======================
@@ -384,27 +363,19 @@ How I Write Tests - "Outside In"
 
     TextAnnotation "Write the code in your test that you wish you had, and let the tests tell you what's missing."
 
-.. page:: titlePage
 
-.. class:: centredtitle
+How I Write Tests - "Outside In"
+================================
 
-Demo: Building a blog module
+* Functional - 57 tests, 180 assertions
+* Kernel - 38 tests, 495 assertions
+* Unit - 5 tests, 18 assertions
 
-.. page:: standardPage
+|
 
-Acceptance criteria
-===================
+Run in 2-3 minutes in a CI pipeline with GitHub Actions.
 
-- As a site visitor
-- I want to see a list of published articles at ``/blog``
-- Ordered by post date, most recent first
-
-Tasks
-=====
-
-- Ensure the blog page exists
-- Ensure only published articles are shown
-- Ensure the articles are shown in the correct order
+.. include:: demo.rst
 
 .. page:: imagePage
 
@@ -421,11 +392,13 @@ Thanks!
 
 References:
 
-* https://opdavi.es/testing-workshop
-* https://testdrivendrupal.com
+* https://phpunit.de
+* https://docs.phpunit.de
+* https://www.drupal.org/docs/automated-testing
 
 |
 
 Me:
 
 * https://www.oliverdavies.uk
+* https://www.oliverdavies.uk/atdc

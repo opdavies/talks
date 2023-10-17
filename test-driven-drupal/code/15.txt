@@ -1,0 +1,49 @@
+<?php
+
+namespace Drupal\Tests\drupalcon\Kernel;
+
+use Drupal\drupalcon\Repository\ArticleRepository;
+use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
+use Drupal\node\NodeInterface;
+use Drupal\Tests\node\Traits\NodeCreationTrait;
+
+class ArticleRepositoryTest extends EntityKernelTestBase {
+
+  use NodeCreationTrait;
+
+  public static $modules = [
+    'drupalcon',
+    'node',
+  ];
+
+  /** @test */
+  public function it_returns_blog_posts() {
+// start test
+    $this->createNode([
+      'title' => 'Test post',
+      'type' => 'article',
+    ]);
+
+    $repository = $this->container->get(ArticleRepository::class);
+
+    $articles = $repository->getAll();
+
+    $this->assertCount(1, $articles);
+    $this->assertIsObject($articles[1]);
+
+    $this->assertInstanceOf(NodeInterface::class, $articles[1]);
+    $this->assertSame('article', $articles[1]->bundle());
+    $this->assertSame('Test post', $articles[1]->label());
+// end test
+  }
+
+}
+
+---
+
+Article Repository (Drupal\Tests\drupalcon\Kernel\ArticleRepository)
+ ✔ It returns blog posts
+
+Time: 00:00.449, Memory: 6.00 MB
+
+OK (1 test, 15 assertions)

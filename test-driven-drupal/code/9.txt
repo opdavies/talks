@@ -1,0 +1,61 @@
+// start code
+// src/Repository/ArticleNodeRepository.php
+
+namespace Drupal\drupalcon\Repository;
+
+final class ArticleRepository {
+}
+// end code
+
+---
+
+// start services
+# drupalcon.services.yml
+
+services:
+  Drupal\drupalcon\Repository\ArticleRepository: ~
+// end services
+
+---
+
+namespace Drupal\Tests\drupalcon\Kernel;
+
+use Drupal\drupalcon\Repository\ArticleRepository;
+use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
+
+class ArticleRepositoryTest extends EntityKernelTestBase {
+
+// start test
+  public static $modules = [
+    'drupalcon',
+  ];
+
+  /** @test */
+  public function it_returns_blog_posts() {
+    /** @var ArticleRepository */
+    $repository = $this->container->get(ArticleRepository::class);
+
+    $articles = $repository->getAll();
+
+    $this->assertCount(1, $articles);
+  }
+// end test
+
+}
+
+// start output
+E                                                                   1 / 1 (100%)
+
+Time: 00:00.403, Memory: 6.00 MB
+
+There was 1 error:
+
+1) Drupal\Tests\drupalcon\Kernel\ArticleRepositoryTest::it_returns_blog_posts
+Error: Call to undefined method Drupal\drupalcon\Repository\ArticleRepository::getAll()
+
+/app/web/modules/custom/drupalcon/tests/src/ArticleRepositoryTest.php:18
+/app/vendor/phpunit/phpunit/src/Framework/TestResult.php:728
+
+ERRORS!
+Tests: 1, Assertions: 4, Errors: 1.
+// end output

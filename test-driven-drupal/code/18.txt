@@ -1,0 +1,54 @@
+public function nodes_are_ordered_by_date_and_returned_newest_first(): void {
+// start test
+  $this->createNode(['type' => 'article',
+    'created' => (new DrupalDateTime('-2 days'))->getTimestamp()]);
+  $this->createNode(['type' => 'article',
+    'created' => (new DrupalDateTime('-1 week'))->getTimestamp()]);
+  $this->createNode(['type' => 'article',
+    'created' => (new DrupalDateTime('-1 hour'))->getTimestamp()]);
+  $this->createNode(['type' => 'article',
+  'created' => (new DrupalDateTime('-1 year'))->getTimestamp()]);
+  $this->createNode(['type' => 'article',
+    'created' => (new DrupalDateTime('-1 month'))->getTimestamp()]);
+
+  $repository = $this->container->get(ArticleRepository::class);
+  $nodes = $repository->getAll();
+
+  $this->assertSame([3, 1, 2, 5, 4], array_keys($nodes));
+// end test
+}
+
+// start output
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.449, Memory: 8.00 MB
+
+There was 1 failure:
+
+1) Drupal\Tests\drupalcon\Kernel\ArticleRepositoryTest::nodes_are_ordered_by_date_and_
+returned_newest_first
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+ Array &0 (
+-    0 => 3
+-    1 => 1
+-    2 => 2
+-    3 => 5
+-    4 => 4
++    0 => 1
++    1 => 2
++    2 => 3
++    3 => 4
++    4 => 5
+ )
+
+/app/vendor/phpunit/phpunit/src/Framework/Constraint/Constraint.php:121
+/app/vendor/phpunit/phpunit/src/Framework/Constraint/IsIdentical.php:79
+/app/web/modules/custom/drupalcon/tests/src/ArticleRepositoryTest.php:60
+/app/vendor/phpunit/phpunit/src/Framework/TestResult.php:728
+
+FAILURES!
+Tests: 1, Assertions: 11, Failures: 1.
+// end output

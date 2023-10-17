@@ -1,0 +1,37 @@
+public function only_published_articles_are_returned() {
+// start test
+  $this->createNode(['type' => 'article', 'status' => Node::PUBLISHED]);
+  $this->createNode(['type' => 'article', 'status' => Node::NOT_PUBLISHED]);
+  $this->createNode(['type' => 'article', 'status' => Node::PUBLISHED]);
+  $this->createNode(['type' => 'article', 'status' => Node::NOT_PUBLISHED]);
+  $this->createNode(['type' => 'article', 'status' => Node::PUBLISHED]);
+
+  $repository = $this->container->get(ArticleRepository::class);
+
+  $articles = $repository->getAll();
+
+  $this->assertCount(3, $articles);
+// end test
+}
+
+---
+
+// start output
+.F                                                                  2 / 2 (100%)
+
+Time: 00:00.903, Memory: 6.00 MB
+
+There was 1 failure:
+
+1) Drupal\Tests\drupalcon\Kernel\ArticleRepositoryTest::
+only_published_articles_are_returned
+Failed asserting that actual size 5 matches expected size 3.
+// end output
+
+/app/vendor/phpunit/phpunit/src/Framework/Constraint/Constraint.php:121
+/app/vendor/phpunit/phpunit/src/Framework/Constraint/Constraint.php:55
+/app/web/modules/custom/drupalcon/tests/src/ArticleRepositoryTest.php:40
+/app/vendor/phpunit/phpunit/src/Framework/TestResult.php:728
+
+FAILURES!
+Tests: 2, Assertions: 22, Failures: 1.

@@ -7,8 +7,8 @@ RST_FILENAME=slides.rst
 THUMBNAIL_FILENAME=thumbnail.jpg
 
 function clean {
-  mkdir -p dist
   rm -fr dist/*
+  touch dist/.keep
 
   find . \
     -type f \( -name "${PDF_FILENAME}*" -o -name *.build_temp -o -name ${THUMBNAIL_FILENAME} \) \
@@ -34,7 +34,7 @@ function pdf:generate {
     --fit-background-mode scale \
     --font-path ../fonts \
     --output "../dist/${DIRECTORY_NAME}.pdf" \
-    --stylesheets ../styles/style-light,tango \
+    --stylesheets ../styles/style-light,vs \
     "${@}"
 
   popd

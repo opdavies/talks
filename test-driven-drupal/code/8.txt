@@ -1,0 +1,46 @@
+// start code
+// tests/src/ArticleRepositoryTest.php
+
+namespace Drupal\Tests\drupalcon\Kernel;
+
+use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
+
+class ArticleRepositoryTest extends EntityKernelTestBase {
+
+  /** @test */
+  public function it_returns_blog_posts(): void {
+    $repository = $this->container->get(ArticleRepository::class);
+
+    $articles = $repository->getAll();
+
+    $this->assertCount(1, $articles);
+  }
+// end code
+
+}
+
+---
+
+// start output
+E                                                                   1 / 1 (100%)
+
+Time: 00:00.405, Memory: 6.00 MB
+
+There was 1 error:
+
+1) Drupal\Tests\drupalcon\Kernel\ArticleRepositoryTest::it_returns_blog_posts
+Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException:
+You have requested a non-existent service
+"Drupal\Tests\drupalcon\Kernel\ArticleRepository".
+// end output
+
+/app/vendor/symfony/dependency-injection/ContainerBuilder.php:992
+/app/vendor/symfony/dependency-injection/ContainerBuilder.php:568
+/app/vendor/symfony/dependency-injection/ContainerBuilder.php:531
+/app/web/modules/custom/drupalcon/tests/src/ArticleRepositoryTest.php:11
+/app/vendor/phpunit/phpunit/src/Framework/TestResult.php:728
+
+ERRORS!
+Tests: 1, Assertions: 4, Errors: 1.
+
+Time: 00:00.409, Memory: 8.00 MB

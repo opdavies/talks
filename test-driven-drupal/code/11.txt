@@ -1,0 +1,48 @@
+<?php
+
+// start code
+namespace Drupal\drupalcon\Repository;
+
+use Drupal\Core\Entity\EntityStorageInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+
+final class ArticleRepository {
+
+  private EntityStorageInterface $nodeStorage;
+
+  public function __construct(
+    private EntityTypeManagerInterface $entityTypeManager,
+  ) {
+    $this->nodeStorage = $this->entityTypeManager->getStorage('node');
+  }
+
+
+
+  public function getAll(): array {
+    return $this->nodeStorage->loadMultiple();
+  }
+
+}
+// end code
+
+---
+
+E                                                                   1 / 1 (100%)
+
+Time: 00:00.401, Memory: 6.00 MB
+
+There was 1 error:
+
+1) Drupal\Tests\drupalcon\Kernel\ArticleRepositoryTest::it_returns_blog_posts
+ArgumentCountError: Too few arguments to function Drupal\drupalcon\Repository\ArticleR
+epository::__construct(), 0 passed and exactly 1 expected
+
+/app/web/modules/custom/drupalcon/src/Repository/ArticleRepository.php:9
+/app/vendor/symfony/dependency-injection/ContainerBuilder.php:1140
+/app/vendor/symfony/dependency-injection/ContainerBuilder.php:586
+/app/vendor/symfony/dependency-injection/ContainerBuilder.php:531
+/app/web/modules/custom/drupalcon/tests/src/ArticleRepositoryTest.php:15
+/app/vendor/phpunit/phpunit/src/Framework/TestResult.php:728
+
+ERRORS!
+Tests: 1, Assertions: 4, Errors: 1.

@@ -1,0 +1,40 @@
+// start test
+/** @test */
+public function it_loads_the_blog_page(): void {
+  $this->drupalGet('/blog');
+
+  $session = $this->assertSession();
+  $session->statusCodeEquals(200);
+
+  $session->responseContains('<h1>Blog</h1>');
+  $session->pageTextContains('Welcome to my blog!');
+}
+// end test
+
+// start code
+namespace Drupal\drupalcon\Controller;
+
+use Drupal\Core\StringTranslation\StringTranslationTrait;
+
+class BlogPageController {
+
+  use StringTranslationTrait;
+
+  public function __invoke(): array {
+    return [
+      '#markup' => $this->t('Welcome to my blog!'),
+    ];
+  }
+
+}
+// end code
+
+// start output
+.                                                                   1 / 1 (100%)
+
+Time: 00:01.911, Memory: 6.00 MB
+
+OK (1 test, 3 assertions)
+// end output
+
+Task completed in 0m2.124s

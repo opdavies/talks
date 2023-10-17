@@ -1,0 +1,13 @@
+// tests/src/Functional/BlogPageTest.php
+
+namespace Drupal\Tests\drupalcon\Functional;
+
+use Drupal\Tests\BrowserTestBase;
+
+final class BlogPageTest extends BrowserTestBase {
+
+  public $defaultTheme = 'stark';
+
+  public static $modules = [];
+
+}

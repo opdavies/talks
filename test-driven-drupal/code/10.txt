@@ -1,0 +1,30 @@
+// start code
+namespace Drupal\drupalcon\Repository;
+
+final class ArticleRepository {
+
+  public function getAll(): array {
+    return [];
+  }
+
+}
+// end code
+
+// start output
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.266, Memory: 6.00 MB
+
+There was 1 failure:
+
+1) Drupal\Tests\drupalcon\Kernel\ArticleRepositoryTest::it_returns_blog_posts
+Failed asserting that actual size 0 matches expected size 1.
+// end output
+
+/app/vendor/phpunit/phpunit/src/Framework/Constraint/Constraint.php:121
+/app/vendor/phpunit/phpunit/src/Framework/Constraint/Constraint.php:55
+/app/web/modules/custom/drupalcon/tests/src/ArticleRepositoryTest.php:20
+/app/vendor/phpunit/phpunit/src/Framework/TestResult.php:728
+
+FAILURES!
+Tests: 1, Assertions: 5, Failures: 1.
