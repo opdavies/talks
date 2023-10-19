@@ -48,9 +48,30 @@ function pdf:present {
   pdfpc "${@}" "dist/${TALK_PATH}.pdf" --switch-screens
 }
 
-function thumbnail:generate {
-  # Generate a thumbnail image of the first slide in the presentation.
-  echo "TODO: thumbnail:generate"
+# Generate JPG thumbnails of each slide in a presentation.
+function thumbnails:generate {
+  if [ "${1}" == "" ]; then
+    echo "Usage: ./${0##*/} ${FUNCNAME[0]} <talk-name>"
+    exit 1
+  fi
+
+  if [ ! -d "src/${1}" ]; then
+    echo "${1} not found"
+    exit 2
+  fi
+
+  pdf:generate "${1}"
+
+  mkdir -p "dist/${1}"
+
+  gs \
+    -dBATCH \
+    -dDownScaleFactor=3 \
+    -dNOPAUSE \
+    -r600 \
+    -sDEVICE=jpeg \
+    -sOutputFile="dist/${1}/%d.jpg" \
+    "dist/${1}.pdf"
 }
 
 TIMEFORMAT=$'\nTask completed in %3lR'

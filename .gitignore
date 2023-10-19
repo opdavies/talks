@@ -4,7 +4,8 @@
 # rst2df.
 /**/*.pdf
 /**/*.rst.build_temp
-/dist/*.pdf
+/dist/*
+!/dist/.keep
 
 # pdfpc.
 /**/*.pdfpc

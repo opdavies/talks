@@ -13,6 +13,7 @@
 
         devshells.default = {
           packages = with pkgs; [
+            ghostscript
             pdfpc
             python310Packages.rst2pdf
             tree
