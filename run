@@ -23,6 +23,22 @@ function help {
   printf "\nExtended help:\n  Each task has comments for general usage\n"
 }
 
+# Create a new talk.
+function new {
+  if [ "${1}" == "" ]; then
+    echo "Usage: ./${0##*/} ${FUNCNAME[0]} <talk-name>"
+    exit 1
+  fi
+
+  if [[ -e "src/${1}" ]]; then
+    echo "Error: ${1} already exists."
+    exit 1
+  fi
+
+  mkdir -vp "src/${1}"
+  touch "src/${1}/slides.rst"
+}
+
 function pdf:generate {
   DIRECTORY_NAME=$1
   shift 1
