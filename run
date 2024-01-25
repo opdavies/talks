@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit
+set -o nounset
+set -o pipefail
 
 PDF_FILENAME=slides.pdf
-RST_FILENAME=slides.rst
+RST_FILENAME="${RST_FILENAME:-slides.rst}"
 THUMBNAIL_FILENAME=thumbnail.jpg
 
 function clean {
@@ -13,6 +15,60 @@ function clean {
   find . \
     -type f \( -name "${PDF_FILENAME}*" -o -name *.build_temp -o -name ${THUMBNAIL_FILENAME} \) \
     -delete
+}
+
+function generate {
+  generate:pdf "${@}"
+}
+
+function generate:pdf {
+  if [ "${1}" == "" ]; then
+    echo "Usage: ./${0##*/} ${FUNCNAME[0]} <talk-name>"
+    exit 1
+  fi
+
+  DIRECTORY_NAME=$1
+  shift 1
+  pushd "src/${DIRECTORY_NAME}"
+
+  rst2pdf "${RST_FILENAME}" \
+    --break-level 1 \
+    -e preprocess \
+    --fit-background-mode scale \
+    --font-path ../fonts \
+    --output "../../dist/${DIRECTORY_NAME}.pdf" \
+    --stylesheets ../styles/style-light,tango \
+    "${@}"
+
+  popd
+
+  tree dist
+}
+
+# Generate JPG thumbnails of each slide in a presentation.
+function generate:thumbnail {
+  if [ "${1}" == "" ]; then
+    echo "Usage: ./${0##*/} ${FUNCNAME[0]} <talk-name>"
+    exit 1
+  fi
+
+  if [ ! -d "src/${1}" ]; then
+    echo "${1} not found"
+    exit 2
+  fi
+
+  generate:pdf "${1}"
+
+  mkdir -p "dist/${1}"
+
+  gs \
+    -dBATCH \
+    -dDownScaleFactor=3 \
+    -dNOPAUSE \
+    -r600 \
+    -sDEVICE=jpeg \
+    -sOutputFile="dist/${1}/%d.jpg" \
+    "dist/${1}.pdf"
 }
 
 function help {
@@ -36,58 +92,15 @@ function new {
   fi
 
   mkdir -vp "src/${1}"
+
   touch "src/${1}/slides.rst"
 }
 
-function pdf:generate {
-  DIRECTORY_NAME=$1
-  shift 1
-  pushd "src/${DIRECTORY_NAME}"
-
-  rst2pdf "${RST_FILENAME}" \
-    --break-level 1 \
-    -e preprocess \
-    --fit-background-mode scale \
-    --font-path ../fonts \
-    --output "../../dist/${DIRECTORY_NAME}.pdf" \
-    --stylesheets ../styles/style-light,vs \
-    "${@}"
-
-  popd
-  tree dist
-}
-
-function pdf:present {
+function present {
   TALK_PATH=$1
   shift 1
 
-  pdfpc "${@}" "dist/${TALK_PATH}.pdf" --switch-screens
-}
-
-# Generate JPG thumbnails of each slide in a presentation.
-function thumbnails:generate {
-  if [ "${1}" == "" ]; then
-    echo "Usage: ./${0##*/} ${FUNCNAME[0]} <talk-name>"
-    exit 1
-  fi
-
-  if [ ! -d "src/${1}" ]; then
-    echo "${1} not found"
-    exit 2
-  fi
-
-  pdf:generate "${1}"
-
-  mkdir -p "dist/${1}"
-
-  gs \
-    -dBATCH \
-    -dDownScaleFactor=3 \
-    -dNOPAUSE \
-    -r600 \
-    -sDEVICE=jpeg \
-    -sOutputFile="dist/${1}/%d.jpg" \
-    "dist/${1}.pdf"
+  pdfpc "${@}" "dist/${TALK_PATH}.pdf"
 }
 
 TIMEFORMAT=$'\nTask completed in %3lR'
