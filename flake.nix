@@ -1,24 +1,23 @@
 {
-  inputs.devshell.url = "github:numtide/devshell";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  outputs = inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ inputs.devshell.flakeModule ];
+  outputs = { nixpkgs, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
 
-      systems = [ "x86_64-linux" ];
-
-      perSystem = { config, self', inputs', pkgs, system, ... }: {
-        formatter = pkgs.nixpkgs-fmt;
-
-        devshells.default = {
-          packages = with pkgs; [
-            ghostscript
-            pdfpc
-            python310Packages.rst2pdf
-            tree
-          ];
-        };
+      inherit (pkgs) mkShell nixfmt-classic;
+    in {
+      devShells.${system}.default = mkShell {
+        packages = with pkgs; [
+          ghostscript
+          just
+          pdfpc
+          python310Packages.rst2pdf
+          tree
+        ];
       };
+
+      formatter.${system} = nixfmt-classic;
     };
 }
