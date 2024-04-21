@@ -11,12 +11,12 @@ Oliver Davies (@opdavies)
 
 .. page:: imagePage
 
-.. image:: druplicon.png
+.. image:: images/druplicon.png
    :width: 10cm
 
 .. page::
 
-.. image:: sculpin.png
+.. image:: images/sculpin.png
    :width: 10cm
 
 .. page:: standardPage
