@@ -14,6 +14,7 @@
           just
           pdfpc
           python310Packages.rst2pdf
+          texliveMedium # includes pdfjam
           tree
         ];
       };
