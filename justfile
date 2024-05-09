@@ -30,7 +30,7 @@ generate-pdf talk_path:
     --fit-background-mode scale \
     --font-path ../fonts \
     --output "../../dist/${talk_slug}.pdf" \
-    --stylesheets opdavies-light,tango \
+    --stylesheets opdavies-light,igor \
     --stylesheet-path ../styles
 
   popd
