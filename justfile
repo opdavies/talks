@@ -1,5 +1,4 @@
 pdf_filename := 'slides.pdf'
-rst_filename := 'slides.rst'
 thumbnail_filename := 'thumbnail.jpg'
 
 default:
@@ -13,9 +12,9 @@ clean:
     -type f \( -name "{{ pdf_filename }}" -o -name *.build_temp -o -name {{ thumbnail_filename }} \) \
     -delete
 
-generate talk_path: (generate-pdf talk_path)
+generate talk_path filename="slides.rst": (generate-pdf talk_path filename)
 
-generate-pdf talk_path:
+generate-pdf talk_path filename="slides.rst":
   #!/usr/bin/env bash
   set -o errexit
   set -o nounset
@@ -24,7 +23,7 @@ generate-pdf talk_path:
 
   pushd "{{ talk_path }}"
 
-  rst2pdf {{ rst_filename }} \
+  rst2pdf {{ filename }} \
     --break-level 1 \
     -e preprocess \
     --fit-background-mode scale \
