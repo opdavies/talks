@@ -10,20 +10,21 @@ TDD: Test Driven Drupal
 Oliver Davies (@opdavies)
 
 |
-.. class:: centred
 
-https://opdavi.es/tdd-test-driven-drupal
+.. class:: titleslideinfo
+
+https://opdavi.es/dcg
 
 .. page:: titlePage
 
 .. class:: centredtitle
 
-Software Engineer, Full Stack Development Consultant, Open-Source Maintainer
+Software Developer, Consultant, open-source maintainer
 
 .. raw:: pdf
 
   TextAnnotation "I develop and consult on Drupal applications for clients."
-  TextAnnotation "I contribute to and maintain open source projects including Drupal core."
+  TextAnnotation "I contribute to and maintain open-source projects including Drupal core."
   TextAnnotation "Different perspectives."
 
 .. page:: imagePage
@@ -33,7 +34,7 @@ Software Engineer, Full Stack Development Consultant, Open-Source Maintainer
 
 .. raw:: pdf
 
-  TextAnnotation "Become maintainer in 2012"
+  TextAnnotation "I saw this tweet by Tim Millwood and become the maintainer in 2012."
 
 .. page:: imagePage
 
@@ -41,6 +42,8 @@ Software Engineer, Full Stack Development Consultant, Open-Source Maintainer
   :width: 18cm
 
 .. page::
+
+   TextAnnotation "These were the usage statistics from Drupal.org when I became the maintainer."
 
 |
 
@@ -69,7 +72,7 @@ Why write tests?
 * Write less code
 * Documentation
 * Drupal core requirement
-* More important with regular D8/D9 releases and supporting multiple versions
+* More important with regular D10/D11 releases and supporting multiple versions
 
 .. raw:: pdf
 
@@ -85,12 +88,16 @@ Testing in Drupal
 * **Drupal 8** - PHPUnit added as a core dependency, later became the default via the PHPUnit initiative
 * **Drupal 9** - SimpleTest removed from core, moved back to contrib
 
+.. raw:: pdf
+
+   TextAnnotation "Not speaking about Drupal 7 and SimpleTest in this talk, but a lot of the concepts are the same."
+
 Writing PHPUnit Tests for Drupal
 ================================
 
 * PHP class with ``.php`` extension
 * ``tests/src`` directory within each module
-* Within the ``Drupal\Tests\module_name`` namespace
+* Within the ``Drupal\Tests\{module_name}`` namespace
 * Class name must match the filename
 * Namespace must match the directory structure
 * One test class per feature
@@ -109,6 +116,8 @@ Arrange, Act, Assert
 
 .. raw:: pdf
 
+   TextAnnotation "What are the parts of a test?"
+   TextAnnotation ""
    TextAnnotation "Set up the world, perform an action, then make assertions."
 
 .. page::
@@ -157,11 +166,74 @@ What does a test look like?
     :linenos:
     :startinline: true
 
+What does a test look like?
+===========================
+
+.. code-block:: php
+    :include: code/1-example-test.txt
+    :linenos:
+    :startinline: true
+    :hl_lines: 1,2,3,13
+
+What does a test look like?
+===========================
+
+.. code-block:: php
+    :include: code/1-example-test.txt
+    :linenos:
+    :startinline: true
+    :hl_lines: 5,6,7
+
+What does a test look like?
+===========================
+
+.. code-block:: php
+    :include: code/1-example-test.txt
+    :linenos:
+    :startinline: true
+    :hl_lines: 9,11
+
+What does a test look like?
+===========================
+
+.. code-block:: php
+    :include: code/1-example-test.txt
+    :linenos:
+    :startinline: true
+    :hl_lines: 10
+
 Writing test methods
 ====================
 
 .. code-block:: php
     :include: code/2-test-methods.txt
+    :linenos:
+    :startinline: true
+
+Writing test methods
+====================
+
+.. code-block:: php
+    :include: code/2-test-methods.txt
+    :hl_lines: 1
+    :linenos:
+    :startinline: true
+
+Writing test methods
+====================
+
+.. code-block:: php
+    :include: code/2-test-methods.txt
+    :hl_lines: 3
+    :linenos:
+    :startinline: true
+
+Writing test methods
+====================
+
+.. code-block:: php
+    :include: code/2-test-methods.txt
+    :hl_lines: 5, 6
     :linenos:
     :startinline: true
 
@@ -185,6 +257,10 @@ Functional Tests
 * Full Drupal installation
 * Slower to run
 * With/without JavaScript
+
+.. raw:: pdf
+
+   TextAnnotation "Uses the `testing` profile with a fresh installation between tests."
 
 Kernel tests
 ============
@@ -337,8 +413,8 @@ Red, Green, Refactor
 
 .. page:: standardPage
 
-Porting Modules to Drupal 8
-===========================
+Porting Modules From Drupal 7
+=============================
 
 - Make a new branch
 - Add/update the tests
@@ -378,9 +454,6 @@ Run in 2-3 minutes in a CI pipeline with GitHub Actions.
 .. include:: demo.rst
 
 .. page:: imagePage
-
-.. image:: images/tawny-tweet-1.png
-    :width: 16cm
 
 .. image:: images/tawny-tweet-2.png
     :width: 18cm

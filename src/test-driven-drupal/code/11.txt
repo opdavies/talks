@@ -1,6 +1,6 @@
 <?php
 
-// start code
+// start code 1
 namespace Drupal\drupalcon\Repository;
 
 use Drupal\Core\Entity\EntityStorageInterface;
@@ -14,16 +14,15 @@ final class ArticleRepository {
     private EntityTypeManagerInterface $entityTypeManager,
   ) {
     $this->nodeStorage = $this->entityTypeManager->getStorage('node');
-  }
+  } // end code 1
 
-
-
+  // start code 2
   public function getAll(): array {
     return $this->nodeStorage->loadMultiple();
   }
 
 }
-// end code
+// end code 2
 
 ---
 

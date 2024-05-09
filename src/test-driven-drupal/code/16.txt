@@ -1,5 +1,5 @@
-public function only_published_articles_are_returned() {
 // start test
+public function only_published_articles_are_returned() {
   $this->createNode(['type' => 'article', 'status' => Node::PUBLISHED]);
   $this->createNode(['type' => 'article', 'status' => Node::NOT_PUBLISHED]);
   $this->createNode(['type' => 'article', 'status' => Node::PUBLISHED]);
@@ -11,8 +11,7 @@ public function only_published_articles_are_returned() {
   $articles = $repository->getAll();
 
   $this->assertCount(3, $articles);
-// end test
-}
+} // end test
 
 ---
 

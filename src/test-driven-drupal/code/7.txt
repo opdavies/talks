@@ -11,6 +11,27 @@ public function it_loads_the_blog_page(): void {
 }
 // end test
 
+E                                                                   1 / 1 (100%)
+
+Time: 00:02.101, Memory: 6.00 MB
+
+// start output
+There was 1 error:
+
+1) Drupal\Tests\drupalcon\Functional\BlogPageTest::it_loads_the_blog_page
+Behat\Mink\Exception\ResponseTextException:
+The text "Welcome to my blog!" was not found anywhere in the text
+of the current page.
+// end output
+
+/app/vendor/behat/mink/src/WebAssert.php:907
+/app/vendor/behat/mink/src/WebAssert.php:293
+/app/web/modules/custom/drupalcon/tests/src/Functional/BlogPageTest.php:17
+/app/vendor/phpunit/phpunit/src/Framework/TestResult.php:728
+
+ERRORS!
+Tests: 1, Assertions: 3, Errors: 1.
+
 // start code
 namespace Drupal\drupalcon\Controller;
 
@@ -29,12 +50,12 @@ class BlogPageController {
 }
 // end code
 
-// start output
+// start output2
 .                                                                   1 / 1 (100%)
 
 Time: 00:01.911, Memory: 6.00 MB
 
 OK (1 test, 3 assertions)
-// end output
+// end output2
 
 Task completed in 0m2.124s

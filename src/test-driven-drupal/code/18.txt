@@ -1,5 +1,5 @@
-public function nodes_are_ordered_by_date_and_returned_newest_first(): void {
 // start test
+public function nodes_are_ordered_by_date_and_returned_newest_first(): void {
   $this->createNode(['type' => 'article',
     'created' => (new DrupalDateTime('-2 days'))->getTimestamp()]);
   $this->createNode(['type' => 'article',

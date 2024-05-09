@@ -11,11 +11,8 @@ class ArticleRepositoryTest extends EntityKernelTestBase {
   public function it_returns_blog_posts(): void {
     $repository = $this->container->get(ArticleRepository::class);
 
-    $articles = $repository->getAll();
-
-    $this->assertCount(1, $articles);
-  }
-// end code
+    $this->assertCount(1, $repository->getAll());
+  }// end code
 
 }
 

@@ -1,0 +1,13 @@
+$data = [
+  'command' => 'add',
+  'username' => 'bobsmith',
+  'password' => 'p455w0rd',
+  'active_for' => '365',
+  'details' => 'This is the detailed description.',
+  'job_title' => 'Healthcare Assistant (HCA)',
+  'locations' => 'Bath, Devizes',
+  'role_id' => 'A/52/86',
+  'summary' => 'This is the short description.',
+  'url_alias' => 'healthcare-assistant-aldershot-june17',
+  // ...
+];

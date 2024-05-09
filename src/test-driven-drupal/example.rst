@@ -55,25 +55,52 @@ Incoming data
 =============
 
 .. code-block:: php
+    :include: example/incoming.txt
     :startinline: true
 
-    $data = [
-      'command' => 'add',
-      'username' => 'bobsmith',
-      'password' => 'p455w0rd',
-      'active_for' => '365',
-      'details' => 'This is the detailed description.',
-      'job_title' => 'Healthcare Assistant (HCA)',
-      'locations' => 'Bath, Devizes',
-      'role_id' => 'A/52/86',
-      'summary' => 'This is the short description.',
-      'url_alias' => 'healthcare-assistant-aldershot-june17',
-      // ...
-    ];
+Incoming data
+=============
+
+.. code-block:: php
+    :include: example/incoming.txt
+    :hl_lines: 2
+    :startinline: true
+
+Incoming data
+=============
+
+.. code-block:: php
+    :include: example/incoming.txt
+    :hl_lines: 3, 4
+    :startinline: true
+
+Incoming data
+=============
+
+.. code-block:: php
+    :include: example/incoming.txt
+    :hl_lines: 5
+    :startinline: true
+
+Incoming data
+=============
+
+.. code-block:: php
+    :include: example/incoming.txt
+    :hl_lines: 6, 7, 8, 9, 10
+    :startinline: true
+
+Incoming data
+=============
+
+.. code-block:: php
+    :include: example/incoming.txt
+    :hl_lines: 11
+    :startinline: true
 
 .. raw:: pdf
 
-    TextAnnotation "Some pf the information sent to our endpoint."
+    TextAnnotation "Some of the information sent to our endpoint."
 
 Implementation
 ==============

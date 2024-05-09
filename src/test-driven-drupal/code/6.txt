@@ -3,7 +3,9 @@
 
 namespace Drupal\drupalcon\Controller;
 
-class BlogPageController {
+declare(strict_types=1);
+
+final class BlogPageController {
 
   public function __invoke(): array {
     return [];

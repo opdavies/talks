@@ -18,8 +18,8 @@ final class ArticleRepository {
     $this->nodeStorage = $this->entityTypeManager->getStorage('node');
   }
 
-  public function getAll(): array {
 // start code
+  public function getAll(): array {
     $articles = $this->nodeStorage->loadByProperties([
       'status' => NodeInterface::PUBLISHED,
     ]);
@@ -28,8 +28,7 @@ final class ArticleRepository {
       $b->getCreatedTime() <=> $a->getCreatedTime());
 
     return $articles;
-// end code
-  }
+  } // end code
 
 }
 

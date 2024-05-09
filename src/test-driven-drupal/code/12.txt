@@ -1,10 +1,17 @@
-// start services
+// start services1
 # drupalcon.services.yml
 
 services:
   Drupal\drupalcon\Repository\ArticleRepository:
     autowire: true
-// end services
+// end services1
+
+// start services2
+services:
+  Drupal\drupalcon\Repository\ArticleRepository:
+    arguments:
+      - '@entity_type.manager'
+// end services2
 
 ---
 
