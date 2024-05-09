@@ -22,7 +22,8 @@ generate-pdf name:
     --fit-background-mode scale \
     --font-path ../fonts \
     --output ../../dist/{{ name }}.pdf \
-    --stylesheets ./opdavies-light,tango
+    --stylesheets opdavies-light,tango \
+    --stylesheet-path ../styles
 
   tree dist
 
