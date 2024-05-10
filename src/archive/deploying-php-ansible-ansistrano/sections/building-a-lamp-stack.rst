@@ -180,7 +180,7 @@ requirements.yml
     PageBreak
 
 .. image:: images/after-provision-1.png
-  :width: 24cm
+    :width: 24cm
 
 .. raw:: pdf
 
@@ -191,7 +191,7 @@ requirements.yml
     PageBreak
 
 .. image:: images/after-provision-2.png
-  :width: 24cm
+    :width: 24cm
 
 .. raw:: pdf
 

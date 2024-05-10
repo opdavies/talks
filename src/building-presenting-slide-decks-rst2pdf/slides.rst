@@ -125,7 +125,7 @@ Re-compiling when something changes.
 |
 
 .. code-block:: bash
-  :include: code/watching.txt
+    :include: code/watching.txt
 
 Presenting
 ==========

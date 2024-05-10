@@ -30,7 +30,7 @@ Software Developer, Consultant, open-source maintainer
 .. page:: imagePage
 
 .. image:: images/timmillwood-ono.png
-  :width: 22cm
+    :width: 22cm
 
 .. raw:: pdf
 
@@ -39,7 +39,7 @@ Software Developer, Consultant, open-source maintainer
 .. page:: imagePage
 
 .. image:: images/override-node-options-1.png
-  :width: 18cm
+    :width: 18cm
 
 .. raw:: pdf
 
@@ -50,12 +50,12 @@ Software Developer, Consultant, open-source maintainer
 |
 
 .. image:: images/override-node-options-2.png
-  :width: 22cm
+    :width: 22cm
 
 |
 
 .. image:: images/override-node-options-3.png
-  :width: 22cm
+    :width: 22cm
 
 .. raw:: pdf
 

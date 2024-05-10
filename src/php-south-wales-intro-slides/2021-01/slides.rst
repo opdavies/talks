@@ -68,14 +68,14 @@ Join us in ``#website-improve``
 .. page:: imagePage
 
 .. image:: images/dpcon-cfp.png
-  :width: 18cm
+    :width: 18cm
 
 .. image:: images/symfonylive-online-cfp.png
-  :width: 18cm
+    :width: 18cm
 
 .. raw:: pdf
 
     PageBreak
 
 .. image:: images/deploy-friday-composer.png
-  :width: 20cm
+    :width: 20cm

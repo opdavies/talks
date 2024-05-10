@@ -6,7 +6,7 @@ Dockerfile.twig
 ===============
 
 .. code-block:: twig
-  :linenos:
+    :linenos:
 
     FROM php:{{ php.version }} AS base
 

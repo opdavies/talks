@@ -39,7 +39,7 @@ How Does it Work?
 =================
 
 .. image:: diagram.png
-  :width: 18cm
+    :width: 18cm
 
 .. raw:: pdf
 

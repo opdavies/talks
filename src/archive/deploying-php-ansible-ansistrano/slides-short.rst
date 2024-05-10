@@ -17,7 +17,7 @@ Oliver Davies, Inviqa
 .. page:: imagePage
 
 .. image:: images/techs.png
-  :width: 14cm
+    :width: 14cm
 
 .. include:: sections/building-a-lamp-stack.rst
 .. include:: sections/basic-deployment.rst

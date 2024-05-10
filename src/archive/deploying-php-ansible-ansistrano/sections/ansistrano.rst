@@ -7,7 +7,7 @@ Better deployments with Ansistrano
 .. page:: standardPage
 
 .. image:: images/ansistrano.png
-  :width: 24cm
+    :width: 24cm
 
 .. raw:: pdf
 
@@ -197,7 +197,7 @@ Build Hooks
 .. page:: imagePage
 
 .. image:: images/ansistrano-flow.png
-  :width: 18cm
+    :width: 18cm
 
 .. raw:: pdf
 

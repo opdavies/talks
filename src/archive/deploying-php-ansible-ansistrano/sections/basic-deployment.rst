@@ -48,7 +48,7 @@ Basic deployment
 .. page:: standardPage
 
 .. image:: images/after-deploy-1.png
-  :width: 24cm
+    :width: 24cm
 
 .. page:: standardPage
 
