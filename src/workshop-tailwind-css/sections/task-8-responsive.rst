@@ -12,17 +12,23 @@ Before we start
 .. code-block::
     :include: code/task-8-before.txt
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: diff
     :include: code/responsive-1.txt
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: diff
     :include: code/responsive-2.txt
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: diff
     :include: code/responsive-3.txt

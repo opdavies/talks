@@ -49,7 +49,9 @@ hosts.yml
 
 Ad-hoc Commands
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. class:: centredtitle
 
@@ -88,7 +90,9 @@ Ad-hoc Commands
   TextAnnotation "-a = (additional) arguments"
   TextAnnotation "--chdir = change directory"
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. class:: centredtitle
 

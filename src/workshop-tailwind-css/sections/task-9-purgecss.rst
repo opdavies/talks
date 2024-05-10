@@ -10,7 +10,9 @@ Task 9: Configure PurgeCSS
     :include: code/yarn-output-before-purge.txt
     :end-before: # yarn prod
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block::
     :include: code/yarn-output-before-purge.txt
@@ -22,7 +24,9 @@ Configuring PurgeCSS
 .. code-block:: diff 
     :include: code/configuring-purgecss.txt
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block::
     :include: code/yarn-output-after-purge.txt

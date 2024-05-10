@@ -10,7 +10,9 @@ Task 1: Adding Tailwind CSS
     :include: code/adding-tailwind.txt
     :end-before: -- adding tailwind
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 Create the source file:
 
@@ -21,7 +23,9 @@ Create the source file:
     :start-after: -- adding tailwind
     :end-before: -- adding scripts
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 Add to ``package.json``:
 

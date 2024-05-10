@@ -25,7 +25,9 @@ Multiple environments development, test, production
         password: '{{ staging_db_password }}'
         priv: staging.*:ALL
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
 
@@ -48,7 +50,9 @@ Multiple environments development, test, production
           drupal_settings:
             # ...
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
 
@@ -79,7 +83,9 @@ Multiple environments development, test, production
 -i hosts.yml
 --limit staging``
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. class:: centredtitle
 

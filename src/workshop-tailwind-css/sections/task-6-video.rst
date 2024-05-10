@@ -12,7 +12,9 @@ Before we start
 .. code-block::
     :include: code/task-6-before.txt
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: html
     :include: code/video-1.txt

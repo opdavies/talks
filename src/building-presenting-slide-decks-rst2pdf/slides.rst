@@ -143,7 +143,9 @@ Presenting
 .. image:: images/pdfpc-1.png
     :width: 23cm
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. image:: images/pdfpc-2.png
     :width: 23cm

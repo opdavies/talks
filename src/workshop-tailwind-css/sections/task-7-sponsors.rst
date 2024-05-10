@@ -9,12 +9,16 @@ Task 7: Add the sponsors component
 .. code-block::
     :include: code/task-7-before.txt
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: twig
     :include: code/sponsors-1.txt
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: twig
     :include: code/sponsors-2.txt
@@ -29,7 +33,9 @@ Task 7: Add the sponsors component
 .. code-block:: twig 
     :include: code/sponsors-3.txt
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: html 
     :include: code/sponsors-4.txt

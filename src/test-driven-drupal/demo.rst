@@ -28,7 +28,9 @@ Tasks
 - Ensure only published articles are shown
 - Ensure the articles are shown in the correct order
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. Creating the test class.
 
@@ -67,7 +69,9 @@ Tasks
     :startinline: true
     :hl_lines: 9,10,11
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. Adding the first test.
 
@@ -110,7 +114,9 @@ Tasks
     :end-before: // end test
     :hl_lines: 7
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: plain
     :include: code/3.txt
@@ -139,7 +145,9 @@ Tasks
     :end-before: // end output
     :hl_lines: 8,9
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
   :include: code/3.txt
@@ -147,7 +155,9 @@ Tasks
   :start-after: // start routing
   :end-before: // end routing
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
   :include: code/3.txt
@@ -160,7 +170,9 @@ Tasks
 
    TextAnnotation "This controller doesn't exist yet, but the test will tell us that."
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/3.txt
@@ -173,7 +185,9 @@ Tasks
 
   TextAnnotation "Same result as the module isn't enabled."
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/4.txt
@@ -236,7 +250,9 @@ Tasks
   :end-before: // end code
   :hl_lines: 1,2,3
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/6.txt
@@ -246,7 +262,9 @@ Tasks
   :end-before: // end code
   :hl_lines: 7,13
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/6.txt
@@ -256,14 +274,18 @@ Tasks
   :end-before: // end code
   :hl_lines: 9,10,11
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: plain
   :include: code/6.txt
   :start-after: // start output
   :end-before: // end output
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/7.txt
@@ -298,14 +320,18 @@ Tasks
     :end-before: // end test
     :hl_lines: 8,9
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: plain
   :include: code/7.txt
   :start-after: // start output
   :end-before: // end output
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/7.txt
@@ -315,7 +341,9 @@ Tasks
   :end-before: // end code
   :hl_lines: 3,7
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/7.txt
@@ -325,14 +353,18 @@ Tasks
   :end-before: // end code
   :hl_lines: 10,11,12
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: plain
   :include: code/7.txt
   :start-after: // start output2
   :end-before: // end output2
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/8.txt
@@ -341,7 +373,9 @@ Tasks
   :start-after: // start code
   :end-before: // end code
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/8.txt
@@ -351,7 +385,9 @@ Tasks
   :end-before: // end code
   :hl_lines: 1,2,3,4,5,6,7,15
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/8.txt
@@ -361,7 +397,9 @@ Tasks
   :end-before: // end code
   :hl_lines: 9,10,14
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/8.txt
@@ -371,7 +409,9 @@ Tasks
   :end-before: // end code
   :hl_lines: 11
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/8.txt
@@ -381,7 +421,9 @@ Tasks
   :end-before: // end code
   :hl_lines: 13
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/8.txt
@@ -393,7 +435,9 @@ Tasks
   :start-after: // start output
   :end-before: // end output
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/9.txt
@@ -410,14 +454,18 @@ Tasks
   :start-after: // start services
   :end-before: // end services
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
   :include: code/9.txt
   :start-after: // start output
   :end-before: // end output
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/10.txt
@@ -427,14 +475,18 @@ Tasks
   :end-before: // end code
   :hl_lines: 5,6,7
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: plain
   :include: code/10.txt
   :start-after: // start output
   :end-before: // end output
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/11.txt
@@ -443,7 +495,9 @@ Tasks
   :start-after: // start code 1
   :end-before: // end code 1
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/11.txt
@@ -453,7 +507,9 @@ Tasks
   :end-before: // end code 1
   :hl_lines: 10,11,12
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/11.txt
@@ -463,7 +519,9 @@ Tasks
   :end-before: // end code 1
   :hl_lines: 8,13
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/11.txt
@@ -473,7 +531,9 @@ Tasks
   :end-before: // end code 2
   :hl_lines: 1,3
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/11.txt
@@ -483,7 +543,9 @@ Tasks
   :end-before: // end code 2
   :hl_lines: 2
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
   :include: code/12.txt
@@ -504,7 +566,9 @@ Tasks
    TextAnnotation "Declare the Repository as a service."
    TextAnnotation "Autowire or declare dependencies explicitly."
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: plain
   :include: code/12.txt
@@ -520,14 +584,18 @@ Tasks
   :start-after: // start test
   :end-before: // end test
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: plain
   :include: code/13.txt
   :start-after: // start output
   :end-before: // end output
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/14.txt
@@ -537,7 +605,9 @@ Tasks
   :end-before: // end test
   :hl_lines: 1
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/14.txt
@@ -547,14 +617,18 @@ Tasks
   :end-before: // end test
   :hl_lines: 5
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: plain
   :include: code/14.txt
   :start-after: // start output
   :end-before: // end output
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/15.txt
@@ -589,7 +663,9 @@ Tasks
   :start-after: // start test
   :hl_lines: 10,11
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/15.txt
@@ -613,7 +689,9 @@ Tasks
   :start-after: // start test
   :end-before: // end test
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/16.txt
@@ -623,7 +701,9 @@ Tasks
   :end-before: // end test
   :hl_lines: 2,4,6
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/16.txt
@@ -633,7 +713,9 @@ Tasks
   :end-before: // end test
   :hl_lines: 3,5
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/16.txt
@@ -653,7 +735,9 @@ Tasks
   :start-after: // start output
   :end-before: // end output
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/17.txt
@@ -669,7 +753,9 @@ Tasks
   :start-after: // start output
   :end-before: // end output
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. Ensure articles are ordered correctly.
 
@@ -680,7 +766,9 @@ Tasks
   :start-after: // start test
   :end-before: // end test
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/18.txt
@@ -690,7 +778,9 @@ Tasks
   :end-before: // end test
   :hl_lines: 3,5,7,9,11
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/18.txt
@@ -700,14 +790,18 @@ Tasks
   :end-before: // end test
   :hl_lines: 16
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: plain
   :include: code/18.txt
   :start-after: // start output
   :end-before: // end output
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/19.txt
@@ -716,7 +810,9 @@ Tasks
   :start-after: // start code
   :end-before: // end code
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/19.txt
@@ -726,7 +822,9 @@ Tasks
   :end-before: // end code
   :hl_lines: 2,3,4
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: php
   :include: code/19.txt
@@ -749,7 +847,9 @@ Tasks
   :end-before: // end code
   :hl_lines: 9
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: plain
   :include: code/19.txt

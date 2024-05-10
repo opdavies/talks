@@ -179,7 +179,9 @@ Drupal Check
 ``composer global require
 mglaman/drupal-check``
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 .. class:: centredtitle
 
 ``drupal-check web/modules/custom``
@@ -259,18 +261,24 @@ Composer
 ``composer require
 drupal/admin_toolbar:^2.0``
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 .. class:: centredtitle
 
 ``composer install``
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 .. class:: centredtitle
 
 ``composer update
 drupal/admin_toolbar``
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 .. class:: centredtitle
 
 Always add '--no-dev' in production
@@ -325,7 +333,9 @@ Upgrading Dransible
 ``composer update drupal/core-*
 --with-dependencies``
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 .. class:: centredtitle
 
 ``composer require
@@ -396,7 +406,9 @@ There were some autowiring gotchas...
 
 ``Error: Class 'Symfony\Component\Config\Resource\ClassExistenceResource' not found in Symfony\Component\DependencyInjection\Compiler\AutowirePass->createTypeNotFoundMessage()``
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. class:: centredtitle
 

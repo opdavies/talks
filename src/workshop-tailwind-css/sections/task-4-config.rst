@@ -12,7 +12,9 @@ Before we start
 .. code-block::
     :include: code/task-4-before.txt
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 tailwind.config.js
 ------------------

@@ -27,7 +27,9 @@ Generating settings files per deployment
             config_directories:
               sync: ../config/sync
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: jinja
 
@@ -50,7 +52,9 @@ Generating settings files per deployment
     $base_url = '{{ item.1.settings.base_url }}';
     {% endif %}
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 
 .. code-block:: yaml

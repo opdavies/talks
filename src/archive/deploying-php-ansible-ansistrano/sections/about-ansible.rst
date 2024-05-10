@@ -11,7 +11,9 @@ Ansible is an open-source **software provisioning**, **configuration management*
 
 https://en.wikipedia.org/wiki/Ansible_(software)
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 What is Ansible?
 ================
@@ -33,7 +35,9 @@ What is Ansible?
   TextAnnotation "Nothing needed on the server, other than Python."
   TextAnnotation "First-party modules (SSH keys, file and directory management, package repositories, stopping/starting/restarting services, DO/Linode/AWS integration)."
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 Why Ansible?
 ============

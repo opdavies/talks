@@ -1,12 +1,16 @@
 .. image:: ../images/logo.jpeg
     :width: 8cm
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. image:: ../images/twilio.png
     :width: 12cm
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. image:: ../images/lexis-nexis.jpg
     :width: 12cm
@@ -53,7 +57,9 @@ Next month
 
 Looking for speakers and sponsors 
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. class:: centredtitle
 

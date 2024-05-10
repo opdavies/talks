@@ -41,7 +41,9 @@ Software Developer, Consultant, open-source maintainer
 .. image:: images/override-node-options-1.png
   :width: 18cm
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
    TextAnnotation "These were the usage statistics from Drupal.org when I became the maintainer."
 
@@ -120,7 +122,9 @@ Arrange, Act, Assert
    TextAnnotation ""
    TextAnnotation "Set up the world, perform an action, then make assertions."
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. class:: centredtitle
 

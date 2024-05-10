@@ -9,7 +9,9 @@ Better deployments with Ansistrano
 .. image:: images/ansistrano.png
   :width: 24cm
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 Features
 ========
@@ -22,7 +24,9 @@ Features
 - Prune old releases
 - Rollbacks
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 
 .. code-block:: yaml
@@ -37,7 +41,9 @@ Features
 
   TextAnnotation "to install Ansistrano, add the additional roles to the requirements.yml file"
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 
 .. code-block:: yaml
@@ -54,7 +60,9 @@ Features
 
   TextAnnotation "add to roles within the playbook"
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
 
@@ -69,7 +77,9 @@ Features
     ansistrano_git_branch: master
     ansistrano_git_repo: 'git@github.com:opdavies/dransible'
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 .. code-block::
 
   PLAY [webservers] ******************************************************************************************************
@@ -94,7 +104,9 @@ Features
   TASK [ansistrano.deploy : ANSISTRANO | Ensure shared paths exists] *****************************************************
   ok: [webservers] => (item=web/sites/default/files)
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block::
 
@@ -120,7 +132,9 @@ Features
   PLAY RECAP *************************************************************************************************************
   webservers                 : ok=33   changed=14   unreachable=0    failed=0    skipped=7    rescued=0    ignored=0
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block::
 
@@ -131,7 +145,9 @@ Features
   drwxr-xr-x 5 4096 Jul 22 20:30 releases
   drwxr-xr-x 4 4096 Jul 19 00:00 shared
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block::
 
@@ -144,7 +160,9 @@ Features
   drwxr-xr-x 10 4096 Jul 19 00:14 20190719001241Z
   drwxr-xr-x  9 4096 Jul 22 20:30 20190722203038Z
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 
 .. code-block:: yaml
@@ -167,7 +185,9 @@ Features
 ``ansible-playbook rollback.yml
 -i hosts.yml``
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. class:: centredtitle
 
@@ -201,7 +221,9 @@ Build Hooks
     release_web_path: '{{ ansistrano_release_path.stdout }}/web'
     release_drush_path: '{{ ansistrano_release_path.stdout }}/bin/drush'
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 
 .. code-block:: yaml
@@ -214,7 +236,9 @@ Build Hooks
       command: install
       working_dir: '{{ ansistrano_release_path.stdout }}'
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 
 .. code-block:: yaml
@@ -228,7 +252,9 @@ Build Hooks
       --root {{ release_web_path }}
       updatedb
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
 

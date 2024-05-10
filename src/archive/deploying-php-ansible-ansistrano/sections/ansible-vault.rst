@@ -18,7 +18,9 @@ Keeping secrets with Ansible Vault
         password: secret
         priv: main.*:ALL
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
 
@@ -57,7 +59,9 @@ Encryption successful``
   37373865393839616534353165656463313961333532363537383263343364646534333032336337
   3235
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
 
@@ -68,7 +72,9 @@ Encryption successful``
   database_user: '{{ vault_database_user }}'
   database_password: '{{ vault_database_password }}'
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 
 .. code-block:: yaml

@@ -12,7 +12,9 @@ Before we start
 .. code-block::
     :include: code/task-2-before.txt
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 Adding intro text
 -----------------
@@ -42,7 +44,9 @@ Adding intro text
     :include: code/intro-text-3.txt
     :hl_lines: 4 8
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: html
     :include: code/intro-text-4.txt

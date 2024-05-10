@@ -55,7 +55,9 @@ requirements.yml
   TextAnnotation "Ordering matters here!"
   TextAnnotation "If these were ordered alphabetically then Composer install would fail because it would run before PHP is installed."
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
 
@@ -71,7 +73,9 @@ requirements.yml
 
   TextAnnotation "configuring the Apache role to install virtual hosts."
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
 
@@ -88,7 +92,9 @@ requirements.yml
 
   TextAnnotation "configuring PHP."
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block:: yaml
 
@@ -139,7 +145,9 @@ requirements.yml
   TASK [geerlingguy.apache : Update apt cache.] **************************************************************************
   changed: [webservers]
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. code-block::
 
@@ -167,7 +175,9 @@ requirements.yml
   PLAY RECAP *************************************************************************************************************
   webservers                 : ok=111  changed=32   unreachable=0    failed=0    skipped=78   rescued=0    ignored=0
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. image:: images/after-provision-1.png
   :width: 24cm
@@ -176,7 +186,9 @@ requirements.yml
 
   TextAnnotation "IP address of server, Apache is installed and running."
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. image:: images/after-provision-2.png
   :width: 24cm

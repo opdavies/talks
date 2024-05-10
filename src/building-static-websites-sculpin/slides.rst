@@ -14,7 +14,9 @@ Oliver Davies (@opdavies)
 .. image:: images/druplicon.png
    :width: 10cm
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. image:: images/sculpin.png
    :width: 10cm

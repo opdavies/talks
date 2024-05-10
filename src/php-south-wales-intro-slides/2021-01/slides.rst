@@ -1,12 +1,16 @@
 .. image:: ../images/logo.jpeg
     :width: 8cm
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. image:: ../images/twilio.png
     :width: 12cm
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. image:: ../images/lexis-nexis.jpg
     :width: 12cm
@@ -52,7 +56,9 @@ Tonight
 
 Looking for speakers, sponsors and organisers
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. class:: centredtitle
 
@@ -67,7 +73,9 @@ Join us in ``#website-improve``
 .. image:: images/symfonylive-online-cfp.png
   :width: 18cm
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. image:: images/deploy-friday-composer.png
   :width: 20cm

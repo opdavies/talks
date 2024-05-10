@@ -25,7 +25,9 @@ Before we start
 
 What is Tailwind CSS?
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. class:: centredtitle
 
@@ -38,7 +40,9 @@ A utility-first CSS framework for rapidly building custom designs
     TextAnnotation "Make different looking sites using the same class names."
     TextAnnotation "No 'Tailwind looking site' like there is with Bootstrap."
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. class:: centredtitle
 
@@ -52,7 +56,9 @@ Tailwind CSS is a highly customisable, low-level CSS framework
     TextAnnotation "Avoids the need to name things prematurely."
     TextAnnotation "Can extract components if needed (reusability)."
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. class:: centredtitle
 
@@ -81,7 +87,9 @@ Tailwind is more than a CSS framework, it's an engine for creating design system
 
     TextAnnotation "Some of the 'original' things that Tailwind would generate classes for."
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 - Screenreader visibility
 - Placeholder colour
@@ -102,12 +110,16 @@ Tailwind is more than a CSS framework, it's an engine for creating design system
 .. image:: images/screenshot-laravel-nova.png
     :width: 22cm
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. image:: images/screenshot-send-firefox.png
     :width: 22cm
 
-.. page::
+.. raw:: pdf
+
+    PageBreak
 
 .. image:: images/screenshot-rebuilding-bartik.png
     :width: 22cm
