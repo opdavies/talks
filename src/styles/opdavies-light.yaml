@@ -89,23 +89,30 @@ styles:
       - '20'
       - null
     commands:
+      - - VALIGN
+        - - 0
+          - 0
+        - - -1
+          - -1
+        - TOP
       - - LEFTPADDING
         - - 0
           - 0
         - - 1
           - -1
-        - 5
+        - 6
       - - RIGHTPADDING
         - - 0
           - 0
         - - 1
           - -1
         - 0
-    textColor: '#aaaaaa'
+    textColor: '#24608a'
+    spaceBefore: 6
 
   bullet-list-item:
     spaceAfter: 0
-    spaceBefore: 18
+    spaceBefore: 12
 
   centred:
     alignment: TA_CENTER
