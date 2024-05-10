@@ -1,7 +1,7 @@
 pdf_filename := 'slides.pdf'
 thumbnail_filename := 'thumbnail.jpg'
 
-default:
+_default:
   @just --list
 
 clean:
@@ -35,3 +35,10 @@ generate-pdf talk_path filename="slides.rst":
   popd
 
   tree dist
+
+present slides_path duration *args:
+    pdfpc {{ slides_path }} --duration={{ duration }} {{ args }}
+
+watch slides_path rst_file="slides.rst":
+  find justfile src/styles {{ slides_path }} -type f | \
+    entr just generate-pdf {{ slides_path }} {{ rst_file }}
