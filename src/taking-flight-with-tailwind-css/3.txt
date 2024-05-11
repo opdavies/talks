@@ -1,0 +1,15 @@
+.font-bold {
+  font-weight: bold;
+}
+
+.text-slate-900 {
+  color: #020617;
+}
+
+.text-5xl {
+  text-size: 3rem;
+}
+
+.flex {
+  display: flex;
+}

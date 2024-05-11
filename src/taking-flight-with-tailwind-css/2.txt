@@ -1,0 +1,16 @@
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #020617; /* Dark grey */
+  padding: .5rem 0 2rem;
+}
+
+.card {
+  padding: 2rem;
+}
+
+.card p {
+  color: #020617; /* Dark grey */
+  font-size: 3rem;
+  font-weight: bold;
+}
