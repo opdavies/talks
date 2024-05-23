@@ -1,0 +1,12 @@
+---
+...
+testimonials:
+    - { name: ..., role: ..., text: ..., url: ... }
+    - { name: ..., role: ..., text: ..., url: ... }
+    - { name: ..., role: ..., text: ..., url: ... }
+---
+
+{% for testimonial in page.testimonials %}
+    <h2>{{ testimonial.name }} - {{ testimonial.role }}</h2>
+    <p>{{ testimonial.text }}</p>
+{% endfor %}

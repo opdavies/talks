@@ -1,0 +1,7 @@
+{{ 'today' }}
+
+{{ 'today'|date }}
+
+{{ 'today'|date('Y') }}
+
+{{ 'today'|date('Y') - 2007 }} # 17

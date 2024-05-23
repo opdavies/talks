@@ -1,0 +1,7 @@
+---
+layout: post
+title: New blog post
+draft: yes
+---
+
+# My new blog post

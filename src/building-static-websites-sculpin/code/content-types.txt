@@ -1,0 +1,11 @@
+---
+title: My Daily Email Archive
+layout: default
+use:
+    - daily_email
+---
+
+{% for email in data.daily_emails %}
+    <p>{{ email.title }}</p>
+{% endfor %}
+

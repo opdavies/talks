@@ -1,0 +1,11 @@
+{# source/_layouts/base.html.twig #}
+
+<!DOCTYPE html>
+<html lang="{{ site.locale|default('en') }}">
+    <head>
+        <title>{{ site.name|default('Sculpin Skeleton') }}</title>
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>

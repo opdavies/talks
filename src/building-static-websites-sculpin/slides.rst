@@ -28,16 +28,35 @@ What is Sculpin?
 
 * Static site generator
 * CLI tool
-* Built on Symfony's HttpKernel
-* HTML + Markdown + Twig = Static site
+* Built on Symfony components
+* Markdown + Twig = Static HTML
+
+.. raw:: pdf
+
+   TextAnnotation "Uses various Symfony components - Console, config, DI, Filesystem, Finder, HttpKernel, YAML."
+   TextAnnotation "Uses Twig - Symfony's templating language."
+   TextAnnotation ""
+   TextAnnotation "Transforms markdown files and Twig templates into static HTML websites, 'generates' a static website that can easily be deployed."
+
+Why use a static site generator?
+================================
+
+- Rapid development.
+- Security.
+- Performance.
+- Easy and cheap to host.
+
+.. raw:: pdf
+
+   TextAnnotation "Static websites are fast and secure as they don't have a database and only need a simple hosting environment with a basic web server."
 
 What do I use it for?
 =====================
 
-* My personal website
-* Some client websites
-* HTML prototypes and testing
-* Learning YAML and Twig (and some Symfony)
+* My personal website.
+* Some client websites.
+* HTML prototypes and testing.
+* Learning YAML and Twig (and some Symfony).
 
 Installation
 ============
@@ -55,8 +74,58 @@ Installation
 Using Sculpin
 =============
 
-* Configuration lives in ``app/config``
-* Source files live in ``source``.
+* Configuration in ``app/config``
+* Source files in ``source``.
+
+   * Templates in ``source/_templates`` or ``source/_layouts``.
+   * Includes in ``source/_includes`` or ``source/_partials``.
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block::
+   :include: ./code/project-structure.txt
+
+.. raw:: pdf
+
+   TextAnnotation "The file structure of a Sculpin project."
+   PageBreak
+
+.. code-block:: shell
+   :include: ./code/project-structure.txt
+   :hl_lines: 6,7,14
+
+.. raw:: pdf
+
+   TextAnnotation "PHP-based project."
+   PageBreak
+
+.. code-block:: shell
+   :include: ./code/project-structure.txt
+   :hl_lines: 2,3,4,5
+
+.. raw:: pdf
+
+   TextAnnotation "Configuration."
+   PageBreak
+
+.. code-block:: shell
+   :include: ./code/project-structure.txt
+   :hl_lines: 10,11,12,13
+
+.. raw:: pdf
+
+   TextAnnotation "Source files."
+   PageBreak
+
+.. code-block:: shell
+   :include: ./code/project-structure.txt
+   :hl_lines: 8,9
+
+.. raw:: pdf
+
+   TextAnnotation "Output directories with generated files."
 
 Generate a site
 ===============
@@ -71,28 +140,78 @@ source/index.md
 
 .. code-block:: markdown
     :include: code/index.md.txt
+    :linenos:
+
+
+source/index.md
+===============
+
+.. code-block:: markdown
+    :include: code/index.md.txt
+    :linenos:
+    :hl_lines: 1,2,3,4
+
+source/index.md
+===============
+
+.. code-block:: markdown
+    :include: code/index.md.txt
+    :linenos:
+    :hl_lines: 2
+
+source/index.md
+===============
+
+.. code-block:: markdown
+    :include: code/index.md.txt
+    :linenos:
+    :hl_lines: 3
+
+source/index.md
+===============
+
+.. code-block:: markdown
+    :include: code/index.md.txt
+    :linenos:
+    :hl_lines: 6
 
 output_dev/index.html
 =====================
 
 .. code-block:: html
+   :include: ./code/index.html.txt
+   :linenos:
 
-   <!DOCTYPE html>
-   <head>
-   </head>
-   <body>
-       <p>Hello, World!</p>
-   </body>
+output_dev/index.html
+=====================
+
+.. code-block:: html
+   :include: ./code/index.html.txt
+   :linenos:
+   :hl_lines: 4
+
+output_dev/index.html
+=====================
+
+.. code-block:: html
+   :include: ./code/index.html.txt
+   :linenos:
+   :hl_lines: 7
 
 Configuration
 =============
 
 - Stored in ``app/config``
-    - ``sculpin_site.yml``
-    - ``sculpin_site_{env}.yml``
+
+   - ``sculpin_site.yml``
+   - ``sculpin_site_{env}.yml``
+
 - Key-value pairs
 
+|
+
 .. code-block:: yaml
+    :linenos:
     :include: code/configuration.txt
 
 Using on pages
@@ -101,27 +220,52 @@ Using on pages
 .. code-block:: html
 
    <!DOCTYPE html>
-   <head>
-       <title>{{ site.name }}</title>
-   </head>
+   <html>
+       <head>
+           <title>{{ site.name }}</title>
+       </head>
+   </html>
 
 YAML front matter
 =================
 
 .. code-block:: yaml
+    :include: ./code/front-matter1.txt
 
-    ---
-    layout: post
-    title: New blog post
-    draft: yes
-    ---
+YAML front matter
+=================
 
-    # My new blog post
+.. code-block:: yaml
+    :include: ./code/front-matter1.txt
+    :linenos:
+    :hl_lines: 2
+
+YAML front matter
+=================
+
+.. code-block:: yaml
+    :include: ./code/front-matter1.txt
+    :linenos:
+    :hl_lines: 3
+
+YAML front matter
+=================
+
+.. code-block:: yaml
+    :include: ./code/front-matter1.txt
+    :linenos:
+    :hl_lines: 4
+
+.. raw:: pdf
+
+   TextAnnotation "Draft pages aren't generated when ENV=prod".
 
 More front matter
 =================
 
 .. code-block:: yaml
+    :linenos:
+    :hl_lines: 5,6,7,8
 
     ---
     layout: post
@@ -135,12 +279,12 @@ More front matter
 
     # My new blog post
 
-
-
 Even more front matter
 ======================
 
 .. code-block:: yaml
+    :linenos:
+    :hl_lines: 9,10
 
     ---
     layout: post
@@ -160,49 +304,122 @@ Using on pages
 ==============
 
 .. code-block:: twig
+    :include: ./code/front-matter-on-pages.txt
+    :linenos:
 
-    ---
-    ...
-    testimonials:
-        - { name: ..., role: ..., text: ..., url: ... }
-        - { name: ..., role: ..., text: ..., url: ... }
-        - { name: ..., role: ..., text: ..., url: ... }
-    ---
+.. raw:: pdf
 
-    {% for testimonial in page.testimonials %}
-        <h2>{{ testimonial.name }} - {{ testimonial.role }}</h2>
-        <p>{{ testimonial.text }}</p>
-    {% endfor %}
+   PageBreak
+
+Using on pages
+==============
+
+.. code-block:: bash
+    :include: ./code/front-matter-on-pages.txt
+    :linenos:
+    :hl_lines: 3
+
+.. raw:: pdf
+
+   PageBreak
+
+Using on pages
+==============
+
+.. code-block:: bash
+    :include: ./code/front-matter-on-pages.txt
+    :linenos:
+    :hl_lines: 4,5,6
+
+.. raw:: pdf
+
+   PageBreak
+
+Using on pages
+==============
+
+.. code-block:: bash
+    :include: ./code/front-matter-on-pages.txt
+    :linenos:
+    :hl_lines: 9,12
+
+.. raw:: pdf
+
+   PageBreak
+
+Using on pages
+==============
+
+.. code-block:: bash
+    :include: ./code/front-matter-on-pages.txt
+    :linenos:
+    :hl_lines: 10
+
+Using on pages
+==============
+
+.. code-block:: bash
+    :include: ./code/front-matter-on-pages.txt
+    :linenos:
+    :hl_lines: 11
+
+.. raw:: pdf
+
+   TextAnnotation "`page.` instead of `site.`."
 
 Layouts
 =======
 
 .. code-block:: twig
-
-    {# source/_layouts/app.html.twig #}
-
-    <!DOCTYPE html>
-    <html lang="{{ site.locale|default('en') }}">
-        <head>
-            <title>{{ site.name|default('Sculpin Skeleton') }}</title>
-        </head>
-        <body>
-            {% block body %}{% endblock %}
-        </body>
-    </html>
+    :include: ./code/layout-base.txt
+    :linenos:
 
 Layouts
 =======
 
 .. code-block:: twig
+    :include: ./code/layout-base.txt
+    :linenos:
+    :hl_lines: 4,6
 
-    {# source/_layouts/default.html.twig #}
+Layouts
+=======
 
-    {% extends 'app' %}
+.. code-block:: twig
+    :include: ./code/layout-base.txt
+    :linenos:
+    :hl_lines: 9
 
-    {% block body %}
-        {% block content %}{% endblock %}
-    {% endblock %}
+Layouts
+=======
+
+.. code-block:: twig
+    :include: ./code/layout-page.txt
+    :linenos:
+
+Layouts
+=======
+
+.. code-block:: twig
+    :include: ./code/layout-page.txt
+    :linenos:
+    :hl_lines: 3
+
+Layouts
+=======
+
+.. code-block:: twig
+    :include: ./code/layout-page.txt
+    :linenos:
+    :hl_lines: 5,7
+
+Layouts
+=======
+
+.. code-block:: twig
+    :include: ./code/layout-page.txt
+    :linenos:
+    :hl_lines: 6
 
 Includes
 ========
@@ -226,24 +443,164 @@ Content types
     # app/config/sculpin_kernel.yml
 
     sculpin_content_types:
-        projects:
-            permalink: projects/:slug_title/
+        daily_emails:
+            permalink: daily/:slug_title/
+
+
+.. raw:: pdf
+
+   TextAnnotation "A way to segregate content into different types - e.g. pages, talks, daily emails. Something that was familiar from working with Drupal."
 
 Accessing custom content types
 ==============================
 
 .. code-block:: yaml
+    :include: ./code/content-types.txt
+    :linenos:
 
-    ---
-    title: My Projects
-    layout: default
-    use:
-        - projects
-    ---
+Accessing custom content types
+==============================
 
-    {% for project in data.projects %}
-        <h2>{{ project.title }}</h2>
-    {% endfor %}
+.. code-block:: yaml
+    :include: ./code/content-types.txt
+    :linenos:
+    :hl_lines: 4,5
+
+Accessing custom content types
+==============================
+
+.. code-block:: yaml
+    :include: ./code/content-types.txt
+    :linenos:
+    :hl_lines: 8,9,10
+
+.. raw:: pdf
+
+   PageBreak titlePage
+
+.. class:: centredtitle
+
+Making things more dynamic
+
+.. raw:: pdf
+
+   PageBreak standardPage
+
+.. code-block:: twig
+    :include: ./code/twig-1.txt
+    :hl_lines: 1
+
+.. raw:: pdf
+
+   TextAnnotation "'today' as a string."
+   PageBreak
+
+.. code-block:: twig
+    :include: ./code/twig-1.txt
+    :hl_lines: 3
+
+.. raw:: pdf
+
+   TextAnnotation "Current date as a string."
+   PageBreak
+
+.. code-block:: twig
+    :include: ./code/twig-1.txt
+    :hl_lines: 5
+
+.. raw:: pdf
+
+   TextAnnotation "Current year."
+   PageBreak
+
+.. code-block:: twig
+    :include: ./code/twig-1.txt
+    :hl_lines: 7
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block:: php
+    :include: ./code/twig-2.txt
+    :end-before: // end yaml
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block:: twig
+    :include: ./code/twig-2.txt
+    :start-after: // start twig
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block:: twig
+    :include: ./code/twig-2.txt
+    :start-after: // start twig
+    :hl_lines: 1
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block:: javascript
+    :include: ./code/twig-2.txt
+    :hl_lines: 3,7
+    :start-after: // start twig
+
+.. raw:: pdf
+
+   TextAnnotation "Get each talk from the talk content type."
+   PageBreak
+
+.. code-block:: twig
+    :include: ./code/twig-2.txt
+    :start-after: // start twig
+    :hl_lines: 4,6
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block:: twig
+    :include: ./code/twig-2.txt
+    :start-after: // start twig
+    :hl_lines: 5
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block:: javascript
+    :include: ./code/twig-2.txt
+    :start-after: // start twig
+    :hl_lines: 9
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block:: javascript
+    :include: ./code/twig-3.txt
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block:: javascript
+    :include: ./code/twig-3.txt
+    :hl_lines: 1,3,18
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block:: javascript
+    :include: ./code/twig-3.txt
+    :hl_lines: 5,6,10,11,12,13,14
 
 .. page:: titlePage
 
@@ -298,13 +655,14 @@ Thanks!
 
 References:
 
+* https://www.oliverdavies.uk/brumphp
 * https://sculpin.io
-* https://github.com/opdavies/sculpin-talk-demo
+* https://github.com/opdavies/phpsw-sculpin-demo
 * https://github.com/opdavies/oliverdavies.uk
-* https://github.com/opdavies/docker-image-sculpin-serve
 
 |
 
 Me:
 
 * https://www.oliverdavies.uk
+* ``@opdavies``
