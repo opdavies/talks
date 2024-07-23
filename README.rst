@@ -1,6 +1,4 @@
 Talks and Presentations by Oliver Davies
 ########################################
 
-For talk abstracts, event information, and links to video recordings and the generated slides, see my `talks page`_.
-
-.. _talks page: https://www.oliverdavies.uk/talks
+The source files for `my presentation slides <https://www.oliverdavies.uk/talks>`_, written in reStructuredText and compiled using `rst2pdf <https://rst2pdf.org>`_.
