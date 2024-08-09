@@ -37,7 +37,7 @@ function generate:pdf {
     --fit-background-mode scale \
     --font-path ../fonts \
     --output "../../dist/${DIRECTORY_NAME}.pdf" \
-    --stylesheets ../styles/style-light,tango \
+    --stylesheets ../styles/opdavies-light,tango \
     "${@}"
 
   popd
