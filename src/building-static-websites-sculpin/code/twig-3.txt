@@ -1,18 +1,15 @@
 {% set talks = site.talks|filter(talk => talk.speaker == page.name) %}
 
 {% if talks is not empty %}
-    <section class="mt-10">
-        <h2 class="text-2xl font-bold">Talks
-            <span class="sr-only"> by {{ page.name }}</span></h2>
+  <section>
+    <h2>Talks by {{ page.name }}</h2>
 
-        <div class="mt-6">
-            <ul class="pl-4 list-disc">
-                {% for talk in talks %}
-                    <li>
-                        <a class="hover:underline" href="#0">{{ talk.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </section>
+    <div>
+      <ul>
+        {% for talk in talks %}
+          <li><a href="#0">{{ talk.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
 {% endif %}

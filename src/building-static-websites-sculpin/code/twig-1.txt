@@ -4,4 +4,4 @@
 
 {{ 'today'|date('Y') }}
 
-{{ 'today'|date('Y') - 2007 }} # 17
+{{ 'today'|date('Y') - 2007 }} # 17 (years of experience)

@@ -9,6 +9,12 @@ Building static websites with Sculpin
 
 Oliver Davies (@opdavies)
 
+|
+
+.. class:: centred
+
+https://opdavi.es/phpberks
+
 .. page:: imagePage
 
 .. image:: images/druplicon.png
@@ -22,6 +28,31 @@ Oliver Davies (@opdavies)
    :width: 10cm
 
 .. page:: standardPage
+
+What is a static website?
+=========================
+
+.. code::
+
+   .htaccess
+   assets/images/od-logo.jpg
+   build/tailwind.css
+   call/index.html
+   daily/2024/03/18/automated-drupal-11-compatibility-fixes/index.html
+   drupal-upgrade/index.html
+   favicon.ico
+   index.html
+   phpberks/index.html
+   podcast/19-sam-mortenson/index.html
+   pricing/index.html
+   talks/taking-flight-with-tailwind-css/index.html
+   talks/tdd-test-driven-drupal/index.html
+
+.. raw:: pdf
+
+   TextAnnotation "HTML, CSS, JS. No PHP or server-side code."
+   TextAnnotation "How I started building websites."
+   TextAnnotation "The things you usually have a CMS or framework generate."
 
 What is Sculpin?
 ================
@@ -42,18 +73,21 @@ Why use a static site generator?
 ================================
 
 - Rapid development.
+- Templating.
 - Security.
 - Performance.
 - Easy and cheap to host.
 
 .. raw:: pdf
 
+   TextAnnotation "Leveraging templating features, such as conditionals, loops, partials and includes, template inheritance."
    TextAnnotation "Static websites are fast and secure as they don't have a database and only need a simple hosting environment with a basic web server."
+   TextAnnotation "Works with a simple Apache, Nginx or Caddy server, or with services like Vercel and Netlify."
 
 What do I use it for?
 =====================
 
-* My personal website.
+* My personal website and Zettelkasten.
 * Some client websites.
 * HTML prototypes and testing.
 * Learning YAML and Twig (and some Symfony).
@@ -92,18 +126,18 @@ Using Sculpin
    TextAnnotation "The file structure of a Sculpin project."
    PageBreak
 
-.. code-block:: shell
+.. code-block:: bash
    :include: ./code/project-structure.txt
-   :hl_lines: 6,7,14
+   :hl_lines: 5,6,13
 
 .. raw:: pdf
 
    TextAnnotation "PHP-based project."
    PageBreak
 
-.. code-block:: shell
+.. code-block:: bash
    :include: ./code/project-structure.txt
-   :hl_lines: 2,3,4,5
+   :hl_lines: 1,2,3,4
 
 .. raw:: pdf
 
@@ -112,16 +146,16 @@ Using Sculpin
 
 .. code-block:: shell
    :include: ./code/project-structure.txt
-   :hl_lines: 10,11,12,13
+   :hl_lines: 9,10,11,12
 
 .. raw:: pdf
 
    TextAnnotation "Source files."
    PageBreak
 
-.. code-block:: shell
+.. code-block:: bash
    :include: ./code/project-structure.txt
-   :hl_lines: 8,9
+   :hl_lines: 7,8
 
 .. raw:: pdf
 
@@ -138,7 +172,7 @@ Generate a site
 source/index.md
 ===============
 
-.. code-block:: markdown
+.. code-block::
     :include: code/index.md.txt
     :linenos:
 
@@ -146,7 +180,7 @@ source/index.md
 source/index.md
 ===============
 
-.. code-block:: markdown
+.. code-block:: bash
     :include: code/index.md.txt
     :linenos:
     :hl_lines: 1,2,3,4
@@ -154,7 +188,7 @@ source/index.md
 source/index.md
 ===============
 
-.. code-block:: markdown
+.. code-block:: bash
     :include: code/index.md.txt
     :linenos:
     :hl_lines: 2
@@ -162,7 +196,7 @@ source/index.md
 source/index.md
 ===============
 
-.. code-block:: markdown
+.. code-block:: bash
     :include: code/index.md.txt
     :linenos:
     :hl_lines: 3
@@ -170,7 +204,7 @@ source/index.md
 source/index.md
 ===============
 
-.. code-block:: markdown
+.. code-block:: bash
     :include: code/index.md.txt
     :linenos:
     :hl_lines: 6
@@ -258,7 +292,7 @@ YAML front matter
 
 .. raw:: pdf
 
-   TextAnnotation "Draft pages aren't generated when ENV=prod".
+   TextAnnotation "Draft pages aren't generated when env=prod".
 
 More front matter
 =================
@@ -272,12 +306,10 @@ More front matter
     title: New blog post
     draft: yes
     tags:
-        - drupal
-        - php
-        - sculpin
+      - drupal
+      - php
+      - sculpin
     ---
-
-    # My new blog post
 
 Even more front matter
 ======================
@@ -291,14 +323,12 @@ Even more front matter
     title: New blog post
     draft: yes
     tags:
-        - drupal
-        - php
-        - sculpin
+      - drupal
+      - php
+      - sculpin
     tweets: yes
     foo: bar
     ---
-
-    # My new blog post
 
 Using on pages
 ==============
@@ -443,8 +473,8 @@ Content types
     # app/config/sculpin_kernel.yml
 
     sculpin_content_types:
-        daily_emails:
-            permalink: daily/:slug_title/
+      daily_emails:
+        permalink: daily/:slug_title/
 
 
 .. raw:: pdf
@@ -515,6 +545,7 @@ Making things more dynamic
 
 .. code-block:: twig
     :include: ./code/twig-1.txt
+    :linenos:
     :hl_lines: 7
 
 .. raw:: pdf
@@ -524,6 +555,7 @@ Making things more dynamic
 .. code-block:: php
     :include: ./code/twig-2.txt
     :end-before: // end yaml
+    :linenos:
 
 .. raw:: pdf
 
@@ -531,6 +563,7 @@ Making things more dynamic
 
 .. code-block:: twig
     :include: ./code/twig-2.txt
+    :linenos:
     :start-after: // start twig
 
 .. raw:: pdf
@@ -540,6 +573,7 @@ Making things more dynamic
 .. code-block:: twig
     :include: ./code/twig-2.txt
     :start-after: // start twig
+    :linenos:
     :hl_lines: 1
 
 .. raw:: pdf
@@ -549,6 +583,7 @@ Making things more dynamic
 .. code-block:: javascript
     :include: ./code/twig-2.txt
     :hl_lines: 3,7
+    :linenos:
     :start-after: // start twig
 
 .. raw:: pdf
@@ -559,6 +594,7 @@ Making things more dynamic
 .. code-block:: twig
     :include: ./code/twig-2.txt
     :start-after: // start twig
+    :linenos:
     :hl_lines: 4,6
 
 .. raw:: pdf
@@ -568,6 +604,7 @@ Making things more dynamic
 .. code-block:: twig
     :include: ./code/twig-2.txt
     :start-after: // start twig
+    :linenos:
     :hl_lines: 5
 
 .. raw:: pdf
@@ -577,6 +614,7 @@ Making things more dynamic
 .. code-block:: javascript
     :include: ./code/twig-2.txt
     :start-after: // start twig
+    :linenos:
     :hl_lines: 9
 
 .. raw:: pdf
@@ -585,6 +623,7 @@ Making things more dynamic
 
 .. code-block:: javascript
     :include: ./code/twig-3.txt
+    :linenos:
 
 .. raw:: pdf
 
@@ -592,7 +631,8 @@ Making things more dynamic
 
 .. code-block:: javascript
     :include: ./code/twig-3.txt
-    :hl_lines: 1,3,18
+    :linenos:
+    :hl_lines: 1,3,15
 
 .. raw:: pdf
 
@@ -600,7 +640,26 @@ Making things more dynamic
 
 .. code-block:: javascript
     :include: ./code/twig-3.txt
-    :hl_lines: 5,6,10,11,12,13,14
+    :linenos:
+    :hl_lines: 5
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block:: javascript
+    :include: ./code/twig-3.txt
+    :linenos:
+    :hl_lines: 9,11
+
+.. raw:: pdf
+
+   PageBreak
+
+.. code-block:: javascript
+    :include: ./code/twig-3.txt
+    :linenos:
+    :hl_lines: 10
 
 .. page:: titlePage
 
@@ -620,9 +679,9 @@ Extending Sculpin
     ...
 
     services:
-        App\TwigExtension\TalkExtension:
-            tags:
-                - { name: twig.extension }
+      App\TwigExtension\TalkExtension:
+        tags:
+          - { name: twig.extension }
 
 .. page:: imagePage
 
@@ -655,10 +714,9 @@ Thanks!
 
 References:
 
-* https://www.oliverdavies.uk/brumphp
-* https://sculpin.io
-* https://github.com/opdavies/phpsw-sculpin-demo
-* https://github.com/opdavies/oliverdavies.uk
+|
+
+https://www.oliverdavies.uk/phpberks
 
 |
 

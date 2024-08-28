@@ -1,14 +1,13 @@
-.
-├── app
-│   ├── config
-│   │   ├── sculpin_kernel.yml
-│   │   └── sculpin_site.yml
-├── composer.json
-├── composer.lock
-├── output_dev
-├── output_prod
-├── source
-│   ├── _includes
-│   ├── _templates
-│   └── index.md
-└── vendor
+app/
+  config/
+    sculpin_kernel.yml
+    sculpin_site.yml
+composer.json
+composer.lock
+output_dev/
+output_prod/
+source/
+  _includes/
+  _templates/
+  index.md
+vendor/
