@@ -9,12 +9,6 @@ Building static websites with Sculpin
 
 Oliver Davies (@opdavies)
 
-|
-
-.. class:: centred
-
-https://opdavi.es/phpberks
-
 .. page:: imagePage
 
 .. image:: images/druplicon.png
@@ -552,6 +546,28 @@ Making things more dynamic
 
    PageBreak
 
+.. code-block:: twig
+   :linenos:
+
+   ---
+   title: Daily Email Archive
+   use: [daily_emails]
+   ---
+
+   This is an archive of the {{ data.daily_emails|length }}
+   email messages I have sent to my daily email list
+   since the 12th of August, 2022.
+
+|
+|
+
+This is an archive of the 599 email messages I have sent to my daily email list since the 12th of August, 2022.
+
+.. raw:: pdf
+
+   TextAnnotation "Get the emails via their content type and use the `length` filter to get the number of emails."
+   PageBreak
+
 .. code-block:: php
     :include: ./code/twig-2.txt
     :end-before: // end yaml
@@ -611,7 +627,7 @@ Making things more dynamic
 
    PageBreak
 
-.. code-block:: javascript
+.. code-block:: twig
     :include: ./code/twig-2.txt
     :start-after: // start twig
     :linenos:
