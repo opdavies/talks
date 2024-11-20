@@ -13,7 +13,7 @@ Oliver Davies (@opdavies)
 
 .. class:: titleslideinfo
 
-https://opdavi.es/dcg
+https://opdavi.es/drupal-london
 
 .. page:: titlePage
 
@@ -61,7 +61,14 @@ Software Developer, Consultant, open-source maintainer
 
     TextAnnotation "173rd most used module on Drupal.org"
     TextAnnotation "~38,000 sites - ~13,000 D7 and ~24,000 D8/9/10"
-    TextAnnotation "Had some existing tests, crucial to preventing regressions"
+
+.. image:: images/override-node-options-4.png
+    :width: 22cm
+
+.. raw:: pdf
+
+   PageBreak
+   TextAnnotation "Had some existing tests, crucial to preventing regressions"
 
 .. page:: standardPage
 
@@ -455,7 +462,8 @@ How I Write Tests - "Outside In"
 
 Run in 2-3 minutes in a CI pipeline with GitHub Actions.
 
-.. include:: demo.rst
+.. .. include:: demo.rst
+.. include:: demo2.rst
 
 .. page:: imagePage
 
@@ -478,4 +486,5 @@ References:
 Me:
 
 * https://www.oliverdavies.uk
+* https://www.oliverdavies.uk/drupal-london
 * https://www.oliverdavies.uk/atdc
